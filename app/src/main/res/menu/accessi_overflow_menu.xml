@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+tools:context=".Moduli.Home.HomeActivity">
+
+<item android:id="@+id/menu_action_modifica"
+    android:title="@string/menu_item_modifica"
+    android:icon="@drawable/ic_modifica"
+    />
+
+<item android:id="@+id/menu_action_elimina"
+    android:title="@string/menu_item_elimina"
+    android:icon="@drawable/ic_delete_cooler"
+    />
+
+<item android:id="@+id/menu_action_stampa"
+    android:title="@string/menu_item_stampa"
+    android:icon="@drawable/ic_stampa_cooler"
+    />
+</menu>

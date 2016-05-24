@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mcteamgestapp.momo.com.mcteamgestapp">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" /> <!-- this is for runtime permissions -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Permessi per accedere ad internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_circle_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".Moduli.Login.LoginActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Moduli.Home.HomeActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Login.RegistrationActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_registration"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.SistemiAcitivity"
+            android:configChanges="orientation"
+            android:icon="@drawable/ic_accessibility_white_24dp"
+            android:label="@string/title_activity_sistemi"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable_configuration" />
+        </activity>
+        <activity
+            android:name=".Moduli.Gestionale.Societa.RubricaSocietaActivity"
+            android:configChanges="orientation"
+            android:exported="true"
+            android:label="@string/rubrica_societa"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.ModificaUtenteDialog"
+            android:configChanges="orientation"
+            android:label="@string/modifica_utente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Home.UserInfoActivity"
+            android:configChanges="orientation"
+            android:label="@string/info_utente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.VisualizzaActivity"
+            android:configChanges="orientation"
+            android:label="@string/visualizza_utente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.EliminaActivity"
+            android:configChanges="orientation"
+            android:label="@string/elimina_utente"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.NuovoAccessoActivity"
+            android:configChanges="orientation"
+            android:label="@string/aggiungi_nuovo_accesso"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Societa.VisualizzaSocietaActivity"
+            android:configChanges="orientation"
+            android:label="@string/visualizza_societa_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.StampaAccessiActivity"
+            android:configChanges="orientation"
+            android:label="@string/stampa_accesso"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Societa.NuovaSocietaActivity"
+            android:configChanges="orientation"
+            android:label="@string/nuova_societa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Sistemi.AdvanceSearchActivity"
+            android:configChanges="orientation"
+            android:label="@string/ricerca_avanzata_sistemi"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.RubricaNominativaActivity"
+            android:configChanges="orientation"
+            android:label="@string/rubrica_nominativa_name"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Societa.ModificaSocietaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_modifica_societa"
+            android:parentActivityName=".Moduli.Gestionale.Societa.VisualizzaSocietaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Societa.EliminaSocietaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_elimina_societa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Societa.StampaSocietaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_stampa_societa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Societa.SocietaAdvanceSearchActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_societa_advance_search"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.VisualizzaNominativoActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_visualizza_nominativo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.ModificaNominativoActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_modifica_nominativo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.NuovoNominativoActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_nuovo_nominativo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.EliminaNominativoActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_elimina_nominativo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.StampaNominativoActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_stampa_nominativo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Nominativo.NominativiAdvanceSearch"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_nominativi_advance_search"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.CommesseActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_commesse"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.VisualizzaCommessaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_visualizza_commessa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.NuovaCommessaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_nuova_commessa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.EliminaCommessaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_elimina_commessa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.StampaCommessaActivity"
+            android:configChanges="orientation"
+            android:label="Stampa commessa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.RicercaAvanzataCommesseActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_ricerca_avanzata_commesse"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.RubricaBanche.RubricaBanca"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_rubrica_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.RubricaBanche.VisualizzaBancaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_visualizza_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.RubricaBanche.NuovaBancaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_nuova_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.RubricaBanche.EliminaBancaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_elimina_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.RubricaBanche.StampaBancaActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_stampa_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.RubricaBanche.RicercaAvanzataBanca"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_ricerca_avanzata_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Allegati.AllegatiActivity"
+            android:label="@string/title_activity_allegati"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Allegati.EliminaAllegatoActivity"
+            android:label="@string/title_activity_elimina_allegato"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Allegati.NuovoAllegatoActivity"
+            android:label="@string/title_activity_nuovo_allegato"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nononsenseapps.filepicker.FilePickerActivity"
+            android:label="@string/app_name"
+            android:theme="@style/FilePickerTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Moduli.Gestionale.Allegati.RicercaAvanzataAllegati"
+            android:label="@string/title_activity_ricerca_avanzata_allegati"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Commesse.StoricoCommesseActivity"
+            android:label="@string/title_activity_storico_commesse"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.AssociazioniActivity"
+            android:label="@string/title_activity_associazioni"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.VisualizzaAssociazioneActivity"
+            android:label="@string/title_activity_visualizza_associazione"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.NuovaAssociazioneActivity"
+            android:label="@string/title_activity_nuova_associazione"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.EliminaAssociazioneActivity"
+            android:label="@string/title_activity_elimina_associazione"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.StampaAssociazioneActivity"
+            android:label="@string/title_activity_stampa_associazione"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.AssociazioniRicercaAvanzataActivity"
+            android:label="@string/title_activity_associazioni_ricerca_avanzata"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Gestionale.Associazioni.ConsulenteMultiSelectionDialog"
+            android:label="@string/title_activity_consulente_multi_selection"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity
+            android:name=".Moduli.Produzione.Consuntivi.ConsuntiviMainActivity"
+            android:label="@string/title_activity_consuntivi_main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Produzione.Consuntivi.DayConsuntivoDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
+        <activity
+            android:name=".Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity"
+            android:label="@string/title_activity_prima_nota_cassa"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Moduli.Amministrazione.PrimaNotaCassa.NewEditPrimaNotaCassaActivity"
+            android:label="@string/nuova_activity_prima_nota_cassa"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Moduli.Amministrazione.PrimaNotaCassa.VisualElimPrimaNotaCassa"
+            android:label="@string/visulizza_activity_prima_nota_cassa"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

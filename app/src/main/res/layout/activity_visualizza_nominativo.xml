@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/white"
+    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.VisualizzaNominativoActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView13"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView83"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Dati nominativo:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/petrolio_scuro"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView87"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Titolo:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_titolo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView95"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cognome:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_cognome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView102"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nome:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView106"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Società:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_societa"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:singleLine="false"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/nominativo_societa_view"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/nominativo_societa_view_bg"
+                    android:singleLine="false"
+                    android:text="Vedi"
+                    android:textColor="@color/carot"
+                    android:textSize="10dp"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView110"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Indirizzo:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_indirizzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView114"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="CAP:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_cap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView117"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Provincia:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_provincia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView119"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Città:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_citta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView121"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nazionalità/paese:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_nazionalita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView123"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_telefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView125"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fax:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_fax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView127"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cellulare:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_cellulare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView129"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Email:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView131"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Note:" />
+
+                <TextView
+                    android:id="@+id/visualizza_nominativo_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <Button
+                    android:id="@+id/visualizza_nominativo_mostra_dettagli_button"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/green_background_button"
+                    android:text="Mostra dettagli"
+                    android:textColor="@color/green_dark"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/visualizza_nominativo_visualizza_dettagli"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/more_detail_background"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView147"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Luogo di nascita:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_luogo_nascita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView149"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Data di nascita:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_data_nascita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView151"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Partita IVA" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_partita_iva"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView153"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Codice fiscale:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_codice_fiscale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView155"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Carta d&apos;identità:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_carta_identita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView157"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Patente:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_patente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView159"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tessera sanitaria:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_tessera_sanitaria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView161"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sito web:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_sito_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoLink="web"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView163"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nome banca" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_nome_banca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView165"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Indirizzo banca:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_indirizzo_banca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView167"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="IBAN:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_iban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView169"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Note dettaglio:" />
+
+                    <TextView
+                        android:id="@+id/visualizza_nominativo_note_dett"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/asphalt_color" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/visualizza_nominativo_stampa_button"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="30dp"
+                    app:bootstrapBrand="primary"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="{fa-print}"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/visualizza_nominativo_modifica_button"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="30dp"
+                    app:bootstrapBrand="warning"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="{fa-pencil}"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/visualizza_nominativo_elimina_button"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    app:bootstrapBrand="danger"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="{fa-trash}"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/visualizza_nominativo_stampa_con_dettagli"
+                    android:layout_width="180dp"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/main_register_view"
+                    android:background="@drawable/petrolio_button_bg"
+                    android:text="Stampa con dettagli"
+                    android:textColor="@color/petrolio_scuro" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

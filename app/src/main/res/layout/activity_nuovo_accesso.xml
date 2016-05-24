@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi.NuovoAccessoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView5" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout4"
+            android:visibility="visible"
+            android:layout_centerVertical="true" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Dati personali:"
+                android:id="@+id/textView29"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/asphalt_color"
+                android:textStyle="bold|italic"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:weightSum="1"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView24"
+                    android:src="@drawable/ic_person_black_24dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/nuovo_accesso_cognome"
+                    android:hint="Cognome" />
+
+                <EditText
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/nuovo_accesso_nome"
+                    android:hint="Nome" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView25"
+                    android:src="@drawable/ic_email_black_24dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/nuovo_accesso_email"
+                    android:hint="Email" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:weightSum="1"
+                android:paddingLeft="10dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView28"
+                    android:src="@drawable/ic_vpn_key_black_24dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nuovo_accesso_password"
+                    android:hint="Password" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView26"
+                    android:src="@drawable/ic_phone_iphone_black_24dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:ems="10"
+                    android:id="@+id/nuovo_accesso_phone"
+                    android:hint="Telefono" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:weightSum="1"
+                android:paddingLeft="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView27"
+                    android:src="@drawable/ic_location_on_black_24dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nuovo_accesso_luogo_nascita"
+                    android:hint="Luogo Nascita" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:weightSum="1"
+                android:paddingLeft="10dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/imageView30"
+                    android:src="@drawable/ic_event_black_24dp"
+                    android:layout_marginRight="10dp" />
+
+                <EditText
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nuovo_accesso_data_nascita"
+                    android:inputType="date"
+                    android:hint="Data Nascita (es 01-01-1900)" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Tipo Accesso:"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/textView30"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold|italic" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="175dp"
+                        android:layout_height="wrap_content" >
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amministrazione"
+                            android:id="@+id/check_nuovo_accesso_amministratore"
+                            android:checked="false" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Commerciale"
+                            android:id="@+id/check_nuovo_accesso_commerciale"
+                            android:checked="false" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/check_nuovo_accesso_gestionale"
+                            android:checked="false"
+                            android:text="Gestionale" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sistemi"
+                            android:id="@+id/check_nuovo_accesso_sistemi"
+                            android:checked="false" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Capo progetto"
+                            android:id="@+id/check_nuovo_accesso_capo_progetto"
+                            android:checked="false" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Consulente"
+                            android:id="@+id/check_nuovo_accesso_consulente"
+                            android:checked="false" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Produzione"
+                            android:id="@+id/check_nuovo_accesso_produzione"
+                            android:checked="false" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Abilitato:"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/textView31"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold|italic"
+                    android:layout_gravity="center_horizontal" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="ABILITATO"
+                        android:id="@+id/nuovo_accesso_abilitato_tv"
+                        android:textStyle="normal"
+                        android:layout_marginRight="140dp" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch_nuovo_accesso_abilitato"
+                        android:checked="true"
+                        android:allowUndo="false"
+                        android:gravity="center|left"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" >
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="Annulla"
+                    android:id="@+id/button_nuovo_accesso_annulla"
+                    android:textColor="@color/upped_red"
+                    android:background="@drawable/register_background"
+                    android:layout_alignBottom="@+id/button_nuovo_accesso_conferma"
+                    android:layout_marginRight="20dp" />
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="Crea"
+                    android:id="@+id/button_nuovo_accesso_conferma"
+                    android:textColor="@color/blue"
+                    android:background="@drawable/access_blue"
+                    android:layout_below="@+id/main_register_view"
+                    android:layout_marginLeft="25dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

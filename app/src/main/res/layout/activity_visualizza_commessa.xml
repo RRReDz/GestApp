@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.VisualizzaCommessaActivity"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView18" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Commessa"
+                android:id="@+id/textView227"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textColor="@color/petrolio_scuro"
+                android:layout_marginTop="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:text="Commessa:"
+                    android:textSize="16dp"
+                    android:id="@+id/textView203" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_codice_commessa"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Cliente:"
+                    android:id="@+id/textView207" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_nome_cliente"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Nome Commessa:"
+                    android:id="@+id/textView211" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_nome_commessa"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Commerciale:"
+                    android:id="@+id/textView215" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_commerciale"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Data:"
+                    android:id="@+id/textView219" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_data"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="Avanzamento"
+                    android:id="@+id/textView223"
+                    android:textColor="@color/petrolio_scuro"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="8dp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:text="Marketing"
+                        android:textSize="16dp"
+                        android:id="@+id/visualizza_commessa_marketing"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:textSize="16dp"
+                        android:text="Offerta"
+                        android:id="@+id/visualizza_commessa_offerta"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:enabled="false"
+                        android:textSize="16dp"
+                        android:layout_height="wrap_content"
+                        android:text="Ordine"
+                        android:id="@+id/visualizza_commessa_ordine"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:enabled="false"
+                        android:textSize="16dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sviluppo"
+                        android:id="@+id/visualizza_commessa_sviluppo"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:textSize="16dp"
+                        android:text="Fattura"
+                        android:id="@+id/visualizza_commessa_fattura"
+                        android:checked="false" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:textSize="16dp"
+                        android:text="Pagamento"
+                        android:id="@+id/visualizza_commessa_pagamento"
+                        android:checked="false" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Referenti"
+                android:id="@+id/textView238"
+                android:textColor="@color/petrolio_scuro"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Referente I:"
+                    android:id="@+id/textView231" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_referente_1"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:text="Referente II:"
+                    android:id="@+id/textView235" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_referente_2"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="Referenti offerte"
+                android:id="@+id/textView256"
+                android:textColor="@color/petrolio_scuro"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Referente Offerta I:"
+                    android:id="@+id/textView240" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_referente_offerta_1"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Referente Offerta II:"
+                    android:id="@+id/textView244" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_referente_offerta_2"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Referente Offerta III:"
+                    android:id="@+id/textView248" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_referente_offerta_3"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="17dp"
+                    android:text="Note:"
+                    android:id="@+id/textView2482232" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/asphalt_color"
+                    android:id="@+id/visualizza_commessa_note"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp" >
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    app:bootstrapText="{fa-print}"
+                    app:bootstrapSize="lg"
+                    android:id="@+id/visualizza_commessa_stampa_button"
+                    app:bootstrapBrand="primary"
+                    app:buttonMode="regular"
+                    app:showOutline="true"
+                    app:roundedCorners="true"
+                    android:layout_marginRight="30dp" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/visualizza_commessa_modifica_button"
+                    app:bootstrapText="{fa-pencil}"
+                    app:bootstrapSize="lg"
+                    app:bootstrapBrand="warning"
+                    app:buttonMode="regular"
+                    app:showOutline="true"
+                    app:roundedCorners="true"
+                    android:layout_marginRight="30dp" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/visualizza_commessa_elimina_button"
+                    app:bootstrapText="{fa-trash}"
+                    app:bootstrapSize="lg"
+                    app:bootstrapBrand="danger"
+                    app:buttonMode="regular"
+                    app:showOutline="true"
+                    app:roundedCorners="true"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

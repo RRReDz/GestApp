@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Moduli.Sistemi.SistemiAcitivity"
+    >
+
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/accessi_list"
+
+        />
+
+    <View
+        android:id="@+id/overlay_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/overlay_color"
+        android:visibility="gone"
+        />
+
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
+        android:id="@+id/fab_aggiungi_nuovo_accesso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_size="normal"
+        fab:fab_colorNormal="@color/sistemi_home_background"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

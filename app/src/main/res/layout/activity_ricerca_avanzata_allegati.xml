@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.RicercaAvanzataAllegati"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ricerca_avanzata_allegati_descrizione"
+            android:hint="Descrizione" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ricerca_avanzata_allegati_data_inserimento"
+            android:inputType="date"
+            android:hint="Data inserimento" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ricerca_avanzata_allegati_tipo_file"
+            android:hint="Tipo file" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:fitsSystemWindows="true"
+            app:bootstrapText="{fa-search}"
+            app:bootstrapSize="lg"
+            android:id="@+id/ricerca_avanzata_allegati_cerca_button"
+            app:bootstrapBrand="primary"
+            app:buttonMode="regular"
+            app:showOutline="true"
+            app:roundedCorners="true"
+            android:focusable="false"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/ricerca_avanzata_allegati_status_bar" />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ricerca_avanzata_allegati_list_result" />
+
+</LinearLayout>

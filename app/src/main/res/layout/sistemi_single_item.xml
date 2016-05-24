@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/accessi_single_item_main_layout"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:descendantFocusability="blocksDescendants"
+    >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/sistemi_item_header"
+        android:textStyle="bold"
+        android:paddingTop="5dp"
+        android:background="@color/sistemi_home_background"
+        android:paddingBottom="5dp"
+        android:gravity="center"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="320dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="fill_parent"
+                android:text="Tipologia Utente"
+                android:id="@+id/sistemi_tipologia"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:maxLength="10"
+                android:maxLines="3"
+                android:gravity="center_vertical"
+                android:textSize="16px"
+               />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="fill_parent"
+                android:text=" Cognome"
+                android:id="@+id/sistemi_cognome"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:singleLine="true"
+                />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:text="Nome"
+                android:id="@+id/sistemi_nome"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/accessi_overflow_menu"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_gravity="center_vertical|right"
+            android:background="@color/transparent"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            />
+    </LinearLayout>
+</LinearLayout>

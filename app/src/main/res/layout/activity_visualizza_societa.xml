@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Societa.VisualizzaSocietaActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView65"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Dati societa:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/petrolio_scuro"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tipologia:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_tipologia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color"
+                    android:textStyle="bold|italic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Codice Società:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_codice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Società:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Indirizzo:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_indirizzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cap:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_cap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Città:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_citta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Provincia:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_provincia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView50"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Stato:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_stato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView52"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_telefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView66"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cellulare:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_cellulare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView273"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Fax:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_fax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView54"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Partita IVA:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_p_iva"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView56"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Codice fiscale:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_codice_fiscale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView58"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Note:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sito:" />
+
+                <TextView
+                    android:id="@+id/visualizza_societa_sito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/asphalt_color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/visualizza_societa_stampa"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="30dp"
+                    app:bootstrapBrand="primary"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="{fa-print}"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/visualizza_societa_modifica"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="30dp"
+                    app:bootstrapBrand="warning"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="{fa-pencil}"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
+
+                <com.beardedhen.androidbootstrap.BootstrapButton
+                    android:id="@+id/visualizza_societa_delete"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    app:bootstrapBrand="danger"
+                    app:bootstrapSize="lg"
+                    app:bootstrapText="{fa-trash}"
+                    app:buttonMode="regular"
+                    app:roundedCorners="true"
+                    app:showOutline="true" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

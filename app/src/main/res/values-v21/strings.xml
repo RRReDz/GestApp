@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rubrica_societa">Rubrica società</string>
+    <string name="visualizza_utente">Visualizza utente</string>
+    <string name="elimina_utente">Elimina</string>
+    <string name="not_abilitato">DISABILITATO</string>
+    <string name="search_hint">Cerca nome o cognome</string>
+    <string name="stampa_accesso">Stampa</string>
+    <string name="visualizza_societa_activity">Visualizza società</string>
+    <string name="nuova_societa">Nuova società</string>
+    <string name="ricerca_avanzata_sistemi">Ricerca Avanzata</string>
+    <string name="rubrica_nominativa_name">Rubrica Nominativi</string>
+    <string name="menu_item_download">Scarica</string>
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/associazione_header"
+        android:background="@color/gestionale_home_background"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:orientation="horizontal"
+        android:focusableInTouchMode="false"
+        android:descendantFocusability="blocksDescendants"
+        android:paddingLeft="10dp">
+
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/associazione_cliente"
+            android:gravity="center_vertical"
+            android:textStyle="bold|italic"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:id="@+id/associazione_codice_commessa"
+            android:gravity="center_vertical"
+            android:textStyle="italic"
+            android:textSize="15dp"
+            android:layout_marginLeft="5dp"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:id="@+id/associazione_risorsa"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:focusable="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/associazione_overflow"
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_gravity="center_vertical|right"
+            android:background="@color/transparent"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:layout_marginRight="10dp"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

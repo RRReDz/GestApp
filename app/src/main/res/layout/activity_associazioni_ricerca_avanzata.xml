@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Associazioni.AssociazioniRicercaAvanzataActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ricerca_avanzata_associazioni_form">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_cliente"
+                android:hint="Cliente" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_nome_commessa"
+                android:hint="Nome Commessa" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_codice_commessa"
+                android:hint="Codice Commessa" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_referente1"
+                android:hint="Referente I" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_consulente"
+                android:hint="Consulente" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_mese_inizio"
+                android:inputType="numberDecimal"
+                android:hint="Mese Inizio" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ricerca_associazioni_anno_inizio"
+                android:inputType="numberDecimal"
+                android:hint="Anno Inizio" />
+        </LinearLayout>
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:fitsSystemWindows="true"
+            app:bootstrapText="{fa-search}"
+            app:bootstrapSize="lg"
+            android:id="@+id/ricerca_associazioni_ricerca_button"
+            app:bootstrapBrand="primary"
+            app:buttonMode="regular"
+            app:showOutline="true"
+            app:roundedCorners="true"
+            android:focusable="false"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/ricerca_associazioni_status_bar" />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ricerca_associazioni_list_result" />
+
+</LinearLayout>

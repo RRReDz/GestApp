@@ -1,0 +1,571 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Moduli.Home.HomeActivity">
+
+    <LinearLayout
+        android:id="@+id/frame_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="top"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_cognome"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="Nome "
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_cognome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="27dp"
+            android:text="Cognome"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|end"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/more_user_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:paddingRight="10dp"
+                android:src="@drawable/ic_info_outline_black_24dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:transitionGroup="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frame_gestionale"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_produzione"
+                android:layout_gravity="center"
+                android:background="@drawable/gestionale_home_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/gestionale_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="9dp"
+                            android:src="@drawable/ic_assignment_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView9"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Gestionale"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/gestionale_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:animateLayoutChanges="true"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/home_rubrica_societa"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Rubrica società"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/home_rubrica_nominativi"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Rubrica Nominativo"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/home_commesse"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Commesse"
+                                android:textSize="11dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:animateLayoutChanges="true"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <Button
+                                android:id="@+id/home_associazioni"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Associazioni"
+                                android:textSize="10dp" />
+
+                            <ImageButton
+                                android:id="@+id/home_allegati"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
+                                android:src="@drawable/ic_attach_file_black_18dp"
+                                android:text="Allegati"
+                                android:textSize="16px" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_commerciale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/frame_amministrazione"
+                android:background="@color/commerciale_test_home">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/commerciale_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="9dp"
+                            android:src="@drawable/ic_supervisor_account_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView10"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Commerciale"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/commerciale_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
+                        android:animateLayoutChanges="true"
+
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/button_commerciale"
+                            android:layout_width="75dp"
+                            android:layout_height="55dp"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Offerte"
+                            android:textColor="@color/disable"
+                            android:textSize="11dp" />
+
+                        <Button
+                            android:id="@+id/button5"
+                            android:layout_width="75dp"
+                            android:layout_height="55dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Ordini"
+                            android:textColor="@color/disable"
+                            android:textSize="11dp" />
+
+                        <Button
+                            android:id="@+id/button6"
+                            android:layout_width="75dp"
+                            android:layout_height="55dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Autorizzazioni"
+                            android:textColor="@color/disable"
+                            android:textSize="9dp" />
+
+                        <Button
+                            android:id="@+id/button7"
+                            android:layout_width="75dp"
+                            android:layout_height="55dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Avanzamento"
+                            android:textColor="@color/disable"
+                            android:textSize="9dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_amministrazione"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/amministrazione_test">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/amministrazione_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="9dp"
+                            android:src="@drawable/ic_account_balance_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView12"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Amministrazione"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/amministrazione_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <Button
+                                android:id="@+id/button_amministrazione1"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Fatture di vendita"
+                                android:textColor="@color/disable"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/button8"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Fatture di Acquisto"
+                                android:textColor="@color/disable"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/button9"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Report consuntivi"
+                                android:textColor="@color/disable"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/button10"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Pianificazione"
+                                android:textColor="@color/disable"
+                                android:textSize="9dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/button11"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Pianificazione previsionale"
+                                android:textColor="@color/disable"
+                                android:textSize="9dp" />
+
+                            <Button
+                                android:id="@+id/home_prima_nota_cassa"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Prima nota cassa"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/button13"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Prima nota banca"
+                                android:textColor="@color/disable"
+                                android:textSize="11dp" />
+
+                            <Button
+                                android:id="@+id/home_rubrica_banca"
+                                android:layout_width="75dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_margin="7dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Rubrica banche"
+                                android:textSize="11dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_produzione"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_sistemi"
+                android:background="@color/produzione_test">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/produzione_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="9dp"
+                            android:src="@drawable/ic_trending_up_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView11"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Produzione"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/produzione_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/home_consuntivi"
+                            android:layout_width="75dp"
+                            android:layout_height="55dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Consuntivi"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_sistemi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:background="@color/sistemi_home_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/sistemi_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="9dp"
+                            android:src="@drawable/ic_accessibility_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView8"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Sistemi"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sistemi_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/button_accessi"
+                            android:layout_width="75dp"
+                            android:layout_height="55dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="@string/accessi_button"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context=".Moduli.Gestionale.Societa.RubricaSocietaActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="10dp"
+        android:background="@color/gestionale_home_background"
+        android:id="@+id/linearLayout5">
+
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="fill_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Società"
+            android:id="@+id/textView32"
+            android:gravity="center_vertical"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:text="Indirizzo"
+            android:id="@+id/textView33"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="13dp" />
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="fill_parent"
+            android:text="Telefono"
+            android:id="@+id/textView34"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="14dp" />
+
+    </LinearLayout>
+
+
+
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rubrica_societa_list"
+            android:layout_below="@+id/linearLayout5"
+            android:visibility="gone" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/societa_overlay"
+        android:background="@color/transparent_white"
+        android:visibility="gone"
+        />
+
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/societa_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_addButtonColorNormal="@color/gestionale_home_background"
+        fab:fab_addButtonColorPressed="@color/register_down_green"
+        fab:fab_addButtonPlusIconColor="@color/white"
+        fab:fab_addButtonSize="normal"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="left"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_societa_ricerca_avantazata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_icon="@drawable/ic_search_white_24dp"
+            fab:fab_title="Ricerca Avanzata"
+            fab:fab_colorNormal="@color/asphalt_color"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_societa_stampa_tutto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_print_white_36dp"
+            fab:fab_title="Stampa tutto"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/gestionale_home_background"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_societa_esporta_excel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_size="mini"
+            fab:fab_title="Esporta in Excel"
+            fab:fab_icon="@drawable/ic_grid_on_white_24dp"
+            fab:fab_colorNormal="@color/green_dark"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <com.getbase.floatingactionbutton.AddFloatingActionButton
+            android:id="@+id/fab_societa_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_title="Aggiungi nuovo"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/sistemi_home_background"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rubrica_societa_progress"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:indeterminate="false" />
+
+</RelativeLayout>

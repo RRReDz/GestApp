@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@drawable/customborder"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cassa_item_data_operazione"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="bottom"
+                android:text="11-02-2016" />
+
+            <TextView
+                android:id="@+id/cassa_item_data_totale_riga"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/textView124"
+                android:gravity="center|bottom"
+                android:text="+30000€"
+                android:textColor="@color/blu_eletric" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cassa_item_descrizione"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_alignTop="@+id/text1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="7dp"
+            android:gravity="left|center_vertical"
+            android:text="Pagato fattura nr. 2 del 05/02/2015 a Ferramenta da Cottone Mario"
+            android:textStyle="bold" />
+
+
+        <ImageButton
+            android:id="@+id/cassa_item_overflow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/ic_more_vert_black_24dp" />
+
+    </LinearLayout>
+</LinearLayout>

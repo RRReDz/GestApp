@@ -1,0 +1,197 @@
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
+import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+
+public class RicercaAvanzataAllegati extends AppCompatActivity {
+    TextView mDescrizioneView;
+    TextView mDataInserimento;
+    TextView mTipoFile;
+    TextView mStatus;
+    BootstrapButton mCercaButton;
+    ListView resultList;
+    AllegatiListAdapter mAllegatiAdapter;
+    ArrayList<Allegato> mAllegatiList;
+    ArrayList<Allegato> mOriginalList;
+    Comparator<Allegato> allegatoComparator = new Comparator<Allegato>() {
+        @Override
+        public int compare(Allegato lhs, Allegato rhs) {
+            return String.CASE_INSENSITIVE_ORDER.compare(lhs.getDescrizione(), rhs.getDescrizione());
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ricerca_avanzata_allegati);
+
+
+        mDescrizioneView = (TextView) findViewById(R.id.ricerca_avanzata_allegati_descrizione);
+        mDataInserimento = (TextView) findViewById(R.id.ricerca_avanzata_allegati_data_inserimento);
+        mTipoFile = (TextView) findViewById(R.id.ricerca_avanzata_allegati_tipo_file);
+        mCercaButton = (BootstrapButton) findViewById(R.id.ricerca_avanzata_allegati_cerca_button);
+        resultList = (ListView) findViewById(R.id.ricerca_avanzata_allegati_list_result);
+        mStatus = (TextView) findViewById(R.id.ricerca_avanzata_allegati_status_bar);
+
+        mAllegatiList = getIntent().getParcelableArrayListExtra("listaAllegati");
+
+        mOriginalList = new ArrayList<>();
+        mOriginalList.addAll(mAllegatiList);
+
+        mAllegatiAdapter = new AllegatiListAdapter(this, mAllegatiList);
+
+        resultList.setAdapter(mAllegatiAdapter);
+
+        mCercaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ricercaAvanzata();
+            }
+        });
+    }
+
+    private void ricercaAvanzata() {
+        String descrizione = mDescrizioneView.getText().toString();
+        String data = mDataInserimento.getText().toString();
+        String tipoFile = mTipoFile.getText().toString();
+
+        String[] dati = {descrizione, data, tipoFile};
+
+        descrizione = descrizione.toUpperCase();
+        data = data.toUpperCase();
+        tipoFile = tipoFile.toUpperCase();
+
+        ArrayList<Allegato> matchingElement = new ArrayList<>();
+
+        if (TextUtils.isEmpty(descrizione) && TextUtils.isEmpty(data) && TextUtils.isEmpty(tipoFile)) {
+            updateList(mOriginalList);
+            return;
+        }
+        if (!TextUtils.isEmpty(descrizione)) {
+            if (!TextUtils.isEmpty(data)) {
+                if (!TextUtils.isEmpty(tipoFile)) {
+                    for (Allegato allegato : mOriginalList) {
+                        if (allegato.getDescrizione().toUpperCase().contains(descrizione) && allegato.getFile().toUpperCase().contains(tipoFile) && allegato.getUpload().contains(data)) {
+                            matchingElement.add(allegato);
+                        }
+                    }
+                } else {
+                    for (Allegato allegato : mOriginalList) {
+                        if (allegato.getDescrizione().toUpperCase().contains(descrizione) && allegato.getUpload().contains(data)) {
+                            matchingElement.add(allegato);
+                        }
+                    }
+                }
+            } else {
+                if (!TextUtils.isEmpty(tipoFile)) {
+                    for (Allegato allegato : mOriginalList) {
+                        if (allegato.getDescrizione().toUpperCase().contains(descrizione) && allegato.getFile().toUpperCase().contains(tipoFile)) {
+                            matchingElement.add(allegato);
+                        }
+                    }
+                } else {
+                    for (Allegato allegato : mOriginalList) {
+                        if (allegato.getDescrizione().toUpperCase().contains(descrizione)) {
+                            matchingElement.add(allegato);
+                        }
+                    }
+                }
+            }
+        } else if (!TextUtils.isEmpty(data)) {
+            if (!TextUtils.isEmpty(tipoFile)) {
+                for (Allegato allegato : mOriginalList) {
+                    if (allegato.getFile().toUpperCase().contains(tipoFile) && allegato.getUpload().contains(data)) {
+                        matchingElement.add(allegato);
+                    }
+                }
+            } else {
+                for (Allegato allegato : mOriginalList) {
+                    if (allegato.getUpload().contains(data)) {
+                        matchingElement.add(allegato);
+                    }
+                }
+
+            }
+        } else if (!TextUtils.isEmpty(tipoFile)) {
+            for (Allegato allegato : mOriginalList) {
+                if (allegato.getFile().toUpperCase().contains(tipoFile)) {
+                    matchingElement.add(allegato);
+                }
+            }
+        }
+        updateList(matchingElement, dati);
+
+    }
+
+    private void updateList(ArrayList<Allegato> list, String... query) {
+        Collections.sort(list, allegatoComparator);
+        mAllegatiAdapter.clear();
+        mAllegatiAdapter.addAll(list);
+        mAllegatiAdapter.cleanAlphabeticIndex();
+        mAllegatiAdapter.notifyDataSetChanged();
+        String result = "";
+        for (String data : query) {
+            if (!TextUtils.isEmpty(data))
+                result += "\"" + data + "\"";
+        }
+
+        mStatus.setText("Risultati per " + result + " : " + list.size());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_home:
+                goHome();
+                return true;
+            case R.id.action_logout:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void logout() {
+        Intent goLogin = new Intent(this, LoginActivity.class);
+        goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(goLogin);
+        finish();
+    }
+
+    private void goHome() {
+        Intent goHome = new Intent(this, HomeActivity.class);
+        goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(goHome);
+        finish();
+    }
+
+
+}

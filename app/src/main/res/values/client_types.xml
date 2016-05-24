@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipologia_cliente">
+        <item>Cliente</item>
+        <item>Fornitore</item>
+        <item>Personale</item>
+    </string-array>
+
+
+    <string-array name="avanzamento">
+        <item>Scegliere..</item>
+        <item>Marketing</item>
+        <item>Offerta</item>
+        <item>Ordine</item>
+        <item>Sviluppo</item>
+        <item>Fattura</item>
+        <item>Pagamento</item>
+    </string-array>
+</resources>

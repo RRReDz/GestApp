@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Moduli.Gestionale.Associazioni.ConsulenteMultiSelectionDialog"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="1">
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/multiple_consulente_annulla"
+            app:bootstrapText="{fa-times}"
+            app:bootstrapSize="lg"
+            app:bootstrapBrand="danger"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_weight="0.25"
+            android:layout_marginRight="30dp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bootstrapText="{fa-check}"
+            app:bootstrapSize="lg"
+            android:id="@+id/multiple_consulente_get_selected"
+            app:bootstrapBrand="success"
+            app:buttonMode="regular"
+            app:showOutline="false"
+            app:roundedCorners="true"
+            android:layout_weight="0.26" />
+
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/consulente_multi_selection"
+        android:choiceMode="multipleChoice"/>
+
+</LinearLayout>

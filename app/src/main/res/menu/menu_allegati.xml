@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Moduli.Home.HomeActivity">
+
+    <item android:id="@+id/menu_action_elimina"
+        android:title="@string/menu_item_elimina"
+        android:icon="@drawable/ic_delete_cooler"
+        />
+
+    <item android:id="@+id/menu_action_download"
+        android:title="@string/menu_item_download"
+        android:icon="@drawable/ic_download"
+        />
+
+</menu>
