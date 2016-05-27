@@ -43,23 +43,17 @@ public class PrimaNotaCassaOverflowListener implements View.OnClickListener {
             public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item){
                 switch (item.getItemId()){
                     case R.id.menu_action_elimina:
-                        Intent eliminaIntent = new Intent(mContext, VisualElimPrimaNotaCassa.class);
+                        Intent eliminaIntent = new Intent(mContext, VisualElimCassaActivity.class);
                         eliminaIntent.putExtra(Constants.NOTA_CASSA, mElement);
                         eliminaIntent.putExtra(Constants.VISUAL_ELIMINA, false);
                         //eliminaIntent.putExtra("actualUser", mUser);
                         ((Activity)mContext).startActivityForResult(eliminaIntent, Constants.NOTA_DELETE);
                         return true;
                     case R.id.menu_action_modifica:
-                        Intent modificaIntent = new Intent(mContext, NewEditPrimaNotaCassaActivity.class);
+                        Intent modificaIntent = new Intent(mContext, NuovoModifCassaActivity.class);
                         modificaIntent.putExtra(Constants.NOTA_CASSA, mElement);
                         //modificaIntent.putExtra("actualUser", mUser);
                         ((Activity)mContext).startActivityForResult(modificaIntent, Constants.NOTA_EDIT);
-                        return true;
-                    case R.id.menu_action_stampa:
-                        /*Intent stampaIntent = new Intent(mContext, StampaNominativoActivity.class);
-                        stampaIntent.putExtra("nominativoToPrint", mElement);
-                        stampaIntent.putExtra("actualUser", mUser);
-                        mContext.startActivity(stampaIntent);*/
                         return true;
                     default:
                         return super.onMenuItemSelected(menu, item);
@@ -67,7 +61,7 @@ public class PrimaNotaCassaOverflowListener implements View.OnClickListener {
 
             }
         };
-        popupMenu.inflate(R.menu.accessi_overflow_menu);
+        popupMenu.inflate(R.menu.overflow_menu_bis);
 
         //Force icons to show
         Object menuHelper;

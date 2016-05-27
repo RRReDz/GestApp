@@ -81,4 +81,5 @@
     <string name="empty" />
     <string name="nuova_activity_prima_nota_cassa">Nuova nota cassa</string>
     <string name="visulizza_activity_prima_nota_cassa">Visualizza nota cassa</string>
+    <string name="action_ricarica">Ricarica</string>
 </resources>

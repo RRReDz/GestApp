@@ -7,6 +7,7 @@
     <color name="green_dark">#16a085</color>
     <color name="white">#ffffff</color>
     <color name="transparent_white">#a0ffffff</color>
+    <color name="transparent_petrolio_scuro">#4000657B</color>
     <color name="overlay_color">#bbffffff</color>
     <color name="asphalt_color">#34495e</color>
     <color name="midnight_blue">#2c3e50</color>
@@ -16,6 +17,7 @@
     <color name="carot">#d35400</color>
     <color name="sistemi_home_background">#D1512F</color>
     <color name="red_lite">#ff5540</color>
+    <color name="red">#ff0000</color>
     <color name="cloud">#ecf0f1</color>
     <color name="disable">#bdcdd1</color>
     <color name="gestionale_home_background">#3B77B5</color>
@@ -25,9 +27,11 @@
     <color name="black">#000000</color>
     <color name="produzione_new_background">#F27A67</color>
     <color name="blu_eletric">#01107F</color>
+    <color name="simple_blue">#0000ff</color>
     <color name="tiffany">#57D781</color>
     <color name="amministrazione_test">#57D781</color>
     <color name="petrolio_scuro">#00657B</color>
     <color name="produzione_test">#FFC912</color>
     <color name="grey_light">#bfbfbf</color>
+    <color name="green_darker">#008000</color>
 </resources>

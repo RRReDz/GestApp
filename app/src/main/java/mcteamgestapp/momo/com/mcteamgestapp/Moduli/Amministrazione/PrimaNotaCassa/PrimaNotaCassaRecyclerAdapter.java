@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,21 +77,25 @@ public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
         }
 
         public void bind(final NotaCassa item, final OnItemClickListener listener) {
-            // TODO: qui ci va il set dei valori ricavati dal database
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            df.setMinimumFractionDigits(2);
 
-            System.out.println("ADAPTER RECYCLER VIEW" + item.toString());
-            System.out.println("CONTEXT: " + itemView.getContext());
+            //System.out.println("ADAPTER RECYCLER VIEW" + item.toString());
 
             dataOperazione.setText(item.getDataPagamento());
             descrizione.setText(item.getDescrizione());
-            double tot = item.getDare() - item.getAvere();
-            item.setTotale(Math.abs(tot));
+            float tot = item.getDare() - item.getAvere();
+            item.setTotale(tot);
             if (tot > 0) {
-                totale.setText("+" + Math.abs(tot) + "€");
+                totale.setText("+" + df.format(Math.abs(tot)) + " €");
                 totale.setTextColor(Color.BLUE);
-            } else {
-                totale.setText("-" + Math.abs(tot) + "€");
+            } else if (tot < 0) {
+                totale.setText("-" + df.format(Math.abs(tot)) + " €");
                 totale.setTextColor(Color.RED);
+            } else {
+                totale.setText(df.format(Math.abs(tot)) + " €");
+                totale.setTextColor(Color.BLACK);
             }
 
             //Set listener item del recicler view

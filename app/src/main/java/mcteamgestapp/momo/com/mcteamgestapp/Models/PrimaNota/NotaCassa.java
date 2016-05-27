@@ -32,12 +32,12 @@ public class NotaCassa implements Parcelable {
     private int numeroProtocollo;
 
     @SerializedName("dare")
-    private double dare;
+    private float dare;
 
     @SerializedName("avere")
-    private double avere;
+    private float avere;
 
-    private double totale;
+    private float totale;
 
     public NotaCassa() {
 
@@ -99,27 +99,27 @@ public class NotaCassa implements Parcelable {
         this.numeroProtocollo = numeroProtocollo;
     }
 
-    public double getDare() {
+    public float getDare() {
         return dare;
     }
 
-    public void setDare(double dare) {
+    public void setDare(float dare) {
         this.dare = dare;
     }
 
-    public double getAvere() {
+    public float getAvere() {
         return avere;
     }
 
-    public void setAvere(double avere) {
+    public void setAvere(float avere) {
         this.avere = avere;
     }
 
-    public double getTotale() {
+    public float getTotale() {
         return totale;
     }
 
-    public void setTotale(double totale) {
+    public void setTotale(float totale) {
         this.totale = totale;
     }
 
@@ -131,9 +131,9 @@ public class NotaCassa implements Parcelable {
         sottoconto = in.readString();
         descrizione = in.readString();
         numeroProtocollo = in.readInt();
-        dare = in.readDouble();
-        avere = in.readDouble();
-        totale = in.readDouble();
+        dare = in.readFloat();
+        avere = in.readFloat();
+        totale = in.readFloat();
     }
 
     public static final Creator<NotaCassa> CREATOR = new Creator<NotaCassa>() {
@@ -162,9 +162,9 @@ public class NotaCassa implements Parcelable {
         dest.writeString(sottoconto);
         dest.writeString(descrizione);
         dest.writeInt(numeroProtocollo);
-        dest.writeDouble(dare);
-        dest.writeDouble(avere);
-        dest.writeDouble(totale);
+        dest.writeFloat(dare);
+        dest.writeFloat(avere);
+        dest.writeFloat(totale);
     }
 
     @Override

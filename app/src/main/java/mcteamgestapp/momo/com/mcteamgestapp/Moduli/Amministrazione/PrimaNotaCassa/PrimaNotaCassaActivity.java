@@ -7,16 +7,22 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
@@ -27,6 +33,9 @@ import java.util.Date;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
+import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
 import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
@@ -38,6 +47,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
 
     //Array list per note cassa
     private ArrayList<NotaCassa> mNotaCassa;
+    private ArrayList<NotaCassa> mNotaCassaOriginal;
     //Recyclerview lista delle note
     private RecyclerView mRecyclerView;
     //Adapter recyclerview
@@ -57,8 +67,6 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
     private FloatingActionsMenu mFam;
     //per richiesta volley
     private VolleyRequests mVolleyRequest;
-    //Bottoni FAB
-    private FloatingActionButton mButtonAdd, mButtonExcel, mButtonPrintAll;
 
     private Spinner mYearsSpinner;
 
@@ -72,10 +80,9 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         /* GET PARAMETRI DAL LAYOUT ED INIZIALIZZAZIONE PARAMETRI      */
         /////////////////////////////////////////////////////////////////
         mOverlay = findViewById(R.id.cassa_overlay);
-        mButtonExcel = (FloatingActionButton) findViewById(R.id.fab_cassa_esporta_excel);
-        mButtonPrintAll = (FloatingActionButton) findViewById(R.id.fab_cassa_stampa_tutto);
         mProgressBar = (ProgressBar) findViewById(R.id.prima_nota_cassa_progress);
         mNotaCassa = new ArrayList<>();
+
         mVolleyRequest = new VolleyRequests(this, this);
 
         //Set colore action bar
@@ -94,10 +101,10 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(NotaCassa item) {
                         Log.d("LOGGGGGGG", item.toString());
-                        Intent intent = new Intent(getApplicationContext(), VisualElimPrimaNotaCassa.class);
+                        Intent intent = new Intent(getApplicationContext(), VisualElimCassaActivity.class);
                         intent.putExtra(Constants.VISUAL_ELIMINA, true); //false -> delete
                         intent.putExtra(Constants.NOTA_CASSA, item);
-                        startActivityForResult(intent, Constants.NOTA_SHOW);
+                        startActivity(intent);
                     }
                 });
         mRecyclerView.setAdapter(mAdapterRecycler);
@@ -239,7 +246,6 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
 
     //0 -> gennaio ...
     private void updateList(int month, int year, int opType) {
-        mNotaCassa.clear(); //Pulisco l'arraylist
         mVolleyRequest.getPrimaNotaCassaList(mNotaCassa, mAdapterRecycler, month, year, opType); //Invio una nuova richiesta
     }
 
@@ -251,25 +257,97 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                onRestart();
+                Toast.makeText(getApplicationContext(), "Activity refreshed", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_home:
+                goHome();
+                return true;
+            case R.id.action_logout:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //Ricavo valori degli spinner e lancio una richiesta volley
+        int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
+        int month = mMonthSpinner.getSelectedItemPosition();
+        int type = mTypeSpinner.getSelectedItemPosition();
+        updateList(month, year, type);
+    }
+
+    private void logout() {
+        Intent goLogin = new Intent(this, LoginActivity.class);
+        ((MyApp) getApplication()).setCurrentUser(null);
+        goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(goLogin);
+        finish();
+    }
+
+    private void goHome() {
+        Intent goHome = new Intent(this, HomeActivity.class);
+        goHome.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(goHome);
+        finish();
+    }
+
     //Click bottone "aggiungi nuovo"
     public void onClickInsertNew(View view) {
         mFam.collapse();
-        Intent intent = new Intent(getApplicationContext(), NewEditPrimaNotaCassaActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NuovoModifCassaActivity.class);
         startActivityForResult(intent, Constants.NOTA_ADD);
     }
 
     public void onClickStampa(View view) {
+        mFam.collapse();
+        String type = (String) mTypeSpinner.getSelectedItem();
+        String month = (String) mMonthSpinner.getSelectedItem();
+        String year = (String) mYearsSpinner.getSelectedItem();
         try {
-            PrimaNotaCassaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), (String)mTypeSpinner.getSelectedItem());
+            PrimaNotaCassaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @Override
+    public void onClickExcel(View view) {
+        mFam.collapse();
+        String type = (String) mTypeSpinner.getSelectedItem();
+        String month = (String) mMonthSpinner.getSelectedItem();
+        String year = (String) mYearsSpinner.getSelectedItem();
+        try {
+            PrimaNotaCassaUtils.esportaExcel(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showEmptyString(boolean show) {
+        TextView emptyString = (TextView) findViewById(R.id.empty_string);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.simpleRecyclerView);
+        if(show) {
+            emptyString.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        }
+        else {
+            emptyString.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         System.out.println("requestCode = " + requestCode + "resultCode = " + resultCode);
-        if (requestCode == Constants.NOTA_EDIT || requestCode == Constants.NOTA_DELETE || requestCode == Constants.NOTA_ADD || requestCode == Constants.NOTA_SHOW)
+        if (requestCode == Constants.NOTA_EDIT || requestCode == Constants.NOTA_DELETE || requestCode == Constants.NOTA_ADD)
             if (resultCode == Activity.RESULT_OK) { //Refresh recyclerview
                 //Ricavo valori degli spinner e lancio una richiesta volley
                 int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
@@ -278,7 +356,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
                 updateList(month, year, type);
                 mAdapterRecycler.notifyDataSetChanged();
             }
-    }
+    }*/
 
     /*public void showDatePickerDialog(View view) {
         DialogFragment newFragment = new DatePickerFragment();

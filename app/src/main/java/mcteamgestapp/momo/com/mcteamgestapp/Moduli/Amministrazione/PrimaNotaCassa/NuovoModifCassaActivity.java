@@ -1,21 +1,28 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
 
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.itextpdf.awt.geom.CubicCurve2D;
 import com.itextpdf.text.pdf.StringUtils;
 
 import org.apache.poi.util.StringUtil;
 
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
@@ -28,7 +35,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
  * Created by Rrossi on 17/05/2016.
  */
 
-public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
+public class NuovoModifCassaActivity extends AppCompatActivity {
 
     private Spinner mType;
     private EditText mDataOperazione;
@@ -45,10 +52,19 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
     private NotaCassa notaCassaEdit;
     private Gson gson = new Gson();
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_edit_nota_cassa);
+
+        //Set colore action bar
+        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
+            Drawable actionBarBack = getDrawable(R.drawable.actionbar_prima_nota_cassa);
+            getSupportActionBar().setBackgroundDrawable(actionBarBack);
+            getSupportActionBar().setIcon(R.drawable.ic_accessibility_white_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mType = (Spinner) findViewById(R.id.spinner_type_nota_cassa);
         mDataOperazione = (EditText) findViewById(R.id.et_data_operazione);
@@ -66,6 +82,9 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
         notaCassaEdit = getIntent().getParcelableExtra(Constants.NOTA_CASSA);
         System.out.println(notaCassaEdit);
         if (notaCassaEdit != null) {
+            //Non mostra la tastiera in apertura
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            setTitle("Modifica nota cassa");
             mType.setSelection(notaCassaEdit.getCassa());
             mDataOperazione.setText(notaCassaEdit.getDataPagamento());
             if (!notaCassaEdit.getCausaleContabile().equals("null"))
@@ -73,7 +92,8 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
             if (!notaCassaEdit.getSottoconto().equals("null"))
                 mSottoconto.setText(notaCassaEdit.getSottoconto());
             mDescrizioneMovimenti.setText(notaCassaEdit.getDescrizione());
-            mProtocollo.setText(notaCassaEdit.getNumeroProtocollo() + "");
+            if (notaCassaEdit.getNumeroProtocollo() != -1)
+                mProtocollo.setText(notaCassaEdit.getNumeroProtocollo() + "");
             mDare.setText(notaCassaEdit.getDare() + "");
             mAvere.setText(notaCassaEdit.getAvere() + "");
             mButtonModifica.setVisibility(View.VISIBLE);
@@ -81,6 +101,13 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
             mButtonCrea.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home)
+            finish();
+        return true;
     }
 
     public void onClickModifica(View view) {
@@ -147,23 +174,9 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
             mDare.requestFocus();
             return false;
         }
-        try {
-            Double.parseDouble(dare);
-        } catch (NumberFormatException ex) {
-            mDare.setError("Inserire un importo valido");
-            mDare.requestFocus();
-            return false;
-        }
 
         if (TextUtils.isEmpty(avere)) {
             mAvere.setError("Inserire un importo");
-            mAvere.requestFocus();
-            return false;
-        }
-        try {
-            Double.parseDouble(avere);
-        } catch (NumberFormatException ex) {
-            mAvere.setError("Inserire un importo valido");
             mAvere.requestFocus();
             return false;
         }
@@ -172,6 +185,7 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
     }
 
     private NotaCassa notaCassaToEncode() throws ParseException{
+
         NotaCassa notaCassa = new NotaCassa();
 
         int type = mType.getSelectedItemPosition();
@@ -185,8 +199,8 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
         } catch (NumberFormatException ex) {
             protocollo = 0; //Se vuoto viene settato a 0 per convenzione
         }
-        double dare = Double.parseDouble(mDare.getText().toString());
-        double avere = Double.parseDouble(mAvere.getText().toString());
+        float dare = Float.parseFloat(mDare.getText().toString());
+        float avere = Float.parseFloat(mAvere.getText().toString());
 
         notaCassa.setCassa(type);
         notaCassa.setDataPagamento(ToolUtils.fromDateToSql(dataOperazione));
@@ -195,6 +209,7 @@ public class NewEditPrimaNotaCassaActivity extends AppCompatActivity {
         notaCassa.setDescrizione(descrizione);
         notaCassa.setDare(dare);
         notaCassa.setAvere(avere);
+        System.out.println("DARE: " + dare + "AVERE: " + avere);
         notaCassa.setNumeroProtocollo(protocollo);
 
         return notaCassa;

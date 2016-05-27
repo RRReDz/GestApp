@@ -47,8 +47,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
                 android:layout_marginTop="7dp"
+                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -61,15 +61,15 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="70dp"
-                        android:gravity="center_vertical"
-                        android:text="MESE:"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="70dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="70dp"
+                            android:gravity="center_vertical"
+                            android:text="MESE:"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="70dp"
@@ -83,16 +83,16 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:gravity="center_vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:orientation="vertical">
 
                         <Spinner
                             android:id="@+id/spinner_month"
                             style="@style/spinner_style"
-                            android:entries="@array/month"
-                            android:layout_marginBottom="7dp"/>
+                            android:layout_marginBottom="7dp"
+                            android:entries="@array/month" />
 
                         <Spinner
                             android:id="@+id/spinner_years"
@@ -133,6 +133,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <TextView
+        android:id="@+id/empty_string"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Nessuna nota presente."
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:gravity="center"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -179,6 +188,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
+                android:onClick="onClickExcel"
                 fab:fab_colorNormal="@color/green_dark"
                 fab:fab_icon="@drawable/ic_grid_on_white_24dp"
                 fab:fab_size="mini"

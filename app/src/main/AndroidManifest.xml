@@ -296,11 +296,11 @@
             android:label="@string/title_activity_prima_nota_cassa"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".Moduli.Amministrazione.PrimaNotaCassa.NewEditPrimaNotaCassaActivity"
+            android:name=".Moduli.Amministrazione.PrimaNotaCassa.NuovoModifCassaActivity"
             android:label="@string/nuova_activity_prima_nota_cassa"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".Moduli.Amministrazione.PrimaNotaCassa.VisualElimPrimaNotaCassa"
+            android:name=".Moduli.Amministrazione.PrimaNotaCassa.VisualElimCassaActivity"
             android:label="@string/visulizza_activity_prima_nota_cassa"
             android:screenOrientation="portrait"></activity>
     </application>

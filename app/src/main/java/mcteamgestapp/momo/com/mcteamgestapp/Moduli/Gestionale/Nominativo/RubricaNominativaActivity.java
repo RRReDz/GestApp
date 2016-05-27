@@ -189,7 +189,7 @@ public class RubricaNominativaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getRubricaList(); //Non dovrebbe servire
+        getRubricaList();
         mMenu.collapse();
     }
 

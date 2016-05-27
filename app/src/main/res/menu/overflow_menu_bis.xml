@@ -11,9 +11,4 @@
         android:id="@+id/menu_action_elimina"
         android:icon="@drawable/ic_delete_cooler"
         android:title="@string/menu_item_elimina" />
-
-    <item
-        android:id="@+id/menu_action_stampa"
-        android:icon="@drawable/ic_stampa_cooler"
-        android:title="@string/stampa_accesso" />
 </menu>

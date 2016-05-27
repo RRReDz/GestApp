@@ -6,7 +6,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
 
         <TextView
             android:id="@+id/textView1"
@@ -14,26 +18,47 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Dati prima nota cassa:"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textColor="@color/petrolio_scuro"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
-        <Spinner
-            android:id="@+id/spinner_type_nota_cassa"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:entries="@array/type"
-            android:spinnerMode="dropdown" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="18dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="OPZIONI:"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_type_nota_cassa"
+                style="@style/spinner_style_2"
+                android:entries="@array/type" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView136"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data Operazione" />
+                android:paddingLeft="5dp"
+                android:text="DATA OPERAZIONE"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_data_operazione"
@@ -46,13 +71,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView170"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Causale contabile" />
+                android:paddingLeft="5dp"
+                android:text="CAUSALE CONTABILE"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_causale_contabile"
@@ -65,13 +94,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView172"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sottoconto" />
+                android:paddingLeft="5dp"
+                android:text="SOTTOCONTO"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_sottoconto"
@@ -84,13 +117,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView174"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descrizione" />
+                android:paddingLeft="5dp"
+                android:text="DESCRIZIONE"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_descrizione_movimenti"
@@ -103,13 +140,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView176"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Protocollo" />
+                android:inputType="number"
+                android:paddingLeft="5dp"
+                android:text="PROTOCOLLO"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_protocollo"
@@ -122,74 +164,75 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView178"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dare(€)" />
+                android:paddingLeft="5dp"
+                android:text="DARE(€)"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_dare"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Dare"
+                android:inputType="numberDecimal"
                 android:text="@string/empty" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="17dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView180"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Avere(€)" />
+                android:paddingLeft="5dp"
+                android:text="AVERE(€)"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/et_avere"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Avere"
+                android:inputType="numberDecimal"
                 android:text="@string/empty" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/bAnnulla"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/button_annulla"
                 android:onClick="onClickAnnulla"
-                android:text="ANNULLA" />
+                android:layout_marginRight="20dp"/>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/bCrea"
+                style="@style/button_crea"
+                android:onClick="onClickCrea"
+                android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/bCrea"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickCrea"
-                    android:text="CREA"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/bModifica"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickModifica"
-                    android:text="MODIFICA"
-                    android:visibility="gone" />
-            </RelativeLayout>
+            <Button
+                android:id="@+id/bModifica"
+                style="@style/button_modifica"
+                android:onClick="onClickModifica"
+                android:visibility="gone" />
 
         </LinearLayout>
 

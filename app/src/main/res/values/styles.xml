@@ -54,4 +54,44 @@
         <item name="android:background">@drawable/gradient_spinner</item>
         <item name="android:dropDownWidth">150dp</item>
     </style>
+
+    <style name="spinner_style_2">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@drawable/gradient_spinner_2</item>
+        <item name="android:dropDownWidth">150dp</item>
+    </style>
+
+    <style name="button_annulla">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/register_background</item>
+        <item name="android:text">Annulla</item>
+        <item name="android:textColor">@color/bottom_red</item>
+    </style>
+
+    <style name="button_crea">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/access_blue</item>
+        <item name="android:text">Crea</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="button_modifica">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/access_blue</item>
+        <item name="android:text">Modifica</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="button_elimina">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:background">@drawable/access_blue</item>
+        <item name="android:text">Elimina</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
 </resources>

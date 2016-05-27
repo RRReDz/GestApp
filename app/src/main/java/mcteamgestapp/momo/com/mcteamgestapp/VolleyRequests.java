@@ -473,8 +473,9 @@ public class VolleyRequests {
     public void getPrimaNotaCassaList(final ArrayList<NotaCassa> mNotaCassa, final PrimaNotaCassaRecyclerAdapter adapter, int month, int year, int opType) {
 
         String url = mActivity.getString(R.string.mobile_url);
-        url += "prima-nota-cassa/" + (month+1) + "/" + year + "/" + opType;
+        url += "prima-nota-cassa/" + (month + 1) + "/" + year + "/" + opType;
 
+        mNotaCassa.clear(); //Pulisco l'arraylist
 
         System.out.println("the url -> " + url);
 
@@ -483,88 +484,92 @@ public class VolleyRequests {
 
                     @Override
                     public void onResponse(JSONArray jsonArray) {
-
+                        PrimaNotaCassaActivity activityPrimaNota = (PrimaNotaCassaActivity) mContext;
                         try {
+                            if (jsonArray.length() == 0) {
+                                activityPrimaNota.showEmptyString(true);
+                            } else {
+                                activityPrimaNota.showEmptyString(false);
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject response = jsonArray.getJSONObject(i);
+                                    System.out.println(response.toString());
+                                    //NotaCassa notaCassa = gson.fromJson(response.toString(), NotaCassa.class);
 
-                            System.out.println("TO STRING --------->" + jsonArray.toString());
-
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject response = jsonArray.getJSONObject(i);
-                                System.out.println(response.toString());
-                                //NotaCassa notaCassa = gson.fromJson(response.toString(), NotaCassa.class);
-
-                                NotaCassa notaCassa = new NotaCassa();
-                                notaCassa.setID(response.getInt("riga"));
-                                notaCassa.setCassa(response.getInt("cassa"));
-                                //notaCassa.setDataPagamento(response.getString("data_pagamento"));
-                                String dataString = response.getString("data_pagamento");
-                                notaCassa.setDataPagamento(ToolUtils.validateReverseDate(dataString) ? ToolUtils.getFormattedDate(dataString) : "");
+                                    NotaCassa notaCassa = new NotaCassa();
+                                    notaCassa.setID(response.getInt("riga"));
+                                    notaCassa.setCassa(response.getInt("cassa"));
+                                    //notaCassa.setDataPagamento(response.getString("data_pagamento"));
+                                    String dataString = response.getString("data_pagamento");
+                                    notaCassa.setDataPagamento(ToolUtils.validateReverseDate(dataString) ? ToolUtils.getFormattedDate(dataString) : "");
 
 
-                                if(response.get("cod_dare").equals("") || response.get("cod_dare") == null)
-                                    notaCassa.setCausaleContabile(""); //Se nullo o vuoto nel database -> il campo resta vuoto
-                                else
-                                    notaCassa.setCausaleContabile(response.getString("cod_dare"));
+                                    if (response.get("cod_dare").equals("") || response.get("cod_dare") == null)
+                                        notaCassa.setCausaleContabile(""); //Se nullo o vuoto nel database -> il campo resta vuoto
+                                    else
+                                        notaCassa.setCausaleContabile(response.getString("cod_dare"));
 
-                                if(response.get("cod_avere").equals("") || response.get("cod_avere") == null)
-                                    notaCassa.setSottoconto(""); //Se nullo o vuoto nel database -> il campo resta vuoto
-                                else
-                                    notaCassa.setSottoconto(response.getString("cod_avere"));
+                                    if (response.get("cod_avere").equals("") || response.get("cod_avere") == null)
+                                        notaCassa.setSottoconto(""); //Se nullo o vuoto nel database -> il campo resta vuoto
+                                    else
+                                        notaCassa.setSottoconto(response.getString("cod_avere"));
 
-                                notaCassa.setDescrizione(response.getString("descrizione"));
+                                    notaCassa.setDescrizione(response.getString("descrizione"));
 
-                                if(response.get("nr_protocollo").equals(null))
-                                    notaCassa.setNumeroProtocollo(0); //Non presente
-                                else
-                                    notaCassa.setNumeroProtocollo(response.getInt("nr_protocollo"));
+                                    if (response.get("nr_protocollo").equals(null))
+                                        notaCassa.setNumeroProtocollo(0); //Non presente
+                                    else
+                                        notaCassa.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
-                                //Check se campo dare è vuoto -> problema decoding
-                                if(response.get("dare").equals("") || response.get("dare") == null)
-                                    notaCassa.setDare(0);
-                                else {
-                                    NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-                                    Number number = null;
-                                    try {
-                                        number = format.parse(response.getString("dare"));
-                                        double d = number.doubleValue();
+                                    //Check se campo dare è vuoto -> problema decoding
+                                    if (response.get("dare").equals("") || response.get("dare") == null)
+                                        notaCassa.setDare(0);
+                                    else {
+                                        NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
+                                        Number number = null;
+                                        try {
+                                            number = format.parse(response.getString("dare"));
+                                            float f = number.floatValue();
+                                            notaCassa.setDare(f);
+                                        } catch (ParseException e) {
+                                            //System.out.print(e.getMessage());
+                                            notaCassa.setDare(Float.parseFloat(response.getString("dare")));
+                                        }
 
-                                        notaCassa.setDare(d);
-                                    } catch (ParseException e) {
-                                        notaCassa.setDare(Double.parseDouble(response.getString("dare")));
+
+                                        //String dare = response.getString("dare").replace(".","").replace(",", ".");
+                                        //notaCassa.setDare(Double.parseDouble(dare));
                                     }
 
+                                    if (response.get("avere").equals("") || response.get("avere").equals(null))
+                                        notaCassa.setAvere(0);
+                                    else {
+                                        NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
+                                        Number number = null;
+                                        try {
+                                            number = format.parse(response.getString("avere"));
+                                            float f = number.floatValue();
+                                            notaCassa.setAvere(f);
+                                        } catch (ParseException e) {
+                                            //System.out.print(e.getMessage());
+                                            notaCassa.setAvere(Float.parseFloat(response.getString("avere")));
+                                        }
 
-                                    //String dare = response.getString("dare").replace(".","").replace(",", ".");
-                                    //notaCassa.setDare(Double.parseDouble(dare));
-                                }
-
-                                if(response.get("avere").equals("") || response.get("avere").equals(null))
-                                    notaCassa.setAvere(0);
-                                else {
-                                    NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-                                    Number number = null;
-                                    try {
-                                        number = format.parse(response.getString("avere"));
-                                        double d = number.doubleValue();
-                                        notaCassa.setAvere(d);
-                                    } catch (ParseException e) {
-                                        notaCassa.setAvere(Double.parseDouble(response.getString("avere")));
+                                        //String avere = response.getString("avere").replace(".","").replace(",", ".");
+                                        //notaCassa.setAvere(Double.parseDouble(avere));
                                     }
 
-                                    //String avere = response.getString("avere").replace(".","").replace(",", ".");
-                                    //notaCassa.setAvere(Double.parseDouble(avere));
+                                    mNotaCassa.add(notaCassa);
                                 }
-
-                                mNotaCassa.add(notaCassa);
+                                adapter.notifyDataSetChanged();
                             }
-                            adapter.notifyDataSetChanged();
 
                             //Recupero le view per la progressbar
                             ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                             RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
                             ToolUtils.showProgress(recyclerView, progressBar, false);
 
-                        }catch (JSONException jsonEx) {
+
+                        } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
                         }
                     }
