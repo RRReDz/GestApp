@@ -140,7 +140,7 @@
         android:layout_height="match_parent"
         android:text="Nessuna nota presente."
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:gravity="center"/>
 
     <RelativeLayout

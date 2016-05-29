@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         //Se esiste un altro utente in sessione entra senza effettuare il login
         UserInfo user = ((MyApp) this.getApplication()).getCurrentUser();
         if (user != null) {
-            goToHome(user);
+            goToHome();
         }
 
         // Set up the login form.
@@ -343,7 +343,7 @@ public class LoginActivity extends AppCompatActivity {
                     user.setDataNascita(response.getString("data_nascita"));
                     ((MyApp) getApplication()).setCurrentUser(user);
                     rememberMeFirst();
-                    goToHome(user);
+                    goToHome();
                 } else {
                     showError(response.getString("error_type"));
                     showProgress(false);
@@ -362,7 +362,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void goToHome(UserInfo user) {
+    private void goToHome() {
         Intent registrationIntent = new Intent(this, HomeActivity.class);
         startActivity(registrationIntent);
         finish();

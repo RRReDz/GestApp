@@ -100,7 +100,6 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
                 new PrimaNotaCassaRecyclerAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(NotaCassa item) {
-                        Log.d("LOGGGGGGG", item.toString());
                         Intent intent = new Intent(getApplicationContext(), VisualElimCassaActivity.class);
                         intent.putExtra(Constants.VISUAL_ELIMINA, true); //false -> delete
                         intent.putExtra(Constants.NOTA_CASSA, item);
@@ -261,6 +260,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_refresh:
+                //iconRefresh(false); //Disabilito l'icona di refresh per permettere la richiesta asincrona
                 onRestart();
                 Toast.makeText(getApplicationContext(), "Activity refreshed", Toast.LENGTH_SHORT).show();
                 return true;
@@ -283,6 +283,14 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         int month = mMonthSpinner.getSelectedItemPosition();
         int type = mTypeSpinner.getSelectedItemPosition();
         updateList(month, year, type);
+    }
+
+    public void iconRefresh(boolean enable) {
+        MenuItem refresh = (MenuItem) findViewById(R.id.action_refresh);
+        if (enable)
+            refresh.setEnabled(true);
+        else
+            refresh.setEnabled(false);
     }
 
     private void logout() {
@@ -334,11 +342,10 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
     public void showEmptyString(boolean show) {
         TextView emptyString = (TextView) findViewById(R.id.empty_string);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.simpleRecyclerView);
-        if(show) {
+        if (show) {
             emptyString.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             emptyString.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }

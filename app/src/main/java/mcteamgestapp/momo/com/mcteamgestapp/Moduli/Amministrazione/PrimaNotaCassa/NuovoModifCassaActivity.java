@@ -21,9 +21,12 @@ import com.itextpdf.text.pdf.StringUtils;
 
 import org.apache.poi.util.StringUtil;
 
+import java.math.RoundingMode;
 import java.sql.Date;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
@@ -105,7 +108,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return true;
     }
@@ -184,8 +187,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         return true;
     }
 
-    private NotaCassa notaCassaToEncode() throws ParseException{
-
+    private NotaCassa notaCassaToEncode() throws ParseException {
         NotaCassa notaCassa = new NotaCassa();
 
         int type = mType.getSelectedItemPosition();
@@ -199,17 +201,18 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         } catch (NumberFormatException ex) {
             protocollo = 0; //Se vuoto viene settato a 0 per convenzione
         }
-        float dare = Float.parseFloat(mDare.getText().toString());
-        float avere = Float.parseFloat(mAvere.getText().toString());
+
+        float dare = Float.parseFloat((mDare.getText().toString()));
+        float avere = Float.parseFloat((mAvere.getText().toString()));
 
         notaCassa.setCassa(type);
         notaCassa.setDataPagamento(ToolUtils.fromDateToSql(dataOperazione));
         notaCassa.setCausaleContabile(causaleContabile);
         notaCassa.setSottoconto(sottoconto);
         notaCassa.setDescrizione(descrizione);
-        notaCassa.setDare(dare);
-        notaCassa.setAvere(avere);
-        System.out.println("DARE: " + dare + "AVERE: " + avere);
+        notaCassa.setDare(ToolUtils.round(dare, 2));
+        notaCassa.setAvere(ToolUtils.round(avere, 2));
+        System.out.println("DARE: " + ToolUtils.round(dare, 2) + "AVERE: " + ToolUtils.round(avere, 2));
         notaCassa.setNumeroProtocollo(protocollo);
 
         return notaCassa;

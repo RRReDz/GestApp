@@ -564,6 +564,8 @@ public class VolleyRequests {
                             }
 
                             //Recupero le view per la progressbar
+                            PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
+                            //activity.iconRefresh(true);
                             ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                             RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
                             ToolUtils.showProgress(recyclerView, progressBar, false);

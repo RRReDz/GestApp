@@ -74,10 +74,10 @@ public class HomeActivity extends AppCompatActivity {
         int displayHeight = displayMetrics.heightPixels;
 
         //get Global object
-        mCurrentUser = getIntent().getParcelableExtra(Constants.CURRENT_USER);
+        //mCurrentUser = getIntent().getParcelableExtra(Constants.CURRENT_USER);
 
-        if(mCurrentUser == null)
-            mCurrentUser = ((MyApp) this.getApplication()).getCurrentUser(); //Get current user
+        //if(mCurrentUser == null)
+        mCurrentUser = ((MyApp) this.getApplication()).getCurrentUser(); //Get current user
 
         mSistemiFrame = (FrameLayout) findViewById(R.id.frame_sistemi);
         mGestionaleFrame = (FrameLayout) findViewById(R.id.frame_gestionale);

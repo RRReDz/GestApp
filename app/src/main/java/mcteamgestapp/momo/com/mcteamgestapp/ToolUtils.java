@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -194,6 +195,19 @@ public class ToolUtils {
             listView.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * Round to certain number of decimals
+     *
+     * @param d
+     * @param decimalPlace
+     * @return
+     */
+    public static float round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.floatValue();
     }
 
 }
