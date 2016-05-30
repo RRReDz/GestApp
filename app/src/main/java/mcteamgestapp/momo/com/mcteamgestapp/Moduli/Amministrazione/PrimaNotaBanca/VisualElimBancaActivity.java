@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -16,8 +16,6 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
-import java.text.DecimalFormat;
-
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -27,7 +25,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
 /**
  * Created by Rrossi on 19/05/2016.
  */
-public class VisualElimCassaActivity extends AppCompatActivity {
+public class VisualElimBancaActivity extends AppCompatActivity {
 
     private NotaCassa notaCassa;
     private VolleyRequests volleyRequest;
@@ -93,7 +91,7 @@ public class VisualElimCassaActivity extends AppCompatActivity {
     }
 
     public void onClickEdit(View view) {
-        Intent modificaIntent = new Intent(getApplicationContext(), NuovoModifCassaActivity.class);
+        Intent modificaIntent = new Intent(getApplicationContext(), NuovoModifBancaActivity.class);
         modificaIntent.putExtra(Constants.NOTA_CASSA, notaCassa);
         //modificaIntent.putExtra("actualUser", mUser);
         startActivityForResult(modificaIntent, Constants.NOTA_EDIT);

@@ -23,10 +23,12 @@ public class Constants {
 
     public static final String CURRENT_USER = "CurrentUser";
 
-    public static final String NOTA_CASSA= "notaCassa";
-    public static final String VISUAL_ELIMINA = "mostraElimina";
+    public static final String NOTA_CASSA = "NotaCassa";
+    public static final String VISUAL_ELIMINA = "MostraElimina";
+    public static final String NOTA_BANCA = "NotaBanca";
     public static final int NOTA_EDIT = 1;
     public static final int NOTA_DELETE = 2;
     public static final int NOTA_ADD = 3;
     public static final int NOTA_SHOW = 4;
+
 }

@@ -8,22 +8,19 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Rrossi on 18/05/2016.
  */
-public class NotaCassa implements Parcelable {
+public class NotaBanca implements Parcelable {
 
     @SerializedName("riga")
     private int ID;
 
-    @SerializedName("cassa")
-    private int cassa;
+    @SerializedName("gruppo")
+    private int gruppo;
 
     @SerializedName("data_pagamento")
     private String dataPagamento;
 
-    @SerializedName("cod_dare")
-    private String causaleContabile;
-
-    @SerializedName("cod_avere")
-    private String sottoconto;
+    @SerializedName("data_valuta")
+    private String dataValuta;
 
     @SerializedName("descrizione")
     private String descrizione;
@@ -43,7 +40,7 @@ public class NotaCassa implements Parcelable {
 
     private float totale;
 
-    public NotaCassa() {
+    public NotaBanca() {
 
     }
 
@@ -55,12 +52,12 @@ public class NotaCassa implements Parcelable {
         this.ID = ID;
     }
 
-    public int getCassa() {
-        return cassa;
+    public int getGruppo() {
+        return gruppo;
     }
 
-    public void setCassa(int cassa) {
-        this.cassa = cassa;
+    public void setGruppo(int gruppo) {
+        this.gruppo = gruppo;
     }
 
     public String getDataPagamento() {
@@ -71,20 +68,12 @@ public class NotaCassa implements Parcelable {
         this.dataPagamento = dataPagamento;
     }
 
-    public String getCausaleContabile() {
-        return causaleContabile;
+    public String getDataValuta() {
+        return dataValuta;
     }
 
-    public void setCausaleContabile(String causaleContabile) {
-        this.causaleContabile = causaleContabile;
-    }
-
-    public String getSottoconto() {
-        return sottoconto;
-    }
-
-    public void setSottoconto(String sottoconto) {
-        this.sottoconto = sottoconto;
+    public void setDataValuta(String dataValuta) {
+        this.dataValuta = dataValuta;
     }
 
     public String getDescrizione() {
@@ -103,22 +92,6 @@ public class NotaCassa implements Parcelable {
         this.numeroProtocollo = numeroProtocollo;
     }
 
-    public float getDare() {
-        return dare;
-    }
-
-    public void setDare(float dare) {
-        this.dare = dare;
-    }
-
-    public float getAvere() {
-        return avere;
-    }
-
-    public void setAvere(float avere) {
-        this.avere = avere;
-    }
-
     public String getDareDb() {
         return dareDb;
     }
@@ -135,6 +108,22 @@ public class NotaCassa implements Parcelable {
         this.avereDb = avereDb;
     }
 
+    public float getDare() {
+        return dare;
+    }
+
+    public void setDare(float dare) {
+        this.dare = dare;
+    }
+
+    public float getAvere() {
+        return avere;
+    }
+
+    public void setAvere(float avere) {
+        this.avere = avere;
+    }
+
     public float getTotale() {
         return totale;
     }
@@ -143,12 +132,10 @@ public class NotaCassa implements Parcelable {
         this.totale = totale;
     }
 
-    public NotaCassa(Parcel in) {
+    public NotaBanca(Parcel in) {
         ID = in.readInt();
-        cassa = in.readInt();
+        gruppo = in.readInt();
         dataPagamento = in.readString();
-        causaleContabile = in.readString();
-        sottoconto = in.readString();
         descrizione = in.readString();
         numeroProtocollo = in.readInt();
         dare = in.readFloat();
@@ -158,15 +145,15 @@ public class NotaCassa implements Parcelable {
         totale = in.readFloat();
     }
 
-    public static final Creator<NotaCassa> CREATOR = new Creator<NotaCassa>() {
+    public static final Creator<NotaBanca> CREATOR = new Creator<NotaBanca>() {
         @Override
-        public NotaCassa createFromParcel(Parcel in) {
-            return new NotaCassa(in);
+        public NotaBanca createFromParcel(Parcel in) {
+            return new NotaBanca(in);
         }
 
         @Override
-        public NotaCassa[] newArray(int size) {
-            return new NotaCassa[size];
+        public NotaBanca[] newArray(int size) {
+            return new NotaBanca[size];
         }
     };
 
@@ -178,10 +165,8 @@ public class NotaCassa implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(ID);
-        dest.writeInt(cassa);
+        dest.writeInt(gruppo);
         dest.writeString(dataPagamento);
-        dest.writeString(causaleContabile);
-        dest.writeString(sottoconto);
         dest.writeString(descrizione);
         dest.writeInt(numeroProtocollo);
         dest.writeFloat(dare);
@@ -193,18 +178,17 @@ public class NotaCassa implements Parcelable {
 
     @Override
     public String toString() {
-        return "NotaCassa{" +
+        return "NotaBanca{" +
                 "ID=" + ID +
-                ", cassa=" + cassa +
+                ", gruppo=" + gruppo +
                 ", dataPagamento='" + dataPagamento + '\'' +
-                ", causaleContabile='" + causaleContabile + '\'' +
-                ", sottoconto='" + sottoconto + '\'' +
+                ", dataValuta='" + dataValuta + '\'' +
                 ", descrizione='" + descrizione + '\'' +
                 ", numeroProtocollo=" + numeroProtocollo +
+                ", dareDb='" + dareDb + '\'' +
+                ", avereDb='" + avereDb + '\'' +
                 ", dare=" + dare +
                 ", avere=" + avere +
-                ", dareDb=" + dareDb +
-                ", avereDb=" + avereDb +
                 ", totale=" + totale +
                 '}';
     }

@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.Drawable;
@@ -13,22 +13,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.itextpdf.awt.geom.CubicCurve2D;
-import com.itextpdf.text.pdf.StringUtils;
 
-import org.apache.poi.util.StringUtil;
-
-import java.math.RoundingMode;
-import java.sql.Date;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
@@ -38,12 +30,11 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
  * Created by Rrossi on 17/05/2016.
  */
 
-public class NuovoModifCassaActivity extends AppCompatActivity {
+public class NuovoModifBancaActivity extends AppCompatActivity {
 
-    private Spinner mType;
+    private Spinner mGruppo;
     private EditText mDataOperazione;
-    private EditText mCausaleContabile;
-    private EditText mSottoconto;
+    private EditText mDataValuta;
     private EditText mDescrizioneMovimenti;
     private EditText mProtocollo;
     private EditText mDare;
@@ -52,14 +43,14 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
     private Button mButtonCrea;
     private Button mButtonModifica;
     private VolleyRequests mVolleyRequest;
-    private NotaCassa notaCassaEdit;
+    private NotaBanca notaBancaEdit;
     private Gson gson = new Gson();
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_edit_nota_cassa);
+        setContentView(R.layout.activity_new_edit_nota_banca);
 
         //Set colore action bar
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
@@ -69,39 +60,35 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        mType = (Spinner) findViewById(R.id.spinner_type_nota_cassa);
-        mDataOperazione = (EditText) findViewById(R.id.et_data_operazione);
-        mCausaleContabile = (EditText) findViewById(R.id.et_causale_contabile);
-        mSottoconto = (EditText) findViewById(R.id.et_sottoconto);
-        mDescrizioneMovimenti = (EditText) findViewById(R.id.et_descrizione_movimenti);
-        mProtocollo = (EditText) findViewById(R.id.et_protocollo);
-        mDare = (EditText) findViewById(R.id.et_dare);
-        mAvere = (EditText) findViewById(R.id.et_avere);
-        mButtonAnnulla = (Button) findViewById(R.id.bAnnulla);
-        mButtonCrea = (Button) findViewById(R.id.bCrea);
-        mButtonModifica = (Button) findViewById(R.id.bModifica);
+        mGruppo = (Spinner) findViewById(R.id.spinner_gruppo_banca);
+        mDataOperazione = (EditText) findViewById(R.id.banca_dataop);
+        mDataValuta = (EditText) findViewById(R.id.banca_dataval);
+        mDescrizioneMovimenti = (EditText) findViewById(R.id.banca_descr);
+        mProtocollo = (EditText) findViewById(R.id.banca_prot);
+        mDare = (EditText) findViewById(R.id.banca_dare);
+        mAvere = (EditText) findViewById(R.id.banca_avere);
+        mButtonAnnulla = (Button) findViewById(R.id.banca_b_annulla);
+        mButtonCrea = (Button) findViewById(R.id.banca_b_crea);
+        mButtonModifica = (Button) findViewById(R.id.banca_b_modifica);
         mVolleyRequest = new VolleyRequests(this, this);
 
-        notaCassaEdit = getIntent().getParcelableExtra(Constants.NOTA_CASSA);
-        System.out.println(notaCassaEdit);
-        if (notaCassaEdit != null) {
+        notaBancaEdit = getIntent().getParcelableExtra(Constants.NOTA_BANCA);
+        System.out.println(notaBancaEdit);
+        if (notaBancaEdit != null) {
             DecimalFormat df = new DecimalFormat();
             df.setMinimumFractionDigits(2);
 
             //Non mostra la tastiera in apertura
             this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-            setTitle("Modifica nota cassa");
-            mType.setSelection(notaCassaEdit.getCassa());
-            mDataOperazione.setText(notaCassaEdit.getDataPagamento());
-            if (!notaCassaEdit.getCausaleContabile().equals("null"))
-                mCausaleContabile.setText(notaCassaEdit.getCausaleContabile());
-            if (!notaCassaEdit.getSottoconto().equals("null"))
-                mSottoconto.setText(notaCassaEdit.getSottoconto());
-            mDescrizioneMovimenti.setText(notaCassaEdit.getDescrizione());
-            if (notaCassaEdit.getNumeroProtocollo() != 0)
-                mProtocollo.setText(notaCassaEdit.getNumeroProtocollo() + "");
-            mDare.setText(df.format(notaCassaEdit.getDare()));
-            mAvere.setText(df.format(notaCassaEdit.getAvere()));
+            setTitle("Modifica nota banca");
+            mGruppo.setSelection(notaBancaEdit.getGruppo());
+            mDataOperazione.setText(notaBancaEdit.getDataPagamento());
+            mDataValuta.setText(notaBancaEdit.getDataPagamento());
+            mDescrizioneMovimenti.setText(notaBancaEdit.getDescrizione());
+            if (notaBancaEdit.getNumeroProtocollo() != 0)
+                mProtocollo.setText(notaBancaEdit.getNumeroProtocollo() + "");
+            mDare.setText(df.format(notaBancaEdit.getDare()));
+            mAvere.setText(df.format(notaBancaEdit.getAvere()));
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);
@@ -126,9 +113,9 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
     }
 
     private void attemptEdit() throws ParseException {
-        NotaCassa notaCassa = notaCassaToEncode();
-        int ID = notaCassaEdit.getID();
-        mVolleyRequest.addNewElementRequest(gson.toJson(notaCassa), "nota-cassa-edit/" + ID);
+        NotaBanca notaBanca = notaBancaToEncode();
+        int ID = notaBancaEdit.getID();
+        mVolleyRequest.addNewElementRequest(gson.toJson(notaBanca), "nota-banca-edit/" + ID);
     }
 
     public void onClickCrea(View view) {
@@ -141,8 +128,8 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
     }
 
     private void attemptCreate() throws ParseException {
-        NotaCassa notaCassa = notaCassaToEncode();
-        mVolleyRequest.addNewElementRequest(gson.toJson(notaCassa), "nota-cassa-nuovo");
+        NotaBanca notaBanca = notaBancaToEncode();
+        mVolleyRequest.addNewElementRequest(gson.toJson(notaBanca), "nota-banca-nuovo");
     }
 
     public void onClickAnnulla(View view) {
@@ -152,10 +139,10 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
     private boolean checkFields() {
 
         String dataOperazione = mDataOperazione.getText().toString();
+        String dataValuta = mDataValuta.getText().toString();
         String descrizione = mDescrizioneMovimenti.getText().toString();
         String dare = mDare.getText().toString();
         String avere = mAvere.getText().toString();
-        String protocollo = mProtocollo.getText().toString();
 
         if (TextUtils.isEmpty(dataOperazione) || !ToolUtils.validateDate(dataOperazione)) {
             mDataOperazione.setError("Data mancante o errata: rispettare il formato gg-mm-aaaa");
@@ -164,6 +151,18 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         } else {
             try {
                 ToolUtils.fromDateToSql(dataOperazione);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (TextUtils.isEmpty(dataValuta) || !ToolUtils.validateDate(dataOperazione) ||  !ToolUtils.strDateGreaterThan(dataOperazione, dataValuta)) {
+            mDataOperazione.setError("Data errata: rispettare il formato gg-mm-aaaa e data maggiore di data operazione");
+            mDataOperazione.requestFocus();
+            return false;
+        } else {
+            try {
+                ToolUtils.fromDateToSql(dataValuta);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -190,14 +189,13 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         return true;
     }
 
-    private NotaCassa notaCassaToEncode() throws ParseException {
+    private NotaBanca notaBancaToEncode() throws ParseException {
 
-        NotaCassa notaCassa = new NotaCassa();
+        NotaBanca notaBanca = new NotaBanca();
 
-        int type = mType.getSelectedItemPosition();
+        int gruppo = mGruppo.getSelectedItemPosition();
         String dataOperazione = mDataOperazione.getText().toString();
-        String causaleContabile = mCausaleContabile.getText().toString();
-        String sottoconto = mSottoconto.getText().toString();
+        String dataValuta = mDataValuta.getText().toString();
         String descrizione = mDescrizioneMovimenti.getText().toString();
         Integer protocollo;
         try {
@@ -209,15 +207,14 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         float dare = Float.parseFloat((mDare.getText().toString()));
         float avere = Float.parseFloat((mAvere.getText().toString()));
 
-        notaCassa.setCassa(type);
-        notaCassa.setDataPagamento(ToolUtils.fromDateToSql(dataOperazione));
-        notaCassa.setCausaleContabile(causaleContabile);
-        notaCassa.setSottoconto(sottoconto);
-        notaCassa.setDescrizione(descrizione);
-        notaCassa.setDareDb(ToolUtils.format(dare));
-        notaCassa.setAvereDb(ToolUtils.format(avere));
-        notaCassa.setNumeroProtocollo(protocollo);
+        notaBanca.setGruppo(gruppo);
+        notaBanca.setDataPagamento(ToolUtils.fromDateToSql(dataOperazione));
+        notaBanca.setDataValuta(ToolUtils.fromDateToSql(dataValuta));
+        notaBanca.setDescrizione(descrizione);
+        notaBanca.setNumeroProtocollo(protocollo);
+        notaBanca.setDareDb(ToolUtils.format(dare));
+        notaBanca.setAvereDb(ToolUtils.format(avere));
 
-        return notaCassa;
+        return notaBanca;
     }
 }

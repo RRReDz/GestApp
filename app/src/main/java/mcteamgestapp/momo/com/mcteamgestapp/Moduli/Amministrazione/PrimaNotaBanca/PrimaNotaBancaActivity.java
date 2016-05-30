@@ -1,19 +1,14 @@
-package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +19,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
@@ -32,6 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
@@ -43,15 +38,15 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
 /**
  * Created by Riccardo Rossi on 13/05/2016.
  */
-public class PrimaNotaCassaActivity extends AppCompatActivity {
+public class PrimaNotaBancaActivity extends AppCompatActivity {
 
-    //Array list per note cassa
-    private ArrayList<NotaCassa> mNotaCassa;
-    private ArrayList<NotaCassa> mNotaCassaOriginal;
+    //Array list per note banca
+    private ArrayList<NotaBanca> mNotaBanca;
+    private ArrayList<NotaBanca> mNotaBancaOriginal;
     //Recyclerview lista delle note
     private RecyclerView mRecyclerView;
     //Adapter recyclerview
-    private PrimaNotaCassaRecyclerAdapter mAdapterRecycler;
+    private PrimaNotaBancaRecyclerAdapter mAdapterRecycler;
 
     //Spinner tipo operazione
     private Spinner mTypeSpinner;
@@ -74,14 +69,14 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prima_nota_cassa);
+        setContentView(R.layout.activity_prima_nota_banca);
 
         /////////////////////////////////////////////////////////////////
         /* GET PARAMETRI DAL LAYOUT ED INIZIALIZZAZIONE PARAMETRI      */
         /////////////////////////////////////////////////////////////////
-        mOverlay = findViewById(R.id.cassa_overlay);
-        mProgressBar = (ProgressBar) findViewById(R.id.prima_nota_cassa_progress);
-        mNotaCassa = new ArrayList<>();
+        mOverlay = findViewById(R.id.banca_overlay);
+        mProgressBar = (ProgressBar) findViewById(R.id.prima_nota_banca_progress);
+        mNotaBanca = new ArrayList<>();
 
         mVolleyRequest = new VolleyRequests(this, this);
 
@@ -95,14 +90,14 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         //Set recyclerview
         mRecyclerView = (RecyclerView) findViewById(R.id.simpleRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapterRecycler = new PrimaNotaCassaRecyclerAdapter(
-                mNotaCassa,
-                new PrimaNotaCassaRecyclerAdapter.OnItemClickListener() {
+        mAdapterRecycler = new PrimaNotaBancaRecyclerAdapter(
+                mNotaBanca,
+                new PrimaNotaBancaRecyclerAdapter.OnItemClickListener() {
                     @Override
-                    public void onItemClick(NotaCassa item) {
-                        Intent intent = new Intent(getApplicationContext(), VisualElimCassaActivity.class);
+                    public void onItemClick(NotaBanca item) {
+                        Intent intent = new Intent(getApplicationContext(), VisualElimBancaActivity.class);
                         intent.putExtra(Constants.VISUAL_ELIMINA, true); //false -> delete
-                        intent.putExtra(Constants.NOTA_CASSA, item);
+                        intent.putExtra(Constants.NOTA_BANCA, item);
                         startActivity(intent);
                     }
                 });
@@ -217,7 +212,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         });
 
         //floating action menu -> FAM
-        mFam = (FloatingActionsMenu) findViewById(R.id.prima_nota_cassa_fam);
+        mFam = (FloatingActionsMenu) findViewById(R.id.prima_nota_banca_fam);
         //Nasconde listview quando il fab è espanso
         mFam.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
@@ -239,13 +234,13 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
             }
         });
 
-        mVolleyRequest.getPrimaNotaCassaList(mNotaCassa, mAdapterRecycler, currentMonth, currentYear, 0); //Di default è valuta
+        mVolleyRequest.getPrimaNotaBancaList(mNotaBanca, mAdapterRecycler, currentMonth, currentYear, 0); //Di default è valuta
 
     }
 
     //0 -> gennaio ...
     private void updateList(int month, int year, int opType) {
-        mVolleyRequest.getPrimaNotaCassaList(mNotaCassa, mAdapterRecycler, month, year, opType); //Invio una nuova richiesta
+        mVolleyRequest.getPrimaNotaBancaList(mNotaBanca, mAdapterRecycler, month, year, opType); //Invio una nuova richiesta
     }
 
     @Override
@@ -311,7 +306,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
     //Click bottone "aggiungi nuovo"
     public void onClickInsertNew(View view) {
         mFam.collapse();
-        Intent intent = new Intent(getApplicationContext(), NuovoModifCassaActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NuovoModifBancaActivity.class);
         startActivityForResult(intent, Constants.NOTA_ADD);
     }
 
@@ -321,7 +316,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         String month = (String) mMonthSpinner.getSelectedItem();
         String year = (String) mYearsSpinner.getSelectedItem();
         try {
-            PrimaNotaCassaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
+            PrimaNotaBancaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -333,7 +328,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
         String month = (String) mMonthSpinner.getSelectedItem();
         String year = (String) mYearsSpinner.getSelectedItem();
         try {
-            PrimaNotaCassaUtils.esportaExcel(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
+            PrimaNotaBancaUtils.esportaExcel(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -158,7 +158,7 @@ public class VolleyRequests {
 
         System.out.println(json);
 
-        dialogBuilder.setTitle("Modifica nominativo");
+        dialogBuilder.setTitle("Inserimento nuovo valore");
 
         PUTRequest modifyRequestJson = new PUTRequest(Request.Method.PUT, url, params, new Response.Listener<JSONObject>() {
             @Override
@@ -523,40 +523,14 @@ public class VolleyRequests {
                                     //Check se campo dare è vuoto -> problema decoding
                                     if (response.get("dare").equals("") || response.get("dare") == null)
                                         notaCassa.setDare(0);
-                                    else {
-                                        NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-                                        Number number = null;
-                                        try {
-                                            number = format.parse(response.getString("dare"));
-                                            float f = number.floatValue();
-                                            notaCassa.setDare(f);
-                                        } catch (ParseException e) {
-                                            //System.out.print(e.getMessage());
-                                            notaCassa.setDare(Float.parseFloat(response.getString("dare")));
-                                        }
+                                    else
+                                        notaCassa.setDare(ToolUtils.parse(response.getString("dare")));
 
-
-                                        //String dare = response.getString("dare").replace(".","").replace(",", ".");
-                                        //notaCassa.setDare(Double.parseDouble(dare));
-                                    }
 
                                     if (response.get("avere").equals("") || response.get("avere").equals(null))
                                         notaCassa.setAvere(0);
-                                    else {
-                                        NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-                                        Number number = null;
-                                        try {
-                                            number = format.parse(response.getString("avere"));
-                                            float f = number.floatValue();
-                                            notaCassa.setAvere(f);
-                                        } catch (ParseException e) {
-                                            //System.out.print(e.getMessage());
-                                            notaCassa.setAvere(Float.parseFloat(response.getString("avere")));
-                                        }
-
-                                        //String avere = response.getString("avere").replace(".","").replace(",", ".");
-                                        //notaCassa.setAvere(Double.parseDouble(avere));
-                                    }
+                                    else
+                                        notaCassa.setAvere(ToolUtils.parse(response.getString("avere")));
 
                                     mNotaCassa.add(notaCassa);
                                 }

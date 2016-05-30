@@ -1,6 +1,5 @@
-package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
@@ -21,18 +19,18 @@ import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
  * Created by Rrossi on 16/05/2016.
  */
 
-public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNotaCassaRecyclerAdapter.MyViewHolder> {
+public class PrimaNotaBancaRecyclerAdapter extends RecyclerView.Adapter<PrimaNotaBancaRecyclerAdapter.MyViewHolder> {
 
 
     public interface OnItemClickListener {
-        void onItemClick(NotaCassa item);
+        void onItemClick(NotaBanca item);
     }
 
     private final OnItemClickListener listener;
-    private final ArrayList<NotaCassa> items;
+    private final ArrayList<NotaBanca> items;
     private TextView emptyView;
 
-    public PrimaNotaCassaRecyclerAdapter(ArrayList<NotaCassa> items, OnItemClickListener listener) {
+    public PrimaNotaBancaRecyclerAdapter(ArrayList<NotaBanca> items, OnItemClickListener listener) {
         this.listener = listener;
         this.items = items;
     }
@@ -60,7 +58,7 @@ public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
         return items.size();
     }
 
-    public ArrayList<NotaCassa> getArrayList() {
+    public ArrayList<NotaBanca> getArrayList() {
         return items;
     }
 
@@ -77,7 +75,7 @@ public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
             overflow = (ImageButton) v.findViewById(R.id.cassa_item_overflow);
         }
 
-        public void bind(final NotaCassa item, final OnItemClickListener listener) {
+        public void bind(final NotaBanca item, final OnItemClickListener listener) {
 
             //System.out.println("ADAPTER RECYCLER VIEW" + item.toString());
 
@@ -105,7 +103,7 @@ public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
                 }
             });
 
-            PrimaNotaCassaOverflowListener listenerOverflow = new PrimaNotaCassaOverflowListener(itemView.getContext(), item);
+            PrimaNotaBancaOverflowListener listenerOverflow = new PrimaNotaBancaOverflowListener(itemView.getContext(), item);
             overflow.setOnClickListener(listenerOverflow);
 
         }

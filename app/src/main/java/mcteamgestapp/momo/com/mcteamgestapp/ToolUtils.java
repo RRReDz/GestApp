@@ -13,12 +13,18 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -197,17 +203,39 @@ public class ToolUtils {
         }
     }
 
-    /**
-     * Round to certain number of decimals
-     *
-     * @param d
-     * @param decimalPlace
-     * @return
-     */
-    public static float round(float d, int decimalPlace) {
-        BigDecimal bd = new BigDecimal(Float.toString(d));
-        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
-        return bd.floatValue();
+    public static String format(float f) {
+        NumberFormat nb = NumberFormat.getInstance(Locale.GERMAN);
+        nb.setMinimumFractionDigits(2);
+        nb.setMaximumFractionDigits(2);
+
+        return nb.format(f);
+    }
+
+    public static float parse(String s) {
+        NumberFormat nb = NumberFormat.getInstance(Locale.GERMAN);
+
+        try {
+            return nb.parse(s).floatValue();
+        } catch (java.text.ParseException e) {
+            return Float.parseFloat(s);
+        }
+    }
+
+    public static boolean strDateGreaterThan(String date1, String date2) {
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        Date newDate1, newDate2;
+        try {
+            newDate1 = (Date) df.parse(date1);
+            newDate2 = (Date) df.parse(date2);
+        } catch (java.text.ParseException e) {
+            System.out.println("Stringhe inserite non sono delle date valide");
+            return false;
+        }
+
+        if(newDate2.compareTo(newDate1) >= 0)
+            return true;
+        else
+            return false;
     }
 
 }
