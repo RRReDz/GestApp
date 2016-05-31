@@ -6,6 +6,26 @@
         <item>Contanti</item>
     </string-array>
 
+    <string-array name="gruppo">
+        <item>Nessuno</item>
+        <item>Carta Sì</item>
+        <item>Carta di credito</item>
+        <item>Commissioni banca</item>
+        <item>Imposta di bollo</item>
+        <item>Iva</item>
+        <item>Iva arretrata</item>
+        <item>Imposte dipendenti</item>
+        <item>R.A.</item>
+        <item>IRAP</item>
+        <item>IRAP arretrato</item>
+        <item>Ente bilaterale</item>
+        <item>Sanzione IVA</item>
+        <item>Sanzione IRAP</item>
+        <item>IMU</item>
+        <item>Tasi</item>
+        <item>Diritto camerale</item>
+    </string-array>
+
     <string-array name="month">
         <item>Gennaio</item>
         <item>Febbraio</item>
@@ -20,4 +40,5 @@
         <item>Novembre</item>
         <item>Dicembre</item>
     </string-array>
+
 </resources>

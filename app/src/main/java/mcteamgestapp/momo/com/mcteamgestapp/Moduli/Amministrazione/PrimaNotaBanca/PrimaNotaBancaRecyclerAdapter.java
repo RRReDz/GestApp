@@ -39,7 +39,7 @@ public class PrimaNotaBancaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         // TODO: inflate your view and create viewholder, most likely looks like this though
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(
-                R.layout.recyclerview_cassa_item,
+                R.layout.recyclerview_banca_item,
                 viewGroup,
                 false);
 
@@ -69,10 +69,10 @@ public class PrimaNotaBancaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
 
         public MyViewHolder(View v) {
             super(v); // done this way instead of view tagging
-            dataOperazione = (TextView) v.findViewById(R.id.cassa_item_data_operazione);
-            totale = (TextView) v.findViewById(R.id.cassa_item_data_totale_riga);
-            descrizione = (TextView) v.findViewById(R.id.cassa_item_descrizione);
-            overflow = (ImageButton) v.findViewById(R.id.cassa_item_overflow);
+            dataOperazione = (TextView) v.findViewById(R.id.banca_item_data_operazione);
+            totale = (TextView) v.findViewById(R.id.banca_item_data_totale_riga);
+            descrizione = (TextView) v.findViewById(R.id.banca_item_descrizione);
+            overflow = (ImageButton) v.findViewById(R.id.banca_item_overflow);
         }
 
         public void bind(final NotaBanca item, final OnItemClickListener listener) {

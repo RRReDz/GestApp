@@ -61,7 +61,7 @@ public class PrimaNotaCassaOverflowListener implements View.OnClickListener {
 
             }
         };
-        popupMenu.inflate(R.menu.overflow_menu_bis);
+        popupMenu.inflate(R.menu.overflow_menu_noprint);
 
         //Force icons to show
         Object menuHelper;

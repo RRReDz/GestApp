@@ -45,10 +45,10 @@ public class PrimaNotaBancaUtils {
 
     public static Font tableTitleFond = new Font(Font.FontFamily.UNDEFINED, Font.BOLD);
 
-    public static void printAll(ArrayList<NotaBanca> notaBancaList, Context context, String type, String month, String year) throws Exception {
+    public static void printAll(ArrayList<NotaBanca> notaBancaList, Context context, String month, String year) throws Exception {
         File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_cassa/pdf");
         Log.d("PATH DI STAMPA", context.getFilesDir() + "/GestApp/nota_cassa/pdf");
-        File pdf = new File(dir, month + "-" + year + "-" + type + ".pdf");
+        File pdf = new File(dir, month + "-" + year + ".pdf");
 
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
@@ -62,7 +62,7 @@ public class PrimaNotaBancaUtils {
         Document pdfToPrint = new Document(PageSize.A4.rotate(), 20, 20, 100, 25);
         FileOutputStream fos = new FileOutputStream(pdf);
         PdfWriter writer = PdfWriter.getInstance(pdfToPrint, fos);
-        HeaderFooterPageEvent event = new HeaderFooterPageEvent("PRIMA NOTA CASSA - " + type.toUpperCase());
+        HeaderFooterPageEvent event = new HeaderFooterPageEvent("PRIMA NOTA BANCA");
         event.setImage(context);
 
         writer.setPageEvent(event);
@@ -97,12 +97,7 @@ public class PrimaNotaBancaUtils {
         c1.setBackgroundColor(BaseColor.RED);
         table.addCell(c1);
 
-        c1 = new PdfPCell(new Phrase("Causale contabile", tableTitleFond));
-        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-        c1.setBackgroundColor(BaseColor.RED);
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("Sottoconto", tableTitleFond));
+        c1 = new PdfPCell(new Phrase("Data valuta", tableTitleFond));
         c1.setHorizontalAlignment(Element.ALIGN_CENTER);
         c1.setBackgroundColor(BaseColor.RED);
         table.addCell(c1);
@@ -148,8 +143,7 @@ public class PrimaNotaBancaUtils {
 
             table.addCell(i + 1 + "");
             table.addCell(notaBanca.getDataPagamento() == null ? " " : notaBanca.getDataPagamento());
-            table.addCell(notaBanca.getCausaleContabile() == null ? " " : notaBanca.getCausaleContabile());
-            table.addCell(notaBanca.getSottoconto() == null ? " " : notaBanca.getSottoconto());
+            table.addCell(notaBanca.getDataValuta() == null ? " " : notaBanca.getDataValuta());
             table.addCell(notaBanca.getDescrizione() == null ? " " : notaBanca.getDescrizione());
             table.addCell(notaBanca.getNumeroProtocollo() == 0 ? " " : notaBanca.getNumeroProtocollo() + "");
 
@@ -236,7 +230,7 @@ public class PrimaNotaBancaUtils {
         }
     }
 
-    public static void esportaExcel(ArrayList<NotaBanca> notaBancaList, Context context, String type, String month, String year) throws Exception {
+    public static void esportaExcel(ArrayList<NotaBanca> notaBancaList, Context context, String month, String year) throws Exception {
         File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_cassa/excel");
 
         DecimalFormat df = new DecimalFormat();
@@ -246,7 +240,7 @@ public class PrimaNotaBancaUtils {
         //make them in case they're not there
         dir.mkdirs();
         //create a standard java.io.File object for the Workbook to use
-        File wbfile = new File(dir, month + "-" + year + "-" + type + ".xlsx");
+        File wbfile = new File(dir, month + "-" + year + ".xlsx");
 
         Workbook wb = new HSSFWorkbook();
 
@@ -258,14 +252,14 @@ public class PrimaNotaBancaUtils {
         cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
         Sheet foglio1 = null;
-        foglio1 = wb.createSheet("Prima nota cassa");
+        foglio1 = wb.createSheet("Prima nota banca");
 
         Row rowTitle = foglio1.createRow(0);
 
         CellStyle csTitle = wb.createCellStyle();
 
         cella = rowTitle.createCell(0);
-        cella.setCellValue(month + " " + year + " - " + type);
+        cella.setCellValue(month + " " + year);
 
         Row row = foglio1.createRow(2);
 
@@ -316,26 +310,25 @@ public class PrimaNotaBancaUtils {
             cella.setCellValue(notaBanca.getDataPagamento());
 
             cella = row.createCell(1);
-            cella.setCellValue(notaBanca.getCausaleContabile());
+            cella.setCellValue(notaBanca.getDataValuta());
 
             cella = row.createCell(2);
-            cella.setCellValue(notaBanca.getSottoconto());
-
-            cella = row.createCell(3);
             cella.setCellValue(notaBanca.getDescrizione());
 
-            cella = row.createCell(4);
+            cella = row.createCell(3);
             cella.setCellValue(notaBanca.getNumeroProtocollo());
 
-            cella = row.createCell(5);
+            cella = row.createCell(4);
             cella.setCellValue(df.format(notaBanca.getDare()));
 
-            cella = row.createCell(6);
+            cella = row.createCell(5);
             cella.setCellValue(df.format(notaBanca.getAvere()));
+
+            cella = row.createCell(6);
+            cella.setCellValue(df.format(totSaldo));
 
             cella = row.createCell(7);
             cella.setCellValue(df.format(totSaldo));
-
         }
 
         row = foglio1.createRow(nRow);

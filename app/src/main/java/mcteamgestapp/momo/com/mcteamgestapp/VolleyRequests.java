@@ -43,9 +43,11 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
+import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.AllegatiListAdapter;
@@ -574,6 +576,101 @@ public class VolleyRequests {
         mRequestQueue.add(accessiRequest);
     }
 
+    public void getPrimaNotaBancaList(final ArrayList<NotaBanca> mNotaBanca, final PrimaNotaBancaRecyclerAdapter adapter, int month, int year) {
+        String url = mActivity.getString(R.string.mobile_url);
+        url += "prima-nota-cassa/" + (month + 1) + "/" + year;
+
+        mNotaBanca.clear(); //Pulisco l'arraylist
+
+        System.out.println("the url -> " + url);
+
+        final CustomRequest accessiRequest = new CustomRequest(url, null,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        PrimaNotaCassaActivity activityPrimaNota = (PrimaNotaCassaActivity) mContext;
+                        try {
+                            if (jsonArray.length() == 0) {
+                                activityPrimaNota.showEmptyString(true);
+                            } else {
+                                activityPrimaNota.showEmptyString(false);
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject response = jsonArray.getJSONObject(i);
+                                    System.out.println(response.toString());
+                                    //NotaCassa notaCassa = gson.fromJson(response.toString(), NotaCassa.class);
+
+                                    NotaBanca notaBanca = new NotaBanca();
+                                    notaBanca.setID(response.getInt("riga"));
+                                    notaBanca.setGruppo(response.getInt("gruppo"));
+
+                                    String dataOpString = response.getString("data_pagamento");
+                                    notaBanca.setDataPagamento(ToolUtils.validateReverseDate(dataOpString) ? ToolUtils.getFormattedDate(dataOpString) : "");
+
+                                    String dataValString = response.getString("data_valuta");
+                                    notaBanca.setDataPagamento(ToolUtils.validateReverseDate(dataValString) ? ToolUtils.getFormattedDate(dataValString) : "");
+
+                                    notaBanca.setDescrizione(response.getString("descrizione"));
+
+                                    if (response.get("nr_protocollo").equals(null))
+                                        notaBanca.setNumeroProtocollo(0); //Non presente
+                                    else
+                                        notaBanca.setNumeroProtocollo(response.getInt("nr_protocollo"));
+
+                                    //Check se campo dare è vuoto -> problema decoding
+                                    if (response.get("dare").equals("") || response.get("dare") == null)
+                                        notaBanca.setDare(0);
+                                    else
+                                        notaBanca.setDare(ToolUtils.parse(response.getString("dare")));
+
+
+                                    if (response.get("avere").equals("") || response.get("avere").equals(null))
+                                        notaBanca.setAvere(0);
+                                    else
+                                        notaBanca.setAvere(ToolUtils.parse(response.getString("avere")));
+
+                                    mNotaBanca.add(notaBanca);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            //Recupero le view per la progressbar
+                            PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
+                            //activity.iconRefresh(true);
+                            ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
+                            RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
+                            ToolUtils.showProgress(recyclerView, progressBar, false);
+
+
+                        } catch (JSONException jsonEx) {
+                            jsonEx.printStackTrace();
+                        }
+                    }
+
+                },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // As of f605da3 the following should work
+                        NetworkResponse response = error.networkResponse;
+                        if (error instanceof ServerError && response != null) {
+                            try {
+                                String res = new String(response.data,
+                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                                // Now you can use any deserializer to make sense of data
+                                System.out.println(res);
+                            } catch (UnsupportedEncodingException e1) {
+                                // Couldn't properly decode data to string
+                                e1.printStackTrace();
+                            }
+                        }
+                    }
+                });
+
+        mRequestQueue.add(accessiRequest);
+    }
+
     public void AddNewNotaCassa(String json) {
         String url = mActivity.getString(R.string.mobile_url);
         url += "nota-cassa-nuovo";
@@ -685,6 +782,5 @@ public class VolleyRequests {
 
         return bytes;
     }
-
 
 }

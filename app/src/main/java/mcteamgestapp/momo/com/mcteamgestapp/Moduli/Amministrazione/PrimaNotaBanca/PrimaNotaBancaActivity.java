@@ -48,9 +48,6 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
     //Adapter recyclerview
     private PrimaNotaBancaRecyclerAdapter mAdapterRecycler;
 
-    //Spinner tipo operazione
-    private Spinner mTypeSpinner;
-
     //spinner mese
     private Spinner mMonthSpinner;
 
@@ -104,35 +101,6 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapterRecycler);
 
         /////////////////////////////////////////////////////////////////
-        /*                 SPINNER DEL TIPO DI OPERAZIONE              */
-        /////////////////////////////////////////////////////////////////
-        mTypeSpinner = (Spinner) findViewById(R.id.spinner_type);
-
-        mTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            int check = 0;
-
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                check++;
-                if (check > 1) {
-                    ToolUtils.showProgress(mRecyclerView, mProgressBar, true);
-
-                    int month = mMonthSpinner.getSelectedItemPosition();
-                    int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
-                    int type = mTypeSpinner.getSelectedItemPosition();
-
-                    updateList(month, year, type); //MESE - ANNO - TIPO_OPERAZIONE
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        /////////////////////////////////////////////////////////////////
         /*                 SPINNER DEL MESE                            */
         /////////////////////////////////////////////////////////////////
 
@@ -160,9 +128,8 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
                     ToolUtils.showProgress(mRecyclerView, mProgressBar, true);
 
                     int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
-                    int type = mTypeSpinner.getSelectedItemPosition();
 
-                    updateList(position, year, type); //MESE - ANNO - TIPO_OPERAZIONE
+                    updateList(position, year); //MESE - ANNO
                 }
             }
 
@@ -197,11 +164,10 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
                     ToolUtils.showProgress(mRecyclerView, mProgressBar, true);
                     int year = Integer.parseInt((String) parent.getItemAtPosition(position));
                     int month = mMonthSpinner.getSelectedItemPosition();
-                    int type = mTypeSpinner.getSelectedItemPosition();
 
                     //Toast.makeText(getApplicationContext(), "year: " + year + ", month: " + month + ", type: " + type, Toast.LENGTH_SHORT).show();
 
-                    updateList(month, year, type); //MESE - ANNO - TIPO_OPERAZIONE
+                    updateList(month, year); //MESE - ANNO
                 }
             }
 
@@ -234,13 +200,13 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
             }
         });
 
-        mVolleyRequest.getPrimaNotaBancaList(mNotaBanca, mAdapterRecycler, currentMonth, currentYear, 0); //Di default è valuta
+        mVolleyRequest.getPrimaNotaBancaList(mNotaBanca, mAdapterRecycler, currentMonth, currentYear); //Di default è valuta
 
     }
 
     //0 -> gennaio ...
-    private void updateList(int month, int year, int opType) {
-        mVolleyRequest.getPrimaNotaBancaList(mNotaBanca, mAdapterRecycler, month, year, opType); //Invio una nuova richiesta
+    private void updateList(int month, int year) {
+        mVolleyRequest.getPrimaNotaBancaList(mNotaBanca, mAdapterRecycler, month, year); //Invio una nuova richiesta
     }
 
     @Override
@@ -276,8 +242,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
         //Ricavo valori degli spinner e lancio una richiesta volley
         int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
         int month = mMonthSpinner.getSelectedItemPosition();
-        int type = mTypeSpinner.getSelectedItemPosition();
-        updateList(month, year, type);
+        updateList(month, year);
     }
 
     public void iconRefresh(boolean enable) {
@@ -312,11 +277,10 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
 
     public void onClickStampa(View view) {
         mFam.collapse();
-        String type = (String) mTypeSpinner.getSelectedItem();
         String month = (String) mMonthSpinner.getSelectedItem();
         String year = (String) mYearsSpinner.getSelectedItem();
         try {
-            PrimaNotaBancaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
+            PrimaNotaBancaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), month, year);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -324,11 +288,10 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
 
     public void onClickExcel(View view) {
         mFam.collapse();
-        String type = (String) mTypeSpinner.getSelectedItem();
         String month = (String) mMonthSpinner.getSelectedItem();
         String year = (String) mYearsSpinner.getSelectedItem();
         try {
-            PrimaNotaBancaUtils.esportaExcel(mAdapterRecycler.getArrayList(), getApplicationContext(), type, month, year);
+            PrimaNotaBancaUtils.esportaExcel(mAdapterRecycler.getArrayList(), getApplicationContext(), month, year);
         } catch (Exception e) {
             e.printStackTrace();
         }

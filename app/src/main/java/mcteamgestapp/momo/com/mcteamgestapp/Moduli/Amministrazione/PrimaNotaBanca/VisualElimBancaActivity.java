@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
+import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
 import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
@@ -27,14 +27,14 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
  */
 public class VisualElimBancaActivity extends AppCompatActivity {
 
-    private NotaCassa notaCassa;
+    private NotaBanca notaBanca;
     private VolleyRequests volleyRequest;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_visualizza_nota_cassa);
+        setContentView(R.layout.activity_visualizza_nota_banca);
 
         //Set colore action bar
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
@@ -44,39 +44,37 @@ public class VisualElimBancaActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        TextView dataOperazione = (TextView) findViewById(R.id.tv_data_operazione);
-        TextView causaleContabile = (TextView) findViewById(R.id.tv_causale_contabile);
-        TextView sottoconto = (TextView) findViewById(R.id.tv_sottoconto);
-        TextView descrizione = (TextView) findViewById(R.id.tv_descrizione);
-        TextView protocollo = (TextView) findViewById(R.id.tv_protocollo);
-        TextView dare = (TextView) findViewById(R.id.tv_dare);
-        TextView avere = (TextView) findViewById(R.id.tv_avere);
-        TextView totale = (TextView) findViewById(R.id.tv_totale);
-        BootstrapButton bModificaV = (BootstrapButton) findViewById(R.id.b_visual_modifica);
-        BootstrapButton bEliminaV = (BootstrapButton) findViewById(R.id.b_visual_elimina);
-        Button bAnnullaE = (Button) findViewById(R.id.b_elim_annulla);
-        Button bElimE = (Button) findViewById(R.id.b_elim_elim);
+        TextView dataOperazione = (TextView) findViewById(R.id.banca_show_dataop);
+        TextView dataValuta = (TextView) findViewById(R.id.banca_show_dataval);
+        TextView descrizione = (TextView) findViewById(R.id.banca_show_descr);
+        TextView protocollo = (TextView) findViewById(R.id.banca_show_prot);
+        TextView dare = (TextView) findViewById(R.id.banca_show_dare);
+        TextView avere = (TextView) findViewById(R.id.banca_show_avere);
+        TextView totale = (TextView) findViewById(R.id.banca_show_tot);
+        BootstrapButton bModificaV = (BootstrapButton) findViewById(R.id.banca_boot_modif);
+        BootstrapButton bEliminaV = (BootstrapButton) findViewById(R.id.banca_boot_canc);
+        Button bAnnullaE = (Button) findViewById(R.id.banca_but_annull);
+        Button bElimE = (Button) findViewById(R.id.banca_but_elim);
 
-        LinearLayout layoutVisual = (LinearLayout) findViewById(R.id.layout_visual);
-        LinearLayout layoutElim = (LinearLayout) findViewById(R.id.layout_elim);
+        LinearLayout layoutVisual = (LinearLayout) findViewById(R.id.banca_layout_visual);
+        LinearLayout layoutElim = (LinearLayout) findViewById(R.id.banca_layout_elim);
 
         boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIMINA, true);
-        notaCassa = getIntent().getParcelableExtra(Constants.NOTA_CASSA);
+        notaBanca = getIntent().getParcelableExtra(Constants.NOTA_BANCA);
 
-        dataOperazione.setText(notaCassa.getDataPagamento());
-        causaleContabile.setText(notaCassa.getCausaleContabile());
-        sottoconto.setText(notaCassa.getSottoconto());
-        descrizione.setText(notaCassa.getDescrizione());
-        if(notaCassa.getNumeroProtocollo() != 0)
-            protocollo.setText(notaCassa.getNumeroProtocollo()+"");
-        dare.setText(ToolUtils.format(notaCassa.getDare()) + " €");
-        avere.setText(ToolUtils.format(notaCassa.getAvere()) + " €");
-        totale.setText(ToolUtils.format(notaCassa.getTotale()) + " €");
+        dataOperazione.setText(notaBanca.getDataPagamento());
+        dataValuta.setText(notaBanca.getDataValuta());
+        descrizione.setText(notaBanca.getDescrizione());
+        if(notaBanca.getNumeroProtocollo() != 0)
+            protocollo.setText(notaBanca.getNumeroProtocollo()+"");
+        dare.setText(ToolUtils.format(notaBanca.getDare()) + " €");
+        avere.setText(ToolUtils.format(notaBanca.getAvere()) + " €");
+        totale.setText(ToolUtils.format(notaBanca.getTotale()) + " €");
 
         if(visualizza)
             layoutVisual.setVisibility(View.VISIBLE);
         else {
-            setTitle("Elimina nota cassa");
+            setTitle("Elimina nota banca");
             layoutElim.setVisibility(View.VISIBLE);
         }
 
@@ -92,7 +90,7 @@ public class VisualElimBancaActivity extends AppCompatActivity {
 
     public void onClickEdit(View view) {
         Intent modificaIntent = new Intent(getApplicationContext(), NuovoModifBancaActivity.class);
-        modificaIntent.putExtra(Constants.NOTA_CASSA, notaCassa);
+        modificaIntent.putExtra(Constants.NOTA_BANCA, notaBanca);
         //modificaIntent.putExtra("actualUser", mUser);
         startActivityForResult(modificaIntent, Constants.NOTA_EDIT);
     }
@@ -105,7 +103,7 @@ public class VisualElimBancaActivity extends AppCompatActivity {
     }
 
     public void onClickDelete(View view) {
-        volleyRequest.deleteElement("nota-cassa-del/" + notaCassa.getID());
+        volleyRequest.deleteElement("nota-banca-del/" + notaBanca.getID());
     }
 
     public void onClickAnnulla(View view) {

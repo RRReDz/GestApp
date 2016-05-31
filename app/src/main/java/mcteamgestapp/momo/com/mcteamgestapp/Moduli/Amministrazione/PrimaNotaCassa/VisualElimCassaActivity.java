@@ -46,6 +46,7 @@ public class VisualElimCassaActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        TextView cassa = (TextView) findViewById(R.id.tv_cassa);
         TextView dataOperazione = (TextView) findViewById(R.id.tv_data_operazione);
         TextView causaleContabile = (TextView) findViewById(R.id.tv_causale_contabile);
         TextView sottoconto = (TextView) findViewById(R.id.tv_sottoconto);
@@ -65,6 +66,9 @@ public class VisualElimCassaActivity extends AppCompatActivity {
         boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIMINA, true);
         notaCassa = getIntent().getParcelableExtra(Constants.NOTA_CASSA);
 
+        String[] cassaArray = getResources().getStringArray(R.array.type);
+
+        cassa.setText(cassaArray[notaCassa.getCassa()]);
         dataOperazione.setText(notaCassa.getDataPagamento());
         causaleContabile.setText(notaCassa.getCausaleContabile());
         sottoconto.setText(notaCassa.getSottoconto());

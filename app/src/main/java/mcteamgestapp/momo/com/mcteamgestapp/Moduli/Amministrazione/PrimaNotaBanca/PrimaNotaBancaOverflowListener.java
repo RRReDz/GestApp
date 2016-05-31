@@ -12,7 +12,6 @@ import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.NuovoModifCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.VisualElimCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -64,7 +63,7 @@ public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
 
             }
         };
-        popupMenu.inflate(R.menu.overflow_menu_bis);
+        popupMenu.inflate(R.menu.overflow_menu_noprint);
 
         //Force icons to show
         Object menuHelper;
