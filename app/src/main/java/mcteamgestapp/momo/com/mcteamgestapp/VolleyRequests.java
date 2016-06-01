@@ -47,6 +47,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
@@ -523,7 +524,7 @@ public class VolleyRequests {
                                         notaCassa.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
                                     //Check se campo dare è vuoto -> problema decoding
-                                    if (response.get("dare").equals("") || response.get("dare") == null)
+                                    if (response.get("dare").equals("") || response.get("dare").equals(null))
                                         notaCassa.setDare(0);
                                     else
                                         notaCassa.setDare(ToolUtils.parse(response.getString("dare")));
@@ -578,7 +579,7 @@ public class VolleyRequests {
 
     public void getPrimaNotaBancaList(final ArrayList<NotaBanca> mNotaBanca, final PrimaNotaBancaRecyclerAdapter adapter, int month, int year) {
         String url = mActivity.getString(R.string.mobile_url);
-        url += "prima-nota-cassa/" + (month + 1) + "/" + year;
+        url += "prima-nota-banca/" + (month + 1) + "/" + year;
 
         mNotaBanca.clear(); //Pulisco l'arraylist
 
@@ -589,7 +590,7 @@ public class VolleyRequests {
 
                     @Override
                     public void onResponse(JSONArray jsonArray) {
-                        PrimaNotaCassaActivity activityPrimaNota = (PrimaNotaCassaActivity) mContext;
+                        PrimaNotaBancaActivity activityPrimaNota = (PrimaNotaBancaActivity) mContext;
                         try {
                             if (jsonArray.length() == 0) {
                                 activityPrimaNota.showEmptyString(true);
@@ -608,17 +609,17 @@ public class VolleyRequests {
                                     notaBanca.setDataPagamento(ToolUtils.validateReverseDate(dataOpString) ? ToolUtils.getFormattedDate(dataOpString) : "");
 
                                     String dataValString = response.getString("data_valuta");
-                                    notaBanca.setDataPagamento(ToolUtils.validateReverseDate(dataValString) ? ToolUtils.getFormattedDate(dataValString) : "");
+                                    notaBanca.setDataValuta(ToolUtils.validateReverseDate(dataValString) ? ToolUtils.getFormattedDate(dataValString) : "");
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals(null))
+                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(null))
                                         notaBanca.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaBanca.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
                                     //Check se campo dare è vuoto -> problema decoding
-                                    if (response.get("dare").equals("") || response.get("dare") == null)
+                                    if (response.get("dare").equals("") || response.get("dare").equals(null))
                                         notaBanca.setDare(0);
                                     else
                                         notaBanca.setDare(ToolUtils.parse(response.getString("dare")));
@@ -635,10 +636,10 @@ public class VolleyRequests {
                             }
 
                             //Recupero le view per la progressbar
-                            PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
+                            //PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
                             //activity.iconRefresh(true);
-                            ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
-                            RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
+                            ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
+                            RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
                             ToolUtils.showProgress(recyclerView, progressBar, false);
 
 

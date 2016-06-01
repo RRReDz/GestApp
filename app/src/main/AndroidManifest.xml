@@ -290,19 +290,31 @@
         <activity
             android:name=".Moduli.Produzione.Consuntivi.DayConsuntivoDialog"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
         <activity
             android:name=".Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity"
             android:label="@string/title_activity_prima_nota_cassa"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Moduli.Amministrazione.PrimaNotaCassa.NuovoModifCassaActivity"
             android:label="@string/nuova_activity_prima_nota_cassa"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Moduli.Amministrazione.PrimaNotaCassa.VisualElimCassaActivity"
             android:label="@string/visulizza_activity_prima_nota_cassa"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaActivity"
+            android:label="@string/title_activity_prima_nota_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.PrimaNotaBanca.NuovoModifBancaActivity"
+            android:label="@string/nuova_activity_prima_nota_banca"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Moduli.Amministrazione.PrimaNotaBanca.VisualElimBancaActivity"
+            android:label="@string/visulizza_activity_prima_nota_banca"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.RubricaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.AllegatiActivity;
@@ -216,6 +217,16 @@ public class HomeActivity extends AppCompatActivity {
                 Intent primaNotaCassaIntent = new Intent(getApplicationContext(), PrimaNotaCassaActivity.class);
                 primaNotaCassaIntent.putExtra("actualUser", mCurrentUser);
                 startActivity(primaNotaCassaIntent);
+            }
+        });
+
+        Button primaNotaBanca = (Button) findViewById(R.id.home_prima_nota_banca);
+        primaNotaBanca.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent primaNotaBancaIntent = new Intent(getApplicationContext(), PrimaNotaBancaActivity.class);
+                primaNotaBancaIntent.putExtra("actualUser", mCurrentUser);
+                startActivity(primaNotaBancaIntent);
             }
         });
     }

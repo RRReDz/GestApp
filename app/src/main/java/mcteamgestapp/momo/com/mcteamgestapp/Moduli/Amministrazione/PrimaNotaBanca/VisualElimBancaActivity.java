@@ -44,6 +44,7 @@ public class VisualElimBancaActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        TextView gruppo = (TextView) findViewById(R.id.banca_show_gruppo);
         TextView dataOperazione = (TextView) findViewById(R.id.banca_show_dataop);
         TextView dataValuta = (TextView) findViewById(R.id.banca_show_dataval);
         TextView descrizione = (TextView) findViewById(R.id.banca_show_descr);
@@ -62,6 +63,7 @@ public class VisualElimBancaActivity extends AppCompatActivity {
         boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIMINA, true);
         notaBanca = getIntent().getParcelableExtra(Constants.NOTA_BANCA);
 
+        //gruppo.setText(); //TODO -> finire
         dataOperazione.setText(notaBanca.getDataPagamento());
         dataValuta.setText(notaBanca.getDataValuta());
         descrizione.setText(notaBanca.getDescrizione());

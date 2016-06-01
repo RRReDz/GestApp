@@ -85,7 +85,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
         }
 
         //Set recyclerview
-        mRecyclerView = (RecyclerView) findViewById(R.id.simpleRecyclerView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_banca);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mAdapterRecycler = new PrimaNotaBancaRecyclerAdapter(
                 mNotaBanca,
@@ -110,7 +110,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
         cal.setTime(date);
         int currentMonth = cal.get(Calendar.MONTH);
 
-        mMonthSpinner = (Spinner) findViewById(R.id.spinner_month);
+        mMonthSpinner = (Spinner) findViewById(R.id.spinner_month_banca);
         mMonthSpinner.setSelection(currentMonth);
 
         //ArrayAdapter<CharSequence> monthadapter = ArrayAdapter.createFromResource(
@@ -150,7 +150,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, years);
 
-        mYearsSpinner = (Spinner) findViewById(R.id.spinner_years);
+        mYearsSpinner = (Spinner) findViewById(R.id.spinner_years_banca);
         mYearsSpinner.setAdapter(adapter);
         mYearsSpinner.setSelection(currentYear - 1995);
 
@@ -298,8 +298,8 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
     }
 
     public void showEmptyString(boolean show) {
-        TextView emptyString = (TextView) findViewById(R.id.empty_string);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.simpleRecyclerView);
+        TextView emptyString = (TextView) findViewById(R.id.empty_string_banca);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_banca);
         if (show) {
             emptyString.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);

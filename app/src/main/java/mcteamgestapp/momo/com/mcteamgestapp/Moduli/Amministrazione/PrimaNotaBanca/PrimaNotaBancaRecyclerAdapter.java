@@ -64,12 +64,13 @@ public class PrimaNotaBancaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // TODO: whatever views you need to bind
-        public TextView dataOperazione, totale, descrizione;
+        public TextView dataOperazione, dataValuta, totale, descrizione;
         public ImageButton overflow;
 
         public MyViewHolder(View v) {
             super(v); // done this way instead of view tagging
             dataOperazione = (TextView) v.findViewById(R.id.banca_item_data_operazione);
+            dataValuta = (TextView) v.findViewById(R.id.banca_item_data_valuta);
             totale = (TextView) v.findViewById(R.id.banca_item_data_totale_riga);
             descrizione = (TextView) v.findViewById(R.id.banca_item_descrizione);
             overflow = (ImageButton) v.findViewById(R.id.banca_item_overflow);
@@ -80,6 +81,7 @@ public class PrimaNotaBancaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
             //System.out.println("ADAPTER RECYCLER VIEW" + item.toString());
 
             dataOperazione.setText(item.getDataPagamento());
+            dataValuta.setText(item.getDataValuta());
             descrizione.setText(item.getDescrizione());
             float tot = item.getDare() - item.getAvere();
             item.setTotale(tot);

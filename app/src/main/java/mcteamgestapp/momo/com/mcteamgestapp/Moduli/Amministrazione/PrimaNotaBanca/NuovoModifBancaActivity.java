@@ -157,8 +157,8 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
         }
 
         if (TextUtils.isEmpty(dataValuta) || !ToolUtils.validateDate(dataOperazione) ||  !ToolUtils.strDateGreaterThan(dataOperazione, dataValuta)) {
-            mDataOperazione.setError("Data errata: rispettare il formato gg-mm-aaaa e data maggiore di data operazione");
-            mDataOperazione.requestFocus();
+            mDataValuta.setError("Data errata: rispettare il formato gg-mm-aaaa e data maggiore di data operazione");
+            mDataValuta.requestFocus();
             return false;
         } else {
             try {

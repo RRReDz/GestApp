@@ -17,7 +17,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -213,7 +213,6 @@ public class ToolUtils {
 
     public static float parse(String s) {
         NumberFormat nb = NumberFormat.getInstance(Locale.GERMAN);
-
         try {
             return nb.parse(s).floatValue();
         } catch (java.text.ParseException e) {
@@ -225,8 +224,8 @@ public class ToolUtils {
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         Date newDate1, newDate2;
         try {
-            newDate1 = (Date) df.parse(date1);
-            newDate2 = (Date) df.parse(date2);
+            newDate1 = df.parse(date1);
+            newDate2 = df.parse(date2);
         } catch (java.text.ParseException e) {
             System.out.println("Stringhe inserite non sono delle date valide");
             return false;

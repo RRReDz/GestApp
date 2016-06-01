@@ -136,6 +136,7 @@ public class NotaBanca implements Parcelable {
         ID = in.readInt();
         gruppo = in.readInt();
         dataPagamento = in.readString();
+        dataValuta = in.readString();
         descrizione = in.readString();
         numeroProtocollo = in.readInt();
         dare = in.readFloat();
@@ -167,6 +168,7 @@ public class NotaBanca implements Parcelable {
         dest.writeInt(ID);
         dest.writeInt(gruppo);
         dest.writeString(dataPagamento);
+        dest.writeString(dataValuta);
         dest.writeString(descrizione);
         dest.writeInt(numeroProtocollo);
         dest.writeFloat(dare);
