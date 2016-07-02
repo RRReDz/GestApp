@@ -42,7 +42,7 @@
             <Spinner
                 android:id="@+id/spinner_gruppo_banca"
                 style="@style/spinner_style_2"
-                android:entries="@array/type" />
+                android:entries="@array/gruppo" />
         </LinearLayout>
 
         <LinearLayout

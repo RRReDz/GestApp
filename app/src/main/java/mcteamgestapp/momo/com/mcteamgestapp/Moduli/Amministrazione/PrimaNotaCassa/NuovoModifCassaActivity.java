@@ -100,8 +100,8 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             mDescrizioneMovimenti.setText(notaCassaEdit.getDescrizione());
             if (notaCassaEdit.getNumeroProtocollo() != 0)
                 mProtocollo.setText(notaCassaEdit.getNumeroProtocollo() + "");
-            mDare.setText(df.format(notaCassaEdit.getDare()));
-            mAvere.setText(df.format(notaCassaEdit.getAvere()));
+            mDare.setText(notaCassaEdit.getDare() + "");
+            mAvere.setText(notaCassaEdit.getAvere() + "");
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);

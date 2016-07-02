@@ -63,7 +63,9 @@ public class VisualElimBancaActivity extends AppCompatActivity {
         boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIMINA, true);
         notaBanca = getIntent().getParcelableExtra(Constants.NOTA_BANCA);
 
-        //gruppo.setText(); //TODO -> finire
+        String[] bancaArray = getResources().getStringArray(R.array.gruppo);
+
+        gruppo.setText(bancaArray[notaBanca.getGruppo()]);
         dataOperazione.setText(notaBanca.getDataPagamento());
         dataValuta.setText(notaBanca.getDataValuta());
         descrizione.setText(notaBanca.getDescrizione());
