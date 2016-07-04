@@ -302,6 +302,7 @@ public class RubricaNominativaActivity extends AppCompatActivity {
                 for (int i = 0; i < responseArray.length(); i++) {
                     Nominativo nominativo = new Nominativo();
                     JSONObject response = responseArray.getJSONObject(i);
+                    System.out.println(response);
                     nominativo.setID(response.getInt("ID_NOMINATIVO"));
                     nominativo.setIDSocieta(response.getInt("ID_SOCIETA"));
                     nominativo.setTitolo(response.getString("TITOLO"));

@@ -90,6 +90,7 @@ public class VolleyRequests {
                     ArrayList<Nominativo> societas = new ArrayList<>();
                     for (int i = 0; i < responseArray.length(); i++) {
                         JSONObject response = responseArray.getJSONObject(i);
+                        System.out.println(response);
                         Nominativo nominativo = gson.fromJson(response.toString(), Nominativo.class);
                         societas.add(nominativo);
                     }
@@ -156,6 +157,8 @@ public class VolleyRequests {
         String url = mContext.getString(R.string.mobile_url);
         url += route;
 
+        System.out.println("The url -> " + url);
+
         HashMap params = new HashMap();
         params.put("data", json);
 
@@ -191,6 +194,7 @@ public class VolleyRequests {
             }
         });
 
+        modifyRequestJson.setShouldCache(false);
         mRequestQueue.add(modifyRequestJson);
 
     }
@@ -235,6 +239,7 @@ public class VolleyRequests {
                 showError(true);
             }
         });
+
 
         mRequestQueue.add(modifyRequestJson);
 
@@ -574,6 +579,7 @@ public class VolleyRequests {
                     }
                 });
 
+        accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }
 
@@ -613,7 +619,7 @@ public class VolleyRequests {
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(null))
+                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.get("nr_protocollo").equals(null))
                                         notaBanca.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaBanca.setNumeroProtocollo(response.getInt("nr_protocollo"));
