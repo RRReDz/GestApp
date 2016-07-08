@@ -23,7 +23,6 @@
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                      COSA NON HO CAPITO                       ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 - Accesso ai contatti nella pagina iniziale -> Rimossa, non serve
-- Come fa comparire la barra di ricerca al click dell'icona di ricerca
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                      COSA NON SO FARE AL MOMENTO              ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 

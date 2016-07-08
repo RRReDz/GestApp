@@ -60,12 +60,25 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/et_data_operazione"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Data operazione"
-                android:text="@string/empty" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_data_operazione"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Data operazione"
+                    android:text="@string/empty" />
+
+                <Button
+                    android:id="@+id/button17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleziona data" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -83,12 +96,25 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/et_causale_contabile"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Causale contabile"
-                android:text="@string/empty" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_causale_contabile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Causale contabile"
+                    android:text="@string/empty" />
+
+                <Button
+                    android:id="@+id/button18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleziona data" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -219,8 +245,8 @@
             <Button
                 android:id="@+id/bAnnulla"
                 style="@style/button_annulla"
-                android:onClick="onClickAnnulla"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:onClick="onClickAnnulla" />
 
             <Button
                 android:id="@+id/bCrea"

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -221,9 +222,9 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_refresh:
-                //iconRefresh(false); //Disabilito l'icona di refresh per permettere la richiesta asincrona
+                iconRefresh(false); //Disabilito l'icona di refresh per permettere la richiesta asincrona
                 onRestart();
-                Toast.makeText(getApplicationContext(), "Activity refreshed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Dati aggiornati", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_home:
                 goHome();
@@ -246,7 +247,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
     }
 
     public void iconRefresh(boolean enable) {
-        MenuItem refresh = (MenuItem) findViewById(R.id.action_refresh);
+        ActionMenuItemView refresh = (ActionMenuItemView) findViewById(R.id.action_refresh);
         if (enable)
             refresh.setEnabled(true);
         else

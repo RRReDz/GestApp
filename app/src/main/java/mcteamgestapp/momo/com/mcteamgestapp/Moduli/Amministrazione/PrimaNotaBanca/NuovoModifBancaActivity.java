@@ -87,8 +87,8 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             mDescrizioneMovimenti.setText(notaBancaEdit.getDescrizione());
             if (notaBancaEdit.getNumeroProtocollo() != 0)
                 mProtocollo.setText(notaBancaEdit.getNumeroProtocollo() + "");
-            mDare.setText(df.format(notaBancaEdit.getDare()));
-            mAvere.setText(df.format(notaBancaEdit.getAvere()));
+            mDare.setText(notaBancaEdit.getDare() + "");
+            mAvere.setText(notaBancaEdit.getAvere() + "");
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);
@@ -157,7 +157,7 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
         }
 
         if (TextUtils.isEmpty(dataValuta) || !ToolUtils.validateDate(dataOperazione) ||  !ToolUtils.strDateGreaterThan(dataOperazione, dataValuta)) {
-            mDataValuta.setError("Data errata: rispettare il formato gg-mm-aaaa e data maggiore di data operazione");
+            mDataValuta.setError("Data errata: rispettare il formato gg-mm-aaaa e DATA VALUTA maggiore di DATA OPERAZIONE");
             mDataValuta.requestFocus();
             return false;
         } else {

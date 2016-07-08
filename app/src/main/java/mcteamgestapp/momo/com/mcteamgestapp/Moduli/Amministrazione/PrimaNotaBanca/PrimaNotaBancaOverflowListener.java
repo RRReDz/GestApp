@@ -45,15 +45,15 @@ public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
             public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item){
                 switch (item.getItemId()){
                     case R.id.menu_action_elimina:
-                        Intent eliminaIntent = new Intent(mContext, VisualElimCassaActivity.class);
-                        eliminaIntent.putExtra(Constants.NOTA_CASSA, mElement);
+                        Intent eliminaIntent = new Intent(mContext, VisualElimBancaActivity.class);
+                        eliminaIntent.putExtra(Constants.NOTA_BANCA, mElement);
                         eliminaIntent.putExtra(Constants.VISUAL_ELIMINA, false);
                         //eliminaIntent.putExtra("actualUser", mUser);
                         ((Activity)mContext).startActivityForResult(eliminaIntent, Constants.NOTA_DELETE);
                         return true;
                     case R.id.menu_action_modifica:
-                        Intent modificaIntent = new Intent(mContext, NuovoModifCassaActivity.class);
-                        modificaIntent.putExtra(Constants.NOTA_CASSA, mElement);
+                        Intent modificaIntent = new Intent(mContext, VisualElimBancaActivity.class);
+                        modificaIntent.putExtra(Constants.NOTA_BANCA, mElement);
                         //modificaIntent.putExtra("actualUser", mUser);
                         ((Activity)mContext).startActivityForResult(modificaIntent, Constants.NOTA_EDIT);
                         return true;
