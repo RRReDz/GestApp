@@ -208,6 +208,7 @@ public class RubricaNominativaActivity extends AppCompatActivity {
             }
         });
 
+        accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }
 

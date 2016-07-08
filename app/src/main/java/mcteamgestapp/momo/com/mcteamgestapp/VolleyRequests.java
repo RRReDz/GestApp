@@ -112,6 +112,7 @@ public class VolleyRequests {
             }
         });
 
+        accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }
 
@@ -150,6 +151,7 @@ public class VolleyRequests {
             }
         });
 
+        accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }
 
@@ -240,7 +242,7 @@ public class VolleyRequests {
             }
         });
 
-
+        modifyRequestJson.setShouldCache(false);
         mRequestQueue.add(modifyRequestJson);
 
     }
@@ -384,6 +386,7 @@ public class VolleyRequests {
             }
         });
 
+        deleteRequestJson.setShouldCache(false);
         mRequestQueue.add(deleteRequestJson);
     }
 
@@ -421,6 +424,7 @@ public class VolleyRequests {
             }
         });
 
+        accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }
 
@@ -675,10 +679,11 @@ public class VolleyRequests {
                     }
                 });
 
+        accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }
 
-    public void AddNewNotaCassa(String json) {
+    /*public void AddNewNotaCassa(String json) {
         String url = mActivity.getString(R.string.mobile_url);
         url += "nota-cassa-nuovo";
 
@@ -711,7 +716,7 @@ public class VolleyRequests {
         });
 
         mRequestQueue.add(modifyRequestJson);
-    }
+    }*/
 
     public void buildFilePart(DataOutputStream dos, byte[] fileData, String filename) throws IOException {
         dos.writeBytes(twoHyphens + boundary + lineEnd);
