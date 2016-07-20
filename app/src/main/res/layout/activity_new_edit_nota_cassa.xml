@@ -76,7 +76,8 @@
                     android:id="@+id/button17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Seleziona data" />
+                    android:text="Seleziona data"
+                    android:onClick="onClickSelData"/>
             </LinearLayout>
 
         </LinearLayout>

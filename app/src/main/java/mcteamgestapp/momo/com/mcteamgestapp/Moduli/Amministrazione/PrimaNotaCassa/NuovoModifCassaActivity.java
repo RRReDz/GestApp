@@ -2,6 +2,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCas
 
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
@@ -126,6 +128,11 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+    }
+
+    public void onClickSelData(View view) {
+        DialogFragment dialogFragment = new DatePickerFragment();
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     private void attemptEdit() throws ParseException {
