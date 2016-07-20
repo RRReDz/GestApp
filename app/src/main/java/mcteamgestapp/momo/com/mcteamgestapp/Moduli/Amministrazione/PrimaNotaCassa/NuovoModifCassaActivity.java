@@ -2,6 +2,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCas
 
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,13 +26,16 @@ import org.apache.poi.util.StringUtil;
 
 import java.math.RoundingMode;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
@@ -44,7 +48,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
 public class NuovoModifCassaActivity extends AppCompatActivity {
 
     private Spinner mType;
-    private EditText mDataOperazione;
+    private TextView mDataOperazione;
     private EditText mCausaleContabile;
     private EditText mSottoconto;
     private EditText mDescrizioneMovimenti;
@@ -73,7 +77,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         }
 
         mType = (Spinner) findViewById(R.id.spinner_type_nota_cassa);
-        mDataOperazione = (EditText) findViewById(R.id.et_data_operazione);
+        mDataOperazione = (TextView) findViewById(R.id.et_data_operazione);
         mCausaleContabile = (EditText) findViewById(R.id.et_causale_contabile);
         mSottoconto = (EditText) findViewById(R.id.et_sottoconto);
         mDescrizioneMovimenti = (EditText) findViewById(R.id.et_descrizione_movimenti);
@@ -108,6 +112,9 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Calendar cal = Calendar.getInstance();
+            mDataOperazione.setText(dateFormat.format(cal.getTime()));
         }
 
     }
@@ -126,6 +133,11 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+    }
+
+    public void onClickSelData(View view) {
+        DialogFragment dialogFragment = new DatePickerFragment(mDataOperazione);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     private void attemptEdit() throws ParseException {

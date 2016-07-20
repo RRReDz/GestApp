@@ -60,13 +60,35 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/banca_dataop"
+            <RelativeLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="gg-mm-yy"
-                android:inputType="date"
-                android:text="@string/empty" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/banca_dataop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="gg-mm-yy"
+                    android:inputType="date"
+                    android:text="@string/empty"
+                    android:layout_toLeftOf="@+id/button18"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleziona data"
+                    android:id="@+id/button18"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -84,13 +106,34 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/banca_dataval"
+            <RelativeLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="gg-mm-yy"
-                android:inputType="date"
-                android:text="@string/empty" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/banca_dataval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="gg-mm-yy"
+                    android:inputType="date"
+                    android:text="@string/empty"
+                    android:layout_toLeftOf="@+id/button19"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleziona data"
+                    android:id="@+id/button19"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <LinearLayout
