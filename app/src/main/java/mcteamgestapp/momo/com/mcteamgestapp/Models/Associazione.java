@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
-
 /**
  * Created by meddaakouri on 27/01/2016.
  */

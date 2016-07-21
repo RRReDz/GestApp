@@ -28,7 +28,6 @@ import java.util.Date;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
@@ -43,9 +42,10 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
 
     //Array list per note banca
     private ArrayList<NotaBanca> mNotaBanca;
-    private ArrayList<NotaBanca> mNotaBancaOriginal;
+
     //Recyclerview lista delle note
     private RecyclerView mRecyclerView;
+
     //Adapter recyclerview
     private PrimaNotaBancaRecyclerAdapter mAdapterRecycler;
 
@@ -56,8 +56,10 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
 
     //Vista di overlay quando si clicca il fam
     private View mOverlay;
+
     //FAM
     private FloatingActionsMenu mFam;
+
     //per richiesta volley
     private VolleyRequests mVolleyRequest;
 

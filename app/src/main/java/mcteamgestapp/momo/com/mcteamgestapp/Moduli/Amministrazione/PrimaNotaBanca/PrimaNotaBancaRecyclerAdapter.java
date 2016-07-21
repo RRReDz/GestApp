@@ -11,7 +11,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
 
@@ -28,7 +27,6 @@ public class PrimaNotaBancaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
 
     private final OnItemClickListener listener;
     private final ArrayList<NotaBanca> items;
-    private TextView emptyView;
 
     public PrimaNotaBancaRecyclerAdapter(ArrayList<NotaBanca> items, OnItemClickListener listener) {
         this.listener = listener;

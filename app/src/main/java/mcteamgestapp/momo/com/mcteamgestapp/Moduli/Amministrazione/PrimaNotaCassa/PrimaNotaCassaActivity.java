@@ -1,20 +1,16 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.menu.ActionMenuItemView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +21,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
@@ -48,7 +43,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
 
     //Array list per note cassa
     private ArrayList<NotaCassa> mNotaCassa;
-    private ArrayList<NotaCassa> mNotaCassaOriginal;
+
     //Recyclerview lista delle note
     private RecyclerView mRecyclerView;
     //Adapter recyclerview
@@ -244,6 +239,24 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
 
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case Constants.REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    this.printAll();
+                } else {
+                    // Permission Denied
+                    Toast.makeText(this, "Non hai autorizzato i permessi.", Toast.LENGTH_SHORT)
+                            .show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
     //0 -> gennaio ...
     private void updateList(int month, int year, int opType) {
         mVolleyRequest.getPrimaNotaCassaList(mNotaCassa, mAdapterRecycler, month, year, opType); //Invio una nuova richiesta
@@ -318,6 +331,12 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
 
     public void onClickStampa(View view) {
         mFam.collapse();
+        ToolUtils.checkPermissions(this);
+        printAll();
+
+    }
+
+    private void printAll() {
         String type = (String) mTypeSpinner.getSelectedItem();
         String month = (String) mMonthSpinner.getSelectedItem();
         String year = (String) mYearsSpinner.getSelectedItem();

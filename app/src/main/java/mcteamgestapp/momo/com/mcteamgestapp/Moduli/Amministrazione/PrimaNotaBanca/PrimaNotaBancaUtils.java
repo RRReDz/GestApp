@@ -36,7 +36,6 @@ import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 
 /**
  * Created by Riccardo Rossi on 24/05/2016.

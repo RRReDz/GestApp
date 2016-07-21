@@ -1,17 +1,13 @@
 package mcteamgestapp.momo.com.mcteamgestapp;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.os.Parcel;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
@@ -24,7 +20,6 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
-import org.apache.poi.util.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,11 +31,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
@@ -52,7 +44,6 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanc
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.AllegatiListAdapter;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.RubricaNominativaListAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
 
 
@@ -489,6 +480,9 @@ public class VolleyRequests {
 
         mNotaCassa.clear(); //Pulisco l'arraylist
 
+        PrimaNotaCassaActivity activityPrimaNota = (PrimaNotaCassaActivity) mContext;
+        activityPrimaNota.showEmptyString(false);
+
         System.out.println("the url -> " + url);
 
         final CustomRequest accessiRequest = new CustomRequest(url, null,
@@ -549,10 +543,7 @@ public class VolleyRequests {
                                 adapter.notifyDataSetChanged();
                             }
 
-                            //Recupero le view per la progressbar
-                            PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
-
-                            activity.iconRefresh(true);
+                            activityPrimaNota.iconRefresh(true);
 
                             ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                             RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
@@ -569,22 +560,19 @@ public class VolleyRequests {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // As of f605da3 the following should work
-                        NetworkResponse response = error.networkResponse;
-                        if (error instanceof ServerError && response != null) {
-                            try {
-                                String res = new String(response.data,
-                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-                                // Now you can use any deserializer to make sense of data
-                                System.out.println(res);
-                            } catch (UnsupportedEncodingException e1) {
-                                // Couldn't properly decode data to string
-                                e1.printStackTrace();
-                            }
-                        }
+                        error.printStackTrace();
+                        Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
+                        RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
+                        ToolUtils.showProgress(recyclerView, progressBar, false);
                     }
                 });
 
+        /*accessiRequest.setRetryPolicy(new DefaultRetryPolicy(
+                Constants.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));*/
         accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
     }

@@ -8,7 +8,6 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.itextpdf.awt.geom.CubicCurve2D;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -21,7 +20,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFHeader;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
@@ -38,7 +36,6 @@ import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 
 /**
  * Created by Riccardo Rossi on 24/05/2016.

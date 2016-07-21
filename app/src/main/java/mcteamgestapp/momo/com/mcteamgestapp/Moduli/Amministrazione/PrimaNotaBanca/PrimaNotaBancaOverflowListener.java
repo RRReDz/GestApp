@@ -12,8 +12,6 @@ import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.NuovoModifCassaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.VisualElimCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
@@ -52,7 +50,7 @@ public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
                         ((Activity)mContext).startActivityForResult(eliminaIntent, Constants.NOTA_DELETE);
                         return true;
                     case R.id.menu_action_modifica:
-                        Intent modificaIntent = new Intent(mContext, VisualElimBancaActivity.class);
+                        Intent modificaIntent = new Intent(mContext, NuovoModifBancaActivity.class);
                         modificaIntent.putExtra(Constants.NOTA_BANCA, mElement);
                         //modificaIntent.putExtra("actualUser", mUser);
                         ((Activity)mContext).startActivityForResult(modificaIntent, Constants.NOTA_EDIT);

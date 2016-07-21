@@ -16,8 +16,6 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
-import java.text.DecimalFormat;
-
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -55,10 +53,6 @@ public class VisualElimCassaActivity extends AppCompatActivity {
         TextView dare = (TextView) findViewById(R.id.tv_dare);
         TextView avere = (TextView) findViewById(R.id.tv_avere);
         TextView totale = (TextView) findViewById(R.id.tv_totale);
-        BootstrapButton bModificaV = (BootstrapButton) findViewById(R.id.b_visual_modifica);
-        BootstrapButton bEliminaV = (BootstrapButton) findViewById(R.id.b_visual_elimina);
-        Button bAnnullaE = (Button) findViewById(R.id.b_elim_annulla);
-        Button bElimE = (Button) findViewById(R.id.b_elim_elim);
 
         LinearLayout layoutVisual = (LinearLayout) findViewById(R.id.layout_visual);
         LinearLayout layoutElim = (LinearLayout) findViewById(R.id.layout_elim);

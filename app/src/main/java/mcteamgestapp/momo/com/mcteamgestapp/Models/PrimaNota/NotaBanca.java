@@ -92,16 +92,8 @@ public class NotaBanca implements Parcelable {
         this.numeroProtocollo = numeroProtocollo;
     }
 
-    public String getDareDb() {
-        return dareDb;
-    }
-
     public void setDareDb(String dareDb) {
         this.dareDb = dareDb;
-    }
-
-    public String getAvereDb() {
-        return avereDb;
     }
 
     public void setAvereDb(String avereDb) {

@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -20,8 +21,8 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
 import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
@@ -33,13 +34,12 @@ import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
 public class NuovoModifBancaActivity extends AppCompatActivity {
 
     private Spinner mGruppo;
-    private EditText mDataOperazione;
-    private EditText mDataValuta;
+    private TextView mDataOperazione;
+    private TextView mDataValuta;
     private EditText mDescrizioneMovimenti;
     private EditText mProtocollo;
     private EditText mDare;
     private EditText mAvere;
-    private Button mButtonAnnulla;
     private Button mButtonCrea;
     private Button mButtonModifica;
     private VolleyRequests mVolleyRequest;
@@ -61,13 +61,12 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
         }
 
         mGruppo = (Spinner) findViewById(R.id.spinner_gruppo_banca);
-        mDataOperazione = (EditText) findViewById(R.id.banca_dataop);
-        mDataValuta = (EditText) findViewById(R.id.banca_dataval);
+        mDataOperazione = (TextView) findViewById(R.id.banca_dataop);
+        mDataValuta = (TextView) findViewById(R.id.banca_dataval);
         mDescrizioneMovimenti = (EditText) findViewById(R.id.banca_descr);
         mProtocollo = (EditText) findViewById(R.id.banca_prot);
         mDare = (EditText) findViewById(R.id.banca_dare);
         mAvere = (EditText) findViewById(R.id.banca_avere);
-        mButtonAnnulla = (Button) findViewById(R.id.banca_b_annulla);
         mButtonCrea = (Button) findViewById(R.id.banca_b_crea);
         mButtonModifica = (Button) findViewById(R.id.banca_b_modifica);
         mVolleyRequest = new VolleyRequests(this, this);
@@ -110,6 +109,15 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+    }
+
+    public void onClickSelData(View view) {
+        DatePickerFragment dpf;
+        if (view.getId() == R.id.banca_dataop_but)
+            dpf = new DatePickerFragment(mDataOperazione);
+        else
+            dpf = new DatePickerFragment(mDataValuta);
+        dpf.show(getFragmentManager(), "datePicker");
     }
 
     private void attemptEdit() throws ParseException {
@@ -156,7 +164,7 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             }
         }
 
-        if (TextUtils.isEmpty(dataValuta) || !ToolUtils.validateDate(dataOperazione) ||  !ToolUtils.strDateGreaterThan(dataOperazione, dataValuta)) {
+        if (TextUtils.isEmpty(dataValuta) || !ToolUtils.validateDate(dataOperazione) || !ToolUtils.strDateGreaterThan(dataOperazione, dataValuta)) {
             mDataValuta.setError("Data errata: rispettare il formato gg-mm-aaaa e DATA VALUTA maggiore di DATA OPERAZIONE");
             mDataValuta.requestFocus();
             return false;

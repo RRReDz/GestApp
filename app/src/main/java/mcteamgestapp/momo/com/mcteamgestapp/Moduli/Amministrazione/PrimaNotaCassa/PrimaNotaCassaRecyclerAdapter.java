@@ -1,6 +1,5 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
+
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -30,7 +28,6 @@ public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
 
     private final OnItemClickListener listener;
     private final ArrayList<NotaCassa> items;
-    private TextView emptyView;
 
     public PrimaNotaCassaRecyclerAdapter(ArrayList<NotaCassa> items, OnItemClickListener listener) {
         this.listener = listener;

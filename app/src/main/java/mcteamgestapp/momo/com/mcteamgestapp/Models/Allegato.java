@@ -5,8 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.sql.SQLData;
-
 /**
  * Created by meddaakouri on 18/01/2016.
  */

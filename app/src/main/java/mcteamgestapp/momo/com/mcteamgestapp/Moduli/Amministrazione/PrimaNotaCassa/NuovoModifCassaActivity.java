@@ -1,7 +1,6 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
 
 import android.annotation.TargetApi;
-import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -13,26 +12,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.itextpdf.awt.geom.CubicCurve2D;
-import com.itextpdf.text.pdf.StringUtils;
 
-import org.apache.poi.util.StringUtil;
-
-import java.math.RoundingMode;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
@@ -55,7 +45,6 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
     private EditText mProtocollo;
     private EditText mDare;
     private EditText mAvere;
-    private Button mButtonAnnulla;
     private Button mButtonCrea;
     private Button mButtonModifica;
     private VolleyRequests mVolleyRequest;
@@ -84,7 +73,6 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         mProtocollo = (EditText) findViewById(R.id.et_protocollo);
         mDare = (EditText) findViewById(R.id.et_dare);
         mAvere = (EditText) findViewById(R.id.et_avere);
-        mButtonAnnulla = (Button) findViewById(R.id.bAnnulla);
         mButtonCrea = (Button) findViewById(R.id.bCrea);
         mButtonModifica = (Button) findViewById(R.id.bModifica);
         mVolleyRequest = new VolleyRequests(this, this);
@@ -170,7 +158,6 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         String descrizione = mDescrizioneMovimenti.getText().toString();
         String dare = mDare.getText().toString();
         String avere = mAvere.getText().toString();
-        String protocollo = mProtocollo.getText().toString();
 
         if (TextUtils.isEmpty(dataOperazione) || !ToolUtils.validateDate(dataOperazione)) {
             mDataOperazione.setError("Data mancante o errata: rispettare il formato gg-mm-aaaa");
