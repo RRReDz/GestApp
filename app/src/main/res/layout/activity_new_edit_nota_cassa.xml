@@ -41,7 +41,7 @@
 
             <Spinner
                 android:id="@+id/spinner_type_nota_cassa"
-                style="@style/spinner_style_2"
+                style="@style/spinner_style_cassa"
                 android:entries="@array/type" />
         </LinearLayout>
 
@@ -69,23 +69,24 @@
                     android:id="@+id/et_data_operazione"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
-                    android:paddingLeft="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    android:paddingLeft="5dp"
+                    android:text="12-02-2016"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
 
                 <Button
                     android:id="@+id/button17"
-                    android:layout_width="150dp"
-                    android:elevation="40dp"
+                    android:layout_width="120dp"
                     android:layout_height="30dp"
-                    android:onClick="onClickSelData"
-                    android:text="Seleziona data"
-                    android:background="@drawable/date_picker"
-                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/date_picker"
+                    android:onClick="onClickSelData"
+                    android:text="Seleziona" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -155,7 +156,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="DESCRIZIONE"
+                android:text="DESCRIZIONE *"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -202,7 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="DARE(€)"
+                android:text="DARE(€) *"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -226,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="AVERE(€)"
+                android:text="AVERE(€) *"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 

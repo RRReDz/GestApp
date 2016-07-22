@@ -10,6 +10,9 @@
                     <padding android:right="5dp" />
                 </shape>
             </item>
+            <item>
+                <bitmap android:gravity="right" android:src="@drawable/ic_date_range"></bitmap>
+            </item>
         </layer-list>
     </item>
 </selector>

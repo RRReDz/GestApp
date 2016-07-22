@@ -301,23 +301,25 @@ public class RubricaSocietaActivity extends AppCompatActivity {
                 for (int i = 0; i < responseArray.length(); i++) {
                     Societa societa = new Societa();
                     JSONObject response = responseArray.getJSONObject(i);
-                    societa.setID(response.getInt("ID_CLIENTE"));
-                    societa.setCodiceSocieta(response.getInt("ID"));
-                    societa.setNomeSocietà(response.getString("SOCIETA"));
-                    societa.setIndirizzo(response.getString("INDIRIZZO"));
-                    societa.setCap(response.getString("CAP"));
-                    societa.setSito(response.getString("WWW"));
-                    societa.setmProvincia(response.getString("PROVINCIA"));
-                    societa.setStato(response.getString("STATO"));
-                    societa.setmFax(response.getString("FAX"));
-                    societa.setmCitta(response.getString("CITTA"));
-                    societa.setPartitaIva(response.getString("IVA"));
-                    societa.setmTelefono(response.getString("TELEFONO"));
-                    societa.setCOD_FISCALE(response.getString("COD_FISCALE"));
-                    societa.setmCellulare(response.getString("CELLULARE"));
-                    societa.setNote(response.getString("NOTE"));
-                    societa.setmTipologia(response.getString("TIPOLOGIA"));
-                    societas.add(societa);
+                    if(!response.getString("SOCIETA").equals("")) {
+                        societa.setID(response.getInt("ID_CLIENTE"));
+                        societa.setCodiceSocieta(response.getInt("ID"));
+                        societa.setNomeSocietà(response.getString("SOCIETA"));
+                        societa.setIndirizzo(response.getString("INDIRIZZO"));
+                        societa.setCap(response.getString("CAP"));
+                        societa.setSito(response.getString("WWW"));
+                        societa.setmProvincia(response.getString("PROVINCIA"));
+                        societa.setStato(response.getString("STATO"));
+                        societa.setmFax(response.getString("FAX"));
+                        societa.setmCitta(response.getString("CITTA"));
+                        societa.setPartitaIva(response.getString("IVA"));
+                        societa.setmTelefono(response.getString("TELEFONO"));
+                        societa.setCOD_FISCALE(response.getString("COD_FISCALE"));
+                        societa.setmCellulare(response.getString("CELLULARE"));
+                        societa.setNote(response.getString("NOTE"));
+                        societa.setmTipologia(response.getString("TIPOLOGIA"));
+                        societas.add(societa);
+                    }
                 }
                 updateList(societas);
                 mSearchList = societas;

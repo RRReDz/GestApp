@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="120dp"
     android:background="@drawable/customborder"
     android:clickable="true"
     android:focusable="true">
@@ -14,32 +14,31 @@
         android:paddingLeft="10dp">
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/banca_item_descrizione"
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/banca_item_overflow"
-            android:layout_toStartOf="@+id/banca_item_overflow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="left|center_vertical"
             android:text="Pagato fattura nr. 2 del 05/02/2015 a Ferramenta da Cottone Mario"
             android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/banca_item_overflow"
+            android:layout_toStartOf="@+id/banca_item_overflow" />
 
         <ImageButton
             android:id="@+id/banca_item_overflow"
-            android:layout_width="70dp"
-            android:layout_height="match_parent"
-            android:layout_alignBottom="@+id/banca_item_descrizione"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@color/transparent"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:src="@drawable/ic_more_vert_black_24dp" />
+            android:src="@drawable/ic_more_vert_black_24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -47,22 +46,9 @@
             android:layout_below="@+id/banca_item_descrizione"
             android:layout_toEndOf="@+id/linearLayout12"
             android:layout_toRightOf="@+id/linearLayout12"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout13">
 
-            <TextView
-                android:id="@+id/textView124"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Totale: " />
-
-            <TextView
-                android:id="@+id/banca_item_data_totale_riga"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="+300.000,00€"
-                android:textColor="@color/blu_eletric" />
         </LinearLayout>
 
 
@@ -85,20 +71,6 @@
                 android:layout_below="@+id/banca_item_descrizione"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView139"
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Data op:" />
-
-                <TextView
-                    android:id="@+id/banca_item_data_operazione"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="11-02-2016"
-                    android:textStyle="bold" />
             </LinearLayout>
 
 
@@ -106,24 +78,70 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textView141"
-                    android:layout_width="85dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/linearLayout11"
-                    android:text="Data valuta:" />
-
-                <TextView
-                    android:id="@+id/banca_item_data_valuta"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="15-02-2016"
-                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView124"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Totale: "
+            android:layout_alignTop="@+id/banca_item_data_totale_riga"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/banca_item_data_totale_riga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="+300.000,00€"
+            android:textColor="@color/blu_eletric"
+            android:layout_below="@+id/banca_item_data_valuta"
+            android:layout_alignLeft="@+id/banca_item_data_valuta"
+            android:layout_alignStart="@+id/banca_item_data_valuta" />
+
+        <TextView
+            android:id="@+id/textView141"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:text="Data valuta:"
+            android:layout_alignBottom="@+id/banca_item_overflow"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/banca_item_data_valuta"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="15-02-2016"
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/textView141"
+            android:layout_alignLeft="@+id/banca_item_data_operazione"
+            android:layout_alignStart="@+id/banca_item_data_operazione" />
+
+        <TextView
+            android:id="@+id/textView139"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Data op:"
+            android:layout_above="@+id/textView141"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/banca_item_data_operazione"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="11-02-2016"
+            android:textStyle="bold"
+            android:layout_above="@+id/banca_item_data_valuta"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 </LinearLayout>

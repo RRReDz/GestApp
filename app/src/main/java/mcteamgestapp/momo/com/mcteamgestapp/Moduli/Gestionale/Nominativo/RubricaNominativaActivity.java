@@ -96,6 +96,8 @@ public class RubricaNominativaActivity extends AppCompatActivity {
 
         mRubricaAdapter = new RubricaNominativaListAdapter(this, mRubricaNominativo, actualUser);
 
+        mRubricaListaView.setFastScrollEnabled(true);
+
         mRubricaListaView.setAdapter(mRubricaAdapter);
 
         mOverlay = findViewById(R.id.nominativi_overlay);

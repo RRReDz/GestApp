@@ -2,6 +2,7 @@ package mcteamgestapp.momo.com.mcteamgestapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,7 +35,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
@@ -43,27 +43,27 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanc
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.AllegatiListAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
 
 
 /**
- * Created by meddaakouri on 18/12/2015.
+ * @author Created by Riccardo on 18/12/2015.
  */
 public class VolleyRequests {
 
     Context mContext;
     RequestQueue mRequestQueue;
-    Gson gson;
+    Gson gson = new Gson();
     AlertDialog.Builder dialogBuilder;
     Activity mActivity;
     boolean isShowing = false;
+    ProgressDialog mWaiting;
 
     public VolleyRequests(Context context, Activity activity) {
         mContext = context;
         mRequestQueue = Volley.newRequestQueue(context);
-        gson = new Gson();
         dialogBuilder = new AlertDialog.Builder(context);
+        mWaiting = new ProgressDialog(context);
         mActivity = activity;
     }
 
@@ -152,10 +152,12 @@ public class VolleyRequests {
 
         System.out.println("The url -> " + url);
 
-        HashMap params = new HashMap();
+        HashMap<String, String> params = new HashMap<>();
         params.put("data", json);
 
         System.out.println(json);
+
+        showWaitingDialog(true); //Mostra dialog caricamento
 
         dialogBuilder.setTitle("Inserimento nuovo valore");
 
@@ -196,7 +198,7 @@ public class VolleyRequests {
         String url = mContext.getString(R.string.mobile_url);
         url += route;
 
-        HashMap params = new HashMap();
+        HashMap<String, String> params = new HashMap<>();
         params.put("data", json);
 
         System.out.println(json);
@@ -240,6 +242,7 @@ public class VolleyRequests {
 
     private void showError(boolean error) {
         dialogBuilder = new AlertDialog.Builder(mContext);
+        showWaitingDialog(false); //Dismette dialog caricamento
         if (error) {
             dialogBuilder.setTitle("Errore");
             dialogBuilder.setMessage("Operazione fallita");
@@ -247,7 +250,6 @@ public class VolleyRequests {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     isShowing = false;
-                    return;
                 }
             });
             AlertDialog dialog = dialogBuilder.create();
@@ -267,7 +269,6 @@ public class VolleyRequests {
                         mActivity.getParent().setResult(Activity.RESULT_OK, data);
                     }
                     mActivity.finish();
-                    return;
                 }
             });
             AlertDialog dialog = dialogBuilder.create();
@@ -282,6 +283,7 @@ public class VolleyRequests {
     }
 
     private void showError(boolean error, String type) {
+
         dialogBuilder = new AlertDialog.Builder(mContext);
         if (error) {
             dialogBuilder.setTitle("Errore");
@@ -290,7 +292,6 @@ public class VolleyRequests {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     isShowing = false;
-                    return;
                 }
             });
             AlertDialog dialog = dialogBuilder.create();
@@ -311,7 +312,6 @@ public class VolleyRequests {
                         mActivity.getParent().setResult(Activity.RESULT_OK, data);
                     }
                     mActivity.finish();
-                    return;
                 }
             });
             AlertDialog dialog = dialogBuilder.create();
@@ -330,6 +330,7 @@ public class VolleyRequests {
         dialogBuilder.setPositiveButton("Elimina", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                showWaitingDialog(true);
                 attemptDelete(path);
             }
         });
@@ -337,7 +338,6 @@ public class VolleyRequests {
         dialogBuilder.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                return;
             }
         });
 
@@ -381,7 +381,7 @@ public class VolleyRequests {
         mRequestQueue.add(deleteRequestJson);
     }
 
-    public void getAllegatiList(final ArrayList<Allegato> list, final AllegatiListAdapter adapter) {
+    /*public void getAllegatiList(final ArrayList<Allegato> list, final AllegatiListAdapter adapter) {
         String url = mContext.getString(R.string.mobile_url);
         url += "allegati";
 
@@ -417,7 +417,7 @@ public class VolleyRequests {
 
         accessiRequest.setShouldCache(false);
         mRequestQueue.add(accessiRequest);
-    }
+    }*/
 
     String twoHyphens = "--";
     String lineEnd = "\r\n";
@@ -495,7 +495,6 @@ public class VolleyRequests {
                             if (jsonArray.length() == 0) {
                                 activityPrimaNota.showEmptyString(true);
                             } else {
-                                activityPrimaNota.showEmptyString(false);
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject response = jsonArray.getJSONObject(i);
                                     System.out.println(response.toString());
@@ -521,19 +520,19 @@ public class VolleyRequests {
 
                                     notaCassa.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals(null))
+                                    if (response.get("nr_protocollo").equals("null"))
                                         notaCassa.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaCassa.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
                                     //Check se campo dare è vuoto -> problema decoding
-                                    if (response.get("dare").equals("") || response.get("dare").equals(null))
+                                    if (response.get("dare").equals("") || response.get("dare").equals("null"))
                                         notaCassa.setDare(0);
                                     else
                                         notaCassa.setDare(ToolUtils.parse(response.getString("dare")));
 
 
-                                    if (response.get("avere").equals("") || response.get("avere").equals(null))
+                                    if (response.get("avere").equals("") || response.get("avere").equals("null"))
                                         notaCassa.setAvere(0);
                                     else
                                         notaCassa.setAvere(ToolUtils.parse(response.getString("avere")));
@@ -547,7 +546,7 @@ public class VolleyRequests {
 
                             ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                             RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
-                            ToolUtils.showProgress(recyclerView, progressBar, false);
+                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
@@ -565,7 +564,7 @@ public class VolleyRequests {
 
                         ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                         RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
-                        ToolUtils.showProgress(recyclerView, progressBar, false);
+                        ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                     }
                 });
 
@@ -585,6 +584,9 @@ public class VolleyRequests {
 
         System.out.println("the url -> " + url);
 
+        PrimaNotaBancaActivity activityPrimaNota = (PrimaNotaBancaActivity) mContext;
+        activityPrimaNota.showEmptyString(false);
+
         final CustomRequest accessiRequest = new CustomRequest(url, null,
                 new Response.Listener<JSONArray>() {
 
@@ -595,7 +597,6 @@ public class VolleyRequests {
                             if (jsonArray.length() == 0) {
                                 activityPrimaNota.showEmptyString(true);
                             } else {
-                                activityPrimaNota.showEmptyString(false);
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject response = jsonArray.getJSONObject(i);
                                     System.out.println(response.toString());
@@ -613,19 +614,19 @@ public class VolleyRequests {
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.get("nr_protocollo").equals(null))
+                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.get("nr_protocollo").equals("null"))
                                         notaBanca.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaBanca.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
                                     //Check se campo dare è vuoto -> problema decoding
-                                    if (response.get("dare").equals("") || response.get("dare").equals(null))
+                                    if (response.get("dare").equals("") || response.get("dare").equals("null"))
                                         notaBanca.setDare(0);
                                     else
                                         notaBanca.setDare(ToolUtils.parse(response.getString("dare")));
 
 
-                                    if (response.get("avere").equals("") || response.get("avere").equals(null))
+                                    if (response.get("avere").equals("") || response.get("avere").equals("null"))
                                         notaBanca.setAvere(0);
                                     else
                                         notaBanca.setAvere(ToolUtils.parse(response.getString("avere")));
@@ -640,7 +641,7 @@ public class VolleyRequests {
                             //activity.iconRefresh(true);
                             ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
                             RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
-                            ToolUtils.showProgress(recyclerView, progressBar, false);
+                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
@@ -653,19 +654,12 @@ public class VolleyRequests {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // As of f605da3 the following should work
-                        NetworkResponse response = error.networkResponse;
-                        if (error instanceof ServerError && response != null) {
-                            try {
-                                String res = new String(response.data,
-                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-                                // Now you can use any deserializer to make sense of data
-                                System.out.println(res);
-                            } catch (UnsupportedEncodingException e1) {
-                                // Couldn't properly decode data to string
-                                e1.printStackTrace();
-                            }
-                        }
+                        error.printStackTrace();
+                        Toast.makeText(mContext, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
+                        RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
+                        ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                     }
                 });
 
@@ -764,25 +758,25 @@ public class VolleyRequests {
         byte bytes[] = new byte[size];
         byte tmpBuff[] = new byte[size];
         FileInputStream fis = new FileInputStream(f);
-        ;
-        try {
 
-            int read = fis.read(bytes, 0, size);
-            if (read < size) {
-                int remain = size - read;
-                while (remain > 0) {
-                    read = fis.read(tmpBuff, 0, remain);
-                    System.arraycopy(tmpBuff, 0, bytes, size - remain, read);
-                    remain -= read;
-                }
+        int read = fis.read(bytes, 0, size);
+        if (read < size) {
+            int remain = size - read;
+            while (remain > 0) {
+                read = fis.read(tmpBuff, 0, remain);
+                System.arraycopy(tmpBuff, 0, bytes, size - remain, read);
+                remain -= read;
             }
-        } catch (IOException e) {
-            throw e;
-        } finally {
-            fis.close();
         }
 
         return bytes;
+    }
+
+    private void showWaitingDialog(boolean show) {
+        if (show)
+            mWaiting = ProgressDialog.show(mActivity, "", "Caricamento. Attendere...", true);
+        else
+            mWaiting.dismiss();
     }
 
 }

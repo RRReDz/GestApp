@@ -44,8 +44,10 @@ public class RubricaSocietaListAdapter extends ArrayAdapter<Societa> {
         Societa societa = getItem(position);
 
         String nome = societa.getNomeSocietà();
+        //System.out.println("position: " + position + ", name: " + nome);
         Log.d("NOME: ", nome);
         String iniziale = nome.substring(0, 1);
+
         iniziale = iniziale.toUpperCase(Locale.ITALIAN);
         if (!mAlphabeticIndex.containsKey(iniziale))
             mAlphabeticIndex.put(iniziale, position);

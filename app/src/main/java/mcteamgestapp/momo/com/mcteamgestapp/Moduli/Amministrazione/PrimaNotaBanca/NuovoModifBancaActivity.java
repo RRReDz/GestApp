@@ -17,8 +17,11 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
@@ -91,6 +94,11 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);
+            //Set data di oggi se nuova nota
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            Calendar cal = Calendar.getInstance();
+            mDataOperazione.setText(dateFormat.format(cal.getTime()));
+            mDataValuta.setText(dateFormat.format(cal.getTime()));
         }
 
     }

@@ -55,11 +55,18 @@
         <item name="android:dropDownWidth">150dp</item>
     </style>
 
-    <style name="spinner_style_2">
+    <style name="spinner_style_cassa">
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">30dp</item>
         <item name="android:background">@drawable/gradient_spinner_2</item>
         <item name="android:dropDownWidth">150dp</item>
+    </style>
+
+    <style name="spinner_style_banca">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@drawable/gradient_spinner_2</item>
+        <item name="android:dropDownWidth">200dp</item>
     </style>
 
     <style name="button_annulla">

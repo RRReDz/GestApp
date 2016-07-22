@@ -177,12 +177,14 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
         @Override
         public void onResponse(JSONArray responseArray) {
             try {
-
+                System.out.println(responseArray.length());
                 for (int i = 0; i < responseArray.length(); i++) {
 
                     JSONObject response = responseArray.getJSONObject(i);
 
                     Associazione associazione = gson.fromJson(response.toString(), Associazione.class);
+
+                    System.out.println(associazione);
 
                     mAssociazioni.add(associazione);
                 }

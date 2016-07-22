@@ -100,6 +100,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);
+            //Set data di oggi se nuova nota
             DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             Calendar cal = Calendar.getInstance();
             mDataOperazione.setText(dateFormat.format(cal.getTime()));
