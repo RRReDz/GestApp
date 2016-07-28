@@ -1,2 +1,2 @@
 # mcTeamApp
-Mobile interface for GeSteam site.
+Mobile application for MCteam's website (GESteam).
