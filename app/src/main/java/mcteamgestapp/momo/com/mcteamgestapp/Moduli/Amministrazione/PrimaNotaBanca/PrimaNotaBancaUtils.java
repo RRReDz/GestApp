@@ -82,7 +82,7 @@ public class PrimaNotaBancaUtils {
 
         pdfToPrint.add(preface);
 
-        PdfPTable table = new PdfPTable(9);
+        PdfPTable table = new PdfPTable(10);
         table.setWidthPercentage(100);
         table.setWidths(new float[]{1, 2, 2, 2, 4, 2, 2, 2, 2});
 
@@ -156,6 +156,7 @@ public class PrimaNotaBancaUtils {
 
             Font font2 = new Font(Font.FontFamily.UNDEFINED);
             font2.setColor(BaseColor.RED);
+
             c1 = new PdfPCell(new Phrase(df.format(notaBanca.getAvere()) + "", font2));
             if (notaBanca.getAvere() == 0)
                 table.addCell(" ");
