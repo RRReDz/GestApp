@@ -275,7 +275,11 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
     public void onClickInsertNew(View view) {
         mFam.collapse();
         Intent intent = new Intent(getApplicationContext(), NuovoModifBancaActivity.class);
-        startActivityForResult(intent, Constants.NOTA_ADD);
+        int month = mMonthSpinner.getSelectedItemPosition();
+        String year = (String) mYearsSpinner.getSelectedItem();
+        intent.putExtra("MONTH", month);
+        intent.putExtra("YEAR", year);
+        startActivity(intent);
     }
 
     public void onClickStampa(View view) {
@@ -286,6 +290,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
             PrimaNotaBancaUtils.printAll(mAdapterRecycler.getArrayList(), getApplicationContext(), month, year);
         } catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(PrimaNotaBancaActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -326,7 +326,11 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
     public void onClickInsertNew(View view) {
         mFam.collapse();
         Intent intent = new Intent(getApplicationContext(), NuovoModifCassaActivity.class);
-        startActivityForResult(intent, Constants.NOTA_ADD);
+        int month = mMonthSpinner.getSelectedItemPosition();
+        String year = (String) mYearsSpinner.getSelectedItem();
+        intent.putExtra("MONTH", month);
+        intent.putExtra("YEAR", year);
+        startActivity(intent);
     }
 
     public void onClickStampa(View view) {

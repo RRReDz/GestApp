@@ -491,6 +491,8 @@ public class VolleyRequests {
                     @Override
                     public void onResponse(JSONArray jsonArray) {
                         PrimaNotaCassaActivity activityPrimaNota = (PrimaNotaCassaActivity) mContext;
+                        ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
+                        RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
                         try {
                             if (jsonArray.length() == 0) {
                                 activityPrimaNota.showEmptyString(true);
@@ -520,19 +522,18 @@ public class VolleyRequests {
 
                                     notaCassa.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals("null"))
+                                    if (response.isNull("nr_protocollo"))
                                         notaCassa.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaCassa.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
                                     //Check se campo dare è vuoto -> problema decoding
-                                    if (response.get("dare").equals("") || response.get("dare").equals("null"))
+                                    if (response.get("dare").equals("") || response.isNull("dare"))
                                         notaCassa.setDare(0);
                                     else
                                         notaCassa.setDare(ToolUtils.parse(response.getString("dare")));
 
-
-                                    if (response.get("avere").equals("") || response.get("avere").equals("null"))
+                                    if (response.get("avere").equals("") || response.isNull("avere"))
                                         notaCassa.setAvere(0);
                                     else
                                         notaCassa.setAvere(ToolUtils.parse(response.getString("avere")));
@@ -543,14 +544,13 @@ public class VolleyRequests {
                             }
 
                             activityPrimaNota.iconRefresh(true);
-
-                            ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
-                            RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
                             ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
+                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            Toast.makeText(mContext, "Errore nel caricamento, dati incompleti", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -593,6 +593,8 @@ public class VolleyRequests {
                     @Override
                     public void onResponse(JSONArray jsonArray) {
                         PrimaNotaBancaActivity activityPrimaNota = (PrimaNotaBancaActivity) mContext;
+                        ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
+                        RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
                         try {
                             if (jsonArray.length() == 0) {
                                 activityPrimaNota.showEmptyString(true);
@@ -614,19 +616,19 @@ public class VolleyRequests {
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.get("nr_protocollo").equals("null"))
+                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.isNull("nr_protocollo"))
                                         notaBanca.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaBanca.setNumeroProtocollo(response.getInt("nr_protocollo"));
 
                                     //Check se campo dare è vuoto -> problema decoding
-                                    if (response.get("dare").equals("") || response.get("dare").equals("null"))
+                                    if (response.get("dare").equals("") || response.get("dare").equals(" ") || response.isNull("dare"))
                                         notaBanca.setDare(0);
                                     else
                                         notaBanca.setDare(ToolUtils.parse(response.getString("dare")));
 
 
-                                    if (response.get("avere").equals("") || response.get("avere").equals("null"))
+                                    if (response.get("avere").equals("") || response.get("avere").equals(" ") || response.isNull("avere"))
                                         notaBanca.setAvere(0);
                                     else
                                         notaBanca.setAvere(ToolUtils.parse(response.getString("avere")));
@@ -639,13 +641,14 @@ public class VolleyRequests {
                             //Recupero le view per la progressbar
                             //PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
                             //activity.iconRefresh(true);
-                            ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
-                            RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
+
                             ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
+                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            Toast.makeText(mContext, "Errore nel caricamento, dati incompleti", Toast.LENGTH_SHORT).show();
                         }
                     }
 

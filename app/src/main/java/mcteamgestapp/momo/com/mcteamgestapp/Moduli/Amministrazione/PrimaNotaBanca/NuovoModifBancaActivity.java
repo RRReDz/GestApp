@@ -94,11 +94,13 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             mButtonModifica.setVisibility(View.VISIBLE);
         } else {
             mButtonCrea.setVisibility(View.VISIBLE);
-            //Set data di oggi se nuova nota
-            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-            Calendar cal = Calendar.getInstance();
-            mDataOperazione.setText(dateFormat.format(cal.getTime()));
-            mDataValuta.setText(dateFormat.format(cal.getTime()));
+            //Set data del mese selezionato in caso di nota nuova
+            DecimalFormat mFormat = new DecimalFormat("00");
+
+            int month = getIntent().getIntExtra("MONTH", 1);
+            String year = getIntent().getStringExtra("YEAR");
+            mDataOperazione.setText("01-" + mFormat.format(month + 1) + "-" + year);
+            mDataValuta.setText("01-" + mFormat.format(month + 1) + "-" + year);
         }
 
     }

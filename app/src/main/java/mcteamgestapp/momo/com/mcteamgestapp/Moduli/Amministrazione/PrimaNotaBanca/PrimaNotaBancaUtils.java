@@ -15,6 +15,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -36,8 +37,10 @@ import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
+import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
+ * @author
  * Created by Riccardo Rossi on 24/05/2016.
  */
 public class PrimaNotaBancaUtils {
@@ -45,16 +48,17 @@ public class PrimaNotaBancaUtils {
     public static Font tableTitleFond = new Font(Font.FontFamily.UNDEFINED, Font.BOLD);
 
     public static void printAll(ArrayList<NotaBanca> notaBancaList, Context context, String month, String year) throws Exception {
-        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_cassa/pdf");
-        Log.d("PATH DI STAMPA", context.getFilesDir() + "/GestApp/nota_cassa/pdf");
+        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_banca/pdf");
+        Log.d("PATH DI STAMPA", context.getFilesDir() + "/GestApp/nota_banca/pdf");
         File pdf = new File(dir, month + "-" + year + ".pdf");
 
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
         df.setMinimumFractionDigits(2);
 
-        dir.mkdirs();
         //make them in case they're not there
+        if(!dir.mkdirs())
+            throw new Exception("Errore durante la creazione della cartella di stampa");
 
         //creazione tabella
         Font boldTitle = new Font(Font.FontFamily.HELVETICA, 20f, Font.BOLD);
@@ -84,7 +88,7 @@ public class PrimaNotaBancaUtils {
 
         PdfPTable table = new PdfPTable(10);
         table.setWidthPercentage(100);
-        table.setWidths(new float[]{1, 2, 2, 2, 4, 2, 2, 2, 2});
+        table.setWidths(new float[]{1, 2, 2, 4, 2, 2, 2, 2, 2, 2});
 
         PdfPCell c1 = new PdfPCell(new Phrase("Progr.", tableTitleFond));
         c1.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -127,6 +131,11 @@ public class PrimaNotaBancaUtils {
         c1.setBackgroundColor(BaseColor.RED);
         table.addCell(c1);
 
+        c1 = new PdfPCell(new Phrase("PROVA", tableTitleFond));
+        c1.setColspan(2);
+        c1.setBorder(Rectangle.NO_BORDER);
+        table.addCell(c1);
+
         table.setHeaderRows(1);
 
         int i = 0;
@@ -164,6 +173,25 @@ public class PrimaNotaBancaUtils {
                 table.addCell(c1);
 
             table.addCell(df.format(totSaldo) + "");
+            if (notaBanca.getGruppo() == 1 || notaBanca.getGruppo() == 2) {
+                if (notaBanca.getGruppo() == 2)
+                    table.addCell("Carta di credito");
+                else
+                    table.addCell("Carta Sì");
+
+                if (notaBanca.getAvere() == 0) {
+                    c1 = new PdfPCell();
+                    c1.setBorder(Rectangle.NO_BORDER);
+                } else
+                    c1 = new PdfPCell(new Phrase(df.format(notaBanca.getAvere())));
+
+                table.addCell(c1);
+            } else {
+                c1 = new PdfPCell();
+                c1.setColspan(2);
+                c1.setBorder(Rectangle.NO_BORDER);
+                table.addCell(c1);
+            }
 
             i++;
         }
@@ -171,8 +199,9 @@ public class PrimaNotaBancaUtils {
         pdfToPrint.add(table);
 
         PdfPTable table2 = new PdfPTable(4);
-        table2.setWidthPercentage(100);
-        table2.setWidths(new float[]{13, 2, 2, 2});
+        table2.setWidthPercentage((float) 81);
+        table2.setHorizontalAlignment(Element.ALIGN_LEFT);
+        table2.setWidths(new float[]{11, 2, 2, 2});
 
         c1 = new PdfPCell(new Phrase("Totale"));
         c1.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -231,7 +260,7 @@ public class PrimaNotaBancaUtils {
     }
 
     public static void esportaExcel(ArrayList<NotaBanca> notaBancaList, Context context, String month, String year) throws Exception {
-        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_cassa/excel");
+        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_banca/excel");
 
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
@@ -268,34 +297,36 @@ public class PrimaNotaBancaUtils {
         cella.setCellStyle(cs);
 
         cella = row.createCell(1);
-        cella.setCellValue("CAUSALE CONTABILE");
+        cella.setCellValue("DATA VALUTA");
         cella.setCellStyle(cs);
 
         cella = row.createCell(2);
-        cella.setCellValue("SOTTOCONTO");
-        cella.setCellStyle(cs);
-
-        cella = row.createCell(3);
         cella.setCellValue("DESCRIZIONE MOVIMENTI");
         cella.setCellStyle(cs);
 
-        cella = row.createCell(4);
+        cella = row.createCell(3);
         cella.setCellValue("FATTURE NR PROTOCOLLO");
         cella.setCellStyle(cs);
 
-        cella = row.createCell(5);
+        cella = row.createCell(4);
         cella.setCellValue("DARE(€)");
         cella.setCellStyle(cs);
 
-        cella = row.createCell(6);
+        cella = row.createCell(5);
         cella.setCellValue("AVERE(€)");
         cella.setCellStyle(cs);
 
-        cella = row.createCell(7);
+        cella = row.createCell(6);
         cella.setCellValue("SALDO(€)");
         cella.setCellStyle(cs);
 
+        cella = row.createCell(7);
+        cella.setCellValue("GRUPPO");
+        cella.setCellStyle(cs);
+
         int nRow = 3;
+
+        String[] gruppo = context.getResources().getStringArray(R.array.gruppo);
 
         float totDare = 0, totAvere = 0, totSaldo = 0;
         for (NotaBanca notaBanca : notaBancaList) {
@@ -327,8 +358,10 @@ public class PrimaNotaBancaUtils {
             cella = row.createCell(6);
             cella.setCellValue(df.format(totSaldo));
 
-            cella = row.createCell(7);
-            cella.setCellValue(df.format(totSaldo));
+            if (notaBanca.getGruppo() == 1 || notaBanca.getGruppo() == 2) {
+                cella = row.createCell(7);
+                cella.setCellValue(gruppo[notaBanca.getGruppo()]);
+            }
         }
 
         row = foglio1.createRow(nRow);
@@ -339,28 +372,31 @@ public class PrimaNotaBancaUtils {
 
         //Grandezza colonne -> column, size
         foglio1.setColumnWidth(0, 3000);
-        foglio1.setColumnWidth(3, 6000);
-        foglio1.setColumnWidth(5, 3000);
-        foglio1.setColumnWidth(6, 3000);
-        foglio1.setColumnWidth(7, 3000);
+        foglio1.setColumnWidth(1, 3000);
+        foglio1.setColumnWidth(2, 6000);
+        foglio1.setColumnWidth(3, 3000);
+        foglio1.setColumnWidth(4, 4000);
+        foglio1.setColumnWidth(5, 4000);
+        foglio1.setColumnWidth(6, 4000);
+        foglio1.setColumnWidth(7, 5000);
 
         CellStyle cs2 = wb.createCellStyle();
         cs2.setFillForegroundColor(HSSFColor.GREY_50_PERCENT.index);
         cs2.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
-        cella = row.createCell(4);
+        cella = row.createCell(3);
         cella.setCellValue("TOTALE");
         cella.setCellStyle(cs2);
 
-        cella = row.createCell(5);
+        cella = row.createCell(4);
         cella.setCellValue(df.format(totDare));
         cella.setCellStyle(cs2);
 
-        cella = row.createCell(6);
+        cella = row.createCell(5);
         cella.setCellValue(df.format(totAvere));
         cella.setCellStyle(cs2);
 
-        cella = row.createCell(7);
+        cella = row.createCell(6);
         cella.setCellValue(df.format(totSaldo));
         cella.setCellStyle(cs2);
 

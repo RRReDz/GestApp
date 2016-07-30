@@ -106,7 +106,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //Check if user has permission to show certain tabs
 
-        /*if (!mCurrentUser.isSistemi()) {
+        if (!mCurrentUser.isSistemi()) {
             mSistemiFrame.setVisibility(View.GONE);
         }
 
@@ -118,13 +118,13 @@ public class HomeActivity extends AppCompatActivity {
             mCommercialeFrame.setVisibility(View.GONE);
         }
 
-        if (!mCurrentUser.isProduzione()) {
+        /*if (!mCurrentUser.isProduzione()) {
             mProduzioneFrame.setVisibility(View.GONE);
-        }
+        }*/
 
         if (!mCurrentUser.isAmministratore()) {
             mAmministrazioneFrame.setVisibility(View.GONE);
-        }*/
+        }
 
         //**************************************************************************
         //Inizializzazione dei button

@@ -177,7 +177,7 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
         @Override
         public void onResponse(JSONArray responseArray) {
             try {
-                System.out.println(responseArray.length());
+
                 for (int i = 0; i < responseArray.length(); i++) {
 
                     JSONObject response = responseArray.getJSONObject(i);
@@ -189,7 +189,8 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
                     mAssociazioni.add(associazione);
                 }
 
-                getCalendarRange();
+                if (responseArray.length() != 0)
+                    getCalendarRange();
 
             } catch (JSONException e) {
 
