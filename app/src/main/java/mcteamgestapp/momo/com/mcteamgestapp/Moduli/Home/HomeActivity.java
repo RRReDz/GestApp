@@ -118,9 +118,9 @@ public class HomeActivity extends AppCompatActivity {
             mCommercialeFrame.setVisibility(View.GONE);
         }
 
-        /*if (!mCurrentUser.isProduzione()) {
+        //if (!mCurrentUser.isProduzione()) {
             mProduzioneFrame.setVisibility(View.GONE);
-        }*/
+        //}
 
         if (!mCurrentUser.isAmministratore()) {
             mAmministrazioneFrame.setVisibility(View.GONE);
