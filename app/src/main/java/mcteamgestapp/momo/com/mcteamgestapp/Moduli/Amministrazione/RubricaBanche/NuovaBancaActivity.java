@@ -3,19 +3,17 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanch
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class NuovaBancaActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.Application;
 
 import android.app.Application;
 

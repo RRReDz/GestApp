@@ -15,7 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -152,7 +152,7 @@ public class RegistrationActivity extends AppCompatActivity {
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(birthday) || !ToolUtils.validateDate(birthday)) {
+        if (TextUtils.isEmpty(birthday) || !Functions.validateDate(birthday)) {
             mBirthdayView.setError("Data mancante o errata: rispettare il formato 01-01-1900");
             focusView = mBirthdayView;
             cancel = true;

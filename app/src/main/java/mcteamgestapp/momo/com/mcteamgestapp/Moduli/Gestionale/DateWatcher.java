@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale;
 
 import android.content.ContentProvider;
 import android.text.Editable;

@@ -2,7 +2,6 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -21,7 +20,6 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
 
 public class RicercaAvanzataAllegati extends AppCompatActivity {
     TextView mDescrizioneView;

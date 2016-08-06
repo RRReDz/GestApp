@@ -17,18 +17,15 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
-import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 /**
  * Created by Rrossi on 17/05/2016.
@@ -162,25 +159,25 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
         String dare = mDare.getText().toString();
         String avere = mAvere.getText().toString();
 
-        if (TextUtils.isEmpty(dataOperazione) || !ToolUtils.validateDate(dataOperazione)) {
+        if (TextUtils.isEmpty(dataOperazione) || !Functions.validateDate(dataOperazione)) {
             mDataOperazione.setError("Data mancante o errata: rispettare il formato gg-mm-aaaa");
             mDataOperazione.requestFocus();
             return false;
         } else {
             try {
-                ToolUtils.fromDateToSql(dataOperazione);
+                Functions.fromDateToSql(dataOperazione);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
 
-        if (TextUtils.isEmpty(dataValuta) || !ToolUtils.validateDate(dataOperazione) || !ToolUtils.strDateGreaterThan(dataOperazione, dataValuta)) {
+        if (TextUtils.isEmpty(dataValuta) || !Functions.validateDate(dataOperazione) || !Functions.strDateGreaterThan(dataOperazione, dataValuta)) {
             mDataValuta.setError("Data errata: rispettare il formato gg-mm-aaaa e DATA VALUTA maggiore di DATA OPERAZIONE");
             mDataValuta.requestFocus();
             return false;
         } else {
             try {
-                ToolUtils.fromDateToSql(dataValuta);
+                Functions.fromDateToSql(dataValuta);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -226,12 +223,12 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
         float avere = Float.parseFloat((mAvere.getText().toString()));
 
         notaBanca.setGruppo(gruppo);
-        notaBanca.setDataPagamento(ToolUtils.fromDateToSql(dataOperazione));
-        notaBanca.setDataValuta(ToolUtils.fromDateToSql(dataValuta));
+        notaBanca.setDataPagamento(Functions.fromDateToSql(dataOperazione));
+        notaBanca.setDataValuta(Functions.fromDateToSql(dataValuta));
         notaBanca.setDescrizione(descrizione);
         notaBanca.setNumeroProtocollo(protocollo);
-        notaBanca.setDareDb(ToolUtils.format(dare));
-        notaBanca.setAvereDb(ToolUtils.format(avere));
+        notaBanca.setDareDb(Functions.format(dare));
+        notaBanca.setAvereDb(Functions.format(avere));
 
         return notaBanca;
     }

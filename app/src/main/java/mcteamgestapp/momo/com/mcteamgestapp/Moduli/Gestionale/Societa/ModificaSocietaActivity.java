@@ -29,7 +29,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +36,7 @@ import java.util.List;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 public class ModificaSocietaActivity extends AppCompatActivity {

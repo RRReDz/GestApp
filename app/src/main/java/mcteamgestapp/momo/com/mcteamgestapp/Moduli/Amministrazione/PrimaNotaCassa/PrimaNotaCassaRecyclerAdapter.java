@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 /**
  * Created by Rrossi on 16/05/2016.
@@ -82,7 +82,7 @@ public class PrimaNotaCassaRecyclerAdapter extends RecyclerView.Adapter<PrimaNot
             descrizione.setText(item.getDescrizione());
             float tot = item.getDare() - item.getAvere();
             item.setTotale(tot);
-            String price_formatted = ToolUtils.format(Math.abs(tot));
+            String price_formatted = Functions.format(Math.abs(tot));
             if (tot > 0) {
                 totale.setText("+" + price_formatted + " €");
                 totale.setTextColor(Color.BLUE);

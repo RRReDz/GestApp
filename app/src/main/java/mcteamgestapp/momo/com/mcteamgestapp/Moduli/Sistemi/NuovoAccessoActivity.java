@@ -3,7 +3,6 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,14 +23,13 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class NuovoAccessoActivity extends AppCompatActivity {
 
@@ -159,7 +156,7 @@ public class NuovoAccessoActivity extends AppCompatActivity {
         userToCreate.setPhone(phone);
         userToCreate.setLuogoNascita(place);
 
-        if (TextUtils.isEmpty(dataNascita) || !ToolUtils.validateDate(dataNascita)) {
+        if (TextUtils.isEmpty(dataNascita) || !Functions.validateDate(dataNascita)) {
             mDataNascita.setError("Data mancante o errata: rispettare il formato 01-01-1900");
             focusView = mDataNascita;
             cancel = true;

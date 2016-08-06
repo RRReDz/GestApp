@@ -41,16 +41,15 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class NuovoNominativoActivity extends AppCompatActivity {
 
@@ -352,13 +351,13 @@ public class NuovoNominativoActivity extends AppCompatActivity {
         nominativo.setCitta(Citta);
 
         //Non funziona il controllo sulla data
-        if (!TextUtils.isEmpty(DataNascita) && !ToolUtils.validateDate(DataNascita)) {
+        if (!TextUtils.isEmpty(DataNascita) && !Functions.validateDate(DataNascita)) {
             mDataNascitaView.setError("Data mancante o errata: rispettare il formato 01-01-1900");
             focusView = mDataNascitaView;
             cancel = true;
         } else {
             try {
-                nominativo.setDataNascita(ToolUtils.fromDateToSql(DataNascita));
+                nominativo.setDataNascita(Functions.fromDateToSql(DataNascita));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

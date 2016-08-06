@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -24,11 +22,10 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
     EditText mClienteView;
@@ -170,7 +167,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
         if (!TextUtils.isEmpty(nomeCommessa)) {
@@ -184,7 +181,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
         if (!TextUtils.isEmpty(codiceCommessa)) {
@@ -198,7 +195,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
         if (!TextUtils.isEmpty(referente)) {
@@ -212,7 +209,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
         if (!TextUtils.isEmpty(consulente)) {
@@ -226,7 +223,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
         if (!TextUtils.isEmpty(meseInizio)) {
@@ -240,7 +237,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
 
@@ -255,7 +252,7 @@ public class AssociazioniRicercaAvanzataActivity extends AppCompatActivity {
                     tempResult.add(associazione);
                 }
             }
-            resultSet = (ArrayList) ToolUtils.union(resultSet, tempResult);
+            resultSet = (ArrayList) Functions.union(resultSet, tempResult);
         }
 
         updateList(resultSet, data);

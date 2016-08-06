@@ -5,15 +5,12 @@ import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,21 +26,20 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
-import mcteamgestapp.momo.com.mcteamgestapp.DateWatcher;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.DateWatcher;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.AndroidUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class NuovaAssociazioneActivity extends AppCompatActivity implements MultiChoiceSpinner.MultiSpinnerListener {
 
@@ -167,7 +163,7 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
         mCommessaSpinner.setAdapter(mCommesseAdapter);
         mCapoProgettoSpinner.setAdapter(mUtentiAdapter);
         mSelectedConsulentiListView.setAdapter(mConsulenteListAdapter);
-        ToolUtils.getListViewSize(mSelectedConsulentiListView);
+        AndroidUtils.getListViewSize(mSelectedConsulentiListView);
 
         //******************************** Other shit ***************************************
         mRequestQueue = Volley.newRequestQueue(this);
@@ -284,8 +280,8 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
     }
 
     public void setupView(Associazione associazione) {
-        mDataInizioView.setText(ToolUtils.getFormattedDate(associazione.getData_inizio()));
-        mDataFineView.setText(ToolUtils.getFormattedDate(associazione.getData_fine()));
+        mDataInizioView.setText(Functions.getFormattedDate(associazione.getData_inizio()));
+        mDataFineView.setText(Functions.getFormattedDate(associazione.getData_fine()));
     }
 
 
@@ -447,9 +443,9 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
 
         //******************** DATA INIZIO ***********************
         if (!TextUtils.isEmpty(datainizio)) {
-            if (ToolUtils.validateNormalDate(datainizio)) {
+            if (Functions.validateNormalDate(datainizio)) {
                 try {
-                    datainizio = ToolUtils.fromDateToSql(datainizio);
+                    datainizio = Functions.fromDateToSql(datainizio);
                     associazione.setData_inizio(datainizio);
                 } catch (java.text.ParseException e) {
                     e.printStackTrace();
@@ -467,9 +463,9 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
 
         //*************************** DATA FINE ************************
         if (!TextUtils.isEmpty(datafine)) {
-            if (ToolUtils.validateNormalDate(datafine)) {
+            if (Functions.validateNormalDate(datafine)) {
                 try {
-                    datafine = ToolUtils.fromDateToSql(datafine);
+                    datafine = Functions.fromDateToSql(datafine);
                     associazione.setData_fine(datafine);
                 } catch (java.text.ParseException e) {
                     e.printStackTrace();
@@ -581,7 +577,7 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
     void updateConsulentiScelti(ArrayList<UserInfo> list) {
         mConsulentiList.clear();
         mConsulentiList.addAll(list);
-        ToolUtils.getListViewSize(mSelectedConsulentiListView);
+        AndroidUtils.getListViewSize(mSelectedConsulentiListView);
         mConsulenteListAdapter.notifyDataSetChanged();
         selectedConsulenti = list;
     }

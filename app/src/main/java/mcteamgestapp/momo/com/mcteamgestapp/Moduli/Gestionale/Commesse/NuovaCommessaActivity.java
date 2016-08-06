@@ -4,13 +4,10 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
-import android.net.ParseException;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,24 +17,21 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import mcteamgestapp.momo.com.mcteamgestapp.DateWatcher;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.DateWatcher;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi.SistemiListAdapter;
-import mcteamgestapp.momo.com.mcteamgestapp.NominativoSpinnerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class NuovaCommessaActivity extends AppCompatActivity {
 
@@ -364,9 +358,9 @@ public class NuovaCommessaActivity extends AppCompatActivity {
         //********************* CONTROLLO DATA *****************************//
 
         if (!TextUtils.isEmpty(data)) {
-            if (ToolUtils.validateNormalDate(data)) {
+            if (Functions.validateNormalDate(data)) {
                 try {
-                    data = ToolUtils.fromDateToSql(data);
+                    data = Functions.fromDateToSql(data);
                     commessa.setData(data);
                 } catch (java.text.ParseException e) {
                     e.printStackTrace();
@@ -470,7 +464,7 @@ public class NuovaCommessaActivity extends AppCompatActivity {
 
         if (commessa.getData() != null)
             try {
-                mDataView.setText(ToolUtils.getFormattedDate(commessa.getData()));
+                mDataView.setText(Functions.getFormattedDate(commessa.getData()));
             } catch (Exception e) {
                 mDataView.setText(commessa.getData());
             }

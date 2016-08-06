@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -31,14 +30,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
 
 /**

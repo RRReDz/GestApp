@@ -2,13 +2,12 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
-import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
+import mcteamgestapp.momo.com.mcteamgestapp.Application.MyApp;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 public class UserInfoActivity extends AppCompatActivity {

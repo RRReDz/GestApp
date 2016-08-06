@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
+import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
  * Created by meddaakouri on 18/12/2015.

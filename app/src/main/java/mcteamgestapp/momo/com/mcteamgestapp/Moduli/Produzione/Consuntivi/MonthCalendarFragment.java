@@ -24,7 +24,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,14 +32,13 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Ferie;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.OrariAttivita;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 /**
  * Created by meddaakouri on 09/02/2016.
@@ -349,7 +347,7 @@ public class MonthCalendarFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
 
         try {
-            Date date = sdf.parse(ToolUtils.getFormattedDate(sqlDate));
+            Date date = sdf.parse(Functions.getFormattedDate(sqlDate));
             calendar.setTime(date);
             attivita.setDay(calendar.get(Calendar.DATE));
             attivita.setMonth(calendar.get(Calendar.MONTH));

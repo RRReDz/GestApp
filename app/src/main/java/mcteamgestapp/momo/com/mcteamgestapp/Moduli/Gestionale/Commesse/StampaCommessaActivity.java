@@ -1,6 +1,5 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -19,8 +18,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class StampaCommessaActivity extends AppCompatActivity {
 
@@ -130,7 +128,7 @@ public class StampaCommessaActivity extends AppCompatActivity {
         if (commessa.getCommerciale() != null)
             mCommerciale.setText(commessa.getCommerciale().getCognome() + " " + commessa.getCommerciale().getNome());
 
-        mData.setText(ToolUtils.validateReverseDate(commessa.getData()) ? ToolUtils.getFormattedDate(commessa.getData()) : "");
+        mData.setText(Functions.validateReverseDate(commessa.getData()) ? Functions.getFormattedDate(commessa.getData()) : "");
 
         if (commessa.getReferente1() != null)
             mReferente1.setText(commessa.getReferente1().getCognome() + " " + commessa.getReferente1().getNome());

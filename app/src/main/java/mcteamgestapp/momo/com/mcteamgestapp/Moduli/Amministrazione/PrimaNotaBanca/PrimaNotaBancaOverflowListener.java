@@ -10,7 +10,7 @@ import android.view.View;
 
 import java.lang.reflect.Field;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 

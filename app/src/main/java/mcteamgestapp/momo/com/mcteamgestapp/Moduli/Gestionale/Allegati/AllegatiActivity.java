@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -32,13 +31,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class AllegatiActivity extends AppCompatActivity {
 

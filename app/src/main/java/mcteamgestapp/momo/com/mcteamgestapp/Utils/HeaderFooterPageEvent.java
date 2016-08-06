@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.Utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -35,6 +35,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
  * Created by meddaakouri on 08/01/2016.

@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
@@ -30,7 +29,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Societa.RubricaSoc
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi.ConsuntiviMainActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi.SistemiAcitivity;
-import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
+import mcteamgestapp.momo.com.mcteamgestapp.Application.MyApp;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 public class HomeActivity extends AppCompatActivity {

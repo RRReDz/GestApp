@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.Utils;
 
 /**
  * Created by Riccardo Rossi on 11/05/2016.

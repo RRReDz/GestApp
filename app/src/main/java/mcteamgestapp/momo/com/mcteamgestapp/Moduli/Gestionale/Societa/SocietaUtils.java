@@ -25,7 +25,6 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,13 +32,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
-import mcteamgestapp.momo.com.mcteamgestapp.JSONObjectRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.JSONObjectRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**

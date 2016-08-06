@@ -7,14 +7,12 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,16 +26,16 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Societa.VisualizzaSocietaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.Application.MyApp;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class VisualizzaNominativoActivity extends AppCompatActivity {
 
@@ -223,7 +221,7 @@ public class VisualizzaNominativoActivity extends AppCompatActivity {
         mCapView.setText(nominativo.getCap());
         mProvinciaView.setText(nominativo.getProvincia());
         mCittaView.setText(nominativo.getCitta());
-        mDataNascitaView.setText(nominativo.getDataNascita() == null ? " " : TextUtils.isEmpty(nominativo.getDataNascita()) ? " " : !ToolUtils.validateReverseDate(nominativo.getDataNascita()) ? "" : ToolUtils.getFormattedDate(nominativo.getDataNascita()));
+        mDataNascitaView.setText(nominativo.getDataNascita() == null ? " " : TextUtils.isEmpty(nominativo.getDataNascita()) ? " " : !Functions.validateReverseDate(nominativo.getDataNascita()) ? "" : Functions.getFormattedDate(nominativo.getDataNascita()));
         mLuogoNascitaView.setText(nominativo.getLuogoNascita());
         mPIVAView.setText(nominativo.getPIVA());
         mCod_FiscaleView.setText(nominativo.getCod_Fiscale());

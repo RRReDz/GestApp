@@ -3,7 +3,6 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +16,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class EliminaAllegatoActivity extends AppCompatActivity {
 

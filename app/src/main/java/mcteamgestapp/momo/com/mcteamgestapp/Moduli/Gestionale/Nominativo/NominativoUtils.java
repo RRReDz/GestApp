@@ -26,7 +26,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Color;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -36,11 +35,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
 
 /**
  * Created by meddaakouri on 16/12/2015.

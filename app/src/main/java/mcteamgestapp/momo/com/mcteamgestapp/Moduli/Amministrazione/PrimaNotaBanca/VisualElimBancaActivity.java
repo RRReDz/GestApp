@@ -16,11 +16,11 @@ import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 /**
  * Created by Rrossi on 19/05/2016.
@@ -71,9 +71,9 @@ public class VisualElimBancaActivity extends AppCompatActivity {
         descrizione.setText(notaBanca.getDescrizione());
         if(notaBanca.getNumeroProtocollo() != 0)
             protocollo.setText(notaBanca.getNumeroProtocollo()+"");
-        dare.setText(ToolUtils.format(notaBanca.getDare()) + " €");
-        avere.setText(ToolUtils.format(notaBanca.getAvere()) + " €");
-        totale.setText(ToolUtils.format(notaBanca.getTotale()) + " €");
+        dare.setText(Functions.format(notaBanca.getDare()) + " €");
+        avere.setText(Functions.format(notaBanca.getAvere()) + " €");
+        totale.setText(Functions.format(notaBanca.getTotale()) + " €");
 
         if(visualizza)
             layoutVisual.setVisibility(View.VISIBLE);

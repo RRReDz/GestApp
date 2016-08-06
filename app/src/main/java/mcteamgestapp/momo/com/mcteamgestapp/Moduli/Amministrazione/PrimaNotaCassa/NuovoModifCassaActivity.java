@@ -18,18 +18,15 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
-import mcteamgestapp.momo.com.mcteamgestapp.DatePickerFragment;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 /**
  * Created by Rrossi on 17/05/2016.
@@ -162,13 +159,13 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         String dare = mDare.getText().toString();
         String avere = mAvere.getText().toString();
 
-        if (TextUtils.isEmpty(dataOperazione) || !ToolUtils.validateDate(dataOperazione)) {
+        if (TextUtils.isEmpty(dataOperazione) || !Functions.validateDate(dataOperazione)) {
             mDataOperazione.setError("Data mancante o errata: rispettare il formato gg-mm-aaaa");
             mDataOperazione.requestFocus();
             return false;
         } else {
             try {
-                ToolUtils.fromDateToSql(dataOperazione);
+                Functions.fromDateToSql(dataOperazione);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -215,12 +212,12 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
         float avere = Float.parseFloat((mAvere.getText().toString()));
 
         notaCassa.setCassa(type);
-        notaCassa.setDataPagamento(ToolUtils.fromDateToSql(dataOperazione));
+        notaCassa.setDataPagamento(Functions.fromDateToSql(dataOperazione));
         notaCassa.setCausaleContabile(causaleContabile);
         notaCassa.setSottoconto(sottoconto);
         notaCassa.setDescrizione(descrizione);
-        notaCassa.setDareDb(ToolUtils.format(dare));
-        notaCassa.setAvereDb(ToolUtils.format(avere));
+        notaCassa.setDareDb(Functions.format(dare));
+        notaCassa.setAvereDb(Functions.format(avere));
         notaCassa.setNumeroProtocollo(protocollo);
 
         return notaCassa;

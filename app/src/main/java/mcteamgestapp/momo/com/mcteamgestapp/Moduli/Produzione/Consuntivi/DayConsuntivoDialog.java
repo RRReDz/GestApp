@@ -3,12 +3,10 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -27,9 +25,7 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,10 +36,9 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.OrariAttivita;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Associazioni.CommessaSpinnerAdapter;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class DayConsuntivoDialog extends AppCompatActivity {
 
@@ -199,7 +194,7 @@ public class DayConsuntivoDialog extends AppCompatActivity {
     private void setupAssociazioni() throws ParseException {
         DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-        java.util.Date attivitaDate = sdf.parse(ToolUtils.getFormattedDate(attivitaAttuale.getGiorno()));
+        java.util.Date attivitaDate = sdf.parse(Functions.getFormattedDate(attivitaAttuale.getGiorno()));
 
         if (myAssociazioni.size() > 0) {
             myCommesse.add(0, new Commessa());
@@ -208,8 +203,8 @@ public class DayConsuntivoDialog extends AppCompatActivity {
 
             for (Associazione associazione : myAssociazioni) {
                 try {
-                    tempInizio = sdf.parse(ToolUtils.getFormattedDate(associazione.getData_inizio()));
-                    tempFine = sdf.parse(ToolUtils.getFormattedDate(associazione.getData_fine()));
+                    tempInizio = sdf.parse(Functions.getFormattedDate(associazione.getData_inizio()));
+                    tempFine = sdf.parse(Functions.getFormattedDate(associazione.getData_fine()));
                     if (attivitaDate.after(tempInizio) && attivitaDate.before(tempFine)) {
                         myCommesse.add(associazione.getCommessa());
                     }

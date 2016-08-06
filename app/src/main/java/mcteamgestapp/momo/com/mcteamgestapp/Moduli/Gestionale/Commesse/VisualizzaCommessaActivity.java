@@ -5,13 +5,10 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -22,8 +19,8 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class VisualizzaCommessaActivity extends AppCompatActivity {
 
@@ -163,7 +160,7 @@ public class VisualizzaCommessaActivity extends AppCompatActivity {
         if (commessa.getCommerciale() != null)
             mCommerciale.setText(commessa.getCommerciale().getCognome() + " " + commessa.getCommerciale().getNome());
 
-        mData.setText(ToolUtils.validateReverseDate(commessa.getData()) ? ToolUtils.getFormattedDate(commessa.getData()) : "");
+        mData.setText(Functions.validateReverseDate(commessa.getData()) ? Functions.getFormattedDate(commessa.getData()) : "");
 
         if (commessa.getReferente1() != null)
             mReferente1.setText(commessa.getReferente1().getCognome() + " " + commessa.getReferente1().getNome());

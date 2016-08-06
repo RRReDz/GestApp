@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,16 +36,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.Application.MyApp;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class ModificaNominativoActivity extends AppCompatActivity {
 
@@ -295,13 +294,13 @@ public class ModificaNominativoActivity extends AppCompatActivity {
         nominativo.setCap(Cap);
         nominativo.setCitta(Citta);
 
-        if (!TextUtils.isEmpty(DataNascita) && !ToolUtils.validateDate(DataNascita)) {
+        if (!TextUtils.isEmpty(DataNascita) && !Functions.validateDate(DataNascita)) {
             mDataNascitaView.setError("Data mancante o errata: rispettare il formato 01-01-1900");
             focusView = mDataNascitaView;
             cancel = true;
         } else {
             try {
-                nominativo.setDataNascita(ToolUtils.fromDateToSql(DataNascita));
+                nominativo.setDataNascita(Functions.fromDateToSql(DataNascita));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -354,7 +353,7 @@ public class ModificaNominativoActivity extends AppCompatActivity {
         mIndirizzoView.setText(nominativo.getIndirizzo());
         mCapView.setText(nominativo.getCap());
         mCittaView.setText(nominativo.getCitta());
-        mDataNascitaView.setText(nominativo.getDataNascita() == null ? " " : TextUtils.isEmpty(nominativo.getDataNascita()) ? " " : !ToolUtils.validateReverseDate(nominativo.getDataNascita()) ? "" : ToolUtils.getFormattedDate(nominativo.getDataNascita()));
+        mDataNascitaView.setText(nominativo.getDataNascita() == null ? " " : TextUtils.isEmpty(nominativo.getDataNascita()) ? " " : !Functions.validateReverseDate(nominativo.getDataNascita()) ? "" : Functions.getFormattedDate(nominativo.getDataNascita()));
         mLuogoNascitaView.setText(nominativo.getLuogoNascita());
         mPIVAView.setText(nominativo.getPIVA());
         mCod_FiscaleView.setText(nominativo.getCod_Fiscale());

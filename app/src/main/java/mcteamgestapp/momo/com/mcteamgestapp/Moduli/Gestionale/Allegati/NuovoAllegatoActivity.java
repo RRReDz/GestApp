@@ -1,15 +1,10 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati;
 
-import android.content.ClipData;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
 import android.os.Environment;
-import android.provider.OpenableColumns;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -21,19 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.File;
 import java.io.IOException;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class NuovoAllegatoActivity extends AppCompatActivity {
 

@@ -4,21 +4,18 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.api.attributes.BootstrapBrand;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 public class VisualizzaAssociazioneActivity extends AppCompatActivity {
 
@@ -109,8 +106,8 @@ public class VisualizzaAssociazioneActivity extends AppCompatActivity {
         mNomeCommessaView.setText(nomeCommessa);
         mCapoProgettoView.setText(capoProgetto != null ? capoProgetto.getCognome() + " " + capoProgetto.getNome() : "");
         mConsulenteView.setText(associazione.getRisorsa() != null ? associazione.getRisorsa().getCognome() + " " + associazione.getRisorsa().getNome() : "");
-        mDataInizioView.setText(ToolUtils.getFormattedDate(associazione.getData_inizio()));
-        mDataFineView.setText(ToolUtils.getFormattedDate(associazione.getData_fine()));
+        mDataInizioView.setText(Functions.getFormattedDate(associazione.getData_inizio()));
+        mDataFineView.setText(Functions.getFormattedDate(associazione.getData_fine()));
     }
 
     @Override

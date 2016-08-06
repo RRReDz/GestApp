@@ -9,18 +9,15 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfContentByte;
-import com.itextpdf.text.pdf.PdfName;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPCellEvent;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -29,7 +26,6 @@ import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
@@ -44,15 +40,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Set;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
-import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 /**
  * Created by meddaakouri on 22/12/2015.
@@ -224,7 +218,7 @@ public class CommesseUtils {
         forms.setField("nome_cliente", commessa.getCliente().getNomeSocietà());
         forms.setField("codice_commessa", commessa.getCodice_commessa());
         String[] date = null;
-        if (ToolUtils.validateReverseDate(commessa.getData())) {
+        if (Functions.validateReverseDate(commessa.getData())) {
             date = commessa.getData().split("-");
         }
 
@@ -251,7 +245,7 @@ public class CommesseUtils {
         forms.setField("cognome_commerciale", commerciale != null ? commerciale.getCognome() : "");
         forms.setField("nome_commerciale", commerciale != null ? commerciale.getNome() : "");
 
-        forms.setField("data_completa_commessa", ToolUtils.getFormattedDate(commessa.getData()));
+        forms.setField("data_completa_commessa", Functions.getFormattedDate(commessa.getData()));
 
         forms.setField("commessa_contatto", "MARIO COTTONE");
         forms.setField("commessa_marketing", commessa.getAvanzamento().equals("marketing") ? "SI" : "");

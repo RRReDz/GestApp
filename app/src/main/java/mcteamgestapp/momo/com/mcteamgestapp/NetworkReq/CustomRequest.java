@@ -1,38 +1,43 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.NetworkReq;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.toolbox.HttpHeaderParser;
+/**
+ * Created by meddaakouri on 13/11/2015.
+ */
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Log;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by meddaakouri on 27/11/2015.
- */
-public class JSONObjectRequest extends Request<JSONObject> {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    private Response.Listener<JSONObject> listener;
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
+import com.android.volley.toolbox.HttpHeaderParser;
+
+public class CustomRequest extends Request<JSONArray> {
+
+    private Listener<JSONArray> listener;
     private Map<String, String> params;
 
-    public JSONObjectRequest(String url, Map<String, String> params,
-                             Response.Listener<JSONObject> reponseListener, Response.ErrorListener errorListener) {
+    public CustomRequest(String url, Map<String, String> params,
+                         Listener<JSONArray> reponseListener, ErrorListener errorListener) {
         super(Method.GET, url, errorListener);
         this.listener = reponseListener;
         this.params = params;
     }
 
-    public JSONObjectRequest(int method, String url, Map<String, String> params,
-                             Response.Listener<JSONObject> reponseListener, Response.ErrorListener errorListener) {
+    public CustomRequest(int method, String url, Map<String, String> params,
+                         Listener<JSONArray> reponseListener, ErrorListener errorListener) {
         super(method, url, errorListener);
         this.listener = reponseListener;
         this.params = params;
@@ -43,12 +48,11 @@ public class JSONObjectRequest extends Request<JSONObject> {
         return params;
     }
 
-
     @Override
-    protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+    protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
         try {
             String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
+            return Response.success(new JSONArray(jsonString), HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         } catch (JSONException je) {
@@ -57,11 +61,10 @@ public class JSONObjectRequest extends Request<JSONObject> {
     }
 
     @Override
-    protected void deliverResponse(JSONObject response) {
+    protected void deliverResponse(JSONArray response) {
         // TODO Auto-generated method stub
         listener.onResponse(response);
     }
-
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -74,7 +77,7 @@ public class JSONObjectRequest extends Request<JSONObject> {
     /**
      * Returns the raw POST or PUT body to be sent.
      *
-     * @throws com.android.volley.AuthFailureError in the event of auth failure
+     * @throws AuthFailureError in the event of auth failure
      */
     public byte[] getBody() throws AuthFailureError {
         Map<String, String> params = getParams();

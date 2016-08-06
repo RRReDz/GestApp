@@ -1,33 +1,19 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi;
 
 
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -42,24 +28,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.OrariAttivita;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class ConsuntiviMainActivity extends AppCompatActivity {
 
@@ -220,8 +203,8 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
             Date tempInizio;
             Date tempFine;
             try {
-                tempInizio = sdf.parse(ToolUtils.getFormattedDate(associazione.getData_inizio()));
-                tempFine = sdf.parse(ToolUtils.getFormattedDate(associazione.getData_fine()));
+                tempInizio = sdf.parse(Functions.getFormattedDate(associazione.getData_inizio()));
+                tempFine = sdf.parse(Functions.getFormattedDate(associazione.getData_fine()));
             } catch (ParseException e) {
                 e.printStackTrace();
                 return;

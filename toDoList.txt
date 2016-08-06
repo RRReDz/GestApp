@@ -1,13 +1,9 @@
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   MODIFICHE PRIORITARIE                      ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 - MODIFICARE TUTTI I LOGOUT -> RIMUOVERE UTENTE DA "SESSIONE" PRIMA DI USCIRE
-- CRASH STRANO IN APERTURA
-- CRASH IN APERTURA DI RUBRICA SOCIETà
-- Controllo sulla data NewEditPrimaNotaCassaActivity
-- Non fa il refresh del della recyclerview quando entro in modifica dall'activity di visualizzazione, problema di startActivityForResult
+
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   BUG/IMPERFEZIONI DA FIXARE                  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-- Runtime Permission -> popup permission per excel e pdf
 - Aggiungere callback in xml del bottone (onClick="nomeFunzione") -> rimuovere listener dal codice in onCreate
 - Aggiungere freccetta activity indietro inceve che tasti "annulla", "indietro" bla bla bla
 - Aggiungere focus errore per primo il cognome, poi il nome ecc.. riga 174 - RegistrationActivity
@@ -16,13 +12,12 @@
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   BUG/IMPERFEZIONI FIXATI                     ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-- MIGLIORATO IL CODICE
-- Rimossa casella in home perchè inutile
 - AGGIUNTO CONTROLLO "SESSIONE" IN LOGIN PER ACCESSO SENZA CREDENZIALI SE DA HOME SI VA INDIETRO CON LA FRECCIA
+- CRASH IN APERTURA DI RUBRICA SOCIETA' -> MANCATO CONTROLLO NEL DB DI VALORI NULLI
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                      COSA NON HO CAPITO                       ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-- Accesso ai contatti nella pagina iniziale -> Rimossa, non serve
+-
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                      COSA NON SO FARE AL MOMENTO              ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 

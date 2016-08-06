@@ -13,11 +13,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
-import mcteamgestapp.momo.com.mcteamgestapp.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 /**
  * Created by Rrossi on 19/05/2016.
@@ -66,9 +66,9 @@ public class VisualElimCassaActivity extends AppCompatActivity {
         descrizione.setText(notaCassa.getDescrizione());
         if(notaCassa.getNumeroProtocollo() != 0)
             protocollo.setText(notaCassa.getNumeroProtocollo()+"");
-        dare.setText(ToolUtils.format(notaCassa.getDare()) + " €");
-        avere.setText(ToolUtils.format(notaCassa.getAvere()) + " €");
-        totale.setText(ToolUtils.format(notaCassa.getTotale()) + " €");
+        dare.setText(Functions.format(notaCassa.getDare()) + " €");
+        avere.setText(Functions.format(notaCassa.getAvere()) + " €");
+        totale.setText(Functions.format(notaCassa.getTotale()) + " €");
 
         if(visualizza)
             layoutVisual.setVisibility(View.VISIBLE);

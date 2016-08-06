@@ -10,13 +10,11 @@ import android.view.View;
 import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.EliminaBancaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.NuovaBancaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.StampaBancaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.AndroidUtils;
 
 /**
+ * @author
  * Created by meddaakouri on 18/01/2016.
  */
 public class AllegatoOverflowOnClickListener implements View.OnClickListener {
@@ -42,7 +40,7 @@ public class AllegatoOverflowOnClickListener implements View.OnClickListener {
                         mContext.startActivity(eliminaIntent);
                         return true;
                     case R.id.menu_action_download:
-                        ToolUtils.downloadFile(mElement.getFile(), mContext);
+                        AndroidUtils.downloadFile(mElement.getFile(), mContext);
                         return true;
                     default:
                         return super.onMenuItemSelected(menu, item);

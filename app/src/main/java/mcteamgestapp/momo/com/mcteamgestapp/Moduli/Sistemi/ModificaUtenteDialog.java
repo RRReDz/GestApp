@@ -10,12 +10,10 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,21 +22,17 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class ModificaUtenteDialog extends AppCompatActivity {
 
@@ -272,7 +266,7 @@ public class ModificaUtenteDialog extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(data_nascita)) {
             System.out.println("is not empty" + data_nascita);
-            if (!ToolUtils.validateDate(data_nascita)) {
+            if (!Functions.validateDate(data_nascita)) {
                 System.out.println("date is not valid");
                 mBirthdayView.setError("Data mancante o errata: rispettare il formato 01-01-1900");
                 focusView = mBirthdayView;

@@ -9,14 +9,8 @@ import android.view.View;
 
 import java.lang.reflect.Field;
 
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Allegato;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.EliminaAllegatoActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.EliminaCommessaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NuovaCommessaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.StampaCommessaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
 
 /**
  * Created by meddaakouri on 27/01/2016.

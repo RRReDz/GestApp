@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.NetworkReq;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,13 +11,10 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
@@ -31,7 +28,6 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -44,6 +40,10 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanc
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;
+import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.AndroidUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 
 /**
@@ -507,7 +507,7 @@ public class VolleyRequests {
                                     notaCassa.setCassa(response.getInt("cassa"));
                                     //notaCassa.setDataPagamento(response.getString("data_pagamento"));
                                     String dataString = response.getString("data_pagamento");
-                                    notaCassa.setDataPagamento(ToolUtils.validateReverseDate(dataString) ? ToolUtils.getFormattedDate(dataString) : "");
+                                    notaCassa.setDataPagamento(Functions.validateReverseDate(dataString) ? Functions.getFormattedDate(dataString) : "");
 
 
                                     if (response.get("cod_dare").equals("") || response.get("cod_dare") == null)
@@ -531,12 +531,12 @@ public class VolleyRequests {
                                     if (response.get("dare").equals("") || response.isNull("dare"))
                                         notaCassa.setDare(0);
                                     else
-                                        notaCassa.setDare(ToolUtils.parse(response.getString("dare")));
+                                        notaCassa.setDare(Functions.parse(response.getString("dare")));
 
                                     if (response.get("avere").equals("") || response.isNull("avere"))
                                         notaCassa.setAvere(0);
                                     else
-                                        notaCassa.setAvere(ToolUtils.parse(response.getString("avere")));
+                                        notaCassa.setAvere(Functions.parse(response.getString("avere")));
 
                                     mNotaCassa.add(notaCassa);
                                 }
@@ -544,12 +544,12 @@ public class VolleyRequests {
                             }
 
                             activityPrimaNota.iconRefresh(true);
-                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
-                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                             Toast.makeText(mContext, "Errore nel caricamento, dati incompleti", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -564,7 +564,7 @@ public class VolleyRequests {
 
                         ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                         RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
-                        ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                        AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                     }
                 });
 
@@ -609,10 +609,10 @@ public class VolleyRequests {
                                     notaBanca.setGruppo(response.getInt("gruppo"));
 
                                     String dataOpString = response.getString("data_pagamento");
-                                    notaBanca.setDataPagamento(ToolUtils.validateReverseDate(dataOpString) ? ToolUtils.getFormattedDate(dataOpString) : "");
+                                    notaBanca.setDataPagamento(Functions.validateReverseDate(dataOpString) ? Functions.getFormattedDate(dataOpString) : "");
 
                                     String dataValString = response.getString("data_valuta");
-                                    notaBanca.setDataValuta(ToolUtils.validateReverseDate(dataValString) ? ToolUtils.getFormattedDate(dataValString) : "");
+                                    notaBanca.setDataValuta(Functions.validateReverseDate(dataValString) ? Functions.getFormattedDate(dataValString) : "");
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
@@ -625,13 +625,13 @@ public class VolleyRequests {
                                     if (response.get("dare").equals("") || response.get("dare").equals(" ") || response.isNull("dare"))
                                         notaBanca.setDare(0);
                                     else
-                                        notaBanca.setDare(ToolUtils.parse(response.getString("dare")));
+                                        notaBanca.setDare(Functions.parse(response.getString("dare")));
 
 
                                     if (response.get("avere").equals("") || response.get("avere").equals(" ") || response.isNull("avere"))
                                         notaBanca.setAvere(0);
                                     else
-                                        notaBanca.setAvere(ToolUtils.parse(response.getString("avere")));
+                                        notaBanca.setAvere(Functions.parse(response.getString("avere")));
 
                                     mNotaBanca.add(notaBanca);
                                 }
@@ -642,12 +642,12 @@ public class VolleyRequests {
                             //PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
                             //activity.iconRefresh(true);
 
-                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
-                            ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                             Toast.makeText(mContext, "Errore nel caricamento, dati incompleti", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -662,7 +662,7 @@ public class VolleyRequests {
 
                         ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
                         RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
-                        ToolUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                        AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                     }
                 });
 

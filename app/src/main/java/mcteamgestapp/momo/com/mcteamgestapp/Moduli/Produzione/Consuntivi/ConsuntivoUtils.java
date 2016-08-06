@@ -3,13 +3,11 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Environment;
 import android.widget.Toast;
 
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
@@ -26,11 +24,10 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.OrariAttivita;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 
 /**

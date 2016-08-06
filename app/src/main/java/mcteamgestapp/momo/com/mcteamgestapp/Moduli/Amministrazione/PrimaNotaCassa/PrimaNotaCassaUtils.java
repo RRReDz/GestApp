@@ -34,10 +34,11 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 
 /**
+ * @author
  * Created by Riccardo Rossi on 24/05/2016.
  */
 public class PrimaNotaCassaUtils {

@@ -5,15 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -27,7 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
-import mcteamgestapp.momo.com.mcteamgestapp.PUTRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 public class VisualizzaActivity extends AppCompatActivity {

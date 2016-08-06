@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
@@ -267,25 +267,27 @@ public class PrimaNotaBancaUtils {
         df.setMinimumFractionDigits(2);
 
         //make them in case they're not there
-        dir.mkdirs();
+        if(dir.mkdirs()) {
+            throw new Exception("Errore creazione folder del file");
+        }
         //create a standard java.io.File object for the Workbook to use
         File wbfile = new File(dir, month + "-" + year + ".xlsx");
 
         Workbook wb = new HSSFWorkbook();
 
-        Cell cella = null;
+        Cell cella;
 
         CellStyle cs = wb.createCellStyle();
 
         cs.setFillForegroundColor(HSSFColor.RED.index);
         cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
-        Sheet foglio1 = null;
+        Sheet foglio1;
         foglio1 = wb.createSheet("Prima nota banca");
 
         Row rowTitle = foglio1.createRow(0);
 
-        CellStyle csTitle = wb.createCellStyle();
+        //CellStyle csTitle = wb.createCellStyle();
 
         cella = rowTitle.createCell(0);
         cella.setCellValue(month + " " + year);
@@ -417,7 +419,7 @@ public class PrimaNotaBancaUtils {
             try {
                 if (null != out)
                     out.close();
-            } catch (Exception ex) {
+            } catch (Exception ignored) {
             }
         }
     }

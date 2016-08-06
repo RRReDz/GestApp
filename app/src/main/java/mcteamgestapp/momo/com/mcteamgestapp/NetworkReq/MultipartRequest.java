@@ -1,4 +1,4 @@
-package mcteamgestapp.momo.com.mcteamgestapp;
+package mcteamgestapp.momo.com.mcteamgestapp.NetworkReq;
 
 /**
  * Created by meddaakouri on 19/01/2016.

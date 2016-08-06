@@ -34,12 +34,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import mcteamgestapp.momo.com.mcteamgestapp.HeaderFooterPageEvent;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 /**
  * Created by meddaakouri on 29/01/2016.
@@ -142,8 +141,8 @@ public class AssociazioniTools {
 
         table.setHeaderRows(1);
 
-        table.addCell(ToolUtils.getFormattedDate(associazione.getData_inizio()));
-        table.addCell(ToolUtils.getFormattedDate(associazione.getData_fine()));
+        table.addCell(Functions.getFormattedDate(associazione.getData_inizio()));
+        table.addCell(Functions.getFormattedDate(associazione.getData_fine()));
 
         pdfToPrint.add(table);
 
@@ -251,8 +250,8 @@ public class AssociazioniTools {
             }
 
             table.addCell(associazione.getRisorsa().getCognome() + " " + associazione.getRisorsa().getNome());
-            table.addCell(ToolUtils.getFormattedDate(associazione.getData_inizio()));
-            table.addCell(ToolUtils.getFormattedDate(associazione.getData_fine()));
+            table.addCell(Functions.getFormattedDate(associazione.getData_inizio()));
+            table.addCell(Functions.getFormattedDate(associazione.getData_fine()));
 
         }
 
@@ -338,10 +337,10 @@ public class AssociazioniTools {
             cella.setCellValue(associazione.getRisorsa() != null ? (associazione.getRisorsa().getNome() + " " + associazione.getRisorsa().getCognome()) : "");
 
             cella = row.createCell(5);
-            cella.setCellValue(ToolUtils.getFormattedDate(associazione.getData_inizio()));
+            cella.setCellValue(Functions.getFormattedDate(associazione.getData_inizio()));
 
             cella = row.createCell(6);
-            cella.setCellValue(ToolUtils.getFormattedDate(associazione.getData_fine()));
+            cella.setCellValue(Functions.getFormattedDate(associazione.getData_fine()));
 
         }
 

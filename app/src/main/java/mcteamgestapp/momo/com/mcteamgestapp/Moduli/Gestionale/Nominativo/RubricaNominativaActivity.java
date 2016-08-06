@@ -37,13 +37,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import mcteamgestapp.momo.com.mcteamgestapp.CustomRequest;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.MyApp;
+import mcteamgestapp.momo.com.mcteamgestapp.Application.MyApp;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 public class RubricaNominativaActivity extends AppCompatActivity {

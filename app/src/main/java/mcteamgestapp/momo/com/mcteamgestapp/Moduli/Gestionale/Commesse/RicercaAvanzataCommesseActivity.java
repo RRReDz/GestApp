@@ -17,21 +17,18 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
-import mcteamgestapp.momo.com.mcteamgestapp.ToolUtils;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
 public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
 
@@ -192,7 +189,7 @@ public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
                 }
             }
 
-            commesseSetResult = (ArrayList) ToolUtils.union(commesseSetResult, tempResult);
+            commesseSetResult = (ArrayList) Functions.union(commesseSetResult, tempResult);
 
         }
 
@@ -206,7 +203,7 @@ public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
                     }
                 }
             }
-            commesseSetResult = (ArrayList) ToolUtils.union(commesseSetResult, tempResult);
+            commesseSetResult = (ArrayList) Functions.union(commesseSetResult, tempResult);
         }
 
         if (!TextUtils.isEmpty(cliente)) {
@@ -221,7 +218,7 @@ public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
                     tempResult.add(commessa);
                 }
             }
-            commesseSetResult = (ArrayList) ToolUtils.union(commesseSetResult, tempResult);
+            commesseSetResult = (ArrayList) Functions.union(commesseSetResult, tempResult);
         }
 
 
@@ -241,7 +238,7 @@ public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
             }
             System.out.println(" referente 1 ---> " + tempResult.size());
 
-            commesseSetResult = (ArrayList) ToolUtils.union(commesseSetResult, tempResult);
+            commesseSetResult = (ArrayList) Functions.union(commesseSetResult, tempResult);
         }
 
 
@@ -261,7 +258,7 @@ public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
 
             }
 
-            commesseSetResult = (ArrayList) ToolUtils.union(commesseSetResult, tempResult);
+            commesseSetResult = (ArrayList) Functions.union(commesseSetResult, tempResult);
         }
 
 
@@ -275,7 +272,7 @@ public class RicercaAvanzataCommesseActivity extends AppCompatActivity {
             }
 
 
-            commesseSetResult = (ArrayList) ToolUtils.union(commesseSetResult, tempResult);
+            commesseSetResult = (ArrayList) Functions.union(commesseSetResult, tempResult);
         }
 
 
