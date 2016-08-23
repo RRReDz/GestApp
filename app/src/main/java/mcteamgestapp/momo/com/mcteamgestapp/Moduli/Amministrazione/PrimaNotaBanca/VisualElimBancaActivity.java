@@ -10,11 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
@@ -23,7 +20,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
 
 /**
- * Created by Rrossi on 19/05/2016.
+ * @author Created by Rrossi on 19/05/2016.
  */
 public class VisualElimBancaActivity extends AppCompatActivity {
 
@@ -52,10 +49,6 @@ public class VisualElimBancaActivity extends AppCompatActivity {
         TextView dare = (TextView) findViewById(R.id.banca_show_dare);
         TextView avere = (TextView) findViewById(R.id.banca_show_avere);
         TextView totale = (TextView) findViewById(R.id.banca_show_tot);
-        BootstrapButton bModificaV = (BootstrapButton) findViewById(R.id.banca_boot_modif);
-        BootstrapButton bEliminaV = (BootstrapButton) findViewById(R.id.banca_boot_canc);
-        Button bAnnullaE = (Button) findViewById(R.id.banca_but_annull);
-        Button bElimE = (Button) findViewById(R.id.banca_but_elim);
 
         LinearLayout layoutVisual = (LinearLayout) findViewById(R.id.banca_layout_visual);
         LinearLayout layoutElim = (LinearLayout) findViewById(R.id.banca_layout_elim);
@@ -65,17 +58,21 @@ public class VisualElimBancaActivity extends AppCompatActivity {
 
         String[] bancaArray = getResources().getStringArray(R.array.gruppo);
 
-        gruppo.setText(bancaArray[notaBanca.getGruppo()]);
+        if (notaBanca.getGruppo() == 0)
+            gruppo.setText("");
+        else
+            gruppo.setText(bancaArray[notaBanca.getGruppo()]);
+
         dataOperazione.setText(notaBanca.getDataPagamento());
         dataValuta.setText(notaBanca.getDataValuta());
         descrizione.setText(notaBanca.getDescrizione());
-        if(notaBanca.getNumeroProtocollo() != 0)
-            protocollo.setText(notaBanca.getNumeroProtocollo()+"");
+        if (notaBanca.getNumeroProtocollo() != 0)
+            protocollo.setText(notaBanca.getNumeroProtocollo() + "");
         dare.setText(Functions.format(notaBanca.getDare()) + " €");
         avere.setText(Functions.format(notaBanca.getAvere()) + " €");
         totale.setText(Functions.format(notaBanca.getTotale()) + " €");
 
-        if(visualizza)
+        if (visualizza)
             layoutVisual.setVisibility(View.VISIBLE);
         else {
             setTitle("Elimina nota banca");
@@ -87,7 +84,7 @@ public class VisualElimBancaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return true;
     }
@@ -101,8 +98,8 @@ public class VisualElimBancaActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == Constants.NOTA_EDIT)
-            if(resultCode == Activity.RESULT_OK)
+        if (requestCode == Constants.NOTA_EDIT)
+            if (resultCode == Activity.RESULT_OK)
                 finish();
     }
 

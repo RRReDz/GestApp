@@ -1,6 +1,7 @@
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   MODIFICHE PRIORITARIE                      ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 - MODIFICARE TUTTI I LOGOUT -> RIMUOVERE UTENTE DA "SESSIONE" PRIMA DI USCIRE
+- Modificare tutti gli inserimenti delle date che avvengano tramite calendario
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   BUG/IMPERFEZIONI DA FIXARE                  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 

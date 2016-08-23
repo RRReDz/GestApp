@@ -38,8 +38,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Utils.HeaderFooterPageEvent;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 
 /**
- * @author
- * Created by Riccardo Rossi on 24/05/2016.
+ * @author Created by Riccardo Rossi on 24/05/2016.
  */
 public class PrimaNotaCassaUtils {
 
@@ -47,7 +46,7 @@ public class PrimaNotaCassaUtils {
 
     public static void printAll(ArrayList<NotaCassa> notaCassaList, Context context, String type, String month, String year) throws Exception {
         File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_cassa/pdf");
-        Log.d("PATH DI STAMPA", context.getFilesDir() + "/GestApp/nota_cassa/pdf");
+        //Log.d("PATH DI STAMPA", context.getFilesDir() + "/GestApp/nota_cassa/pdf");
         File pdf = new File(dir, month + "-" + year + "-" + type + ".pdf");
 
         DecimalFormat df = new DecimalFormat();
@@ -250,19 +249,19 @@ public class PrimaNotaCassaUtils {
 
         Workbook wb = new HSSFWorkbook();
 
-        Cell cella = null;
+        Cell cella;
 
         CellStyle cs = wb.createCellStyle();
 
         cs.setFillForegroundColor(HSSFColor.RED.index);
         cs.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
-        Sheet foglio1 = null;
+        Sheet foglio1;
         foglio1 = wb.createSheet("Prima nota cassa");
 
         Row rowTitle = foglio1.createRow(0);
 
-        CellStyle csTitle = wb.createCellStyle();
+        //CellStyle csTitle = wb.createCellStyle();
 
         cella = rowTitle.createCell(0);
         cella.setCellValue(month + " " + year + " - " + type);
@@ -385,11 +384,8 @@ public class PrimaNotaCassaUtils {
         } catch (Exception e) {
             Log.w("FileUtils", "Failed to save file", e);
         } finally {
-            try {
-                if (null != out)
-                    out.close();
-            } catch (Exception ex) {
-            }
+            if (null != out)
+                out.close();
         }
     }
 }

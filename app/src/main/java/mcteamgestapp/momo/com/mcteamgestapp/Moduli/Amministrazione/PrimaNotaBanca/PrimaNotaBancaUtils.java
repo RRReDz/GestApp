@@ -40,8 +40,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
- * @author
- * Created by Riccardo Rossi on 24/05/2016.
+ * @author Created by Riccardo Rossi on 24/05/2016.
  */
 public class PrimaNotaBancaUtils {
 
@@ -57,8 +56,7 @@ public class PrimaNotaBancaUtils {
         df.setMinimumFractionDigits(2);
 
         //make them in case they're not there
-        if(!dir.mkdirs())
-            throw new Exception("Errore durante la creazione della cartella di stampa");
+        dir.mkdirs();
 
         //creazione tabella
         Font boldTitle = new Font(Font.FontFamily.HELVETICA, 20f, Font.BOLD);
@@ -267,9 +265,7 @@ public class PrimaNotaBancaUtils {
         df.setMinimumFractionDigits(2);
 
         //make them in case they're not there
-        if(dir.mkdirs()) {
-            throw new Exception("Errore creazione folder del file");
-        }
+        dir.mkdirs();
         //create a standard java.io.File object for the Workbook to use
         File wbfile = new File(dir, month + "-" + year + ".xlsx");
 
