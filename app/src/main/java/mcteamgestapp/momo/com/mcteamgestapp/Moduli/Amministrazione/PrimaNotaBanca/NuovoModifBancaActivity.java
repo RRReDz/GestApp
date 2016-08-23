@@ -189,15 +189,9 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             return false;
         }
 
-        if (TextUtils.isEmpty(dare)) {
-            mDare.setError("Inserire un importo");
+        if (TextUtils.isEmpty(dare) && TextUtils.isEmpty(avere)) {
+            mDare.setError("Inserire almeno un importo tra dare e avere");
             mDare.requestFocus();
-            return false;
-        }
-
-        if (TextUtils.isEmpty(avere)) {
-            mAvere.setError("Inserire un importo");
-            mAvere.requestFocus();
             return false;
         }
 
@@ -219,8 +213,20 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             protocollo = 0; //Se vuoto viene settato a 0 per convenzione
         }
 
-        float dare = Float.parseFloat((mDare.getText().toString()));
-        float avere = Float.parseFloat((mAvere.getText().toString()));
+        float dare;
+        try {
+            dare = Float.parseFloat((mDare.getText().toString()));
+        }catch(NumberFormatException exception) {
+            dare = 0;
+        }
+
+        float avere;
+        try {
+            avere = Float.parseFloat((mAvere.getText().toString()));
+        }
+        catch(NumberFormatException exception) {
+            avere = 0;
+        }
 
         notaBanca.setGruppo(gruppo);
         notaBanca.setDataPagamento(Functions.fromDateToSql(dataOperazione));

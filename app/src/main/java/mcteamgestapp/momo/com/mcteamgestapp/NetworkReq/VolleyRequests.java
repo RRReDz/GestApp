@@ -507,7 +507,7 @@ public class VolleyRequests {
                                     notaCassa.setCassa(response.getInt("cassa"));
                                     //notaCassa.setDataPagamento(response.getString("data_pagamento"));
                                     String dataString = response.getString("data_pagamento");
-                                    notaCassa.setDataPagamento(Functions.validateReverseDate(dataString) ? Functions.getFormattedDate(dataString) : "");
+                                    notaCassa.setDataPagamento(Functions.getFormattedDate(dataString));
 
 
                                     if (response.get("cod_dare").equals("") || response.get("cod_dare") == null)
@@ -609,10 +609,10 @@ public class VolleyRequests {
                                     notaBanca.setGruppo(response.getInt("gruppo"));
 
                                     String dataOpString = response.getString("data_pagamento");
-                                    notaBanca.setDataPagamento(Functions.validateReverseDate(dataOpString) ? Functions.getFormattedDate(dataOpString) : "");
+                                    notaBanca.setDataPagamento(Functions.getFormattedDate(dataOpString));
 
                                     String dataValString = response.getString("data_valuta");
-                                    notaBanca.setDataValuta(Functions.validateReverseDate(dataValString) ? Functions.getFormattedDate(dataValString) : "");
+                                    notaBanca.setDataValuta(Functions.getFormattedDate(dataValString));
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
