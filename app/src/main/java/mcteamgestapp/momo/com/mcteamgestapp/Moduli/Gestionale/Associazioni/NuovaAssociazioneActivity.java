@@ -1,6 +1,7 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Associazioni;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -114,6 +115,10 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_associazione);
 
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
             Drawable actionBarBack = null;

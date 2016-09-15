@@ -1,6 +1,7 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +46,11 @@ public class StampaCommessaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elimina_commessa);
+
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         //***********************************************************************
         //Cambiare colore alla actionBar

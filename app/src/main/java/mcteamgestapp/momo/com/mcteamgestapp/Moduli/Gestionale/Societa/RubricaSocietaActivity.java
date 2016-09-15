@@ -3,6 +3,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Societa;
 import android.annotation.TargetApi;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -75,6 +76,12 @@ public class RubricaSocietaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rubrica_societa);
+
+        //Permette landscape e portrait solo se è un tablet
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         mRubricaListaView = (ListView) findViewById(R.id.rubrica_societa_list);
 
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {

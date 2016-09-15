@@ -3,6 +3,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCas
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +33,11 @@ public class VisualElimCassaActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizza_nota_cassa);
+
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         //Set colore action bar
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
@@ -64,13 +70,13 @@ public class VisualElimCassaActivity extends AppCompatActivity {
         causaleContabile.setText(notaCassa.getCausaleContabile());
         sottoconto.setText(notaCassa.getSottoconto());
         descrizione.setText(notaCassa.getDescrizione());
-        if(notaCassa.getNumeroProtocollo() != 0)
-            protocollo.setText(notaCassa.getNumeroProtocollo()+"");
+        if (notaCassa.getNumeroProtocollo() != 0)
+            protocollo.setText(notaCassa.getNumeroProtocollo() + "");
         dare.setText(Functions.format(notaCassa.getDare()) + " €");
         avere.setText(Functions.format(notaCassa.getAvere()) + " €");
         totale.setText(Functions.format(notaCassa.getTotale()) + " €");
 
-        if(visualizza)
+        if (visualizza)
             layoutVisual.setVisibility(View.VISIBLE);
         else {
             setTitle("Elimina nota cassa");
@@ -82,7 +88,7 @@ public class VisualElimCassaActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home)
+        if (item.getItemId() == android.R.id.home)
             finish();
         return true;
     }
@@ -96,8 +102,8 @@ public class VisualElimCassaActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == Constants.NOTA_EDIT)
-            if(resultCode == Activity.RESULT_OK)
+        if (requestCode == Constants.NOTA_EDIT)
+            if (resultCode == Activity.RESULT_OK)
                 finish();
     }
 

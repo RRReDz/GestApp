@@ -3,6 +3,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -68,6 +69,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //Permette landscape e portrait solo se è un tablet
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         //Non lo usa
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -117,9 +123,9 @@ public class HomeActivity extends AppCompatActivity {
             mCommercialeFrame.setVisibility(View.GONE);
         }
 
-        //if (!mCurrentUser.isProduzione()) {
+        if (!mCurrentUser.isProduzione()) {
             mProduzioneFrame.setVisibility(View.GONE);
-        //}
+        }
 
         if (!mCurrentUser.isAmministratore()) {
             mAmministrazioneFrame.setVisibility(View.GONE);

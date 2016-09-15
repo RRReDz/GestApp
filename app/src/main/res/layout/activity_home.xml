@@ -193,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/frame_amministrazione"
-                android:background="@color/commerciale_test_home">
+                android:background="@drawable/commerciale_home_background">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -290,7 +290,7 @@
                 android:id="@+id/frame_amministrazione"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/amministrazione_test">
+                android:background="@drawable/amministrazione_home_background">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -445,7 +445,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/frame_sistemi"
-                android:background="@color/produzione_test">
+                android:background="@drawable/produzione_home_background">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -508,7 +508,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
-                android:background="@color/sistemi_home_background">
+                android:background="@drawable/sistemi_home_background">
 
                 <LinearLayout
                     android:layout_width="match_parent"

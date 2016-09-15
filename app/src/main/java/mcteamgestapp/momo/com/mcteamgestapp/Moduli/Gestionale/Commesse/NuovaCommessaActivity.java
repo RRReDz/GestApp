@@ -2,6 +2,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -88,6 +89,11 @@ public class NuovaCommessaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_commessa);
+
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         mCommessaToModify = getIntent().getParcelableExtra("commessaToModify");
 

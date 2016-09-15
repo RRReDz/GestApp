@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -80,6 +81,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
+        //Permette landscape e portrait solo se è un tablet
+        if(getResources().getBoolean(R.bool.portrait_only)){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         /* CTRL + SHIFT + / -> COMMENTO CON SELEZIONE
         if (ContextCompat.checkSelfPermission(this,
@@ -281,8 +287,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Errore richiesta Volley", "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Internet error", error.getMessage());
+                Toast.makeText(getApplicationContext(), "Nessuna connessione Internet trovata, verifica e riprova", Toast.LENGTH_SHORT).show();
                 showProgress(false);
                 // hide the progress dialog
             }

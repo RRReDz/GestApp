@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <drawable name="gestionale_home_background">#3383d4</drawable>
-    <drawable name="commerciale_home_background">#ffb10a</drawable>
-    <drawable name="amministrazione_home_background">#16a085</drawable>
+    <drawable name="commerciale_home_background">#00B1A9</drawable>
+    <drawable name="amministrazione_home_background">#57D781</drawable>
+    <drawable name="produzione_home_background">#FFC912</drawable>
+    <drawable name="sistemi_home_background">#D1512F</drawable>
 </resources>

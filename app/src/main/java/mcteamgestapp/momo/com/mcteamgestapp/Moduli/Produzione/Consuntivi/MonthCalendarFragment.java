@@ -37,6 +37,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Ferie;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.OrariAttivita;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.JSONObjectRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
@@ -271,9 +272,9 @@ public class MonthCalendarFragment extends Fragment {
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    Log.i("LoginResponse", e.getMessage());
+                    Log.d("Err resp getAttivita", e.getMessage());
                     Toast.makeText(getActivity(),
-                            "Error: " + e.getMessage(),
+                            "Err resp getAttivita: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -281,9 +282,9 @@ public class MonthCalendarFragment extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Errore richiesta Volley", "Error: " + error.getMessage());
+                Log.d("Err. orari_attivita", error.getMessage());
                 Toast.makeText(getActivity(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                        "Err. orari_attivita: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 // hide the progress dialog
             }
         });
@@ -305,6 +306,7 @@ public class MonthCalendarFragment extends Fragment {
         CustomRequest accessiRequest = new CustomRequest(url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray responseArray) {
+                /*Log.d("Ferie", responseArray.toString());*/
                 try {
 
                     for (int i = 0; i < responseArray.length(); i++) {
@@ -319,9 +321,9 @@ public class MonthCalendarFragment extends Fragment {
                 } catch (JSONException e) {
 
                     e.printStackTrace();
-                    Log.i("LoginResponse", e.getMessage());
+                    Log.d("Err resp getFerie", e.getMessage());
                     Toast.makeText(getActivity(),
-                            "Error: " + e.getMessage(),
+                            "Err resp getFerie: " + e.getMessage(),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -329,9 +331,9 @@ public class MonthCalendarFragment extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Errore richiesta Volley", "Error: " + error.getMessage());
+                Log.d("Err. req ferie", error.getMessage());
                 Toast.makeText(getActivity(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                        "Err. req ferie: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 // hide the progress dialog
             }
         });

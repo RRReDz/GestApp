@@ -4,6 +4,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -41,6 +42,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.OrariAttivita;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
+import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.JSONObjectRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
 
@@ -94,6 +96,11 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consuntivi_main);
 
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
         /*
         if((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
             Drawable actionBarBack = null;
@@ -144,9 +151,9 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Errore richiesta Volley", "Error: " + error.getMessage());
+                Log.d("Err. commesse-utente", error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                        "Err. commesse-utente: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 // hide the progress dialog
             }
         });
@@ -159,6 +166,7 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
 
         @Override
         public void onResponse(JSONArray responseArray) {
+
             try {
 
                 for (int i = 0; i < responseArray.length(); i++) {
@@ -178,10 +186,10 @@ public class ConsuntiviMainActivity extends AppCompatActivity {
             } catch (JSONException e) {
 
                 e.printStackTrace();
-                Log.i("LoginResponse", e.getMessage());
+                Log.i("Err resp getCommesse", e.getMessage());
 
                 Toast.makeText(getApplicationContext(),
-                        "Error: " + e.getMessage(),
+                        "Err resp getCommesse: " + e.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
 

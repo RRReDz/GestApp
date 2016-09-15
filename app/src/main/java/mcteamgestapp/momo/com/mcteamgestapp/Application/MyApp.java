@@ -4,7 +4,8 @@ import android.app.Application;
 
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
-
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 
 /**
@@ -22,6 +23,7 @@ public class MyApp extends Application {
 
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         mCurrentUser = null;
         TypefaceProvider.registerDefaultIconSets();
     }

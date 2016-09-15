@@ -1,547 +1,544 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Moduli.Home.HomeActivity">
 
     <LinearLayout
+        android:id="@+id/frame_user_info"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/frame_user_info"
         android:layout_gravity="top">
 
         <TextView
+            android:id="@+id/tv_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome "
-            android:id="@+id/tv_nome"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/tv_cognome"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="10dp"
-            android:layout_alignTop="@+id/tv_cognome"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="false"
+            android:text="Nome "
             android:textSize="18dp" />
 
         <TextView
+            android:id="@+id/tv_cognome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cognome"
-            android:id="@+id/tv_cognome"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:layout_marginLeft="3dp"
             android:layout_marginStart="27dp"
-            android:layout_centerVertical="true"
-            android:textStyle="bold"
-            android:textSize="18dp" />
+            android:text="Cognome"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_vertical|end">
+            android:gravity="center_vertical|end"
+            android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/more_user_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/more_user_info"
-                android:src="@drawable/ic_info_outline_black_24dp"
-                android:background="@color/transparent"
-                android:layout_marginEnd="19dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_marginEnd="19dp"
+                android:layout_marginRight="19dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_info_outline_black_24dp" />
         </LinearLayout>
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView2"
         android:transitionGroup="false">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+            android:orientation="vertical">
 
             <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/sistemi_home_background"
-                android:id="@+id/frame_sistemi"
-                android:layout_gravity="center"
-                android:layout_alignParentTop="true"
-                >
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:animateLayoutChanges="true"
-                    >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:id="@+id/sistemi_menu_view">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/imageView8"
-                            android:src="@drawable/ic_accessibility_white_36dp"
-                            android:layout_gravity="left|center_vertical"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Sistemi"
-
-                            android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_below="@+id/imageView8"
-                            android:layout_centerHorizontal="true" />
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/sistemi_menu"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_gravity="center">
-
-                        <Button
-                            android:layout_width="90dp"
-                            android:layout_height="70dp"
-                            android:id="@+id/button_accessi"
-                            android:text="@string/accessi_button"
-                            android:textSize="16px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gestionale_home_background"
                 android:id="@+id/frame_gestionale"
-                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/frame_produzione"
-                >
+                android:layout_gravity="center"
+                android:background="@drawable/gestionale_home_background">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:animateLayoutChanges="true"
-                    >
+                    android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/gestionale_menu_view"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:id="@+id/gestionale_menu_view"
-                        >
+                        android:onClick="openTab">
 
                         <ImageView
+                            android:id="@+id/imageView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView9"
-                            android:src="@drawable/ic_assignment_white_36dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
                             android:layout_gravity="left|center_vertical"
                             android:layout_marginTop="15dp"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true" />
+                            android:src="@drawable/ic_assignment_white_36dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Gestionale"
+                            android:layout_below="@+id/imageView9"
+                            android:layout_centerHorizontal="true"
 
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_below="@+id/imageView9"
-                            android:layout_centerHorizontal="true" />
+                            android:text="Gestionale"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/gestionale_menu"
-                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
+                        android:layout_gravity="center"
                         android:animateLayoutChanges="true"
-                        android:layout_gravity="center">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <Button
-                            android:layout_width="90dp"
-                            android:layout_height="70dp"
                             android:id="@+id/home_rubrica_societa"
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
                             android:text="Rubrica società"
-                            android:textSize="16px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp"
-                            android:layout_gravity="center" />
+                            android:textSize="16px" />
 
                         <Button
+                            android:id="@+id/home_rubrica_nominativi"
                             android:layout_width="90dp"
                             android:layout_height="70dp"
-                            android:id="@+id/button"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
                             android:text="Rubrica Nominativo"
-                            android:textSize="13px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp"
-                            android:layout_gravity="center" />
+                            android:textSize="13px" />
 
                         <Button
+                            android:id="@+id/home_commesse"
                             android:layout_width="90dp"
                             android:layout_height="70dp"
-                            android:id="@+id/button2"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
                             android:text="Commesse"
-                            android:textSize="16px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp"
-                            android:layout_gravity="center" />
+                            android:textSize="16px" />
 
                         <Button
+                            android:id="@+id/home_associazioni"
                             android:layout_width="90dp"
                             android:layout_height="70dp"
-                            android:id="@+id/button3"
-                            android:text="Associazioni"
-                            android:textSize="14px"
-                            android:background="@drawable/rounded_button"
+                            android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:layout_gravity="center" />
+                            android:background="@drawable/rounded_button"
+                            android:text="Associazioni"
+                            android:textSize="14px" />
 
                         <ImageButton
+                            android:id="@+id/home_allegati"
                             android:layout_width="90dp"
                             android:layout_height="70dp"
-                            android:id="@+id/button4"
-                            android:text="Allegati"
-                            android:textSize="16px"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
                             android:background="@drawable/rounded_button"
                             android:src="@drawable/ic_attach_file_black_18dp"
-                            android:layout_margin="10dp"
-                            android:layout_gravity="center" />
+                            android:text="Allegati"
+                            android:textSize="16px" />
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/home_frame_background"
-                android:id="@+id/frame_produzione"
-                android:layout_below="@+id/frame_sistemi"
-                >
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:animateLayoutChanges="true"
-                    >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:id="@+id/produzione_menu_view"
-                        >
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/imageView11"
-                            android:src="@drawable/ic_trending_up_white_36dp"
-                            android:layout_gravity="left|center_vertical"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginTop="15dp"
-                            android:layout_centerHorizontal="true" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Produzione"
-
-                            android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_below="@+id/imageView11"
-                            android:layout_centerHorizontal="true" />
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/produzione_menu"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:layout_gravity="center">
-
-                        <Button
-                            android:layout_width="90dp"
-                            android:layout_height="70dp"
-                            android:id="@+id/button_produzione1"
-                            android:text="Consuntivi"
-                            android:textSize="16px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </FrameLayout>
-
-            <FrameLayout
+                android:id="@+id/frame_commerciale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/commerciale_home_background"
-                android:id="@+id/frame_commerciale"
-                android:layout_alignBottom="@+id/frame_amministrazione">
+                android:layout_alignBottom="@+id/frame_amministrazione"
+                android:background="@drawable/commerciale_home_background">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:animateLayoutChanges="true"
-                    >
+                    android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/commerciale_menu_view"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:id="@+id/commerciale_menu_view"
-                        >
+                        android:onClick="openTab">
 
                         <ImageView
+                            android:id="@+id/imageView10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView10"
-                            android:src="@drawable/ic_supervisor_account_white_36dp"
-                            android:layout_gravity="left|center_vertical"
                             android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
                             android:layout_marginTop="15dp"
-                            android:layout_centerHorizontal="true" />
+                            android:src="@drawable/ic_supervisor_account_white_36dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Commerciale"
+                            android:layout_below="@+id/imageView10"
+                            android:layout_centerHorizontal="true"
 
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_below="@+id/imageView10"
-                            android:layout_centerHorizontal="true" />
+                            android:text="Commerciale"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
                     </RelativeLayout>
 
                     <LinearLayout
                         android:id="@+id/commerciale_menu"
-                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
+                        android:layout_gravity="center"
                         android:animateLayoutChanges="true"
+                        android:orientation="horizontal"
 
-                        android:layout_gravity="center">
+                        android:visibility="gone">
 
                         <Button
-                            android:layout_width="90dp"
-                            android:layout_height="70dp"
                             android:id="@+id/button_commerciale"
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
                             android:text="Offerte"
-                            android:textSize="14px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp" />
+                            android:textSize="14px" />
 
                         <Button
-                            android:layout_width="90dp"
-                            android:layout_height="70dp"
                             android:id="@+id/button5"
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
                             android:text="Ordini"
-                            android:textSize="14px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp"
-                            android:layout_gravity="center_vertical" />
+                            android:textSize="14px" />
 
                         <Button
-                            android:layout_width="90dp"
-                            android:layout_height="70dp"
                             android:id="@+id/button6"
-                            android:text="Autorizzazioni"
-                            android:textSize="12px"
-                            android:background="@drawable/rounded_button"
-                            android:layout_margin="10dp"
-                            android:layout_gravity="center_vertical" />
-
-                        <Button
                             android:layout_width="90dp"
                             android:layout_height="70dp"
-                            android:id="@+id/button7"
-                            android:text="Avanzamento"
-                            android:textSize="12px"
-                            android:background="@drawable/rounded_button"
+                            android:layout_gravity="center_vertical"
                             android:layout_margin="10dp"
-                            android:layout_gravity="center_vertical" />
+                            android:background="@drawable/rounded_button"
+                            android:text="Autorizzazioni"
+                            android:textSize="12px" />
+
+                        <Button
+                            android:id="@+id/button7"
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Avanzamento"
+                            android:textSize="12px" />
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/frame_amministrazione"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/amministrazione_home_background"
-                android:id="@+id/frame_amministrazione"
-                >
+                android:background="@drawable/amministrazione_home_background">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:animateLayoutChanges="true"
-                    >
+                    android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/amministrazione_menu_view"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:id="@+id/amministrazione_menu_view"
-                        >
+                        android:onClick="openTab">
 
                         <ImageView
+                            android:id="@+id/imageView12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView12"
-                            android:src="@drawable/ic_account_balance_white_36dp"
-                            android:layout_gravity="left|center_vertical"
                             android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
                             android:layout_marginTop="15dp"
-                            android:layout_centerHorizontal="true" />
+                            android:src="@drawable/ic_account_balance_white_36dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Amministrazione"
+                            android:layout_below="@+id/imageView12"
+                            android:layout_centerHorizontal="true"
 
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:layout_below="@+id/imageView12"
-                            android:layout_centerHorizontal="true" />
+                            android:text="Amministrazione"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
 
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:orientation="vertical"
+                        android:id="@+id/amministrazione_menu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/amministrazione_menu"
+                        android:orientation="vertical"
                         android:visibility="gone">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:visibility="visible"
-                            android:layout_gravity="center">
+                            android:layout_gravity="center"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
 
                             <Button
-                                android:layout_width="90dp"
-                                android:layout_height="70dp"
                                 android:id="@+id/button_amministrazione1"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
                                 android:text="Fatture di vendita"
-                                android:textSize="16px"
-                                android:background="@drawable/rounded_button"
-                                android:layout_margin="10dp" />
+                                android:textSize="16px" />
 
                             <Button
-                                android:layout_width="90dp"
-                                android:layout_height="70dp"
                                 android:id="@+id/button8"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
                                 android:text="Fatture di Acquisto"
-                                android:textSize="14px"
-                                android:background="@drawable/rounded_button"
-                                android:layout_margin="10dp"
-                                android:layout_gravity="center_vertical" />
+                                android:textSize="14px" />
 
                             <Button
-                                android:layout_width="90dp"
-                                android:layout_height="70dp"
                                 android:id="@+id/button9"
-                                android:text="Report consuntivi"
-                                android:textSize="14px"
-                                android:background="@drawable/rounded_button"
-                                android:layout_margin="10dp"
-                                android:layout_gravity="center_vertical" />
-
-                            <Button
                                 android:layout_width="90dp"
                                 android:layout_height="70dp"
-                                android:id="@+id/button10"
-                                android:text="Pianificazione"
-                                android:textSize="12px"
-                                android:background="@drawable/rounded_button"
+                                android:layout_gravity="center_vertical"
                                 android:layout_margin="10dp"
-                                android:layout_gravity="center_vertical" />
+                                android:background="@drawable/rounded_button"
+                                android:text="Report consuntivi"
+                                android:textSize="14px" />
+
+                            <Button
+                                android:id="@+id/button10"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
+                                android:text="Pianificazione"
+                                android:textSize="12px" />
 
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center">
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
 
                             <Button
-                                android:layout_width="90dp"
-                                android:layout_height="70dp"
                                 android:id="@+id/button11"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
                                 android:text="Pianificazione previsionale"
-                                android:textSize="12px"
-                                android:background="@drawable/rounded_button"
-                                android:layout_margin="10dp"
-                                android:layout_gravity="center_vertical" />
+                                android:textSize="12px" />
 
                             <Button
+                                android:id="@+id/home_prima_nota_cassa"
                                 android:layout_width="90dp"
                                 android:layout_height="70dp"
-                                android:id="@+id/button12"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
                                 android:text="Prima nota cassa"
-                                android:textSize="12px"
-                                android:background="@drawable/rounded_button"
-                                android:layout_margin="10dp"
-                                android:layout_gravity="center" />
+                                android:textSize="12px" />
 
                             <Button
+                                android:id="@+id/home_prima_nota_banca"
                                 android:layout_width="90dp"
                                 android:layout_height="70dp"
-                                android:id="@+id/button13"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/rounded_button"
                                 android:text="Prima nota banca"
-                                android:textSize="12px"
-                                android:background="@drawable/rounded_button"
-                                android:layout_margin="10dp"
-                                android:layout_gravity="center" />
+                                android:textSize="12px" />
 
                             <Button
+                                android:id="@+id/home_rubrica_banca"
                                 android:layout_width="90dp"
                                 android:layout_height="70dp"
-                                android:id="@+id/button14"
-                                android:text="Rubrica banche"
-                                android:textSize="12px"
-                                android:background="@drawable/rounded_button"
+                                android:layout_gravity="center"
                                 android:layout_margin="10dp"
-                                android:layout_gravity="center" />
+                                android:background="@drawable/rounded_button"
+                                android:text="Rubrica banche"
+                                android:textSize="12px" />
                         </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
 
             </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_produzione"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_sistemi"
+                android:background="@drawable/produzione_home_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/produzione_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/ic_trending_up_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView11"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Produzione"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/produzione_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/home_consuntivi"
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="Consuntivi"
+                            android:textSize="16px" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_sistemi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:background="@drawable/sistemi_home_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/sistemi_menu_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:onClick="openTab">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/ic_accessibility_white_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView8"
+                            android:layout_centerHorizontal="true"
+
+                            android:layout_gravity="center"
+                            android:text="Sistemi"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sistemi_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/button_accessi"
+                            android:layout_width="90dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/rounded_button"
+                            android:text="@string/accessi_button"
+                            android:textSize="16px" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+
+
         </LinearLayout>
     </ScrollView>
 
