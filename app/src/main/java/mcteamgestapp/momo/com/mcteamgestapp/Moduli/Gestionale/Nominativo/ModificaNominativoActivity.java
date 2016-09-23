@@ -1,6 +1,7 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo;
 
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,6 +39,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
@@ -223,6 +226,13 @@ public class ModificaNominativoActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        mDataNascitaView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData();
             }
         });
 
@@ -526,6 +536,11 @@ public class ModificaNominativoActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void onClickSelData() {
+        DialogFragment dialogFragment = new DatePickerFragment(mDataNascitaView);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     private void logout() {

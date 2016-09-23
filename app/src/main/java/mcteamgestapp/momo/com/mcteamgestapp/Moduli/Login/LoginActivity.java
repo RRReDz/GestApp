@@ -287,7 +287,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Internet error", error.getMessage());
+                //Log.d("Internet error", error.getMessage());
                 Toast.makeText(getApplicationContext(), "Nessuna connessione Internet trovata, verifica e riprova", Toast.LENGTH_SHORT).show();
                 showProgress(false);
                 // hide the progress dialog

@@ -2,6 +2,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -21,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -34,14 +36,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Societa;
@@ -61,7 +68,7 @@ public class NuovoNominativoActivity extends AppCompatActivity {
     EditText mCapView;
     Spinner mProvinciaView;
     EditText mCittaView;
-    EditText mDataNascitaView;
+    TextView mDataNascitaView;
     EditText mLuogoNascitaView;
     EditText mPIVAView;
     EditText mCod_FiscaleView;
@@ -195,7 +202,7 @@ public class NuovoNominativoActivity extends AppCompatActivity {
         mIndirizzoView = (EditText) findViewById(R.id.nuovo_nominativo_indirizzo);
         mCapView = (EditText) findViewById(R.id.nuovo_nominativo_cap);
         mCittaView = (EditText) findViewById(R.id.nuovo_nominativo_citta);
-        mDataNascitaView = (EditText) findViewById(R.id.nuovo_nominativo_data_nascita);
+        mDataNascitaView = (TextView) findViewById(R.id.nuovo_nominativo_data_nascita);
         mLuogoNascitaView = (EditText) findViewById(R.id.nuovo_nominativo_luogo_nascita);
         mPIVAView = (EditText) findViewById(R.id.nuovo_nominativo_partita_iva);
         mCod_FiscaleView = (EditText) findViewById(R.id.nuovo_nominativo_codice_fiscale);
@@ -490,6 +497,11 @@ public class NuovoNominativoActivity extends AppCompatActivity {
         }
     }
 
+    public void onClickSelData(View view) {
+        DialogFragment dialogFragment = new DatePickerFragment(mDataNascitaView).withCurrentDay();
+        dialogFragment.show(getFragmentManager(), "datePicker");
+    }
+
     private void logout() {
         Intent goLogin = new Intent(this, LoginActivity.class);
         goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -503,6 +515,4 @@ public class NuovoNominativoActivity extends AppCompatActivity {
         startActivity(goHome);
         finish();
     }
-
-
 }

@@ -7,583 +7,588 @@
     tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.NuovoNominativoActivity">
 
     <ScrollView
+        android:id="@+id/scrollView15"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView15" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingRight="20dp"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical"
             android:paddingLeft="20dp"
-            android:animateLayoutChanges="true" >
+            android:paddingRight="20dp">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView104"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Dati nominativo:"
-                    android:id="@+id/textView104"
-                    android:textColor="@color/commerciale_home_background"
                     android:gravity="center"
                     android:singleLine="true"
+                    android:text="Dati nominativo:"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/commerciale_home_background"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <TextView
+                    android:id="@+id/textView112"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Titolo:"
-                    android:id="@+id/textView112"
                     android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuovo_nominativo_titolo_spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/nuovo_nominativo_titolo_spinner" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="10dp"
                 android:layout_weight="1"
-                android:weightSum="1" >
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/nuovo_nominativo_cognome"
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:layout_weight="1"
                     android:ems="10"
                     android:hint="Cognome"
-                    android:id="@+id/nuovo_nominativo_cognome"
-                    android:layout_weight="1" />
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="10dp"
                 android:layout_weight="1"
-                android:weightSum="1" >
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:weightSum="1">
 
                 <EditText
+                    android:id="@+id/nuovo_nominativo_nome"
                     android:layout_width="168dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:layout_weight="1"
                     android:ems="10"
                     android:hint="Nome"
-                    android:id="@+id/nuovo_nominativo_nome"
-                    android:layout_weight="1" />
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="10dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <TextView
+                    android:id="@+id/textView126"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Società*:"
-                    android:id="@+id/textView126"
                     android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuovo_nominativo_societa_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/nuovo_nominativo_societa_spinner"
                     android:spinnerMode="dialog" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Indirizzo"
                     android:id="@+id/nuovo_nominativo_indirizzo"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="CAP"
-                    android:id="@+id/nuovo_nominativo_cap"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:hint="Indirizzo" />
+
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_cap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="CAP" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <TextView
+                    android:id="@+id/textView135"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Provincia:"
-                    android:id="@+id/textView135"
                     android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuovo_nominativo_provincia_spinner"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/nuovo_nominativo_provincia_spinner" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/nuovo_nominativo_citta"
-                    android:hint="Città"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Nazionalità/Paese"
-                    android:id="@+id/nuovo_nominativo_nazionalita"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Telefono"
-                    android:id="@+id/nuovo_nominativo_telefono"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Fax"
-                    android:id="@+id/nuovo_nominativo_fax"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Cellulare"
-                    android:id="@+id/nuovo_nominativo_cellulare"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:layout_weight="1" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Email"
-                    android:id="@+id/nuovo_nominativo_email"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
                 android:layout_weight="1"
-                android:layout_marginBottom="10dp" >
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <EditText
+                    android:id="@+id/nuovo_nominativo_citta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Note"
-                    android:id="@+id/nuovo_nominativo_note"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:hint="Città" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_nazionalita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Nazionalità/Paese" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_telefono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Telefono" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_fax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Fax" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_cellulare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Cellulare" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Email" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <EditText
+                    android:id="@+id/nuovo_nominativo_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Note" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
 
                 <Button
+                    android:id="@+id/nuovo_nominativo_modifica_dettagli"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="150dp"
                     android:layout_height="35dp"
-                    android:text="Modifica dettagli"
                     android:background="@drawable/green_background_button"
+                    android:text="Modifica dettagli"
                     android:textColor="@color/green_dark"
-                    android:id="@+id/nuovo_nominativo_modifica_dettagli"
                     android:textSize="10dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:id="@+id/nuovo_nominativo_dettagli"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/nuovo_nominativo_dettagli"
-                android:background="@drawable/more_detail_background"
-                android:visibility="gone"
                 android:layout_weight="1"
+                android:background="@drawable/more_detail_background"
+                android:orientation="vertical"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp" >
+                android:paddingRight="10dp"
+                android:visibility="gone">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView156"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Luogo di nascita:"
-                        android:id="@+id/textView156" />
+                        android:text="Luogo di nascita:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_luogo_nascita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView160"
                         android:layout_width="100dp"
+                        android:layout_marginRight="5dp"
                         android:layout_height="wrap_content"
-                        android:text="Data di nascita:"
-                        android:id="@+id/textView160" />
+                        android:text="Data di nascita:" />
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:hint="(es. 01-01-1900)"
-                        android:layout_height="wrap_content"
+                    <TextView
                         android:id="@+id/nuovo_nominativo_data_nascita"
-                        android:layout_weight="1" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:textColor="@color/black"
+                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                        android:onClick="onClickSelData"
+                        android:text="Seleziona data..." />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView164"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Partita IVA"
-                        android:id="@+id/textView164" />
+                        android:text="Partita IVA" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_partita_iva"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView168"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Codice fiscale:"
-                        android:id="@+id/textView168" />
+                        android:text="Codice fiscale:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_codice_fiscale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView171"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Carta d&apos;identità:"
-                        android:id="@+id/textView171" />
+                        android:text="Carta d&apos;identità:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_carta_identita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView173"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Patente:"
-                        android:id="@+id/textView173" />
+                        android:text="Patente:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_patente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView175"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Tessera sanitaria:"
-                        android:id="@+id/textView175" />
+                        android:text="Tessera sanitaria:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_tessera_sanitaria"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView177"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Sito web:"
-                        android:id="@+id/textView177" />
+                        android:text="Sito web:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_sito_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView179"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Nome banca"
-                        android:id="@+id/textView179" />
+                        android:text="Nome banca" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_nome_banca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView181"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Indirizzo banca:"
-                        android:id="@+id/textView181" />
+                        android:text="Indirizzo banca:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_indirizzo_banca"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView183"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="IBAN:"
-                        android:id="@+id/textView183" />
+                        android:text="IBAN:" />
 
                     <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:id="@+id/nuovo_nominativo_iban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_marginBottom="10dp" >
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
 
                     <TextView
+                        android:id="@+id/textView184"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Note dettaglio:"
-                        android:id="@+id/textView184" />
+                        android:text="Note dettaglio:" />
 
                     <EditText
+                        android:id="@+id/nuovo_nominativo_note_dettaglio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/nuovo_nominativo_note_dettaglio"
                         android:layout_weight="1" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp" >
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="120dp"
-                    android:layout_height="35dp"
-                    android:text="Annulla"
                     android:id="@+id/nuovo_nominativo_annulla_nuovo"
-                    android:textColor="@color/bottom_red"
-                    android:background="@drawable/register_background"
-                    android:layout_alignBottom="@+id/nuovo_nominativo_crea_nuovo"
-                    android:layout_marginRight="20dp" />
-
-                <Button
                     android:layout_width="120dp"
                     android:layout_height="35dp"
-                    android:text="Crea"
+                    android:layout_alignBottom="@+id/nuovo_nominativo_crea_nuovo"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/register_background"
+                    android:text="Annulla"
+                    android:textColor="@color/bottom_red" />
+
+                <Button
                     android:id="@+id/nuovo_nominativo_crea_nuovo"
-                    android:textColor="@color/blue"
-                    android:background="@drawable/access_blue"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
                     android:layout_below="@+id/main_register_view"
-                    android:layout_marginLeft="25dp" />
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/access_blue"
+                    android:text="Crea"
+                    android:textColor="@color/blue" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

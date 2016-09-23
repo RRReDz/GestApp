@@ -1,12 +1,16 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Application;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
 
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
+import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
  * Created by YassIne on 09/11/2015.
@@ -23,18 +27,32 @@ public class MyApp extends Application {
 
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+        Context c = this;
+        if(c.getString(R.string.debug_flag).equals("false"))
+            Fabric.with(this, new Crashlytics());
         mCurrentUser = null;
         TypefaceProvider.registerDefaultIconSets();
     }
 
     public void setCurrentUser(UserInfo user) {
         mCurrentUser = user;
+        logUser(user);
     }
 
     public UserInfo getCurrentUser() {
         return this.mCurrentUser;
     }
+
+    private void logUser(UserInfo user) {
+        try {
+            Crashlytics.setUserIdentifier(String.valueOf(user.getID()));
+            Crashlytics.setUserEmail(String.valueOf(user.getEmail()));
+            Crashlytics.setUserName(String.valueOf(user.getUsername()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void onTerminate() {
