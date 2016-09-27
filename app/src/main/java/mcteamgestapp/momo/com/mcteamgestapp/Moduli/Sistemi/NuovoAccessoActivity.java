@@ -2,6 +2,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -27,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -109,6 +111,13 @@ public class NuovoAccessoActivity extends AppCompatActivity {
                     mAbilitatoTv.setText(R.string.not_abilitato);
                     abilitato = false;
                 }
+            }
+        });
+
+        mDataNascita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData();
             }
         });
 
@@ -284,5 +293,10 @@ public class NuovoAccessoActivity extends AppCompatActivity {
             dialog.setMessage("utente creato con successo");
             dialog.show();
         }
+    }
+
+    public void onClickSelData() {
+        DialogFragment dialogFragment = new DatePickerFragment(mDataNascita);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 }

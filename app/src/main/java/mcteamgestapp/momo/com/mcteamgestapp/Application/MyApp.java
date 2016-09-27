@@ -47,7 +47,7 @@ public class MyApp extends Application {
         try {
             Crashlytics.setUserIdentifier(String.valueOf(user.getID()));
             Crashlytics.setUserEmail(String.valueOf(user.getEmail()));
-            Crashlytics.setUserName(String.valueOf(user.getUsername()));
+            Crashlytics.setUserName(String.valueOf(user.getCognome())); //Cognome invece di soprannome
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -111,6 +111,13 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             mDataOperazione.setText("01-" + mFormat.format(month + 1) + "-" + year);
         }
 
+        mDataOperazione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData();
+            }
+        });
+
     }
 
     @Override
@@ -129,7 +136,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
             }
     }
 
-    public void onClickSelData(View view) {
+    public void onClickSelData() {
         DialogFragment dialogFragment = new DatePickerFragment(mDataOperazione);
         dialogFragment.show(getFragmentManager(), "datePicker");
     }

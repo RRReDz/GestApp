@@ -9,5 +9,5 @@
     <string name="visualizza_societa_activity">Visualizza società</string>
     <string name="nuova_societa">Nuova società</string>
     <string name="menu_item_download">Scarica</string>
-    <string name="debug_flag">true</string>
+    <string name="debug_flag">false</string>
 </resources>

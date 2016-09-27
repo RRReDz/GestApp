@@ -1,6 +1,7 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse;
 
 import android.annotation.TargetApi;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.DataSetObserver;
@@ -23,6 +24,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.DateWatcher;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
@@ -306,6 +308,13 @@ public class NuovaCommessaActivity extends AppCompatActivity {
             }
         });
 
+        mDataView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData();
+            }
+        });
+
 
         //***************************************************************************
         //Inizializzazione buttons
@@ -571,6 +580,11 @@ public class NuovaCommessaActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void onClickSelData() {
+        DialogFragment dialogFragment = new DatePickerFragment(mDataView);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     private void logout() {

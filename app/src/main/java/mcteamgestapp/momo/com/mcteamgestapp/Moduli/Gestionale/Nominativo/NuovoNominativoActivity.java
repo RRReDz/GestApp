@@ -68,7 +68,7 @@ public class NuovoNominativoActivity extends AppCompatActivity {
     EditText mCapView;
     Spinner mProvinciaView;
     EditText mCittaView;
-    TextView mDataNascitaView;
+    EditText mDataNascitaView;
     EditText mLuogoNascitaView;
     EditText mPIVAView;
     EditText mCod_FiscaleView;
@@ -202,7 +202,7 @@ public class NuovoNominativoActivity extends AppCompatActivity {
         mIndirizzoView = (EditText) findViewById(R.id.nuovo_nominativo_indirizzo);
         mCapView = (EditText) findViewById(R.id.nuovo_nominativo_cap);
         mCittaView = (EditText) findViewById(R.id.nuovo_nominativo_citta);
-        mDataNascitaView = (TextView) findViewById(R.id.nuovo_nominativo_data_nascita);
+        mDataNascitaView = (EditText) findViewById(R.id.nuovo_nominativo_data_nascita);
         mLuogoNascitaView = (EditText) findViewById(R.id.nuovo_nominativo_luogo_nascita);
         mPIVAView = (EditText) findViewById(R.id.nuovo_nominativo_partita_iva);
         mCod_FiscaleView = (EditText) findViewById(R.id.nuovo_nominativo_codice_fiscale);
@@ -243,6 +243,12 @@ public class NuovoNominativoActivity extends AppCompatActivity {
             }
         });
 
+        mDataNascitaView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData();
+            }
+        });
 
         Button creaNuovo = (Button) findViewById(R.id.nuovo_nominativo_crea_nuovo);
 
@@ -497,8 +503,8 @@ public class NuovoNominativoActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickSelData(View view) {
-        DialogFragment dialogFragment = new DatePickerFragment(mDataNascitaView).withCurrentDay();
+    public void onClickSelData() {
+        DialogFragment dialogFragment = new DatePickerFragment(mDataNascitaView);
         dialogFragment.show(getFragmentManager(), "datePicker");
     }
 

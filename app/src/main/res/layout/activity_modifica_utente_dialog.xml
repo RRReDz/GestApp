@@ -150,7 +150,8 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/modifica_luogo_nascita"
-                    android:hint="Luogo Nascita" />
+                    android:focusable="false"
+                    android:hint="Luogo di nascita" />
             </LinearLayout>
 
             <LinearLayout
@@ -171,8 +172,8 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/modifica_data_nascita"
-                    android:inputType="date"
-                    android:hint="Data Nascita (es. 01-01-1900)" />
+                    android:focusable="false"
+                    android:hint="Data di nascita" />
 
             </LinearLayout>
 

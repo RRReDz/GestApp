@@ -1,5 +1,6 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Associazioni;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.DataSetObserver;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.CustomRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.DateWatcher;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
@@ -177,8 +179,23 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
 
         //********************************* TextWatcher ***************************************
 
-        mDataInizioView.addTextChangedListener(new DateWatcher(mDataInizioView));
-        mDataFineView.addTextChangedListener(new DateWatcher(mDataFineView));
+        //mDataInizioView.addTextChangedListener(new DateWatcher(mDataInizioView));
+        //mDataFineView.addTextChangedListener(new DateWatcher(mDataFineView));
+
+        mDataInizioView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData(mDataInizioView);
+            }
+        });
+
+        mDataFineView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData(mDataFineView);
+            }
+        });
+
 
         //******************************** On element select control ***************************
         mCommessaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -572,6 +589,11 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
             System.out.println("Numero consulenti scelti -> " + selectedConsulenti.size());
             updateConsulentiScelti(selectedConsulenti);
         }
+    }
+
+    public void onClickSelData(TextView dataView) {
+        DialogFragment dialogFragment = new DatePickerFragment(dataView);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     /**

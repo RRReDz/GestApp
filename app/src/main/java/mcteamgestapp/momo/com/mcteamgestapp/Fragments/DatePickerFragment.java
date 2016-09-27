@@ -16,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Functions;
+
 /**
  * Created by Riccardo Rossi on 17/07/2016.
  */
@@ -41,23 +43,11 @@ public class DatePickerFragment extends DialogFragment
         return this;
     }
 
-    private boolean isDateValid(String stringDate) {
-        try {
-            Date date = df.parse(stringDate);
-            if (!stringDate.equals(df.format(date)))
-                return false;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Usa la data selezionata dal form
 
-        if (!isDateValid(mStringDate)) { //Se data in ingresso non valida, setto la data di oggi
+        if (!Functions.isDateValid(mStringDate)) { //Se data in ingresso non valida, setto la data di oggi
             this.withCurrentDay();
         }
 

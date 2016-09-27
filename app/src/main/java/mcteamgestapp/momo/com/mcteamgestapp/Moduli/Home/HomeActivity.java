@@ -66,6 +66,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        forceCrash();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -298,5 +299,10 @@ public class HomeActivity extends AppCompatActivity {
         goLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(goLogin);
         finish();
+    }
+
+    //Fabric crash simulation
+    public void forceCrash() {
+        throw new RuntimeException("This is a crash");
     }
 }

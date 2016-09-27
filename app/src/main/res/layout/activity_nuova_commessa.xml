@@ -7,144 +7,145 @@
     tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NuovaCommessaActivity">
 
     <ScrollView
+        android:id="@+id/scrollView19"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView19" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp">
 
             <TextView
+                android:id="@+id/textView242"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="Commessa"
-                android:id="@+id/textView242"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:textStyle="bold"
+                android:text="Commessa"
                 android:textColor="@color/asphalt_color"
-                android:layout_marginTop="10dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:ems="10"
-                    android:id="@+id/nuova_commessa_codice_commessa"
-                    android:layout_weight="1"
-                    android:hint="Commessa*" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:text="Cliente*:"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:id="@+id/nuova_commessa_cliente_error" />
-
-                <Spinner
+                <EditText
+                    android:id="@+id/nuova_commessa_codice_commessa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_cliente_spinner" />
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Commessa*"
+                    android:inputType="date" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <EditText
+                <TextView
+                    android:id="@+id/nuova_commessa_cliente_error"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:text="Cliente*:"
+                    android:textSize="18dp" />
+
+                <Spinner
+                    android:id="@+id/nuova_commessa_cliente_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:spinnerMode="dialog" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <EditText
                     android:id="@+id/nuova_commessa_nome_commessa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="Nome commessa*" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/nuova_commessa_commerciale_error"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:textSize="17dp"
-                    android:text="Commerciale*:"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:id="@+id/nuova_commessa_commerciale_error" />
+                    android:text="Commerciale*:"
+                    android:textSize="17dp" />
 
                 <Spinner
+                    android:id="@+id/nuova_commessa_commerciale_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_commerciale_spinner" />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/nuova_commessa_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:ems="10"
-                    android:id="@+id/nuova_commessa_data"
                     android:layout_weight="1"
-                    android:hint="Data* (es. 01-01-1900)" />
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Data* (es. 01-01-1900)"
+                    android:inputType="date" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp" >
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/nuova_commessa_avanzamento_error"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:text="Avanzamento*"
-                    android:id="@+id/nuova_commessa_avanzamento_error"
-                    android:textColor="@color/asphalt_color"
-                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:gravity="center_horizontal"
-                    android:layout_marginBottom="10dp" />
+                    android:text="Avanzamento*"
+                    android:textColor="@color/asphalt_color"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -153,226 +154,226 @@
                     android:paddingLeft="10dp">
 
                     <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:enabled="true"
-                        android:text="Marketing"
                         android:id="@+id/nuova_commessa_marketing"
-                        android:checked="false" />
-
-                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="false"
                         android:enabled="true"
-                        android:text="Offerta"
+                        android:text="Marketing" />
+
+                    <RadioButton
                         android:id="@+id/nuova_commessa_offerta"
-                        android:checked="false" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:enabled="true"
+                        android:text="Offerta" />
 
                     <RadioButton
-                        android:layout_width="wrap_content"
-                        android:enabled="true"
-                        android:layout_height="wrap_content"
-                        android:text="Ordine"
                         android:id="@+id/nuova_commessa_ordine"
-                        android:checked="false" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:enabled="true"
+                        android:text="Ordine" />
 
                     <RadioButton
-                        android:layout_width="wrap_content"
-                        android:enabled="true"
-                        android:layout_height="wrap_content"
-                        android:text="Sviluppo"
                         android:id="@+id/nuova_commessa_sviluppo"
-                        android:checked="false" />
-
-                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="false"
                         android:enabled="true"
-                        android:text="Fattura"
+                        android:text="Sviluppo" />
+
+                    <RadioButton
                         android:id="@+id/nuova_commessa_fattura"
-                        android:checked="false" />
-
-                    <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="false"
                         android:enabled="true"
-                        android:text="Pagamento"
+                        android:text="Fattura" />
+
+                    <RadioButton
                         android:id="@+id/nuova_commessa_pagamento"
-                        android:checked="false" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:enabled="true"
+                        android:text="Pagamento" />
                 </RadioGroup>
             </LinearLayout>
 
             <TextView
+                android:id="@+id/textView267"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:gravity="center_horizontal"
                 android:text="Referenti"
-                android:id="@+id/textView267"
                 android:textColor="@color/asphalt_color"
-                android:textStyle="bold"
-                android:gravity="center_horizontal" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView268"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
                     android:text="Referente I:"
-                    android:id="@+id/textView268" />
+                    android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuova_commessa_referente_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_referente_1" />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView270"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
                     android:text="Referente II:"
-                    android:id="@+id/textView270" />
+                    android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuova_commessa_referente_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_referente_2" />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
             <TextView
+                android:id="@+id/textView246"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:gravity="center_horizontal"
                 android:text="Referenti offerte"
-                android:id="@+id/textView246"
                 android:textColor="@color/asphalt_color"
-                android:textStyle="bold"
-                android:gravity="center_horizontal" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView272"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
                     android:text="Referente Offerta I:"
-                    android:id="@+id/textView272" />
+                    android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuova_commessa_offerta_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_offerta_1" />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView274"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
                     android:text="Referente Offerta II:"
-                    android:id="@+id/textView274" />
+                    android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuova_commessa_offerta_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_offerta_2" />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/textView276"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
                     android:text="Referente Offerta III:"
-                    android:id="@+id/textView276" />
+                    android:textSize="16dp" />
 
                 <Spinner
+                    android:id="@+id/nuova_commessa_offeta_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"
-                    android:id="@+id/nuova_commessa_offeta_3" />
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/nuova_commessa_note"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/nuova_commessa_note"
                     android:layout_weight="1"
                     android:hint="Note" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="20dp" >
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                    android:layout_width="120dp"
-                    android:layout_height="35dp"
-                    android:text="Annulla"
                     android:id="@+id/nuova_commessa_annulla"
-                    android:textColor="@color/upped_red"
-                    android:background="@drawable/register_background"
-                    android:layout_alignBottom="@+id/nuova_societa_crea_nuovo"
-                    android:layout_marginRight="20dp" />
-
-                <Button
                     android:layout_width="120dp"
                     android:layout_height="35dp"
-                    android:text="Crea"
+                    android:layout_alignBottom="@+id/nuova_societa_crea_nuovo"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/register_background"
+                    android:text="Annulla"
+                    android:textColor="@color/upped_red" />
+
+                <Button
                     android:id="@+id/nuova_commessa_crea_nuovo"
-                    android:textColor="@color/blue"
-                    android:background="@drawable/access_blue"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
                     android:layout_below="@+id/main_register_view"
-                    android:layout_marginLeft="25dp" />
+                    android:layout_marginLeft="25dp"
+                    android:background="@drawable/access_blue"
+                    android:text="Crea"
+                    android:textColor="@color/blue" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

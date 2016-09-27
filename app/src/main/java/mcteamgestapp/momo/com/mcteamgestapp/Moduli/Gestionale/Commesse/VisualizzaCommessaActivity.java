@@ -166,7 +166,7 @@ public class VisualizzaCommessaActivity extends AppCompatActivity {
         if (commessa.getCommerciale() != null)
             mCommerciale.setText(commessa.getCommerciale().getCognome() + " " + commessa.getCommerciale().getNome());
 
-        mData.setText(Functions.validateReverseDate(commessa.getData()) ? Functions.getFormattedDate(commessa.getData()) : "");
+        mData.setText(Functions.getFormattedDate(commessa.getData()));
 
         if (commessa.getReferente1() != null)
             mReferente1.setText(commessa.getReferente1().getCognome() + " " + commessa.getReferente1().getNome());

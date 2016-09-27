@@ -106,6 +106,20 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             mDataValuta.setText("01-" + mFormat.format(month + 1) + "-" + year);
         }
 
+        mDataOperazione.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData(mDataOperazione);
+            }
+        });
+
+        mDataValuta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData(mDataValuta);
+            }
+        });
+
     }
 
     @Override
@@ -124,12 +138,8 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
             }
     }
 
-    public void onClickSelData(View view) {
-        DatePickerFragment dpf;
-        if (view.getId() == R.id.banca_dataop_but)
-            dpf = new DatePickerFragment(mDataOperazione);
-        else
-            dpf = new DatePickerFragment(mDataValuta);
+    public void onClickSelData(TextView view) {
+        DatePickerFragment dpf = new DatePickerFragment(view);
         dpf.show(getFragmentManager(), "datePicker");
     }
 

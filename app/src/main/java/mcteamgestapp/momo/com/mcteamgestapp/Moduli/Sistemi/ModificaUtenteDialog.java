@@ -3,6 +3,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.PUTRequest;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -123,6 +125,13 @@ public class ModificaUtenteDialog extends AppCompatActivity {
                     mAbilitatoTv.setText(R.string.not_abilitato);
                     abilitato = false;
                 }
+            }
+        });
+
+        mBirthdayView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSelData();
             }
         });
 
@@ -375,6 +384,11 @@ public class ModificaUtenteDialog extends AppCompatActivity {
             dialog.setMessage("Modifica dati avvenuta con successo");
             dialog.show();
         }
+    }
+
+    public void onClickSelData() {
+        DialogFragment dialogFragment = new DatePickerFragment(mBirthdayView);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 }
 

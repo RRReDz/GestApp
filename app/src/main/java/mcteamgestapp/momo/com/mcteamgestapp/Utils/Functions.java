@@ -19,6 +19,8 @@ import java.util.regex.Pattern;
  */
 public class Functions {
 
+    private static final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
     public static boolean validateDate(final String date) {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -57,6 +59,18 @@ public class Functions {
 
         return format1.format(calendar.getTime());
 
+    }
+
+    public static boolean isDateValid(String stringDate) {
+        try {
+            Date date = df.parse(stringDate);
+            if (!stringDate.equals(df.format(date)))
+                return false;
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     public static String fromDateToSql(String date) throws java.text.ParseException {
