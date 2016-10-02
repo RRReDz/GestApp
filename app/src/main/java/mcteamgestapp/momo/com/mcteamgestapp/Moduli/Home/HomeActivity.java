@@ -66,7 +66,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        forceCrash();
+        //forceCrash();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 

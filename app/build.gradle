@@ -31,9 +31,9 @@ android {
     }
 
     dexOptions {
-        incremental true
+        //incremental true
         javaMaxHeapSize "2048M"
-        jumboMode = true
+        //jumboMode = true
     }
 
     buildTypes {

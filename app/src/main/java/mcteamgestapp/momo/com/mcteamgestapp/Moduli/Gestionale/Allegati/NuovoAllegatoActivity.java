@@ -113,7 +113,6 @@ public class NuovoAllegatoActivity extends AppCompatActivity {
             cancel = true;
         }
 
-
         if (!cancel) {
             try {
                 mMyRequests.uploadFile(choosenFile, descrizione);

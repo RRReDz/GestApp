@@ -84,5 +84,5 @@
     <string name="visulizza_activity_prima_nota_cassa">Visualizza nota cassa</string>
     <string name="visulizza_activity_prima_nota_banca">Visualizza nota banca</string>
     <string name="action_ricarica">Ricarica</string>
-    <string name="debug_flag">false</string>
+    <string name="debug_flag">true</string>
 </resources>
