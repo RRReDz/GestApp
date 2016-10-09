@@ -241,13 +241,12 @@
                         android:visibility="gone">
 
                         <Button
-                            android:id="@+id/button_commerciale"
+                            android:id="@+id/home_offerte"
                             android:layout_width="75dp"
                             android:layout_height="55dp"
                             android:layout_margin="7dp"
                             android:background="@drawable/rounded_button"
                             android:text="Offerte"
-                            android:textColor="@color/disable"
                             android:textSize="11dp" />
 
                         <Button

@@ -85,4 +85,5 @@
     <string name="visulizza_activity_prima_nota_banca">Visualizza nota banca</string>
     <string name="action_ricarica">Ricarica</string>
     <string name="debug_flag">true</string>
+    <string name="title_activity_offerte">Offerte</string>
 </resources>

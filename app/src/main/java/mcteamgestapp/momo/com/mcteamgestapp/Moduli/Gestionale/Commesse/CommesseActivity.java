@@ -43,6 +43,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.ComparatorPool;
 
 public class CommesseActivity extends AppCompatActivity {
 
@@ -54,8 +55,6 @@ public class CommesseActivity extends AppCompatActivity {
     ArrayList<Commessa> mOriginalList;
     View mOverlay;
     FloatingActionsMenu menu;
-
-    Comparator<Commessa> commessaComparator;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -85,7 +84,7 @@ public class CommesseActivity extends AppCompatActivity {
         //***********************************************************************
         //Comparatore per ordinare la lista
         //************************************************************************
-        commessaComparator = new Comparator<Commessa>() {
+        /*commessaComparator = new Comparator<Commessa>() {
             @Override
             public int compare(Commessa lhs, Commessa rhs) {
                 String lhsNomeSocieta = null;
@@ -103,7 +102,7 @@ public class CommesseActivity extends AppCompatActivity {
                 } else
                     return 2;
             }
-        };
+        };*/
 
         //***********************************************************************
         //Inizializzazione della view
@@ -262,9 +261,10 @@ public class CommesseActivity extends AppCompatActivity {
         }
     }
 
-    private void updateList(ArrayList<Commessa> list) {
+    public void updateList(ArrayList<Commessa> list) {
         showProgress(false);
-        Collections.sort(list, commessaComparator);
+        Collections.sort(list, ComparatorPool.getCommessaComparator());
+        mOriginalList = list; //new line
         mCommesseList.clear();
         mCommesseList.addAll(list);
         mCommesseListAdapter.notifyDataSetChanged();

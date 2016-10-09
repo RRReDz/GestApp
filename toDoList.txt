@@ -10,6 +10,8 @@
 - Aggiungere focus errore per primo il cognome, poi il nome ecc.. riga 174 - RegistrationActivity
 - Aggiungere transizione chiusura tabs in home screen
 - Ingrandire altezza di puntini (Modifica - Elimina - Stampa) per facilitare il click con il dito
+- Rifare l'icona del launcher
+- Rinomina path dei package "momo.mcteamapp.bla bla bla"
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   BUG/IMPERFEZIONI FIXATI                     ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 

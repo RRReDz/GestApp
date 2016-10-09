@@ -22,6 +22,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.UserInfo;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.RubricaBanca;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.AllegatiActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Associazioni.AssociazioniActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.CommesseActivity;
@@ -233,6 +234,16 @@ public class HomeActivity extends AppCompatActivity {
                 Intent primaNotaBancaIntent = new Intent(getApplicationContext(), PrimaNotaBancaActivity.class);
                 primaNotaBancaIntent.putExtra("actualUser", mCurrentUser);
                 startActivity(primaNotaBancaIntent);
+            }
+        });
+
+        Button offerte = (Button) findViewById(R.id.home_offerte);
+        offerte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent offerteActivity = new Intent(getApplicationContext(), OfferteActivity.class);
+                offerteActivity.putExtra("actualUser", mCurrentUser);
+                startActivity(offerteActivity);
             }
         });
     }

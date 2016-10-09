@@ -27,8 +27,7 @@ public class MyApp extends Application {
 
     public void onCreate() {
         super.onCreate();
-        Context c = this;
-        if(c.getString(R.string.debug_flag).equals("false"))
+        if(this.getString(R.string.debug_flag).equals("false"))
             Fabric.with(this, new Crashlytics());
         mCurrentUser = null;
         TypefaceProvider.registerDefaultIconSets();
@@ -36,7 +35,8 @@ public class MyApp extends Application {
 
     public void setCurrentUser(UserInfo user) {
         mCurrentUser = user;
-        logUser(user);
+        if(this.getString(R.string.debug_flag).equals("false"))
+            logUser(user);
     }
 
     public UserInfo getCurrentUser() {

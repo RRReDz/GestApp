@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaBanca;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
@@ -39,6 +40,9 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanc
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteActivity;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteListAdapter;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.CommesseActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
@@ -65,6 +69,57 @@ public class VolleyRequests {
         dialogBuilder = new AlertDialog.Builder(context);
         mWaiting = new ProgressDialog(context);
         mActivity = activity;
+    }
+
+    public void getCommesseList(final ArrayList<Commessa> list, final OfferteListAdapter mAdapter) {
+        String url = mContext.getString(R.string.mobile_url);
+        url += "commesse";
+
+        CustomRequest accessiRequest = new CustomRequest(url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray responseArray) {
+                try {
+                    ArrayList<Commessa> commesse = new ArrayList<>();
+
+                    Log.i("Commesse.class", " " + responseArray.length());
+
+                    for (int i = 0; i < responseArray.length(); i++) {
+
+                        JSONObject response = responseArray.getJSONObject(i);
+
+                        System.out.println(response);
+
+                        Commessa commessa = gson.fromJson(response.toString(), Commessa.class);
+
+                        commesse.add(commessa);
+                    }
+                    if(mContext instanceof CommesseActivity)
+                        ((CommesseActivity)mContext).updateList(commesse);
+                    else if(mContext instanceof OfferteActivity) {
+                        ((OfferteActivity)mContext).updateList(commesse);
+                    }
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                    Log.i("LoginResponse", e.getMessage());
+
+                    Toast.makeText(mContext,
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Errore richiesta Volley", "Error: " + error.getMessage());
+                Toast.makeText(mContext,
+                        error.getMessage(), Toast.LENGTH_SHORT).show();
+                // hide the progress dialog
+            }
+        });
+
+        mRequestQueue.add(accessiRequest);
     }
 
     public void getNominativiList(final ArrayList<Nominativo> list, final NominativoSpinnerAdapter adapter) {

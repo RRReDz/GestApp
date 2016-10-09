@@ -3,8 +3,10 @@
     package="mcteamgestapp.momo.com.mcteamgestapp">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" /> -->
+    <!--
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Permessi per accedere ad internet -->
@@ -256,10 +258,14 @@
         <activity
             android:name=".Moduli.Amministrazione.PrimaNotaBanca.VisualElimBancaActivity"
             android:label="@string/visulizza_activity_prima_nota_banca" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.OfferteActivity"
+            android:label="@string/title_activity_offerte" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="9113bc3bbbd5984e17523b4ae6e36d93f420617c" />
+
     </application>
 
 </manifest>
