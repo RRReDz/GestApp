@@ -6,16 +6,24 @@
     android:layout_height="match_parent"
     tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/offerte_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/offerte_header" />
+
+    <LinearLayout
         android:id="@+id/offerte_header"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="4dp"
         android:background="@color/gestionale_home_background"
         android:orientation="horizontal"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/textView191"
@@ -47,14 +55,6 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/offerte_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/offerte_header" />
 
 
 </RelativeLayout>

@@ -266,6 +266,9 @@
             android:name="io.fabric.ApiKey"
             android:value="9113bc3bbbd5984e17523b4ae6e36d93f420617c" />
 
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.DettaglioOffertaActivity"
+            android:label="@string/title_activity_dettaglio_offerta"></activity>
     </application>
 
 </manifest>

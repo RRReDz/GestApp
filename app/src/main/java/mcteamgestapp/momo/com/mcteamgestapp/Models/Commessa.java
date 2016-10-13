@@ -349,4 +349,15 @@ public class Commessa implements Parcelable {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Commessa{" +
+                "ID=" + ID +
+                ", codice_commessa='" + codice_commessa + '\'' +
+                ", id_cliente=" + id_cliente +
+                ", cliente=" + cliente.getNomeSocietà() +
+                ", nome_commessa='" + nome_commessa + '\'' +
+                '}';
+    }
 }

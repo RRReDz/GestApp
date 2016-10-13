@@ -86,4 +86,5 @@
     <string name="action_ricarica">Ricarica</string>
     <string name="debug_flag">true</string>
     <string name="title_activity_offerte">Offerte</string>
+    <string name="title_activity_dettaglio_offerta">DettaglioOffertaActivity</string>
 </resources>

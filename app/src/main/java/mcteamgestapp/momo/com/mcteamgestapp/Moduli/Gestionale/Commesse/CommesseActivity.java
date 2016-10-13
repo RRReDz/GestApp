@@ -34,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -264,10 +265,13 @@ public class CommesseActivity extends AppCompatActivity {
     public void updateList(ArrayList<Commessa> list) {
         showProgress(false);
         Collections.sort(list, ComparatorPool.getCommessaComparator());
-        mOriginalList = list; //new line
         mCommesseList.clear();
         mCommesseList.addAll(list);
         mCommesseListAdapter.notifyDataSetChanged();
+    }
+
+    public void updateOriginalList(ArrayList<Commessa> newList) {
+        mOriginalList = newList;
     }
 
     private void showProgress(boolean show) {

@@ -71,7 +71,7 @@ public class VolleyRequests {
         mActivity = activity;
     }
 
-    public void getCommesseList(final ArrayList<Commessa> list, final OfferteListAdapter mAdapter) {
+    public void getCommesseList() {
         String url = mContext.getString(R.string.mobile_url);
         url += "commesse";
 
@@ -80,23 +80,26 @@ public class VolleyRequests {
             public void onResponse(JSONArray responseArray) {
                 try {
                     ArrayList<Commessa> commesse = new ArrayList<>();
-
                     Log.i("Commesse.class", " " + responseArray.length());
 
                     for (int i = 0; i < responseArray.length(); i++) {
 
                         JSONObject response = responseArray.getJSONObject(i);
 
-                        System.out.println(response);
+                        //System.out.println(response);
 
                         Commessa commessa = gson.fromJson(response.toString(), Commessa.class);
 
                         commesse.add(commessa);
                     }
-                    if(mContext instanceof CommesseActivity)
-                        ((CommesseActivity)mContext).updateList(commesse);
+                    if(mContext instanceof CommesseActivity) {
+                        CommesseActivity commesseActivity = ((CommesseActivity) mContext);
+                        commesseActivity.updateOriginalList(commesse);
+                        commesseActivity.updateList(commesse);
+                    }
                     else if(mContext instanceof OfferteActivity) {
-                        ((OfferteActivity)mContext).updateList(commesse);
+                        OfferteActivity offerteActivity = ((OfferteActivity)mContext);
+                        offerteActivity.updateList(commesse, true);
                     }
                 } catch (JSONException e) {
 
