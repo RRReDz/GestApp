@@ -22,14 +22,16 @@
         android:textSize="14dp" />
 
     <TextView
-        android:id="@+id/offerte_item_presentata"
+        android:id="@+id/offerte_item_accettata"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_marginLeft="5dp" />
 
     <TextView
         android:id="@+id/offerte_item_allegato"
         android:layout_width="75dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp" />
 

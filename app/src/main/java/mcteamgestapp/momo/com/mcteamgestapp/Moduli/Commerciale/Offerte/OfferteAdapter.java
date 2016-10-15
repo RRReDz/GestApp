@@ -6,21 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.CommesseOverflowListener;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Sistemi.OverflowOnClickListener;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
  * @author Created by Riccardo Rossi on 02/10/2016.
  */
-public class OfferteListAdapter extends RecyclerView.Adapter<OfferteListAdapter.MyViewHolder> {
+public class OfferteAdapter extends RecyclerView.Adapter<OfferteAdapter.MyViewHolder> {
 
     private ArrayList<Commessa> items;
     private OnItemClickListener listener;
@@ -30,7 +27,7 @@ public class OfferteListAdapter extends RecyclerView.Adapter<OfferteListAdapter.
         void onItemClick(Commessa item);
     }
 
-    public OfferteListAdapter(ArrayList<Commessa> items, OnItemClickListener listener) {
+    public OfferteAdapter(ArrayList<Commessa> items, OnItemClickListener listener) {
         this.items = items;
         this.listener = listener;
     }

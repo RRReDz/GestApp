@@ -41,7 +41,6 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanc
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteListAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.CommesseActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;

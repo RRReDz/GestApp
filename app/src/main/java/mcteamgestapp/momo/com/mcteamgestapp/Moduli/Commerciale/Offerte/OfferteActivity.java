@@ -12,14 +12,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
@@ -32,7 +29,7 @@ public class OfferteActivity extends AppCompatActivity {
     private ArrayList<Commessa> mCommArrList;
     private ArrayList<Commessa> mCommArrListO;
     private RecyclerView mOffRecyclerView;
-    private OfferteListAdapter mAdapter;
+    private OfferteAdapter mAdapter;
     private VolleyRequests mVolleyRequests;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -51,13 +48,13 @@ public class OfferteActivity extends AppCompatActivity {
             getSupportActionBar().setBackgroundDrawable(actionBarBack);
         }
 
-        mOffRecyclerView = (RecyclerView) findViewById(R.id.offerte_recycler);
+        mOffRecyclerView = (RecyclerView) findViewById(R.id.offerte_comm_recycler);
         mOffRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mVolleyRequests = new VolleyRequests(this, this);
         mCommArrList = new ArrayList<>();
         mCommArrListO = new ArrayList<>();
-        mAdapter = new OfferteListAdapter(mCommArrList, new OfferteListAdapter.OnItemClickListener() {
+        mAdapter = new OfferteAdapter(mCommArrList, new OfferteAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Commessa item) {
                 Intent i = new Intent(getApplicationContext(), DettaglioOffertaActivity.class);
@@ -78,7 +75,6 @@ public class OfferteActivity extends AppCompatActivity {
         mCommArrList.clear();
         mCommArrList.addAll(list);
         mAdapter.notifyDataSetChanged();
-        Log.d("LISTA", list.toString());
         if (fromVolleyRequest) //Aggiorna solo se richiesta fatta da una volley
             mCommArrListO.addAll(list);
     }
@@ -93,7 +89,6 @@ public class OfferteActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //simpleSearch(query);
                 return true;
             }
 
