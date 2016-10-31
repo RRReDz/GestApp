@@ -34,3 +34,5 @@ captures/
 .idea/
 /.idea/workspace.xml
 /.idea/misc.xml
+
+app/fabric.properties
