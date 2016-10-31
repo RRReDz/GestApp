@@ -1,5 +1,7 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commerciale.Offerta;
+import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
+import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Allegati.AllegatiUtils;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
@@ -19,11 +23,11 @@ import mcteamgestapp.momo.com.mcteamgestapp.R;
 public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffertaAdapter.MyViewHolder> {
 
     private ArrayList<Offerta> items;
-    private OnItemClickListener listener;
+    private Commessa commessa;
 
-    public DettaglioOffertaAdapter(ArrayList<Offerta> items, OnItemClickListener listener) {
+    public DettaglioOffertaAdapter(ArrayList<Offerta> items, Commessa commessa) {
         this.items = items;
-        this.listener = listener;
+        this.commessa = commessa;
     }
 
     public interface OnItemClickListener {
@@ -33,7 +37,7 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.offerte_item,
+                R.layout.adapter_dett_offerte_item,
                 parent,
                 false);
 
@@ -43,7 +47,7 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.bind(items.get(position), listener);
+        holder.bind(items.get(position));
     }
 
     @Override
@@ -53,23 +57,25 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView holderVersione, holderDataOfferta, holderAccettata, holderAllegato;
-        private ImageView holderOverflow;
+        private TextView holderVersione, holderDataOfferta, holderAccettata;
+        private ImageView holderOverflow, holderAllegato;
+        private Context activityContext;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             holderVersione = (TextView) itemView.findViewById(R.id.offerte_item_versione);
             holderDataOfferta = (TextView) itemView.findViewById(R.id.offerte_item_data);
             holderAccettata = (TextView) itemView.findViewById(R.id.offerte_item_accettata);
-            holderAllegato = (TextView) itemView.findViewById(R.id.offerte_item_allegato);
+            holderAllegato = (ImageView) itemView.findViewById(R.id.offerte_item_allegato);
             holderOverflow = (ImageView) itemView.findViewById(R.id.offerte_item_overflow);
+            activityContext = itemView.getContext();
         }
 
-        public void bind(final Offerta offerta, final OnItemClickListener listener) {
+        public void bind(final Offerta offerta) {
             holderVersione.setText(String.valueOf(offerta.getVersione()));
             holderDataOfferta.setText(String.valueOf(offerta.getDataOfferta()));
             holderAccettata.setText(String.valueOf(offerta.getAccettata()));
-            holderAllegato.setText(String.valueOf(offerta.getAllegato()));
+            holderAllegato.setImageBitmap(AllegatiUtils.getAllegatoLogo(activityContext.getResources(), offerta.getAllegato()));
             holderOverflow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -79,7 +85,10 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClick(offerta);
+                    Intent i = new Intent(activityContext, VisualOffertaActivity.class);
+                    i.putExtra("OFFERTA", offerta);
+                    i.putExtra("COMMESSA", commessa);
+                    activityContext.startActivity(i);
                 }
             });
         }

@@ -44,7 +44,7 @@ public class OfferteActivity extends AppCompatActivity {
         }
 
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
-            Drawable actionBarBack = getDrawable(R.drawable.actionbar_gestionale);
+            Drawable actionBarBack = getDrawable(R.drawable.commerciale_home_background);
             getSupportActionBar().setBackgroundDrawable(actionBarBack);
         }
 

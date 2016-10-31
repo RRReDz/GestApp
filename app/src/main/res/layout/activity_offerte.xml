@@ -18,7 +18,7 @@
         android:id="@+id/offerte_header"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@color/gestionale_home_background"
+        android:background="@drawable/commerciale_home_background"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:layout_alignParentTop="true"

@@ -35,7 +35,7 @@ public class OfferteAdapter extends RecyclerView.Adapter<OfferteAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.commesse_item,
+                R.layout.adapter_offerte_item,
                 parent,
                 false);
 

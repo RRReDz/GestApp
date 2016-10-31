@@ -261,14 +261,21 @@
         <activity
             android:name=".Moduli.Commerciale.Offerte.OfferteActivity"
             android:label="@string/title_activity_offerte" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.DettaglioOffertaActivity"
+            android:label="@string/title_activity_dettaglio_offerta" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.NuovaOffertaActivity"
+            android:label="@string/title_activity_nuova_offerta" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.VisualOffertaActivity"
+            android:label="@string/title_activity_visual_offerta" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="9113bc3bbbd5984e17523b4ae6e36d93f420617c" />
 
-        <activity
-            android:name=".Moduli.Commerciale.Offerte.DettaglioOffertaActivity"
-            android:label="@string/title_activity_dettaglio_offerta"></activity>
+
     </application>
 
 </manifest>

@@ -25,22 +25,28 @@
         android:id="@+id/offerte_item_accettata"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="5dp"
+        android:gravity="center" />
 
-    <TextView
+    <ImageView
         android:id="@+id/offerte_item_allegato"
-        android:layout_width="75dp"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center" />
 
-    <ImageButton
-        android:id="@+id/offerte_item_overflow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:src="@drawable/ic_more_vert_black_24dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/offerte_item_overflow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:src="@drawable/ic_more_vert_black_24dp" />
+    </RelativeLayout>
 </LinearLayout>

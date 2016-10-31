@@ -13,8 +13,6 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
-import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Nominativo;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.NominativoOverflowOnClickListener;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
@@ -49,7 +47,7 @@ public class CommesseListAdapter extends ArrayAdapter<Commessa> {
                 mAlphabeticIndex.put(iniziale, position);
         }
 
-        convertView = LayoutInflater.from(getContext()).inflate(R.layout.commesse_item, parent, false);
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_commesse_item, parent, false);
 
 
         TextView txtCliente = (TextView) convertView.findViewById(R.id.commesse_item_cliente);
