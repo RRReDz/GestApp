@@ -172,32 +172,51 @@
         android:layout_below="@+id/dettaglio_offerta_empty" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        app:fab_addButtonColorNormal="@color/commerciale_home_background"
-        android:id="@+id/dettaglio_offerta_fabmenu"
+        android:id="@+id/fabmenu_offerta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        app:fab_addButtonColorNormal="@color/commerciale_home_background"
         app:fab_labelStyle="@style/menu_labels_style"
         app:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_offerta_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_title="prova"
-            app:fab_size="mini" />
+            app:fab_icon="@drawable/ic_search_white_24dp"
+            app:fab_size="mini"
+            app:fab_title="Ricerca Avanzata" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_offerta_print"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_title="prova2"
-            app:fab_size="mini" />
+            app:fab_icon="@drawable/ic_print_white_36dp"
+            app:fab_size="mini"
+            app:fab_title="Stampa tutto" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_offerta_excel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_title="prova3"
-            app:fab_size="mini" />
+            app:fab_icon="@drawable/ic_grid_on_white_24dp"
+            app:fab_size="mini"
+            app:fab_title="Exporta in Excel" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_offerta_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onClickAddOfferta"
+        android:visibility="visible"
+        app:fab_colorNormal="@color/sistemi_home_background"
+        app:fab_icon="@drawable/ic_add_white_24dp"
+        app:fab_size="normal"
+        app:fab_title="Exporta in Excel" />
 </RelativeLayout>

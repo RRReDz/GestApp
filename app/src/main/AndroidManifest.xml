@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="mcteamgestapp.momo.com.mcteamgestapp">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
@@ -19,7 +20,8 @@
         android:icon="@mipmap/ic_circle_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:windowSoftInputMode="adjustPan">
+        android:windowSoftInputMode="adjustPan"
+        tools:node="replace">
         <activity
             android:name=".Moduli.Login.LoginActivity"
             android:configChanges="orientation"
@@ -274,7 +276,6 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="9113bc3bbbd5984e17523b4ae6e36d93f420617c" />
-
 
     </application>
 

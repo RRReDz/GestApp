@@ -1,11 +1,15 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
+
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +41,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     private ArrayList<Offerta> mOffArrayList;
     private RecyclerView mOffRecyclerView;
     private DettaglioOffertaAdapter mOffAdapter;
+    private Commessa mCommessa;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -55,16 +60,16 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             getSupportActionBar().setBackgroundDrawable(actionBarBack);
         }
 
-        Commessa commessa = getIntent().getParcelableExtra("COMMESSA");
+        mCommessa = getIntent().getParcelableExtra("COMMESSA");
 
         final Gson gson = new Gson();
         mOffArrayList = new ArrayList<>();
-        mOffAdapter = new DettaglioOffertaAdapter(mOffArrayList, commessa);
+        mOffAdapter = new DettaglioOffertaAdapter(mOffArrayList, mCommessa);
         mOffRecyclerView = (RecyclerView) findViewById(R.id.offerte_recycler);
         mOffRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mOffRecyclerView.setAdapter(mOffAdapter);
 
-        String url = getString(R.string.mobile_url) + "offerte-list/" + commessa.getID();
+        String url = getString(R.string.mobile_url) + "offerte-list/" + mCommessa.getID();
 
         JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -98,20 +103,41 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(jsonObjectRequest);
 
-        setupHeaderCommessa(commessa);
+        setupHeaderCommessa(mCommessa);
     }
 
     public void updateList(ArrayList<Offerta> newList) {
-        if (newList.isEmpty()) {
-            LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_empty);
-            emptyLayout.setVisibility(View.VISIBLE);
-        } else {
-            LinearLayout fieldsLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_fields);
-            fieldsLayout.setVisibility(View.VISIBLE);
-
+        if (newList.isEmpty())
+            emptyMode(true);
+        else {
+            emptyMode(false);
             mOffArrayList.addAll(newList);
             mOffAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void emptyMode(boolean enabled) {
+        LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_empty);
+        FloatingActionButton fabSearch = (FloatingActionButton) findViewById(R.id.fab_offerta_search);
+        FloatingActionButton fabPrint = (FloatingActionButton) findViewById(R.id.fab_offerta_print);
+        FloatingActionButton fabExcel = (FloatingActionButton) findViewById(R.id.fab_offerta_excel);
+        FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fab_offerta_add);
+        LinearLayout fieldsLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_fields);
+
+        if (enabled) {
+            emptyLayout.setVisibility(View.VISIBLE);
+            fabSearch.setVisibility(View.GONE);
+            fabPrint.setVisibility(View.GONE);
+            fabExcel.setVisibility(View.GONE);
+            fabAdd.setVisibility(View.VISIBLE);
+        } else {
+            fieldsLayout.setVisibility(View.VISIBLE);
+            fabSearch.setVisibility(View.VISIBLE);
+            fabPrint.setVisibility(View.VISIBLE);
+            fabExcel.setVisibility(View.VISIBLE);
+            fabAdd.setVisibility(View.GONE);
+        }
+
     }
 
     private void setupHeaderCommessa(Commessa commessa) {
@@ -134,4 +160,9 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         consulente.setText(nomeConsulente + " " + cognomeConsulente);
     }
 
+    public void onClickAddOfferta(View view) {
+        Intent intent = new Intent(getApplicationContext(), NuovaOffertaActivity.class);
+        intent.putExtra("COMMESSA", mCommessa);
+        startActivity(intent);
+    }
 }
