@@ -36,3 +36,7 @@ captures/
 /.idea/misc.xml
 
 app/fabric.properties
+projectFilesBackup/
+
+# Android Studio
+*.iml
