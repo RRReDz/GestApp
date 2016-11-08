@@ -79,7 +79,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         final FileChooserDialog.Builder builder = new FileChooserDialog.Builder(FileChooserDialog.ChooserType.FILE_CHOOSER, new FileChooserDialog.ChooserListener() {
             @Override
             public void onSelect(String path) {
-                //Prova commit conflitto
+                Log.d("FILE_PICKER", path);
             }
         });
 
