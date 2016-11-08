@@ -3,6 +3,7 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -78,7 +79,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         final FileChooserDialog.Builder builder = new FileChooserDialog.Builder(FileChooserDialog.ChooserType.FILE_CHOOSER, new FileChooserDialog.ChooserListener() {
             @Override
             public void onSelect(String path) {
-
+                Log.d("FILE_PICKER", path);
             }
         });
 

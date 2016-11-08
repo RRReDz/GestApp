@@ -138,7 +138,8 @@ public class VolleyRequests {
                     ArrayList<Nominativo> societas = new ArrayList<>();
                     for (int i = 0; i < responseArray.length(); i++) {
                         JSONObject response = responseArray.getJSONObject(i);
-                        System.out.println(response);
+                        //DEBUG
+                        //System.out.println(response);
                         Nominativo nominativo = gson.fromJson(response.toString(), Nominativo.class);
                         societas.add(nominativo);
                     }
