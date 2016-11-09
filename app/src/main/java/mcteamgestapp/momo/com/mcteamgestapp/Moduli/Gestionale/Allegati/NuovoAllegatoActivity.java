@@ -134,7 +134,7 @@ public class NuovoAllegatoActivity extends AppCompatActivity {
                     mFileNameView.setText(choosenFile.getName());
                     Bitmap logo = AllegatiUtils.getAllegatoLogo(getResources(), choosenFile.getName());
                     mLogoView.setImageBitmap(logo);
-                    mFileSizeView.setText(choosenFile.length() + " B");
+                    mFileSizeView.setText(choosenFile.length() + " Bytes");
                 }
             }
         }
