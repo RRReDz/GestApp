@@ -32,7 +32,7 @@ public class BancaOverflowOnClickListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        PopupMenu popupMenu = new PopupMenu(mContext, v) {
+        /*PopupMenu popupMenu = new PopupMenu(mContext, v) {
 
             @Override
             public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
@@ -76,6 +76,6 @@ public class BancaOverflowOnClickListener implements View.OnClickListener {
             popupMenu.show();
             return;
         }
-        popupMenu.show();
+        popupMenu.show();*/
     }
 }
