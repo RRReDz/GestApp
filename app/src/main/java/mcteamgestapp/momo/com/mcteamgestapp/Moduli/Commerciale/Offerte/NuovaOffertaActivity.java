@@ -8,17 +8,21 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Fragments.DatePickerFragment;
@@ -38,6 +42,10 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     private ArrayList<Nominativo> mNominativiList;
     private EditText data;
     private static final int FILE_CODE = 992;
+    private File mChoosenFile;
+    ImageView mAllegatoLogo;
+    TextView mAllegatoNome;
+    TextView mAllegatoSize;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +62,11 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         data = (EditText) findViewById(R.id.dett_off_new_data);
         EditText oggetto = (EditText) findViewById(R.id.dett_off_new_obj);
         BootstrapButton allegato = (BootstrapButton) findViewById(R.id.dett_off_new_alleg);
+        Button creaButton = (Button) findViewById(R.id.bCrea);
+        mAllegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
+        mAllegatoNome = (TextView) findViewById(R.id.dett_off_alleg_nome);
+        mAllegatoSize = (TextView) findViewById(R.id.dett_off_alleg_size);
+
 
         //Codice commessa
         codCommessa.setText(commessa.getCodice_commessa());
@@ -110,6 +123,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         mVolleyRequests = new VolleyRequests(this, this);
         mVolleyRequests.getNominativiList(mNominativiList, adapter);
 
+        creaButton.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -117,18 +131,15 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == FILE_CODE && resultCode == RESULT_OK) {
-            ImageView allegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
-            TextView allegatoDescr = (TextView) findViewById(R.id.dett_off_alleg_descr);
-            TextView allegatoSize = (TextView) findViewById(R.id.dett_off_alleg_size);
             Uri uri = data.getData();
-            File choosenFile = new File(uri.getPath());
-            if(choosenFile != null) {
-                allegatoDescr.setText(choosenFile.getName());
-                Bitmap logo = AllegatiUtils.getAllegatoLogo(getResources(), choosenFile.getName());
-                allegatoLogo.setImageBitmap(logo);
-                allegatoSize.setText(choosenFile.length() + "Bytes");
+            mChoosenFile = new File(uri.getPath());
+            if (mChoosenFile != null) {
+                mAllegatoNome.setText(mChoosenFile.getName());
+                Bitmap logo = AllegatiUtils.getAllegatoLogo(getResources(), mChoosenFile.getName());
+                mAllegatoLogo.setImageBitmap(logo);
+                mAllegatoSize.setText(mChoosenFile.length() + "Bytes");
             }
-            Log.d("FilePicker", choosenFile.toString());
+            Log.d("FilePicker", mChoosenFile.toString());
             // Do anything with file
         }
     }
@@ -142,5 +153,30 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
     public void onClickAnnulla(View view) {
         finish();
+    }
+
+    public void onClickCrea(View view) throws IOException {
+
+        String nomeAllegatoSelected = mAllegatoNome.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+
+        if (mChoosenFile == null) {
+            Toast.makeText(getApplicationContext(), "File non selezionato: scegliere un file", Toast.LENGTH_LONG).show();
+            cancel = true;
+        }
+
+        if (!cancel) {
+            try {
+                mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            focusView.requestFocus();
+        }
+
     }
 }
