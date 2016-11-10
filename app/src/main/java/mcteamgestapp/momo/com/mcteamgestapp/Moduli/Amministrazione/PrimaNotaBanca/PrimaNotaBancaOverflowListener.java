@@ -34,14 +34,11 @@ public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
 
         //Creating the instance of PopupMenu
         OverflowPopupMenu popupMenu = new OverflowPopupMenu(mContext, v);
-
         //Inflating the Popup using xml file
         popupMenu.getMenuInflater().inflate(R.menu.overflow_menu_noprint, popupMenu.getMenu());
-
         //Creating class that extends OnMenuItemClickListener
         PopupListenerBuilder listenerBuilder = null;
         try {
-
             listenerBuilder = new PopupListenerBuilder(mContext, v, mElement)
                     .setClassesForIntent(
                             "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaBanca.VisualElimBancaActivity",
@@ -50,16 +47,15 @@ public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
                     .setConstForIntent(Constants.NOTA_BANCA)
                     .setExtraParamIntent(Constants.VISUAL_ELIMINA, false)
                     .setConstActivityResult(Constants.NOTA_DELETE, Constants.NOTA_EDIT, null);
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         //registering popup with OnMenuItemClickListener
         popupMenu.setOnMenuItemClickListener(listenerBuilder);
-
+        //Forza le icone a mostrarsi
         popupMenu.forceIconToShow();
-
+        //Mostra il Popup
         popupMenu.show();
 
         //Creating the instance of PopupMenu
