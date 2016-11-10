@@ -1,2 +1,2 @@
-# mcTeamApp
-Mobile application for MCteam's website (GESteam).
+# GestApp
+Mobile application for MCteam's website (GesTeam).
