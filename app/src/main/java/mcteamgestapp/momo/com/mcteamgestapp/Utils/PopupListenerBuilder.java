@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -18,7 +19,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.R;
  * @author Created by Riccardo Rossi on 09/11/2016.
  */
 
-public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
+public class PopupListenerBuilder implements PopupMenu.OnMenuItemClickListener {
 
     Context mContext;
     Parcelable mObjectArgument;
@@ -26,16 +27,17 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
     PopupMenu mPopupmenu;
     Class mDelClass, mEditClass, mPrintClass;
     String mConstIntent, mExtraVisElimStr;
-    int mConstActivityResultDel, mConstActivityResultEdit, mConstActivityResultPrint;
+    Integer mConstActivityResultDel, mConstActivityResultEdit, mConstActivityResultPrint;
     boolean mExtraVisElimBool;
 
     /**
      * Inizializza il builder e crea il popup
-     * @param context contesto di esecuzione
-     * @param anchor view nel quale il popup si trova
+     *
+     * @param context   contesto di esecuzione
+     * @param anchor    view nel quale il popup si trova
      * @param argToPass Oggetto (NotaCassa, NotaBanca ecc.) da passare all'activity successiva
      */
-    public PopupMenuBuilder(Context context, View anchor, Parcelable argToPass) {
+    public PopupListenerBuilder(Context context, View anchor, Parcelable argToPass) {
         mObjectArgument = argToPass;
         mContext = context;
         mAnchorView = anchor;
@@ -44,10 +46,11 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
 
     /**
      * Inflate per assegnare il layout al Popup
+     *
      * @param menuRes R.menu.blablabla
      * @return
      */
-    public PopupMenuBuilder inflateLayout(int menuRes) {
+    public PopupListenerBuilder inflateLayout(int menuRes) {
         //TODO: TUTTI I CONTROLLI DELLA CLASSE 09/11/2016
         mPopupmenu.getMenuInflater()
                 .inflate(menuRes, mPopupmenu.getMenu());
@@ -56,25 +59,27 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
 
     /**
      * Assegnazione dei nomi delle activity da chiamare al click di uno degli item nel menu
-     * @param delClass EliminaAssoccActity
-     * @param editClass ModificaActivity
+     *
+     * @param delClass   EliminaAssoccActity
+     * @param editClass  ModificaActivity
      * @param printClass StampaActivity
      * @return
      * @throws ClassNotFoundException
      */
-    public PopupMenuBuilder setClassesForIntent(String delClass, String editClass, String printClass) throws ClassNotFoundException {
-        mDelClass = Class.forName(delClass);
-        mEditClass = Class.forName(editClass);
-        mPrintClass = Class.forName(printClass);
+    public PopupListenerBuilder setClassesForIntent(@Nullable String delClass, @Nullable String editClass, @Nullable String printClass) throws ClassNotFoundException {
+        mDelClass = delClass != null ? Class.forName(delClass) : null;
+        mEditClass = editClass != null ? Class.forName(editClass) : null;
+        mPrintClass = printClass != null ? Class.forName(printClass) : null;
         return this;
     }
 
     /**
      * Set della stringa utilizzata solitamente come parametro da passare all'intent
+     *
      * @param constIntent
      * @return
      */
-    public PopupMenuBuilder setConstForIntent(String constIntent) {
+    public PopupListenerBuilder setConstForIntent(String constIntent) {
         mConstIntent = constIntent;
         return this;
     }
@@ -82,11 +87,12 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
     /**
      * Set di un parametro extra per l'intent elimina
      * con relativo valore booleano
-     * @param extraStr Constants.VISUAL_ELIMINA (Utlizzato da VisualElimBancaActivity)
+     *
+     * @param extraStr       Constants.VISUAL_ELIMINA (Utlizzato da VisualElimBancaActivity)
      * @param extraBoolValue false
      * @return
      */
-    public PopupMenuBuilder setExtraParamIntent(String extraStr, boolean extraBoolValue) {
+    public PopupListenerBuilder setExtraParamIntent(String extraStr, boolean extraBoolValue) {
         mExtraVisElimStr = extraStr;
         mExtraVisElimBool = extraBoolValue;
         return this;
@@ -94,14 +100,15 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
 
     /**
      * Set costanti (intere) per metodo startActivityForResult
+     *
      * @param constActivityResultDel
      * @param constActivityResultEdit
      * @param constActivityResultPrint
      * @return
      */
-    public PopupMenuBuilder setConstActivityResult(int constActivityResultDel,
-                                                   int constActivityResultEdit,
-                                                   int constActivityResultPrint) {
+    public PopupListenerBuilder setConstActivityResult(@Nullable Integer constActivityResultDel,
+                                                       @Nullable Integer constActivityResultEdit,
+                                                       @Nullable Integer constActivityResultPrint) {
         mConstActivityResultDel = constActivityResultDel;
         mConstActivityResultEdit = constActivityResultEdit;
         mConstActivityResultPrint = constActivityResultPrint;
@@ -114,7 +121,7 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
             case R.id.menu_action_elimina:
                 Intent eliminaIntent = new Intent(mContext, mDelClass); // VisualElimBancaActivity.class
                 eliminaIntent.putExtra(mConstIntent, mObjectArgument);
-                if(mExtraVisElimStr != null)
+                if (mExtraVisElimStr != null)
                     eliminaIntent.putExtra(mExtraVisElimStr, mExtraVisElimBool);
                 //eliminaIntent.putExtra("actualUser", mUser);
                 ((Activity) mContext).startActivityForResult(eliminaIntent, mConstActivityResultDel);
@@ -134,4 +141,10 @@ public class PopupMenuBuilder implements PopupMenu.OnMenuItemClickListener {
                 return false;
         }
     }
+
+    /*private findClassPackage(String className) {
+        ClassPath classpath = new ClassPathFactory().createFromJVM();
+        RegExpResourceFilter regExpResourceFilter = new RegExpResourceFilter(".*", ".*\\.class");
+        String[] resources = classpath.findResources("", regExpResourceFilter);
+    }*/
 }
