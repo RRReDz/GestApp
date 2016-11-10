@@ -12,23 +12,23 @@ import android.widget.PopupMenu;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**
- * Classe wrapper per la creazione di un Popup custom
- * quando vengono selezionate le opzioni di un item di una lista.
+ * Classe per costruire il listener del click di una opzione del menu di overflow.
+ * Realizzata per evitare di riscrivere sempre le stessa porzione con poche modifiche (Ridondante)
  * Implementa al suo interno il listener del click di un item del menu
  *
- * @author Created by Riccardo Rossi on 09/11/2016.
+ * @author Riccardo Rossi on 09/11/2016.
  */
 
 public class PopupListenerBuilder implements PopupMenu.OnMenuItemClickListener {
 
-    Context mContext;
-    Parcelable mObjectArgument;
-    View mAnchorView;
-    PopupMenu mPopupmenu;
-    Class mDelClass, mEditClass, mPrintClass;
-    String mConstIntent, mExtraVisElimStr;
-    Integer mConstActivityResultDel, mConstActivityResultEdit, mConstActivityResultPrint;
-    boolean mExtraVisElimBool;
+    private Context mContext;
+    private Parcelable mObjectArgument;
+    private View mAnchorView;
+    private PopupMenu mPopupmenu;
+    private Class mDelClass, mEditClass, mPrintClass;
+    private String mConstIntent, mExtraVisElimStr;
+    private Integer mConstActivityResultDel, mConstActivityResultEdit, mConstActivityResultPrint;
+    private boolean mExtraVisElimBool;
 
     /**
      * Inizializza il builder e crea il popup
