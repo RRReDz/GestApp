@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.NuovoNominativoActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Gestionale.Nominativo.NuovoNominativoActivity">
 
     <ScrollView
         android:id="@+id/scrollView15"

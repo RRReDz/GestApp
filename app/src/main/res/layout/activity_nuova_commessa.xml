@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NuovaCommessaActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Gestionale.Commesse.NuovaCommessaActivity">
 
     <ScrollView
         android:id="@+id/scrollView19"

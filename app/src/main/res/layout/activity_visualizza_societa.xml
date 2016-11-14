@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Societa.VisualizzaSocietaActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Gestionale.Societa.VisualizzaSocietaActivity">
 
     <ScrollView
         android:id="@+id/scrollView6"

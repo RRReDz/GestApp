@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi.ConsuntiviMainActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Produzione.Consuntivi.ConsuntiviMainActivity">
 
     <android.support.design.widget.AppBarLayout
     android:layout_width="match_parent"

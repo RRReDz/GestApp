@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.NuovaBancaActivity"
+    tools:context="com.mcteam.gestapp.Moduli.Amministrazione.RubricaBanche.NuovaBancaActivity"
     android:orientation="vertical">
 
     <ScrollView

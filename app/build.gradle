@@ -21,7 +21,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "mcteamgestapp.momo.com.mcteamgestapp"
+        applicationId "com.mcteam.gestapp"
         minSdkVersion 16
         multiDexEnabled true
         targetSdkVersion 25

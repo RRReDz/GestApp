@@ -4,7 +4,7 @@
     android:id="@+id/activity_offerte"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.OfferteActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Commerciale.Offerte.OfferteActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/offerte_comm_recycler"

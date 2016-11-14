@@ -5,7 +5,7 @@
     android:id="@+id/activity_dettaglio_offerta"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.DettaglioOffertaActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Commerciale.Offerte.DettaglioOffertaActivity">
 
     <RelativeLayout
         android:id="@+id/dettaglio_offerta_header"

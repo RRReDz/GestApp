@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Produzione.Consuntivi.ConsuntiviMainActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Produzione.Consuntivi.ConsuntiviMainActivity">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

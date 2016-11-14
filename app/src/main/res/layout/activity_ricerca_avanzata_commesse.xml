@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.RicercaAvanzataCommesseActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Gestionale.Commesse.RicercaAvanzataCommesseActivity">
 
     <LinearLayout
-        tools:context=".Moduli.Sistemi.SistemiAcitivity"
+        tools:context="com.mcteam.gestapp.Moduli.Sistemi.SistemiAcitivity"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"

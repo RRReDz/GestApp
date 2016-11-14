@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical"
 
-    tools:context="mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Associazioni.NuovaAssociazioneActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Gestionale.Associazioni.NuovaAssociazioneActivity">
 
 
     <ScrollView
