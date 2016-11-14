@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
-public class StampaOffertaActivity extends AppCompatActivity {
+public class ModificaOffertaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stampa_offerta);
+        setContentView(R.layout.activity_modifica_offerta);
     }
 }

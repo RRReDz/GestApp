@@ -17,6 +17,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 
 public class EliminaBancaActivity extends AppCompatActivity {
 
@@ -50,7 +51,7 @@ public class EliminaBancaActivity extends AppCompatActivity {
 
         mVolleyRequest = new VolleyRequests(this, this);
 
-        mBancaAttuale = getIntent().getParcelableExtra("bancaToDelete");
+        mBancaAttuale = getIntent().getParcelableExtra(Constants.BANCA);
 
         mNominativoView = (TextView) findViewById(R.id.banca_nome);
         mIbanView = (TextView) findViewById(R.id.banca_iban);

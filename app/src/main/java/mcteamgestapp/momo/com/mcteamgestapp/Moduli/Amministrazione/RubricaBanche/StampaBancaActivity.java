@@ -16,6 +16,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Home.HomeActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Login.LoginActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 
 public class StampaBancaActivity extends AppCompatActivity {
 
@@ -46,7 +47,7 @@ public class StampaBancaActivity extends AppCompatActivity {
         }
 
 
-        mBancaAttuale = getIntent().getParcelableExtra("bancaToPrint");
+        mBancaAttuale = getIntent().getParcelableExtra(Constants.BANCA);
 
         mNominativoView = (TextView) findViewById(R.id.banca_nome);
         mIbanView = (TextView) findViewById(R.id.banca_iban);

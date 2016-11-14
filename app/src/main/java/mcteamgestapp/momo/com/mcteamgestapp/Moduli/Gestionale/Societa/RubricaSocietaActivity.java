@@ -115,7 +115,7 @@ public class RubricaSocietaActivity extends AppCompatActivity {
 
         mRubricaAdapter = new RubricaSocietaListAdapter(this, mRubricaSocieta);
 
-        mRubricaListaView.setFastScrollEnabled(true);
+        //mRubricaListaView.setFastScrollEnabled(true);
 
         mRubricaListaView.setAdapter(mRubricaAdapter);
 

@@ -7,16 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Nominativo.NominativoOverflowOnClickListener;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 
 /**

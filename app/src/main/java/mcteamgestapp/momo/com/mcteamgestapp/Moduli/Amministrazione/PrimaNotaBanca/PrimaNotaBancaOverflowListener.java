@@ -12,7 +12,7 @@ import mcteamgestapp.momo.com.mcteamgestapp.Utils.PopupListenerBuilder;
 /**
  * Created by Rrossi on 30/05/2016.
  */
-public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
+public class PrimaNotaBancaOverflowListener implements View.OnClickListener {
     private Context mContext;
     private NotaBanca mElement;
     //private UserInfo mUser;
@@ -24,7 +24,7 @@ public class PrimaNotaBancaOverflowListener implements View.OnClickListener{
         mUser = user;
     }*/
 
-    public PrimaNotaBancaOverflowListener(Context context, NotaBanca element){
+    public PrimaNotaBancaOverflowListener(Context context, NotaBanca element) {
         mContext = context;
         mElement = element;
     }

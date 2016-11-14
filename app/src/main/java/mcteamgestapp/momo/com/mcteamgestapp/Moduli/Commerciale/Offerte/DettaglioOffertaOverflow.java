@@ -1,16 +1,13 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.PopupMenu;
-import android.view.MenuItem;
 import android.view.View;
-
-import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commerciale.Offerta;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.OverflowPopupMenu;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.PopupListenerBuilder;
 
 /**
  * @author Created by Riccardo Rossi on 15/10/2016.
@@ -28,6 +25,30 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        //Creating the instance of PopupMenu
+        OverflowPopupMenu popupMenu = new OverflowPopupMenu(mContext, v);
+        //Inflating the Popup using xml file
+        popupMenu.getMenuInflater().inflate(R.menu.accessi_overflow_menu, popupMenu.getMenu());
+        //Creating class that extends OnMenuItemClickListener
+        PopupListenerBuilder listenerBuilder = null;
+        try {
+            listenerBuilder = new PopupListenerBuilder(mContext, v, mElement)
+                    .setClassesForIntent(
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.EliminaOffertaActivity",
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.ModificaOffertaActivity",
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Commerciale.Offerte.StampaOffertaActivity")
+                    .setConstForIntent(Constants.OFFERTA); //Manca la gestione di questa costante lato activity
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //registering popup with OnMenuItemClickListener
+        popupMenu.setOnMenuItemClickListener(listenerBuilder);
+        //Forza le icone a mostrarsi
+        popupMenu.forceIconToShow();
+        //Mostra il Popup
+        popupMenu.show();
 
         /*PopupMenu popupMenu = new PopupMenu(mContext, v) {
 

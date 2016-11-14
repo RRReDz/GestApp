@@ -102,7 +102,7 @@ public class RubricaNominativaActivity extends AppCompatActivity {
 
         mRubricaAdapter = new RubricaNominativaListAdapter(this, mRubricaNominativo, actualUser);
 
-        mRubricaListaView.setFastScrollEnabled(true);
+        //mRubricaListaView.setFastScrollEnabled(true);
 
         mRubricaListaView.setAdapter(mRubricaAdapter);
 

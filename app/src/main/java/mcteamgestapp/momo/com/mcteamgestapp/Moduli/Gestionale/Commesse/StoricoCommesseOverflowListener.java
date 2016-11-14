@@ -2,15 +2,12 @@ package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.lang.reflect.Field;
-
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Commessa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.OverflowPopupMenu;
 
 /**
  * Created by meddaakouri on 22/01/2016.
@@ -27,41 +24,28 @@ public class StoricoCommesseOverflowListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
-        /*PopupMenu popupMenu = new PopupMenu(mContext, v) {
-
+        //Creating the instance of PopupMenu
+        OverflowPopupMenu popupMenu = new OverflowPopupMenu(mContext, v);
+        //Inflating the Popup using xml file
+        popupMenu.getMenuInflater().inflate(R.menu.menu_overflow_storico, popupMenu.getMenu());
+        //registering popup with OnMenuItemClickListener
+        popupMenu.setOnMenuItemClickListener(new android.widget.PopupMenu.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
-                switch (item.getItemId()) {
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
                     case R.id.menu_action_stampa:
                         Intent stampaIntent = new Intent(mContext, StampaCommessaActivity.class);
                         stampaIntent.putExtra("commessaToPrint", mElement);
                         mContext.startActivity(stampaIntent);
                         return true;
                     default:
-                        return super.onMenuItemSelected(menu, item);
+                        return false;
                 }
-
             }
-        };
-        popupMenu.inflate(R.menu.menu_overflow_storico);
-
-        //Forse icons to show
-        Object menuHelper;
-        Class[] argTypes;
-        try {
-            Field fMenuHelper = PopupMenu.class.getDeclaredField("mPopup");
-            fMenuHelper.setAccessible(true);
-            menuHelper = fMenuHelper.get(popupMenu);
-            argTypes = new Class[]{boolean.class};
-            menuHelper.getClass().getDeclaredMethod("setForceShowIcon", argTypes).invoke(menuHelper, true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            popupMenu.show();
-            return;
-        }
-        popupMenu.show();*/
+        });
+        //Forza le icone a mostrarsi
+        popupMenu.forceIconToShow();
+        //Mostra il Popup
+        popupMenu.show();
     }
-
 }

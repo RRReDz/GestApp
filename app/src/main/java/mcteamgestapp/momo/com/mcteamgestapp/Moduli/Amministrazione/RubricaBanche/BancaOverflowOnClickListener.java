@@ -1,19 +1,15 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.PopupMenu;
-import android.view.MenuItem;
 import android.view.View;
 
 import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.EliminaCommessaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.NuovaCommessaActivity;
-import mcteamgestapp.momo.com.mcteamgestapp.Moduli.Gestionale.Commesse.StampaCommessaActivity;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.OverflowPopupMenu;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.PopupListenerBuilder;
 
 /**
  * Created by meddaakouri on 14/01/2016.
@@ -31,6 +27,30 @@ public class BancaOverflowOnClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
+        //Creating the instance of PopupMenu
+        OverflowPopupMenu popupMenu = new OverflowPopupMenu(mContext, v);
+        //Inflating the Popup using xml file
+        popupMenu.getMenuInflater().inflate(R.menu.accessi_overflow_menu, popupMenu.getMenu());
+        //Creating class that extends OnMenuItemClickListener
+        PopupListenerBuilder listenerBuilder = null;
+        try {
+            listenerBuilder = new PopupListenerBuilder(mContext, v, mElement)
+                    .setClassesForIntent(
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.EliminaBancaActivity",
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.NuovaBancaActivity",
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.RubricaBanche.StampaBancaActivity")
+                    .setConstForIntent(Constants.BANCA);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //registering popup with OnMenuItemClickListener
+        popupMenu.setOnMenuItemClickListener(listenerBuilder);
+        //Forza le icone a mostrarsi
+        popupMenu.forceIconToShow();
+        //Mostra il Popup
+        popupMenu.show();
 
         /*PopupMenu popupMenu = new PopupMenu(mContext, v) {
 

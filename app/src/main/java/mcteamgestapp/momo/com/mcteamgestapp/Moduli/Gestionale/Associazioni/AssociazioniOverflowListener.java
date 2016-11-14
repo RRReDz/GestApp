@@ -11,6 +11,9 @@ import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Associazione;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.OverflowPopupMenu;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.PopupListenerBuilder;
 
 /**
  * Created by meddaakouri on 27/01/2016.
@@ -27,11 +30,15 @@ public class AssociazioniOverflowListener implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        /*PopupMenu popupMenu = new PopupMenu(mContext, v) {
-
+        //Creating the instance of PopupMenu
+        OverflowPopupMenu popupMenu = new OverflowPopupMenu(mContext, v);
+        //Inflating the Popup using xml file
+        popupMenu.getMenuInflater().inflate(R.menu.accessi_overflow_menu, popupMenu.getMenu());
+        //registering popup with OnMenuItemClickListener
+        popupMenu.setOnMenuItemClickListener(new android.widget.PopupMenu.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
-                switch (item.getItemId()) {
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
                     case R.id.menu_action_elimina:
                         Intent eliminaIntent = new Intent(mContext, EliminaAssociazioneActivity.class);
                         eliminaIntent.putExtra("associazioneToDelete", mElement);
@@ -49,29 +56,14 @@ public class AssociazioniOverflowListener implements View.OnClickListener {
                         mContext.startActivity(stampaIntent);
                         return true;
                     default:
-                        return super.onMenuItemSelected(menu, item);
+                        return false;
                 }
-
             }
-        };
+        });
+        //Forza le icone a mostrarsi
+        popupMenu.forceIconToShow();
+        //Mostra il Popup
+        popupMenu.show();
 
-        popupMenu.inflate(R.menu.accessi_overflow_menu);
-
-        //Forse icons to show
-        Object menuHelper;
-        Class[] argTypes;
-        try {
-            Field fMenuHelper = PopupMenu.class.getDeclaredField("mPopup");
-            fMenuHelper.setAccessible(true);
-            menuHelper = fMenuHelper.get(popupMenu);
-            argTypes = new Class[]{boolean.class};
-            menuHelper.getClass().getDeclaredMethod("setForceShowIcon", argTypes).invoke(menuHelper, true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            popupMenu.show();
-            return;
-        }
-        popupMenu.show();*/
     }
 }

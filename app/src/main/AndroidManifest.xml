@@ -272,11 +272,19 @@
         <activity
             android:name=".Moduli.Commerciale.Offerte.VisualOffertaActivity"
             android:label="@string/title_activity_visual_offerta" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.EliminaOffertaActivity"
+            android:label="@string/title_activity_elimina_offerta" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.ModificaOffertaActivity"
+            android:label="@string/title_activity_modifica_offerta" />
+        <activity
+            android:name=".Moduli.Commerciale.Offerte.StampaOffertaActivity"
+            android:label="@string/title_activity_stampa_offerta" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="9113bc3bbbd5984e17523b4ae6e36d93f420617c" />
-
     </application>
 
 </manifest>

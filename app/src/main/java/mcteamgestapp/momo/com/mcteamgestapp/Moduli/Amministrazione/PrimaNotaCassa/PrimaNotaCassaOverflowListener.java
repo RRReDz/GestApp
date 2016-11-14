@@ -1,18 +1,13 @@
 package mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.PopupMenu;
-import android.view.MenuItem;
 import android.view.View;
-
-import java.lang.reflect.Field;
 
 import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.PrimaNota.NotaCassa;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.OverflowPopupMenu;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.PopupListenerBuilder;
 
 /**
  * Created by Rrossi on 17/05/2016.
@@ -29,13 +24,39 @@ public class PrimaNotaCassaOverflowListener implements View.OnClickListener {
         mUser = user;
     }*/
 
-    public PrimaNotaCassaOverflowListener(Context context, NotaCassa element){
+    public PrimaNotaCassaOverflowListener(Context context, NotaCassa element) {
         mContext = context;
         mElement = element;
     }
 
     @Override
     public void onClick(View v) {
+
+        //Creating the instance of PopupMenu
+        OverflowPopupMenu popupMenu = new OverflowPopupMenu(mContext, v);
+        //Inflating the Popup using xml file
+        popupMenu.getMenuInflater().inflate(R.menu.overflow_menu_noprint, popupMenu.getMenu());
+        //Creating class that extends OnMenuItemClickListener
+        PopupListenerBuilder listenerBuilder = null;
+        try {
+            listenerBuilder = new PopupListenerBuilder(mContext, v, mElement)
+                    .setClassesForIntent(
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.VisualElimCassaActivity",
+                            "mcteamgestapp.momo.com.mcteamgestapp.Moduli.Amministrazione.PrimaNotaCassa.NuovoModifCassaActivity",
+                            null)
+                    .setConstForIntent(Constants.NOTA_CASSA)
+                    .setExtraParamIntent(Constants.VISUAL_ELIMINA, false)
+                    .setConstActivityResult(Constants.NOTA_DELETE, Constants.NOTA_EDIT, null);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //registering popup with OnMenuItemClickListener
+        popupMenu.setOnMenuItemClickListener(listenerBuilder);
+        //Forza le icone a mostrarsi
+        popupMenu.forceIconToShow();
+        //Mostra il Popup
+        popupMenu.show();
 
         /*PopupMenu popupMenu = new PopupMenu(mContext, v){
 

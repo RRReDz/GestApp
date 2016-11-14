@@ -2,6 +2,7 @@
 
 - MODIFICARE TUTTI I LOGOUT -> RIMUOVERE UTENTE DA "SESSIONE" PRIMA DI USCIRE
 - Modificare tutti gli inserimenti delle date che avvengano tramite calendario
+- Crash quando si stampa banca in rubrica banche
 
 ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~                   BUG/IMPERFEZIONI DA FIXARE                  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 

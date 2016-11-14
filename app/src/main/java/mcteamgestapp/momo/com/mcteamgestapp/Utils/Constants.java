@@ -26,10 +26,13 @@ public class Constants {
     public static final String NOTA_CASSA = "NotaCassa";
     public static final String VISUAL_ELIMINA = "MostraElimina";
     public static final String NOTA_BANCA = "NotaBanca";
+    public static final String BANCA = "Banca";
+    public static final String OFFERTA = "Offerta";
     public static final int NOTA_EDIT = 1;
     public static final int NOTA_DELETE = 2;
     public static final int NOTA_ADD = 3;
     public static final int NOTA_SHOW = 4;
 
     public static final int MY_SOCKET_TIMEOUT_MS = 5000;
+
 }

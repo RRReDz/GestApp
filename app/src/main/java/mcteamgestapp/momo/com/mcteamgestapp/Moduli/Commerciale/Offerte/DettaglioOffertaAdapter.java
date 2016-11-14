@@ -76,12 +76,8 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
             holderDataOfferta.setText(String.valueOf(offerta.getDataOfferta()));
             holderAccettata.setText(String.valueOf(offerta.getAccettata()));
             holderAllegato.setImageBitmap(AllegatiUtils.getAllegatoLogo(activityContext.getResources(), offerta.getAllegato()));
-            holderOverflow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            DettaglioOffertaOverflow listener = new DettaglioOffertaOverflow(offerta, activityContext);
+            holderOverflow.setOnClickListener(listener);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -124,18 +124,27 @@ public class PopupListenerBuilder implements PopupMenu.OnMenuItemClickListener {
                 if (mExtraVisElimStr != null)
                     eliminaIntent.putExtra(mExtraVisElimStr, mExtraVisElimBool);
                 //eliminaIntent.putExtra("actualUser", mUser);
-                ((Activity) mContext).startActivityForResult(eliminaIntent, mConstActivityResultDel);
+                if(mConstActivityResultDel != null)
+                    ((Activity) mContext).startActivityForResult(eliminaIntent, mConstActivityResultDel);
+                else
+                    mContext.startActivity(eliminaIntent);
                 return true;
             case R.id.menu_action_modifica:
                 Intent modificaIntent = new Intent(mContext, mEditClass); //NuovoModifBancaActivity.class
                 modificaIntent.putExtra(mConstIntent, mObjectArgument);
                 //modificaIntent.putExtra("actualUser", mUser);
-                ((Activity) mContext).startActivityForResult(modificaIntent, mConstActivityResultEdit);
+                if(mConstActivityResultEdit != null)
+                    ((Activity) mContext).startActivityForResult(modificaIntent, mConstActivityResultEdit);
+                else
+                    mContext.startActivity(modificaIntent);
                 return true;
             case R.id.menu_action_stampa:
                 Intent stampaIntent = new Intent(mContext, mPrintClass);
                 stampaIntent.putExtra(mConstIntent, mEditClass);
-                mContext.startActivity(stampaIntent);
+                if(mConstActivityResultPrint != null)
+                    ((Activity) mContext).startActivityForResult(stampaIntent, mConstActivityResultEdit);
+                else
+                    mContext.startActivity(stampaIntent);
                 return true;
             default:
                 return false;

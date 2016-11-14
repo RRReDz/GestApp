@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import mcteamgestapp.momo.com.mcteamgestapp.Models.Rubrica.Banca;
 import mcteamgestapp.momo.com.mcteamgestapp.R;
 import mcteamgestapp.momo.com.mcteamgestapp.NetworkReq.VolleyRequests;
+import mcteamgestapp.momo.com.mcteamgestapp.Utils.Constants;
 
 public class NuovaBancaActivity extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class NuovaBancaActivity extends AppCompatActivity {
             getSupportActionBar().setBackgroundDrawable(actionBarBack);
         }
 
-        mBancaAttuale = getIntent().getParcelableExtra("bancaToModify");
+        mBancaAttuale = getIntent().getParcelableExtra(Constants.BANCA);
 
         gson = new Gson();
         mVolleyRequest = new VolleyRequests(this, this);
