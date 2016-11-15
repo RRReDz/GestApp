@@ -1,2 +1,2 @@
-# GestApp
-Mobile application for MCteam's website (GesTeam).
+# MCTeam - GestApp
+Android application of MCTeam GesTeam website.
