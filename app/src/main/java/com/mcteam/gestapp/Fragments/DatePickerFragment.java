@@ -64,4 +64,8 @@ public class DatePickerFragment extends DialogFragment
 
         mTextViewDate.setText(mFormat.format(day) + "-" + mFormat.format(month + 1) + "-" + year);
     }
+
+    public boolean isDataSelected() {
+        return mStringDate != null && !mStringDate.isEmpty();
+    }
 }

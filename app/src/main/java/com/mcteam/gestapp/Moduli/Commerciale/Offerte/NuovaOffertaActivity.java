@@ -37,12 +37,18 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
     private VolleyRequests mVolleyRequests;
     private ArrayList<Nominativo> mNominativiList;
-    private EditText data;
+    private EditText mData;
     private static final int FILE_CODE = 992;
     private File mChoosenFile;
-    ImageView mAllegatoLogo;
-    TextView mAllegatoNome;
-    TextView mAllegatoSize;
+    private DatePickerFragment mDateFragment;
+    private Spinner mRef1;
+    private Spinner mRef2;
+    private Spinner mRef3;
+    private ImageView mAllegatoLogo;
+    private TextView mAllegatoNome;
+    private TextView mAllegatoSize;
+    private BootstrapButton mAllegato;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,12 +59,12 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
         EditText codCommessa = (EditText) findViewById(R.id.dett_off_new_codcomm);
         EditText cliente = (EditText) findViewById(R.id.dett_off_new_cliente);
-        Spinner ref1 = (Spinner) findViewById(R.id.dett_off_new_ref1);
-        Spinner ref2 = (Spinner) findViewById(R.id.dett_off_new_ref2);
-        Spinner ref3 = (Spinner) findViewById(R.id.dett_off_new_ref3);
-        data = (EditText) findViewById(R.id.dett_off_new_data);
+        mRef1 = (Spinner) findViewById(R.id.dett_off_new_ref1);
+        mRef2 = (Spinner) findViewById(R.id.dett_off_new_ref2);
+        mRef3 = (Spinner) findViewById(R.id.dett_off_new_ref3);
+        mData = (EditText) findViewById(R.id.dett_off_new_data);
         EditText oggetto = (EditText) findViewById(R.id.dett_off_new_obj);
-        BootstrapButton allegato = (BootstrapButton) findViewById(R.id.dett_off_new_alleg);
+        mAllegato = (BootstrapButton) findViewById(R.id.dett_off_new_alleg);
         Button creaButton = (Button) findViewById(R.id.bCrea);
         mAllegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
         mAllegatoNome = (TextView) findViewById(R.id.dett_off_alleg_nome);
@@ -78,12 +84,13 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         NominativoSpinnerAdapter adapter = new NominativoSpinnerAdapter(this, R.layout.nominativo_societa_spinner_row, mNominativiList);
 
         //Riferenti 1, 2 e 3
-        ref1.setAdapter(adapter);
-        ref2.setAdapter(adapter);
-        ref3.setAdapter(adapter);
+        mRef1.setAdapter(adapter);
+        mRef2.setAdapter(adapter);
+        mRef3.setAdapter(adapter);
 
-        //Data
-        data.setOnClickListener(new View.OnClickListener() {
+        //Inizializzazione mData
+        mDateFragment = new DatePickerFragment(mData);
+        mData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickSelData();
@@ -94,7 +101,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         oggetto.setText(commessa.getNome_commessa());
         oggetto.setEnabled(false);
 
-        allegato.setOnClickListener(new View.OnClickListener() {
+        mAllegato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //File chooser
@@ -144,8 +151,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     //Apertura date picker dopo click sul campo
 
     private void onClickSelData() {
-        DatePickerFragment dateFragment = new DatePickerFragment(data);
-        dateFragment.show(getFragmentManager(), "datePicker");
+        mDateFragment.show(getFragmentManager(), "datePicker");
     }
 
     public void onClickAnnulla(View view) {
@@ -153,26 +159,40 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     }
 
     public void onClickCrea(View view) throws IOException {
-
         String nomeAllegatoSelected = mAllegatoNome.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-
-        if (mChoosenFile == null) {
+        /* Controllo selezione spinner */
+        if (mRef1.getSelectedItemPosition() == 0 ||
+                mRef2.getSelectedItemPosition() == 0 ||
+                mRef3.getSelectedItemPosition() == 0) {
+            Toast.makeText(getApplicationContext(), "Uno dei referenti non è stato selezionato: impossibile continuare", Toast.LENGTH_LONG).show();
+            cancel = true;
+        }
+        /* Controllo se la mData è stata selezionata */
+        else if (!mDateFragment.isDataSelected()) {
+            Toast.makeText(getApplicationContext(), "La data non è stata selezionata: impossibile continuare", Toast.LENGTH_LONG).show();
+            focusView = mData;
+            cancel = true;
+        }
+        /* Controllo allegato scelto */
+        else if (mChoosenFile == null) {
             Toast.makeText(getApplicationContext(), "File non selezionato: scegliere un file", Toast.LENGTH_LONG).show();
+            focusView = mAllegato;
             cancel = true;
         }
 
         if (!cancel) {
-            try {
+            /*try {
                 mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
         } else {
-            focusView.requestFocus();
+            if (focusView != null)
+                focusView.requestFocus();
         }
 
     }
