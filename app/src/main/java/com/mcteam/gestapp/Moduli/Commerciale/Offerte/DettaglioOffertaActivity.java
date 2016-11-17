@@ -119,17 +119,12 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         LinearLayout fieldsLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_fields);
 
         if (enabled) {
-            emptyLayout.setVisibility(View.VISIBLE);
-            fabSearch.setVisibility(View.GONE);
-            fabPrint.setVisibility(View.GONE);
-            fabExcel.setVisibility(View.GONE);
             fabAdd.setVisibility(View.VISIBLE);
         } else {
-            fieldsLayout.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.VISIBLE);
             fabSearch.setVisibility(View.VISIBLE);
             fabPrint.setVisibility(View.VISIBLE);
             fabExcel.setVisibility(View.VISIBLE);
-            fabAdd.setVisibility(View.GONE);
         }
 
     }

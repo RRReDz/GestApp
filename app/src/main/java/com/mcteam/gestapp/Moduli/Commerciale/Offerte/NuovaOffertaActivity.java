@@ -17,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.google.gson.Gson;
 import com.mcteam.gestapp.Fragments.DatePickerFragment;
+import com.mcteam.gestapp.Models.Commerciale.Offerta;
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.Models.Rubrica.Nominativo;
 import com.mcteam.gestapp.Moduli.Gestionale.Allegati.AllegatiUtils;
@@ -186,7 +188,9 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
         if (!cancel) {
             /*try {
-                mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
+                //mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
+                Gson gson = new Gson();
+                mVolleyRequests.addNewElementRequest();
             } catch (IOException e) {
                 e.printStackTrace();
             }*/
@@ -196,4 +200,46 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         }
 
     }
+
+    /*private Offerta offertaToEncode() throws ParseException {
+
+        Offerta notaCassa = new Offerta();
+
+        int type = mType.getSelectedItemPosition();
+        String dataOperazione = mDataOperazione.getText().toString();
+        String causaleContabile = mCausaleContabile.getText().toString();
+        String sottoconto = mSottoconto.getText().toString();
+        String descrizione = mDescrizioneMovimenti.getText().toString();
+        Integer protocollo;
+        try {
+            protocollo = Integer.parseInt(mProtocollo.getText().toString()); //protocollo puo essere lasciato vuoto
+        } catch (NumberFormatException ex) {
+            protocollo = 0; //Se vuoto viene settato a 0 per convenzione
+        }
+
+        float dare;
+        try {
+            dare = Float.parseFloat((mDare.getText().toString()));
+        } catch (NumberFormatException exception) {
+            dare = 0;
+        }
+
+        float avere;
+        try {
+            avere = Float.parseFloat((mAvere.getText().toString()));
+        } catch (NumberFormatException exception) {
+            avere = 0;
+        }
+
+        notaCassa.setCassa(type);
+        notaCassa.setDataPagamento(Functions.fromDateToSql(dataOperazione));
+        notaCassa.setCausaleContabile(causaleContabile);
+        notaCassa.setSottoconto(sottoconto);
+        notaCassa.setDescrizione(descrizione);
+        notaCassa.setDareDb(Functions.format(dare));
+        notaCassa.setAvereDb(Functions.format(avere));
+        notaCassa.setNumeroProtocollo(protocollo);
+
+        return notaCassa;
+    } */
 }

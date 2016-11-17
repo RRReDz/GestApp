@@ -172,6 +172,7 @@
         android:layout_below="@+id/dettaglio_offerta_empty" />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:visibility="gone"
         android:id="@+id/fabmenu_offerta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -214,7 +215,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:onClick="onClickAddOfferta"
-        android:visibility="visible"
+        android:visibility="gone"
         app:fab_colorNormal="@color/sistemi_home_background"
         app:fab_icon="@drawable/ic_add_white_24dp"
         app:fab_size="normal"
