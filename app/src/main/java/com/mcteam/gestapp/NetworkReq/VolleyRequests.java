@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -26,12 +27,13 @@ import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaAc
 import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaRecyclerAdapter;
 import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
+import com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaOffertaActivity;
 import com.mcteam.gestapp.Moduli.Commerciale.Offerte.OfferteActivity;
 import com.mcteam.gestapp.Moduli.Gestionale.Commesse.CommesseActivity;
 import com.mcteam.gestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;
 import com.mcteam.gestapp.Moduli.Gestionale.Nominativo.SocietaSpinnerAdapter;
 import com.mcteam.gestapp.R;
-import com.mcteam.gestapp.Utils.AndroidUtils;
+import com.mcteam.gestapp.Utils.GuiUtils;
 import com.mcteam.gestapp.Utils.Functions;
 
 import org.json.JSONArray;
@@ -123,7 +125,9 @@ public class VolleyRequests {
         mRequestQueue.add(accessiRequest);
     }
 
-    public void getNominativiList(final ArrayList<Nominativo> list, final NominativoSpinnerAdapter adapter) {
+    public void getNominativiList(final ArrayList<Nominativo> list,
+                                  final NominativoSpinnerAdapter adapter,
+                                  @Nullable final NuovaOffertaActivity.CallbackSeletion callbackSelection) {
         String url = mContext.getString(R.string.mobile_url);
         url += "rubrica-nominativi";
 
@@ -144,6 +148,9 @@ public class VolleyRequests {
                     }
                     list.addAll(societas);
                     adapter.notifyDataSetChanged();
+                    /* Chiamata alla callback, se assegnata */
+                    if(callbackSelection != null)
+                        callbackSelection.onLoadNominativi();
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -601,12 +608,12 @@ public class VolleyRequests {
                             }
 
                             activityPrimaNota.iconRefresh(true);
-                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            GuiUtils.showProgressBar(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
-                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            GuiUtils.showProgressBar(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                             Toast.makeText(mContext, "Errore nel caricamento, dati incompleti", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -621,7 +628,7 @@ public class VolleyRequests {
 
                         ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_cassa_progress);
                         RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.simpleRecyclerView);
-                        AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                        GuiUtils.showProgressBar(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                     }
                 });
 
@@ -699,12 +706,12 @@ public class VolleyRequests {
                             //PrimaNotaCassaActivity activity = (PrimaNotaCassaActivity) mActivity;
                             //activity.iconRefresh(true);
 
-                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            GuiUtils.showProgressBar(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
 
 
                         } catch (JSONException jsonEx) {
                             jsonEx.printStackTrace();
-                            AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                            GuiUtils.showProgressBar(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                             Toast.makeText(mContext, "Errore nel caricamento, dati incompleti", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -719,7 +726,7 @@ public class VolleyRequests {
 
                         ProgressBar progressBar = (ProgressBar) mActivity.findViewById(R.id.prima_nota_banca_progress);
                         RecyclerView recyclerView = (RecyclerView) mActivity.findViewById(R.id.recyclerview_banca);
-                        AndroidUtils.showProgress(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
+                        GuiUtils.showProgressBar(recyclerView, progressBar, false); //Nascondo barra circolare di caricamento
                     }
                 });
 
@@ -838,5 +845,4 @@ public class VolleyRequests {
         else
             mWaiting.dismiss();
     }
-
 }

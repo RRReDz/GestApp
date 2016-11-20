@@ -15,12 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.mcteam.gestapp.R;
 
 /**
  * @author Created by Riccardo Rossi on 05/08/2016.
  */
-public class AndroidUtils {
+public class GuiUtils {
 
     public static void downloadFile(String path, Context context) {
         String url = context.getResources().getString(R.string.download_url);
@@ -59,13 +60,15 @@ public class AndroidUtils {
         Log.i("height of listItem:", String.valueOf(totalHeight));
     }
 
-    //Nascondere o meno ListView e ProgressBar
-    public static void showProgress(View listView, View progressBar, boolean show) {
+    /**
+     * Nasconde o meno ListView e ProgressBar
+     */
+    public static void showProgressBar(View viewToHide, View progressBar, boolean show) {
         if (show) {
-            listView.setVisibility(View.GONE);
+            viewToHide.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
         } else {
-            listView.setVisibility(View.VISIBLE);
+            viewToHide.setVisibility(View.VISIBLE);
             progressBar.setVisibility(View.GONE);
         }
     }

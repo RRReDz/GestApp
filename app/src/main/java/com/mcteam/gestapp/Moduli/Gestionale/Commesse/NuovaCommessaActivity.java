@@ -204,7 +204,7 @@ public class NuovaCommessaActivity extends AppCompatActivity {
         //***************************************************************************
         //richiesta dati dal server
         //***************************************************************************
-        mVolleyRequests.getNominativiList(mNominativiList, mNominativoAdapter);
+        mVolleyRequests.getNominativiList(mNominativiList, mNominativoAdapter, null);
         mVolleyRequests.getSocietaList(mSocietaList, mSocietaAdapter);
 
         //***************************************************************************

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.mcteam.gestapp.Utils.AndroidUtils;
+import com.mcteam.gestapp.Utils.GuiUtils;
 import com.mcteam.gestapp.Utils.Constants;
 import com.mcteam.gestapp.Models.PrimaNota.NotaCassa;
 import com.mcteam.gestapp.Moduli.Home.HomeActivity;
@@ -124,7 +124,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 check++;
                 if (check > 1) {
-                    AndroidUtils.showProgress(mRecyclerView, mProgressBar, true);
+                    GuiUtils.showProgressBar(mRecyclerView, mProgressBar, true);
 
                     int month = mMonthSpinner.getSelectedItemPosition();
                     int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
@@ -165,7 +165,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 check++;
                 if (check > 1) {
-                    AndroidUtils.showProgress(mRecyclerView, mProgressBar, true);
+                    GuiUtils.showProgressBar(mRecyclerView, mProgressBar, true);
 
                     int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
                     int type = mTypeSpinner.getSelectedItemPosition();
@@ -202,7 +202,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 check++;
                 if (check > 1) {
-                    AndroidUtils.showProgress(mRecyclerView, mProgressBar, true);
+                    GuiUtils.showProgressBar(mRecyclerView, mProgressBar, true);
                     int year = Integer.parseInt((String) parent.getItemAtPosition(position));
                     int month = mMonthSpinner.getSelectedItemPosition();
                     int type = mTypeSpinner.getSelectedItemPosition();
@@ -342,7 +342,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
 
     public void onClickStampa(View view) {
         mFam.collapse();
-        AndroidUtils.checkPermissions(this);
+        GuiUtils.checkPermissions(this);
         printAll();
 
     }

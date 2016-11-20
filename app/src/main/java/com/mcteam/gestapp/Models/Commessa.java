@@ -355,8 +355,18 @@ public class Commessa implements Parcelable {
                 "ID=" + ID +
                 ", codice_commessa='" + codice_commessa + '\'' +
                 ", id_cliente=" + id_cliente +
-                ", cliente=" + cliente.getNomeSocietà() +
+                ", cliente=" + cliente +
                 ", nome_commessa='" + nome_commessa + '\'' +
+                ", id_commerciale=" + id_commerciale +
+                ", commerciale=" + commerciale +
+                ", data='" + data + '\'' +
+                ", avanzamento='" + avanzamento + '\'' +
+                ", off1=" + off1 +
+                ", off2=" + off2 +
+                ", off3=" + off3 +
+                ", note='" + note + '\'' +
+                ", id_capo_progetto=" + id_capo_progetto +
+                ", capo_progetto=" + capo_progetto +
                 '}';
     }
 }

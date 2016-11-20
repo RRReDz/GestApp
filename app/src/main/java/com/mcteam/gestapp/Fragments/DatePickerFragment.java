@@ -68,4 +68,8 @@ public class DatePickerFragment extends DialogFragment
     public boolean isDataSelected() {
         return mStringDate != null && !mStringDate.isEmpty();
     }
+
+    public String toString() {
+        return mStringDate;
+    }
 }

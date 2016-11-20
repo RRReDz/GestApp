@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -23,6 +24,7 @@ import com.google.gson.Gson;
 import com.mcteam.gestapp.Models.Commerciale.Offerta;
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.R;
+import com.mcteam.gestapp.Utils.GuiUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +38,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     private RecyclerView mOffRecyclerView;
     private DettaglioOffertaAdapter mOffAdapter;
     private Commessa mCommessa;
+    private ProgressBar mProgressBar;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -61,6 +64,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         mOffAdapter = new DettaglioOffertaAdapter(mOffArrayList, mCommessa);
         mOffRecyclerView = (RecyclerView) findViewById(R.id.offerte_recycler);
         mOffRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mProgressBar = (ProgressBar) findViewById(R.id.dett_offerte_progress);
         mOffRecyclerView.setAdapter(mOffAdapter);
 
         String url = getString(R.string.mobile_url) + "offerte-list/" + mCommessa.getID();
@@ -101,6 +105,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     }
 
     public void updateList(ArrayList<Offerta> newList) {
+        GuiUtils.showProgressBar(mOffRecyclerView, mProgressBar, false);
         if (newList.isEmpty())
             emptyMode(true);
         else {

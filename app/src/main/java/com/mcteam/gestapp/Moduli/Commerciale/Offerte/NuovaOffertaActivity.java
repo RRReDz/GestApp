@@ -2,6 +2,7 @@ package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,6 +27,7 @@ import com.mcteam.gestapp.Moduli.Gestionale.Allegati.AllegatiUtils;
 import com.mcteam.gestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;
 import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
+import com.mcteam.gestapp.Utils.Functions;
 import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.File;
@@ -43,6 +45,10 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     private static final int FILE_CODE = 992;
     private File mChoosenFile;
     private DatePickerFragment mDateFragment;
+    private EditText mCodCommessa;
+    private Commessa mCommessa;
+    private EditText mCliente;
+    private EditText mOggetto;
     private Spinner mRef1;
     private Spinner mRef2;
     private Spinner mRef3;
@@ -50,6 +56,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     private TextView mAllegatoNome;
     private TextView mAllegatoSize;
     private BootstrapButton mAllegato;
+    static Gson gson = new Gson();
 
 
     @Override
@@ -57,15 +64,16 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_offerta);
 
-        Commessa commessa = getIntent().getParcelableExtra("COMMESSA");
+        mCommessa = getIntent().getParcelableExtra("COMMESSA");
+        System.out.println(mCommessa);
 
-        EditText codCommessa = (EditText) findViewById(R.id.dett_off_new_codcomm);
-        EditText cliente = (EditText) findViewById(R.id.dett_off_new_cliente);
+        mCodCommessa = (EditText) findViewById(R.id.dett_off_new_codcomm);
+        mCliente = (EditText) findViewById(R.id.dett_off_new_cliente);
         mRef1 = (Spinner) findViewById(R.id.dett_off_new_ref1);
         mRef2 = (Spinner) findViewById(R.id.dett_off_new_ref2);
         mRef3 = (Spinner) findViewById(R.id.dett_off_new_ref3);
         mData = (EditText) findViewById(R.id.dett_off_new_data);
-        EditText oggetto = (EditText) findViewById(R.id.dett_off_new_obj);
+        mOggetto = (EditText) findViewById(R.id.dett_off_new_obj);
         mAllegato = (BootstrapButton) findViewById(R.id.dett_off_new_alleg);
         Button creaButton = (Button) findViewById(R.id.bCrea);
         mAllegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
@@ -74,21 +82,26 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
 
         //Codice commessa
-        codCommessa.setText(commessa.getCodice_commessa());
-        codCommessa.setEnabled(false);
+        mCodCommessa.setText(mCommessa.getCodice_commessa());
+        mCodCommessa.setEnabled(false);
 
         //Cliente
-        cliente.setText(commessa.getCliente().getNomeSocietà());
-        cliente.setEnabled(false);
+        mCliente.setText(mCommessa.getCliente().getNomeSocietà());
+        mCliente.setEnabled(false);
 
         //Lista nominativi
         mNominativiList = new ArrayList<>();
-        NominativoSpinnerAdapter adapter = new NominativoSpinnerAdapter(this, R.layout.nominativo_societa_spinner_row, mNominativiList);
+        final NominativoSpinnerAdapter adapter = new NominativoSpinnerAdapter(this, R.layout.nominativo_societa_spinner_row, mNominativiList);
 
         //Riferenti 1, 2 e 3
         mRef1.setAdapter(adapter);
+
+
         mRef2.setAdapter(adapter);
+
+
         mRef3.setAdapter(adapter);
+
 
         //Inizializzazione mData
         mDateFragment = new DatePickerFragment(mData);
@@ -100,8 +113,8 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         });
 
         //Oggetto
-        oggetto.setText(commessa.getNome_commessa());
-        oggetto.setEnabled(false);
+        mOggetto.setText(mCommessa.getNome_commessa());
+        mOggetto.setEnabled(false);
 
         mAllegato.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,9 +140,24 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
         //Riempita nominativi list
         mVolleyRequests = new VolleyRequests(this, this);
-        mVolleyRequests.getNominativiList(mNominativiList, adapter);
+        mVolleyRequests.getNominativiList(
+                mNominativiList,
+                adapter,
+                new CallbackSeletion() {
+                    @Override
+                    public void onLoadNominativi() {
+                        /* Quando si carica la lista, seleziono i dati relativi alla commessa */
+                        mRef1.setSelection(adapter.getPositionById(mCommessa.getOff1()));
+                        mRef2.setSelection(adapter.getPositionById(mCommessa.getOff2()));
+                        mRef3.setSelection(adapter.getPositionById(mCommessa.getOff3()));
+                    }
+                });
 
         creaButton.setVisibility(View.VISIBLE);
+    }
+
+    public interface CallbackSeletion {
+        void onLoadNominativi();
     }
 
     @Override
@@ -187,13 +215,16 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         }
 
         if (!cancel) {
-            /*try {
-                //mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
-                Gson gson = new Gson();
-                mVolleyRequests.addNewElementRequest();
-            } catch (IOException e) {
+            //mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
+            Offerta offertaToEncode = null;
+            try {
+                offertaToEncode = offertaToEncode();
+            } catch (java.text.ParseException e) {
                 e.printStackTrace();
-            }*/
+                //TODO: Mostra errore, non è stato possibile decodificare i dati in JSON.
+            }
+            if (offertaToEncode != null)
+                mVolleyRequests.addNewElementRequest(gson.toJson(offertaToEncode), "offerta-nuovo/" + mCommessa.getID());
         } else {
             if (focusView != null)
                 focusView.requestFocus();
@@ -201,45 +232,21 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
     }
 
-    /*private Offerta offertaToEncode() throws ParseException {
+    private Offerta offertaToEncode() throws ParseException, java.text.ParseException {
 
-        Offerta notaCassa = new Offerta();
+        Nominativo ref1 = (Nominativo) mRef1.getSelectedItem();
+        Nominativo ref2 = (Nominativo) mRef2.getSelectedItem();
+        Nominativo ref3 = (Nominativo) mRef3.getSelectedItem();
+        String dataOfferta = mData.getText().toString();
+        String nomeAllegato = mChoosenFile.getName();
 
-        int type = mType.getSelectedItemPosition();
-        String dataOperazione = mDataOperazione.getText().toString();
-        String causaleContabile = mCausaleContabile.getText().toString();
-        String sottoconto = mSottoconto.getText().toString();
-        String descrizione = mDescrizioneMovimenti.getText().toString();
-        Integer protocollo;
-        try {
-            protocollo = Integer.parseInt(mProtocollo.getText().toString()); //protocollo puo essere lasciato vuoto
-        } catch (NumberFormatException ex) {
-            protocollo = 0; //Se vuoto viene settato a 0 per convenzione
-        }
-
-        float dare;
-        try {
-            dare = Float.parseFloat((mDare.getText().toString()));
-        } catch (NumberFormatException exception) {
-            dare = 0;
-        }
-
-        float avere;
-        try {
-            avere = Float.parseFloat((mAvere.getText().toString()));
-        } catch (NumberFormatException exception) {
-            avere = 0;
-        }
-
-        notaCassa.setCassa(type);
-        notaCassa.setDataPagamento(Functions.fromDateToSql(dataOperazione));
-        notaCassa.setCausaleContabile(causaleContabile);
-        notaCassa.setSottoconto(sottoconto);
-        notaCassa.setDescrizione(descrizione);
-        notaCassa.setDareDb(Functions.format(dare));
-        notaCassa.setAvereDb(Functions.format(avere));
-        notaCassa.setNumeroProtocollo(protocollo);
-
-        return notaCassa;
-    } */
+        return new Offerta()
+                .setVersione(0)
+                .setAccettata(0)
+                .setOff1(ref1.getID())
+                .setOff2(ref2.getID())
+                .setOff3(ref3.getID())
+                .setDataOfferta(Functions.fromDateToSql(dataOfferta))
+                .setAllegato(nomeAllegato);
+    }
 }

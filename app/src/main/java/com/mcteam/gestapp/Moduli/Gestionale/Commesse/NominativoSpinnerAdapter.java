@@ -79,6 +79,13 @@ public class NominativoSpinnerAdapter extends ArrayAdapter<Nominativo> implement
         return convertView;
     }
 
+    public int getPositionById(int id) {
+        for (int i = 0; i < data.size(); i++)
+            if (data.get(i).getID() == id)
+                return i;
+        return 0;
+    }
+
     class ViewHolder {
         TextView societaName;
         LinearLayout layout;

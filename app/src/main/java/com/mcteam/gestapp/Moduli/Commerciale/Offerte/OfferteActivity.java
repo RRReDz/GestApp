@@ -14,11 +14,13 @@ import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
 import com.mcteam.gestapp.Utils.ComparatorPool;
+import com.mcteam.gestapp.Utils.GuiUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,6 +32,7 @@ public class OfferteActivity extends AppCompatActivity {
     private RecyclerView mOffRecyclerView;
     private OfferteAdapter mAdapter;
     private VolleyRequests mVolleyRequests;
+    private ProgressBar mProgressBar;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -61,16 +64,19 @@ public class OfferteActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        mProgressBar = (ProgressBar) findViewById(R.id.offerte_progress);
 
         mOffRecyclerView.setAdapter(mAdapter);
 
         mVolleyRequests.getCommesseList();
+
     }
 
     // FromVolleyRequest indica se la richiesta di aggiornamento lista è stata fatta dopo una richiesta al db (Volley)
     public void updateList(ArrayList<Commessa> list, boolean fromVolleyRequest) {
-        //showProgress(false);
         Collections.sort(list, ComparatorPool.getCommessaComparator());
+        /* Rimozione progress bar */
+        GuiUtils.showProgressBar(mOffRecyclerView, mProgressBar, false);
         mCommArrList.clear();
         mCommArrList.addAll(list);
         mAdapter.notifyDataSetChanged();

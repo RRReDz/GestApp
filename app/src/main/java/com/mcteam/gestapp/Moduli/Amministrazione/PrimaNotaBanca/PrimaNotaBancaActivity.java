@@ -28,7 +28,7 @@ import com.mcteam.gestapp.Moduli.Home.HomeActivity;
 import com.mcteam.gestapp.Moduli.Login.LoginActivity;
 import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
-import com.mcteam.gestapp.Utils.AndroidUtils;
+import com.mcteam.gestapp.Utils.GuiUtils;
 import com.mcteam.gestapp.Utils.Constants;
 
 import java.util.ArrayList;
@@ -133,7 +133,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 check++;
                 if (check > 1) {
-                    AndroidUtils.showProgress(mRecyclerView, mProgressBar, true);
+                    GuiUtils.showProgressBar(mRecyclerView, mProgressBar, true);
 
                     int year = Integer.parseInt((String) mYearsSpinner.getSelectedItem());
 
@@ -169,7 +169,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 check++;
                 if (check > 1) {
-                    AndroidUtils.showProgress(mRecyclerView, mProgressBar, true);
+                    GuiUtils.showProgressBar(mRecyclerView, mProgressBar, true);
                     int year = Integer.parseInt((String) parent.getItemAtPosition(position));
                     int month = mMonthSpinner.getSelectedItemPosition();
 

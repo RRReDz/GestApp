@@ -31,7 +31,7 @@ import com.mcteam.gestapp.Models.UserInfo;
 import com.mcteam.gestapp.NetworkReq.CustomRequest;
 import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
-import com.mcteam.gestapp.Utils.AndroidUtils;
+import com.mcteam.gestapp.Utils.GuiUtils;
 import com.mcteam.gestapp.Utils.Functions;
 
 import org.json.JSONArray;
@@ -168,7 +168,7 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
         mCommessaSpinner.setAdapter(mCommesseAdapter);
         mCapoProgettoSpinner.setAdapter(mUtentiAdapter);
         mSelectedConsulentiListView.setAdapter(mConsulenteListAdapter);
-        AndroidUtils.getListViewSize(mSelectedConsulentiListView);
+        GuiUtils.getListViewSize(mSelectedConsulentiListView);
 
         //******************************** Other shit ***************************************
         mRequestQueue = Volley.newRequestQueue(this);
@@ -602,7 +602,7 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
     void updateConsulentiScelti(ArrayList<UserInfo> list) {
         mConsulentiList.clear();
         mConsulentiList.addAll(list);
-        AndroidUtils.getListViewSize(mSelectedConsulentiListView);
+        GuiUtils.getListViewSize(mSelectedConsulentiListView);
         mConsulenteListAdapter.notifyDataSetChanged();
         selectedConsulenti = list;
     }

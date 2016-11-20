@@ -28,6 +28,17 @@ public class Offerta implements Parcelable{
     @SerializedName("allegato")
     private String allegato;
 
+    @SerializedName("off1")
+    private int off1;
+    @SerializedName("off2")
+    private int off2;
+    @SerializedName("off3")
+    private int off3;
+
+    public Offerta() {
+
+    }
+
     protected Offerta(Parcel in) {
         idCommessa = in.readInt();
         versione = in.readInt();
@@ -62,54 +73,90 @@ public class Offerta implements Parcelable{
         dest.writeInt(accettata);
         dest.writeString(offerta);
         dest.writeString(allegato);
+        dest.writeInt(off1);
+        dest.writeInt(off2);
+        dest.writeInt(off3);
+    }
+
+    public int getOff1() {
+        return off1;
+    }
+
+    public Offerta setOff1(int off1) {
+        this.off1 = off1;
+        return this;
+    }
+
+    public int getOff2() {
+        return off2;
+    }
+
+    public Offerta setOff2(int off2) {
+        this.off2 = off2;
+        return this;
+    }
+
+    public int getOff3() {
+        return off3;
+    }
+
+    public Offerta setOff3(int off3) {
+        this.off3 = off3;
+        return this;
     }
 
     public int getIdCommessa() {
         return idCommessa;
     }
 
-    public void setIdCommessa(int idCommessa) {
+    public Offerta setIdCommessa(int idCommessa) {
         this.idCommessa = idCommessa;
+        return this;
     }
 
     public int getVersione() {
         return versione;
     }
 
-    public void setVersione(int versione) {
+    public Offerta setVersione(int versione) {
         this.versione = versione;
+        return this;
     }
 
     public String getDataOfferta() {
         return dataOfferta;
     }
 
-    public void setDataOfferta(String dataOfferta) {
+    public Offerta setDataOfferta(String dataOfferta) {
         this.dataOfferta = dataOfferta;
+        return this;
     }
 
     public int getAccettata() {
         return accettata;
     }
 
-    public void setAccettata(int accettata) {
+    public Offerta setAccettata(int accettata) {
         this.accettata = accettata;
+        return this;
     }
 
     public String getOfferta() {
         return offerta;
     }
 
-    public void setOfferta(String offerta) {
+    public Offerta setOfferta(String offerta) {
         this.offerta = offerta;
+        return this;
     }
 
     public String getAllegato() {
         return allegato;
     }
 
-    public void setAllegato(String allegato) {
+    public Offerta setAllegato(String allegato) {
         this.allegato = allegato;
+        return this;
     }
 
     @Override

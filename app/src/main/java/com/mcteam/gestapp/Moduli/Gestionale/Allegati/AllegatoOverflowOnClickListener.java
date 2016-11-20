@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.mcteam.gestapp.Models.Allegato;
 import com.mcteam.gestapp.R;
-import com.mcteam.gestapp.Utils.AndroidUtils;
+import com.mcteam.gestapp.Utils.GuiUtils;
 import com.mcteam.gestapp.Utils.OverflowPopupMenu;
 
 /**
@@ -42,7 +42,7 @@ public class AllegatoOverflowOnClickListener implements View.OnClickListener {
                         mContext.startActivity(eliminaIntent);
                         return true;
                     case R.id.menu_action_download:
-                        AndroidUtils.downloadFile(mElement.getFile(), mContext);
+                        GuiUtils.downloadFile(mElement.getFile(), mContext);
                         return true;
                     default:
                         return false;
