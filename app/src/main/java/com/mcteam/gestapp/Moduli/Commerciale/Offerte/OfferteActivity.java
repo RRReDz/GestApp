@@ -86,6 +86,15 @@ public class OfferteActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        /* Aggiorno la lista delle commesse quando l'activity torna visibile */
+        GuiUtils.showProgressBar(mOffRecyclerView, mProgressBar, true);
+        mVolleyRequests.getCommesseList();
+    }
+
     // FromVolleyRequest indica se la richiesta di aggiornamento lista è stata fatta dopo una richiesta al db (Volley)
     public void updateList(ArrayList<Commessa> list, boolean fromVolleyRequest) {
         Collections.sort(list, ComparatorPool.getCommessaComparator());
@@ -98,11 +107,11 @@ public class OfferteActivity extends AppCompatActivity {
             mCommArrListO.addAll(list);
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == Constants.SHOW_OFFERTA && resultCode == Activity.RESULT_OK)
             Toast.makeText(this, "Ricevuto aggiornamento da NuovaOffertaActivity", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

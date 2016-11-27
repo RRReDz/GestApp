@@ -170,11 +170,11 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             //Toast.makeText(this, "Ricevuto messaggio di risposta da volley request", Toast.LENGTH_SHORT).show();
 
             /* Se il "parent" di questa activity non è null (OfferteActivity), allora setto il risultato per la callback */
-            if(getParent() != null)
-                getParent().setResult(Activity.RESULT_OK);
+            //if(getParent() != null)
+            //    getParent().setResult(Activity.RESULT_OK);
             /* Altrimenti rilancio l'activity nuovamente */
-            else
-                startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
+            //else
+            //    startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
             finish();
         }
     }
