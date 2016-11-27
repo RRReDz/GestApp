@@ -1,6 +1,7 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -12,18 +13,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.mcteam.gestapp.Models.Commessa;
+import com.mcteam.gestapp.Models.Rubrica.Nominativo;
 import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
 import com.mcteam.gestapp.Utils.ComparatorPool;
+import com.mcteam.gestapp.Utils.Constants;
 import com.mcteam.gestapp.Utils.GuiUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class OfferteActivity extends AppCompatActivity {
 
@@ -33,6 +39,7 @@ public class OfferteActivity extends AppCompatActivity {
     private OfferteAdapter mAdapter;
     private VolleyRequests mVolleyRequests;
     private ProgressBar mProgressBar;
+    private ArrayList<Nominativo> mNominativiList;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -56,18 +63,25 @@ public class OfferteActivity extends AppCompatActivity {
         mVolleyRequests = new VolleyRequests(this, this);
         mCommArrList = new ArrayList<>();
         mCommArrListO = new ArrayList<>();
+        mNominativiList = new ArrayList<>();
         mAdapter = new OfferteAdapter(mCommArrList, new OfferteAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Commessa item) {
+                /* Carico nell'item commessa il valore dei nominativi dei tre referenti delle offerte */
+                item.setReferente_offerta1(getNominativoById(mNominativiList, item.getOff1()));
+                item.setReferente_offerta2(getNominativoById(mNominativiList, item.getOff2()));
+                item.setReferente_offerta3(getNominativoById(mNominativiList, item.getOff3()));
+
                 Intent i = new Intent(getApplicationContext(), DettaglioOffertaActivity.class);
                 i.putExtra("COMMESSA", item);
-                startActivity(i);
+                startActivityForResult(i, Constants.SHOW_OFFERTA);
             }
         });
         mProgressBar = (ProgressBar) findViewById(R.id.offerte_progress);
 
         mOffRecyclerView.setAdapter(mAdapter);
 
+        mVolleyRequests.getNominativiList(mNominativiList, null);
         mVolleyRequests.getCommesseList();
 
     }
@@ -82,6 +96,12 @@ public class OfferteActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
         if (fromVolleyRequest) //Aggiorna solo se richiesta fatta da una volley
             mCommArrListO.addAll(list);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == Constants.SHOW_OFFERTA && resultCode == Activity.RESULT_OK)
+            Toast.makeText(this, "Ricevuto aggiornamento da NuovaOffertaActivity", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -140,6 +160,18 @@ public class OfferteActivity extends AppCompatActivity {
         } else
             updateList(mCommArrListO, false);
 
+    }
+
+    /**
+     * Restituisce
+     * @param id
+     * @return
+     */
+    public Nominativo getNominativoById(ArrayList<Nominativo> data, int id) {
+        for (int i = 0; i < data.size(); i++)
+            if (data.get(i).getID() == id)
+                return data.get(i);
+        return null;
     }
 
 }

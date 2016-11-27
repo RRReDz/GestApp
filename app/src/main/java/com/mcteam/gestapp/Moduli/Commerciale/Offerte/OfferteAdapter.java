@@ -45,7 +45,6 @@ public class OfferteAdapter extends RecyclerView.Adapter<OfferteAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        //System.out.println("Chiamato onBindViewHolder alla posizione: " + position);
         holder.bind(items.get(position), listener, position);
     }
 
@@ -57,7 +56,6 @@ public class OfferteAdapter extends RecyclerView.Adapter<OfferteAdapter.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView header, cliente, codCommessa, nomeCommessa;
         private ImageButton overflow;
-        private OverflowOnClickListener overflowListener;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -71,6 +69,7 @@ public class OfferteAdapter extends RecyclerView.Adapter<OfferteAdapter.MyViewHo
         public void bind(final Commessa commessa, final OnItemClickListener listener, int position) {
             Character firstChar = commessa.getCliente().getNomeSocietà().toUpperCase().charAt(0);
 
+            /* Controlli per inserire correttamente l'indice lettera per gli oggetti */
             if(!mAlphaIndex.containsKey(firstChar) || mAlphaIndex.get(firstChar) == position) {
                 header.setText(String.valueOf(firstChar));
                 header.setVisibility(View.VISIBLE);
@@ -83,13 +82,6 @@ public class OfferteAdapter extends RecyclerView.Adapter<OfferteAdapter.MyViewHo
             cliente.setText(commessa.getCliente().getNomeSocietà());
             codCommessa.setText(commessa.getCodice_commessa());
             nomeCommessa.setText(commessa.getNome_commessa());
-            /*final CommesseOverflowListener overflowListener = new CommesseOverflowListener(commessa, itemView.getContext());
-            overflow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    overflowListener.onClick(v);
-                }
-            });*/
             overflow.setVisibility(View.GONE);
 
             itemView.setOnClickListener(new View.OnClickListener() {

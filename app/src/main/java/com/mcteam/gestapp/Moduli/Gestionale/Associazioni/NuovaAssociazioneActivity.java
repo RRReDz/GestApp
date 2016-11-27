@@ -528,9 +528,9 @@ public class NuovaAssociazioneActivity extends AppCompatActivity implements Mult
 
 
                     if (!isModifica) {
-                        mVolleyRequests.addNewElementRequest(associazioneJson, "associazione-nuovo");
+                        mVolleyRequests.addNewElementRequest(associazioneJson, "associazione-nuovo", null);
                     } else {
-                        mVolleyRequests.addNewElementRequest(associazioneJson, "associazione/" + idOldCommessa + "/" + consulente.getID());
+                        mVolleyRequests.addNewElementRequest(associazioneJson, "associazione/" + idOldCommessa + "/" + consulente.getID(), null);
                         System.out.println("associazione/" + idOldCommessa + "/" + consulente.getID());
                         System.out.println("NuovaAssociazioneActivity -> " + associazioneJson);
 

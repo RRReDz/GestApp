@@ -462,9 +462,9 @@ public class NuovaCommessaActivity extends AppCompatActivity {
             System.out.println(json);
 
             if (!isModifica) {
-                mVolleyRequests.addNewElementRequest(json, "commessa-nuovo");
+                mVolleyRequests.addNewElementRequest(json, "commessa-nuovo", null);
             } else {
-                mVolleyRequests.addNewElementRequest(json, "commessa/" + commessa.getID());
+                mVolleyRequests.addNewElementRequest(json, "commessa/" + commessa.getID(), null);
             }
         } else {
             focusView.requestFocus();

@@ -6,6 +6,7 @@ import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.gson.Gson;
+import com.mcteam.gestapp.Callback.CallbackRequest;
+import com.mcteam.gestapp.Callback.CallbackSelection;
 import com.mcteam.gestapp.Fragments.DatePickerFragment;
 import com.mcteam.gestapp.Models.Commerciale.Offerta;
 import com.mcteam.gestapp.Models.Commessa;
@@ -58,7 +61,6 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     private BootstrapButton mAllegato;
     static Gson gson = new Gson();
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +82,6 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         mAllegatoNome = (TextView) findViewById(R.id.dett_off_alleg_nome);
         mAllegatoSize = (TextView) findViewById(R.id.dett_off_alleg_size);
 
-
         //Codice commessa
         mCodCommessa.setText(mCommessa.getCodice_commessa());
         mCodCommessa.setEnabled(false);
@@ -95,13 +96,8 @@ public class NuovaOffertaActivity extends AppCompatActivity {
 
         //Riferenti 1, 2 e 3
         mRef1.setAdapter(adapter);
-
-
         mRef2.setAdapter(adapter);
-
-
         mRef3.setAdapter(adapter);
-
 
         //Inizializzazione mData
         mDateFragment = new DatePickerFragment(mData);
@@ -143,7 +139,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         mVolleyRequests.getNominativiList(
                 mNominativiList,
                 adapter,
-                new CallbackSeletion() {
+                new CallbackSelection() {
                     @Override
                     public void onLoadNominativi() {
                         /* Quando si carica la lista, seleziono i dati relativi alla commessa */
@@ -154,10 +150,6 @@ public class NuovaOffertaActivity extends AppCompatActivity {
                 });
 
         creaButton.setVisibility(View.VISIBLE);
-    }
-
-    public interface CallbackSeletion {
-        void onLoadNominativi();
     }
 
     @Override
@@ -215,7 +207,6 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         }
 
         if (!cancel) {
-            //mVolleyRequests.uploadFile(mChoosenFile, nomeAllegatoSelected);
             Offerta offertaToEncode = null;
             try {
                 offertaToEncode = offertaToEncode();
@@ -224,12 +215,14 @@ public class NuovaOffertaActivity extends AppCompatActivity {
                 //TODO: Mostra errore, non è stato possibile decodificare i dati in JSON.
             }
             if (offertaToEncode != null)
-                mVolleyRequests.addNewElementRequest(gson.toJson(offertaToEncode), "offerta-nuovo/" + mCommessa.getID());
+                mVolleyRequests.addNewElementRequest(gson.toJson(offertaToEncode),
+                        "offerta-nuovo/" + mCommessa.getID(),
+                        null
+                );
         } else {
             if (focusView != null)
                 focusView.requestFocus();
         }
-
     }
 
     private Offerta offertaToEncode() throws ParseException, java.text.ParseException {
@@ -243,9 +236,9 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         return new Offerta()
                 .setVersione(0)
                 .setAccettata(0)
-                .setOff1(ref1.getID())
-                .setOff2(ref2.getID())
-                .setOff3(ref3.getID())
+                .setOff1Comm(ref1.getID())
+                .setOff2Comm(ref2.getID())
+                .setOff3Comm(ref3.getID())
                 .setDataOfferta(Functions.fromDateToSql(dataOfferta))
                 .setAllegato(nomeAllegato);
     }

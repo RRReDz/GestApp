@@ -18,6 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.mcteam.gestapp.Callback.CallbackRequest;
+import com.mcteam.gestapp.Callback.CallbackSelection;
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.Models.PrimaNota.NotaBanca;
 import com.mcteam.gestapp.Models.PrimaNota.NotaCassa;
@@ -126,8 +128,52 @@ public class VolleyRequests {
     }
 
     public void getNominativiList(final ArrayList<Nominativo> list,
+                                  @Nullable final CallbackSelection callback) {
+        String url = mContext.getString(R.string.mobile_url);
+        url += "rubrica-nominativi";
+
+        CustomRequest accessiRequest = new CustomRequest(url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray responseArray) {
+                try {
+                    Log.i("SistemiActivity.class", " " + responseArray.length());
+                    // Parsing json object response
+                    // response will be a json object
+                    ArrayList<Nominativo> nominativi = new ArrayList<>();
+                    for (int i = 0; i < responseArray.length(); i++) {
+                        JSONObject response = responseArray.getJSONObject(i);
+                        //DEBUG
+                        //System.out.println(response);
+                        Nominativo nominativo = gson.fromJson(response.toString(), Nominativo.class);
+                        nominativi.add(nominativo);
+                    }
+                    list.addAll(nominativi);
+                    /* Chiamata la callback, se assegnata */
+                    if(callback != null)
+                        callback.onLoadNominativi();
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                    Log.i("LoginResponse", e.getMessage());
+
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Errore richiesta Volley", "Error: " + error.getMessage());
+                // hide the progress dialog
+            }
+        });
+
+        accessiRequest.setShouldCache(false);
+        mRequestQueue.add(accessiRequest);
+    }
+
+    public void getNominativiList(final ArrayList<Nominativo> list,
                                   final NominativoSpinnerAdapter adapter,
-                                  @Nullable final NuovaOffertaActivity.CallbackSeletion callbackSelection) {
+                                  @Nullable final CallbackSelection callback) {
         String url = mContext.getString(R.string.mobile_url);
         url += "rubrica-nominativi";
 
@@ -148,9 +194,9 @@ public class VolleyRequests {
                     }
                     list.addAll(societas);
                     adapter.notifyDataSetChanged();
-                    /* Chiamata alla callback, se assegnata */
-                    if(callbackSelection != null)
-                        callbackSelection.onLoadNominativi();
+                    /* Chiamata la callback, se assegnata */
+                    if(callback != null)
+                        callback.onLoadNominativi();
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -210,7 +256,7 @@ public class VolleyRequests {
         mRequestQueue.add(accessiRequest);
     }
 
-    public void addNewElementRequest(String json, String route) {
+    public void addNewElementRequest(String json, String route, @Nullable final CallbackRequest callback) {
         String url = mContext.getString(R.string.mobile_url);
         url += route;
 
@@ -239,6 +285,9 @@ public class VolleyRequests {
                             showError(true);
                         }
                     } else {
+                        /* Se è stata definita la callback, viene eseguita */
+                        if(callback != null)
+                            callback.onElementAdded();
                         showError(false);
                     }
 

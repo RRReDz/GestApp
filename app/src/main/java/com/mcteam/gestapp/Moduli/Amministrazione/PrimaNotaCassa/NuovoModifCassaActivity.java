@@ -144,7 +144,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
     private void attemptEdit() throws ParseException {
         NotaCassa notaCassa = notaCassaToEncode();
         int ID = notaCassaEdit.getID();
-        mVolleyRequest.addNewElementRequest(gson.toJson(notaCassa), "nota-cassa-edit/" + ID);
+        mVolleyRequest.addNewElementRequest(gson.toJson(notaCassa), "nota-cassa-edit/" + ID, null);
     }
 
     public void onClickCrea(View view) {
@@ -158,7 +158,7 @@ public class NuovoModifCassaActivity extends AppCompatActivity {
 
     private void attemptCreate() throws ParseException {
         NotaCassa notaCassa = notaCassaToEncode();
-        mVolleyRequest.addNewElementRequest(gson.toJson(notaCassa), "nota-cassa-nuovo");
+        mVolleyRequest.addNewElementRequest(gson.toJson(notaCassa), "nota-cassa-nuovo", null);
     }
 
     public void onClickAnnulla(View view) {

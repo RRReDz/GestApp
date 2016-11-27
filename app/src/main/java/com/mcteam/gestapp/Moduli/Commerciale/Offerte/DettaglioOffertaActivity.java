@@ -1,6 +1,7 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -80,7 +82,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Offerta offerta = gson.fromJson(obj.toString(), Offerta.class);
-                                //System.out.println(offerta);
+                                System.out.println(offerta);
                                 newList.add(offerta);
                             } catch (JSONException e) {
                                 System.out.println("Something went wrong during deserialization!");
@@ -157,6 +159,23 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     public void onClickAddOfferta(View view) {
         Intent intent = new Intent(getApplicationContext(), NuovaOffertaActivity.class);
         intent.putExtra("COMMESSA", mCommessa);
-        startActivity(intent);
+        startActivityForResult(intent, 1234, null);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        /* Risposta di ok ricevuta */
+        if(requestCode == 1234 && resultCode == RESULT_OK) {
+            /* Debug */
+            //Toast.makeText(this, "Ricevuto messaggio di risposta da volley request", Toast.LENGTH_SHORT).show();
+
+            /* Se il "parent" di questa activity non è null (OfferteActivity), allora setto il risultato per la callback */
+            if(getParent() != null)
+                getParent().setResult(Activity.RESULT_OK);
+            /* Altrimenti rilancio l'activity nuovamente */
+            else
+                startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
+            finish();
+        }
     }
 }

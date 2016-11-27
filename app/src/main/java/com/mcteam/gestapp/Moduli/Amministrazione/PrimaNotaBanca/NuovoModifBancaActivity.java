@@ -146,7 +146,7 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
     private void attemptEdit() throws ParseException {
         NotaBanca notaBanca = notaBancaToEncode();
         int ID = notaBancaEdit.getID();
-        mVolleyRequest.addNewElementRequest(gson.toJson(notaBanca), "nota-banca-edit/" + ID);
+        mVolleyRequest.addNewElementRequest(gson.toJson(notaBanca), "nota-banca-edit/" + ID, null);
     }
 
     public void onClickCrea(View view) {
@@ -160,7 +160,7 @@ public class NuovoModifBancaActivity extends AppCompatActivity {
 
     private void attemptCreate() throws ParseException {
         NotaBanca notaBanca = notaBancaToEncode();
-        mVolleyRequest.addNewElementRequest(gson.toJson(notaBanca), "nota-banca-nuovo");
+        mVolleyRequest.addNewElementRequest(gson.toJson(notaBanca), "nota-banca-nuovo", null);
     }
 
     public void onClickAnnulla(View view) {

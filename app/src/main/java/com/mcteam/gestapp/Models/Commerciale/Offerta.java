@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
+import com.mcteam.gestapp.Models.Rubrica.Nominativo;
 
 /**
  * @author Created by Riccardo Rossi on 02/10/2016.
@@ -28,12 +29,17 @@ public class Offerta implements Parcelable{
     @SerializedName("allegato")
     private String allegato;
 
-    @SerializedName("off1")
-    private int off1;
-    @SerializedName("off2")
-    private int off2;
-    @SerializedName("off3")
-    private int off3;
+    @SerializedName("off1_comm")
+    private int off1Comm;
+    private Nominativo off1CommNom;
+
+    @SerializedName("off2_comm")
+    private int off2Comm;
+    private Nominativo off2CommNom;
+
+    @SerializedName("off3_comm")
+    private int off3Comm;
+    private Nominativo off3CommNom;
 
     public Offerta() {
 
@@ -46,6 +52,9 @@ public class Offerta implements Parcelable{
         accettata = in.readInt();
         offerta = in.readString();
         allegato = in.readString();
+        off1Comm = in.readInt();
+        off2Comm = in.readInt();
+        off3Comm = in.readInt();
     }
 
     public static final Creator<Offerta> CREATOR = new Creator<Offerta>() {
@@ -73,35 +82,35 @@ public class Offerta implements Parcelable{
         dest.writeInt(accettata);
         dest.writeString(offerta);
         dest.writeString(allegato);
-        dest.writeInt(off1);
-        dest.writeInt(off2);
-        dest.writeInt(off3);
+        dest.writeInt(off1Comm);
+        dest.writeInt(off2Comm);
+        dest.writeInt(off3Comm);
     }
 
-    public int getOff1() {
-        return off1;
+    public int getOff1Comm() {
+        return off1Comm;
     }
 
-    public Offerta setOff1(int off1) {
-        this.off1 = off1;
+    public Offerta setOff1Comm(int off1Comm) {
+        this.off1Comm = off1Comm;
         return this;
     }
 
-    public int getOff2() {
-        return off2;
+    public int getOff2Comm() {
+        return off2Comm;
     }
 
-    public Offerta setOff2(int off2) {
-        this.off2 = off2;
+    public Offerta setOff2Comm(int off2Comm) {
+        this.off2Comm = off2Comm;
         return this;
     }
 
-    public int getOff3() {
-        return off3;
+    public int getOff3Comm() {
+        return off3Comm;
     }
 
-    public Offerta setOff3(int off3) {
-        this.off3 = off3;
+    public Offerta setOff3Comm(int off3Comm) {
+        this.off3Comm = off3Comm;
         return this;
     }
 

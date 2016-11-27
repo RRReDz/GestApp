@@ -141,9 +141,9 @@ public class NuovaBancaActivity extends AppCompatActivity {
             String json = gson.toJson(banca);
 
             if (!toModify) {
-                mVolleyRequest.addNewElementRequest(json, "banca-nuovo");
+                mVolleyRequest.addNewElementRequest(json, "banca-nuovo", null);
             } else {
-                mVolleyRequest.addNewElementRequest(json, "banca/" + mBancaAttuale.getId_banca());
+                mVolleyRequest.addNewElementRequest(json, "banca/" + mBancaAttuale.getId_banca(), null);
             }
 
         } else {

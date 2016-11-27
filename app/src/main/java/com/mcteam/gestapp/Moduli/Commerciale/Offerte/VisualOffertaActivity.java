@@ -1,5 +1,6 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +23,8 @@ public class VisualOffertaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_offerta);
 
+        Commessa commessa = getIntent().getParcelableExtra("COMMESSA_SHOW");
         Offerta offerta = getIntent().getParcelableExtra("OFFERTA");
-        Commessa commessa = getIntent().getParcelableExtra("COMMESSA");
 
         TextView textOffertaCodComm = (TextView) findViewById(R.id.visual_offerta_codcomm);
         TextView textOffertaClient = (TextView) findViewById(R.id.visual_offerta_cliente);
@@ -31,15 +32,21 @@ public class VisualOffertaActivity extends AppCompatActivity {
         TextView textOffertaRef2 = (TextView) findViewById(R.id.visual_offerta_ref2);
         TextView textOffertaRef3 = (TextView) findViewById(R.id.visual_offerta_ref3);
         TextView textOffertaDataOff = (TextView) findViewById(R.id.visual_offerta_dataoff);
-        TextView textOffertaObj = (TextView) findViewById(R.id.visual_offerta_oggetto); //E' il nome della commessa o cosa?
+        TextView textOffertaObj = (TextView) findViewById(R.id.visual_offerta_oggetto);
         CheckBox textOffertaPresent = (CheckBox) findViewById(R.id.visual_offerta_present);
         ImageView textOffertaAlleg = (ImageView) findViewById(R.id.visual_offerta_allegato);
 
         textOffertaCodComm.setText(commessa.getCodice_commessa());
         textOffertaClient.setText(commessa.getCliente().getNomeSocietà());
-        textOffertaRef1.setText(commessa.getCommerciale().getNome() + commessa.getCommerciale().getCognome());
-        textOffertaRef2.setText(commessa.getReferente1().getNome() + commessa.getReferente1().getCognome());
-        textOffertaRef3.setText(commessa.getReferente2().getNome() + commessa.getReferente2().getCognome());
+        if(commessa.getReferente_offerta1() != null)
+            textOffertaRef1.setText(commessa.getReferente_offerta1().getNome() + commessa.getReferente_offerta1().getCognome());
+
+        if(commessa.getReferente_offerta2() != null)
+            textOffertaRef2.setText(commessa.getReferente_offerta2().getNome() + commessa.getReferente_offerta2().getCognome());
+
+        if(commessa.getReferente_offerta3() != null)
+            textOffertaRef3.setText(commessa.getReferente_offerta3().getNome() + commessa.getReferente_offerta3().getCognome());
+
         textOffertaDataOff.setText(offerta.getDataOfferta());
         textOffertaObj.setText(""); //Non so principalmente che cosa settare, dal doc non si capisce
         textOffertaPresent.setChecked(offerta.getAccettata() == 1);

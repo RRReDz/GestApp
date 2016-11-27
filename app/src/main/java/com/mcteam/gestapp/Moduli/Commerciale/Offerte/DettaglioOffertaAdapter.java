@@ -82,8 +82,8 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(activityContext, VisualOffertaActivity.class);
+                    i.putExtra("COMMESSA_SHOW", commessa);
                     i.putExtra("OFFERTA", offerta);
-                    i.putExtra("COMMESSA", commessa);
                     activityContext.startActivity(i);
                 }
             });
