@@ -48,7 +48,7 @@ public class VisualOffertaActivity extends AppCompatActivity {
             textOffertaRef3.setText(commessa.getReferente_offerta3().getNome() + commessa.getReferente_offerta3().getCognome());
 
         textOffertaDataOff.setText(offerta.getDataOfferta());
-        textOffertaObj.setText(""); //Non so principalmente che cosa settare, dal doc non si capisce
+        textOffertaObj.setText(offerta.getAllegato());
         textOffertaPresent.setChecked(offerta.getAccettata() == 1);
         textOffertaAlleg.setImageBitmap(AllegatiUtils.getAllegatoLogo(getResources(), offerta.getAllegato()));
 
