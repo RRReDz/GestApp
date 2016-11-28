@@ -12,14 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.gson.Gson;
+import com.itextpdf.text.pdf.parser.Line;
 import com.mcteam.gestapp.Callback.CallbackRequest;
 import com.mcteam.gestapp.Callback.CallbackSelection;
 import com.mcteam.gestapp.Fragments.DatePickerFragment;
@@ -40,7 +45,7 @@ import java.util.ArrayList;
 /**
  * @author Created by Riccardo Rossi on 15/10/2016.
  */
-public class NuovaOffertaActivity extends AppCompatActivity {
+public class NuovaModifOffertaActivity extends AppCompatActivity {
 
     private VolleyRequests mVolleyRequests;
     private ArrayList<Nominativo> mNominativiList;
@@ -55,10 +60,16 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     private Spinner mRef1;
     private Spinner mRef2;
     private Spinner mRef3;
+    private LinearLayout mAllegatoLayout;
     private ImageView mAllegatoLogo;
     private TextView mAllegatoNome;
     private TextView mAllegatoSize;
     private BootstrapButton mAllegato;
+    private CheckBox mPresentata;
+    private LinearLayout mPresentataLayout;
+    private LinearLayout mVuoiModifLayout;
+    private boolean mIsNew;
+    private Offerta mOffertaToEdit;
     static Gson gson = new Gson();
 
     @Override
@@ -67,7 +78,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nuova_offerta);
 
         mCommessa = getIntent().getParcelableExtra("COMMESSA");
-        System.out.println(mCommessa);
+        mIsNew = getIntent().getBooleanExtra("NUOVO", true);
 
         mCodCommessa = (EditText) findViewById(R.id.dett_off_new_codcomm);
         mCliente = (EditText) findViewById(R.id.dett_off_new_cliente);
@@ -77,10 +88,34 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         mData = (EditText) findViewById(R.id.dett_off_new_data);
         mOggetto = (EditText) findViewById(R.id.dett_off_new_obj);
         mAllegato = (BootstrapButton) findViewById(R.id.dett_off_new_alleg);
+        mPresentata = (CheckBox) findViewById(R.id.dett_off_checkbox_pres);
+        mPresentataLayout = (LinearLayout) findViewById(R.id.dett_off_layout_presentata);
+        mVuoiModifLayout = (LinearLayout) findViewById(R.id.dett_off_vuoi_modificare);
         Button creaButton = (Button) findViewById(R.id.bCrea);
+        Button modificaButton = (Button) findViewById(R.id.bModifica);
+        mAllegatoLayout = (LinearLayout) findViewById(R.id.dett_off_alleg_layout);
         mAllegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
         mAllegatoNome = (TextView) findViewById(R.id.dett_off_alleg_nome);
         mAllegatoSize = (TextView) findViewById(R.id.dett_off_alleg_size);
+
+        /* Se l'activity è stata chiamata con lo scopo di modificare l'offerta e non di crearla nuova */
+        if (!mIsNew) {
+            /* Recupero l'offerta da modificare */
+            mOffertaToEdit = getIntent().getParcelableExtra("OFFERTA_TO_EDIT");
+            /* Carico la data */
+            mData.setText(Functions.getFormattedDate(mOffertaToEdit.getDataOfferta()));
+            /* Mostro il campo 'presentata' e ne setto il valore */
+            mPresentata.setChecked(mOffertaToEdit.getAccettata() == 1);
+            mPresentataLayout.setVisibility(View.VISIBLE);
+            /* Visualizzazione richiesta modifica dell'offerta */
+            mVuoiModifLayout.setVisibility(View.VISIBLE);
+            RadioButton radioButtonYes = (RadioButton) findViewById(R.id.dett_off_yes);
+            radioButtonYes.setChecked(true);
+            /* Bottoni */
+            modificaButton.setVisibility(View.VISIBLE);
+        } else {
+            creaButton.setVisibility(View.VISIBLE);
+        }
 
         //Codice commessa
         mCodCommessa.setText(mCommessa.getCodice_commessa());
@@ -112,6 +147,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
         mOggetto.setText(mCommessa.getNome_commessa());
         mOggetto.setEnabled(false);
 
+        /* File chooser */
         mAllegato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,8 +184,6 @@ public class NuovaOffertaActivity extends AppCompatActivity {
                         mRef3.setSelection(adapter.getPositionById(mCommessa.getOff3()));
                     }
                 });
-
-        creaButton.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -173,6 +207,7 @@ public class NuovaOffertaActivity extends AppCompatActivity {
     //Apertura date picker dopo click sul campo
 
     private void onClickSelData() {
+        mDateFragment.withCustomDate(mData.getText().toString());
         mDateFragment.show(getFragmentManager(), "datePicker");
     }
 
@@ -241,5 +276,22 @@ public class NuovaOffertaActivity extends AppCompatActivity {
                 .setOff3Comm(ref3.getID())
                 .setDataOfferta(Functions.fromDateToSql(dataOfferta))
                 .setAllegato(nomeAllegato);
+    }
+
+    /**
+     * Metodo richiamato dal click di una delle due radiobutton
+     *
+     * @param view
+     */
+    public void onRadioButtonClick(View view) {
+        /* Controlla quale radiobutton è stata selezionata */
+        switch (view.getId()) {
+            case R.id.dett_off_yes:
+                mAllegatoLayout.setVisibility(View.VISIBLE);
+                break;
+            case R.id.dett_off_no:
+                mAllegatoLayout.setVisibility(View.GONE);
+                break;
+        }
     }
 }

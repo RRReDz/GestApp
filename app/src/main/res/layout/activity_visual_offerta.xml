@@ -158,26 +158,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView154"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:text="Presentata:" />
-
-            <CheckBox
-                android:id="@+id/visual_offerta_present"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:enabled="false" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="13dp"
-            android:orientation="horizontal">
-
-            <TextView
                 android:id="@+id/textView150"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
@@ -190,6 +170,26 @@
                 android:text="@string/empty"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/simple_blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView154"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="Presentata:" />
+
+            <CheckBox
+                android:id="@+id/visual_offerta_present"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false" />
+
         </LinearLayout>
 
         <LinearLayout

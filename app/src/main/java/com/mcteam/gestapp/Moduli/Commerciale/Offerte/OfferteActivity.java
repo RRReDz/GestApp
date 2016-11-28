@@ -110,7 +110,7 @@ public class OfferteActivity extends AppCompatActivity {
     /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == Constants.SHOW_OFFERTA && resultCode == Activity.RESULT_OK)
-            Toast.makeText(this, "Ricevuto aggiornamento da NuovaOffertaActivity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ricevuto aggiornamento da NuovaModifOffertaActivity", Toast.LENGTH_SHORT).show();
     }*/
 
     @Override
@@ -173,6 +173,7 @@ public class OfferteActivity extends AppCompatActivity {
 
     /**
      * Restituisce
+     *
      * @param id
      * @return
      */

@@ -1,7 +1,6 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -157,15 +155,16 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     }
 
     public void onClickAddOfferta(View view) {
-        Intent intent = new Intent(getApplicationContext(), NuovaOffertaActivity.class);
+        Intent intent = new Intent(getApplicationContext(), NuovaModifOffertaActivity.class);
         intent.putExtra("COMMESSA", mCommessa);
+        intent.putExtra("NUOVO", true);
         startActivityForResult(intent, 1234, null);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         /* Risposta di ok ricevuta */
-        if(requestCode == 1234 && resultCode == RESULT_OK) {
+        if (requestCode == 1234 && resultCode == RESULT_OK) {
             /* Debug */
             //Toast.makeText(this, "Ricevuto messaggio di risposta da volley request", Toast.LENGTH_SHORT).show();
 

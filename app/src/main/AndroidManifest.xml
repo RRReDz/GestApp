@@ -267,7 +267,7 @@
             android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.DettaglioOffertaActivity"
             android:label="@string/title_activity_dettaglio_offerta" />
         <activity
-            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaOffertaActivity"
+            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaModifOffertaActivity"
             android:label="@string/title_activity_nuova_offerta" />
         <activity
             android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.VisualOffertaActivity"

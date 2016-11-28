@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaOffertaActivity">
+    tools:context="com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaModifOffertaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -219,6 +219,68 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/dett_off_layout_presentata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:paddingLeft="5dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="PRESENTATA"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/dett_off_checkbox_pres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dett_off_vuoi_modificare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VUOI MODIFICARE L'OFFERTA?"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/dett_off_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:onClick="onRadioButtonClick"
+                    android:text="Si" />
+
+                <RadioButton
+                    android:id="@+id/dett_off_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClick"
+                    android:text="No" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dett_off_alleg_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="17dp"
@@ -228,6 +290,7 @@
                 android:id="@+id/textView200"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
                 android:paddingLeft="5dp"
                 android:text="ALLEGATO"
                 android:textColor="@color/black"
@@ -254,31 +317,51 @@
                 app:buttonMode="regular"
                 app:roundedCorners="true"
                 app:showOutline="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/dett_off_alleg_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/dett_off_alleg_nome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="prova" />
+
+                <TextView
+                    android:id="@+id/dett_off_alleg_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500MB" />
+
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/dett_off_alleg_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/dett_off_new_vers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Crea una nuova versione" />
 
-            <TextView
-                android:id="@+id/dett_off_alleg_nome"
-                android:text="prova"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RadioButton
+                android:id="@+id/dett_off_overwrite_vers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sovrascrivi versione corrente" />
 
-            <TextView
-                android:id="@+id/dett_off_alleg_size"
-                android:text="500MB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+        </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"

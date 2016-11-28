@@ -29,7 +29,6 @@ import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaAc
 import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaBanca.PrimaNotaBancaRecyclerAdapter;
 import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaActivity;
 import com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaCassa.PrimaNotaCassaRecyclerAdapter;
-import com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaOffertaActivity;
 import com.mcteam.gestapp.Moduli.Commerciale.Offerte.OfferteActivity;
 import com.mcteam.gestapp.Moduli.Gestionale.Commesse.CommesseActivity;
 import com.mcteam.gestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;
