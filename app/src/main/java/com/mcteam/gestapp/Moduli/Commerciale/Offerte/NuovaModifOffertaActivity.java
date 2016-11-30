@@ -66,6 +66,8 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
     private TextView mAllegatoSize;
     private BootstrapButton mAllegato;
     private CheckBox mPresentata;
+    private RadioButton mModificaYes;
+    private RadioButton mNewVersion;
     private LinearLayout mPresentataLayout;
     private LinearLayout mVuoiModifLayout;
     private boolean mIsNew;
@@ -93,6 +95,8 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
         mVuoiModifLayout = (LinearLayout) findViewById(R.id.dett_off_vuoi_modificare);
         Button creaButton = (Button) findViewById(R.id.bCrea);
         Button modificaButton = (Button) findViewById(R.id.bModifica);
+        mModificaYes = (RadioButton) findViewById(R.id.dett_off_yes);
+        mNewVersion = (RadioButton) findViewById(R.id.dett_off_new_vers);
         mAllegatoLayout = (LinearLayout) findViewById(R.id.dett_off_alleg_layout);
         mAllegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
         mAllegatoNome = (TextView) findViewById(R.id.dett_off_alleg_nome);
@@ -216,8 +220,6 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
     }
 
     public void onClickCrea(View view) throws IOException {
-        String nomeAllegatoSelected = mAllegatoNome.getText().toString();
-
         boolean cancel = false;
         View focusView = null;
 
@@ -235,8 +237,48 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
             cancel = true;
         }
         /* Controllo allegato scelto */
-        else if (mChoosenFile == null) {
+        /*else if (mChoosenFile == null) {
             Toast.makeText(getApplicationContext(), "File non selezionato: scegliere un file", Toast.LENGTH_LONG).show();
+            focusView = mAllegato;
+            cancel = true;
+        }*/
+
+        if (!cancel) {
+            Offerta offertaToEncode = null;
+            try {
+                offertaToEncode = offertaToEncode();
+            } catch (java.text.ParseException e) {
+                e.printStackTrace();
+                //TODO: Mostra errore, non è stato possibile decodificare i dati in JSON.
+            }
+            if (offertaToEncode != null)
+                mVolleyRequests.addNewElementRequest(gson.toJson(offertaToEncode),
+                        "offerta-nuovo/" + mCommessa.getID(),
+                        null
+                );
+        } else {
+            if (focusView != null)
+                focusView.requestFocus();
+        }
+    }
+
+    public void onClickModifica(View view) {
+
+        boolean cancel = false;
+        View focusView = null;
+
+        /* Controllo selezione spinner */
+        if (mRef1.getSelectedItemPosition() == 0 ||
+                mRef2.getSelectedItemPosition() == 0 ||
+                mRef3.getSelectedItemPosition() == 0) {
+            Toast.makeText(getApplicationContext(), "Uno dei referenti non è stato selezionato: impossibile continuare", Toast.LENGTH_LONG).show();
+            cancel = true;
+        } else if (!mDateFragment.isDataSelected()) {
+            Toast.makeText(getApplicationContext(), "La data non è stata selezionata: impossibile continuare", Toast.LENGTH_LONG).show();
+            focusView = mData;
+            cancel = true;
+        } else if (mModificaYes.isChecked() && mChoosenFile == null) {
+            Toast.makeText(getApplicationContext(), "Se vuoi modificare l'offerta, devi selezionare un nuovo allegato", Toast.LENGTH_LONG).show();
             focusView = mAllegato;
             cancel = true;
         }
@@ -265,8 +307,11 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
         Nominativo ref1 = (Nominativo) mRef1.getSelectedItem();
         Nominativo ref2 = (Nominativo) mRef2.getSelectedItem();
         Nominativo ref3 = (Nominativo) mRef3.getSelectedItem();
+        int presentata = mPresentata.isChecked() ? 1 : 0;
+        int editOfferta = mModificaYes.isChecked() ? 1 : 0;
+        int newVersion = mNewVersion.isChecked() ? 1 : 0;
         String dataOfferta = mData.getText().toString();
-        String nomeAllegato = mChoosenFile.getName();
+        String nomeAllegato = mChoosenFile != null ? mChoosenFile.getName() : "";
 
         return new Offerta()
                 .setVersione(0)

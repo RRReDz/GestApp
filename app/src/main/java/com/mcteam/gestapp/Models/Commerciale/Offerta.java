@@ -41,6 +41,12 @@ public class Offerta implements Parcelable{
     private int off3Comm;
     private Nominativo off3CommNom;
 
+    @SerializedName("edit_offerta")
+    private int editOfferta;
+
+    @SerializedName("new_version")
+    private int newVersion;
+
     public Offerta() {
 
     }
@@ -55,6 +61,8 @@ public class Offerta implements Parcelable{
         off1Comm = in.readInt();
         off2Comm = in.readInt();
         off3Comm = in.readInt();
+        editOfferta = in.readInt();
+        newVersion = in.readInt();
     }
 
     public static final Creator<Offerta> CREATOR = new Creator<Offerta>() {
@@ -85,6 +93,8 @@ public class Offerta implements Parcelable{
         dest.writeInt(off1Comm);
         dest.writeInt(off2Comm);
         dest.writeInt(off3Comm);
+        dest.writeInt(editOfferta);
+        dest.writeInt(newVersion);
     }
 
     public int getOff1Comm() {
@@ -166,6 +176,22 @@ public class Offerta implements Parcelable{
     public Offerta setAllegato(String allegato) {
         this.allegato = allegato;
         return this;
+    }
+
+    public int getEditOfferta() {
+        return editOfferta;
+    }
+
+    public void setEditOfferta(int editOfferta) {
+        this.editOfferta = editOfferta;
+    }
+
+    public int getNewVersion() {
+        return newVersion;
+    }
+
+    public void setNewVersion(int newVersion) {
+        this.newVersion = newVersion;
     }
 
     @Override

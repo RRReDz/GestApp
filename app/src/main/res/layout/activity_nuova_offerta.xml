@@ -338,7 +338,8 @@
                     android:id="@+id/dett_off_alleg_size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="500MB" />
+                    android:text="500MB"
+                    android:visibility="gone"/>
 
             </LinearLayout>
         </LinearLayout>
