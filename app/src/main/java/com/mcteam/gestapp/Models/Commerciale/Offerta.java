@@ -178,20 +178,22 @@ public class Offerta implements Parcelable{
         return this;
     }
 
-    public int getEditOfferta() {
+    public int getModificaOfferta() {
         return editOfferta;
     }
 
-    public void setEditOfferta(int editOfferta) {
+    public Offerta setModificaOfferta(int editOfferta) {
         this.editOfferta = editOfferta;
+        return this;
     }
 
     public int getNewVersion() {
         return newVersion;
     }
 
-    public void setNewVersion(int newVersion) {
+    public Offerta setNuovaVersione(int newVersion) {
         this.newVersion = newVersion;
+        return this;
     }
 
     @Override

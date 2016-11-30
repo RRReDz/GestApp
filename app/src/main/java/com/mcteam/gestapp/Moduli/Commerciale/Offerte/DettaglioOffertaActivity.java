@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,9 +22,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+import com.mcteam.gestapp.Callback.CallbackSelection;
 import com.mcteam.gestapp.Models.Commerciale.Offerta;
 import com.mcteam.gestapp.Models.Commessa;
+import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
+import com.mcteam.gestapp.Utils.Constants;
 import com.mcteam.gestapp.Utils.GuiUtils;
 
 import org.json.JSONArray;
@@ -31,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DettaglioOffertaActivity extends AppCompatActivity {
 
@@ -39,6 +44,8 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     private DettaglioOffertaAdapter mOffAdapter;
     private Commessa mCommessa;
     private ProgressBar mProgressBar;
+    private VolleyRequests mVolleyRequests;
+    private CallbackSelection<Offerta> mCallbackListLoaded;
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -66,42 +73,20 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         mOffRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mProgressBar = (ProgressBar) findViewById(R.id.dett_offerte_progress);
         mOffRecyclerView.setAdapter(mOffAdapter);
-
-        String url = getString(R.string.mobile_url) + "offerte-list/" + mCommessa.getID();
-
-        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        ArrayList<Offerta> newList = new ArrayList<>();
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-                                JSONObject obj = response.getJSONObject(i);
-                                Offerta offerta = gson.fromJson(obj.toString(), Offerta.class);
-                                System.out.println(offerta);
-                                newList.add(offerta);
-                            } catch (JSONException e) {
-                                System.out.println("Something went wrong during deserialization!");
-                                e.printStackTrace();
-                            }
-                        }
-                        updateList(newList);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        System.out.println("Something went wrong!");
-                        error.printStackTrace();
-                    }
-                }
-        );
-
-        Volley.newRequestQueue(this).add(jsonObjectRequest);
+        mVolleyRequests = new VolleyRequests(this, this);
+        mCallbackListLoaded = new CallbackSelection<Offerta>() {
+            @Override
+            public void onListLoaded(ArrayList<Offerta> list) {
+                updateList(list);
+            }
+        };
 
         setupHeaderCommessa(mCommessa);
+        setupBodyDettOfferte();
+    }
+
+    private void setupBodyDettOfferte() {
+        mVolleyRequests.getDettOfferteList(mCommessa, mCallbackListLoaded);
     }
 
     public void updateList(ArrayList<Offerta> newList) {
@@ -110,6 +95,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             emptyMode(true);
         else {
             emptyMode(false);
+            mOffArrayList.clear();
             mOffArrayList.addAll(newList);
             mOffAdapter.notifyDataSetChanged();
         }
@@ -158,13 +144,13 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), NuovaModifOffertaActivity.class);
         intent.putExtra("COMMESSA", mCommessa);
         intent.putExtra("NUOVO", true);
-        startActivityForResult(intent, 1234, null);
+        startActivityForResult(intent, Constants.OFFERTA_ADD, null);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         /* Risposta di ok ricevuta */
-        if (requestCode == 1234 && resultCode == RESULT_OK) {
+        if (requestCode == Constants.OFFERTA_ADD && resultCode == RESULT_OK) {
             /* Debug */
             //Toast.makeText(this, "Ricevuto messaggio di risposta da volley request", Toast.LENGTH_SHORT).show();
 
@@ -175,6 +161,9 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             //else
             //    startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
             finish();
+        } else if (requestCode == Constants.OFFERTA_EDIT && resultCode == RESULT_OK) {
+
+            setupBodyDettOfferte();
         }
     }
 }

@@ -12,14 +12,23 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.mcteam.gestapp.Callback.CallbackRequest;
 import com.mcteam.gestapp.Callback.CallbackSelection;
+import com.mcteam.gestapp.Models.Commerciale.Offerta;
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.Models.PrimaNota.NotaBanca;
 import com.mcteam.gestapp.Models.PrimaNota.NotaCassa;
@@ -149,7 +158,7 @@ public class VolleyRequests {
                     list.addAll(nominativi);
                     /* Chiamata la callback, se assegnata */
                     if(callback != null)
-                        callback.onLoadNominativi();
+                        callback.onListLoaded(nominativi);
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -195,7 +204,7 @@ public class VolleyRequests {
                     adapter.notifyDataSetChanged();
                     /* Chiamata la callback, se assegnata */
                     if(callback != null)
-                        callback.onLoadNominativi();
+                        callback.onListLoaded(societas);
                 } catch (JSONException e) {
 
                     e.printStackTrace();
@@ -255,6 +264,44 @@ public class VolleyRequests {
         mRequestQueue.add(accessiRequest);
     }
 
+    public void getDettOfferteList(Commessa commessa, @Nullable final CallbackSelection callback) {
+        String url = mContext.getString(R.string.mobile_url);
+        url += "offerte-list/" + commessa.getID();
+
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        ArrayList<Offerta> newList = new ArrayList<>();
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject obj = response.getJSONObject(i);
+                                Offerta offerta = gson.fromJson(obj.toString(), Offerta.class);
+                                System.out.println(offerta);
+                                newList.add(offerta);
+                            } catch (JSONException e) {
+                                System.out.println("Something went wrong during deserialization!");
+                                e.printStackTrace();
+                            }
+                        }
+                        if(callback != null)
+                            callback.onListLoaded(newList);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("Something went wrong!");
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+        mRequestQueue.add(jsonObjectRequest);
+    }
+
     public void addNewElementRequest(String json, String route, @Nullable final CallbackRequest callback) {
         String url = mContext.getString(R.string.mobile_url);
         url += route;
@@ -297,6 +344,26 @@ public class VolleyRequests {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                NetworkResponse networkResponse = error.networkResponse;
+                if (networkResponse != null) {
+                    Log.e("Volley", "Error. HTTP Status Code:"+networkResponse.statusCode);
+                }
+
+                if (error instanceof TimeoutError) {
+                    Log.e("Volley", "TimeoutError");
+                }else if(error instanceof NoConnectionError){
+                    Log.e("Volley", "NoConnectionError");
+                } else if (error instanceof AuthFailureError) {
+                    Log.e("Volley", "AuthFailureError");
+                } else if (error instanceof ServerError) {
+                    Log.e("Volley", "ServerError");
+                } else if (error instanceof NetworkError) {
+                    Log.e("Volley", "NetworkError");
+                } else if (error instanceof ParseError) {
+                    Log.e("Volley", "ParseError");
+                }
+
                 showError(true);
             }
         });

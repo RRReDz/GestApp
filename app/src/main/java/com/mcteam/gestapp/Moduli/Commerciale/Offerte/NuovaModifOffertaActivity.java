@@ -179,9 +179,9 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
         mVolleyRequests.getNominativiList(
                 mNominativiList,
                 adapter,
-                new CallbackSelection() {
+                new CallbackSelection<Nominativo>() {
                     @Override
-                    public void onLoadNominativi() {
+                    public void onListLoaded(ArrayList<Nominativo> list) {
                         /* Quando si carica la lista, seleziono i dati relativi alla commessa */
                         mRef1.setSelection(adapter.getPositionById(mCommessa.getOff1()));
                         mRef2.setSelection(adapter.getPositionById(mCommessa.getOff2()));
@@ -202,6 +202,7 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
                 Bitmap logo = AllegatiUtils.getAllegatoLogo(getResources(), mChoosenFile.getName());
                 mAllegatoLogo.setImageBitmap(logo);
                 mAllegatoSize.setText(mChoosenFile.length() + "Bytes");
+                mAllegatoSize.setVisibility(View.VISIBLE);
             }
             Log.d("FilePicker", mChoosenFile.toString());
             // Do anything with file
@@ -293,7 +294,7 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
             }
             if (offertaToEncode != null)
                 mVolleyRequests.addNewElementRequest(gson.toJson(offertaToEncode),
-                        "offerta-nuovo/" + mCommessa.getID(),
+                        "offerta-edit",
                         null
                 );
         } else {
@@ -307,18 +308,22 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
         Nominativo ref1 = (Nominativo) mRef1.getSelectedItem();
         Nominativo ref2 = (Nominativo) mRef2.getSelectedItem();
         Nominativo ref3 = (Nominativo) mRef3.getSelectedItem();
+        int versione = mOffertaToEdit != null ? mOffertaToEdit.getVersione() : 0;
         int presentata = mPresentata.isChecked() ? 1 : 0;
-        int editOfferta = mModificaYes.isChecked() ? 1 : 0;
-        int newVersion = mNewVersion.isChecked() ? 1 : 0;
+        int modificaOfferta = mModificaYes.isChecked() ? 1 : 0;
+        int nuovaVersione = mNewVersion.isChecked() ? 1 : 0;
         String dataOfferta = mData.getText().toString();
         String nomeAllegato = mChoosenFile != null ? mChoosenFile.getName() : "";
 
         return new Offerta()
-                .setVersione(0)
-                .setAccettata(0)
+                .setIdCommessa(mCommessa.getID())
+                .setVersione(versione)
+                .setAccettata(presentata)
                 .setOff1Comm(ref1.getID())
                 .setOff2Comm(ref2.getID())
                 .setOff3Comm(ref3.getID())
+                .setModificaOfferta(modificaOfferta)
+                .setNuovaVersione(nuovaVersione)
                 .setDataOfferta(Functions.fromDateToSql(dataOfferta))
                 .setAllegato(nomeAllegato);
     }

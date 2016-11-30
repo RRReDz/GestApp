@@ -34,7 +34,11 @@ public class Constants {
     public static final int NOTA_SHOW = 4;
 
     public static final int SHOW_OFFERTA = 2000;
+    public static final int OFFERTA_ADD = 2001;
+    public static final int OFFERTA_EDIT = 2002;
 
     public static final int MY_SOCKET_TIMEOUT_MS = 5000;
+
+
 
 }

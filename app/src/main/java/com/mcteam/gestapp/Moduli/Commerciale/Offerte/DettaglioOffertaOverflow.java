@@ -1,5 +1,6 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
@@ -52,7 +53,7 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
                         modificaIntent.putExtra("OFFERTA_TO_EDIT", mElement);
                         modificaIntent.putExtra("COMMESSA", mCommessa);
                         modificaIntent.putExtra("NUOVO", false);
-                        mContext.startActivity(modificaIntent);
+                        ((Activity) mContext).startActivityForResult(modificaIntent, Constants.OFFERTA_EDIT);
                         return true;
                     case R.id.menu_action_stampa:
                         Intent stampaIntent = new Intent(mContext, StampaOffertaActivity.class);
