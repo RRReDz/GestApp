@@ -72,6 +72,7 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
     private LinearLayout mVuoiModifLayout;
     private boolean mIsNew;
     private Offerta mOffertaToEdit;
+    private RadioGroup mNewVersionLayout;
     static Gson gson = new Gson();
 
     @Override
@@ -97,6 +98,7 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
         Button modificaButton = (Button) findViewById(R.id.bModifica);
         mModificaYes = (RadioButton) findViewById(R.id.dett_off_yes);
         mNewVersion = (RadioButton) findViewById(R.id.dett_off_new_vers);
+        mNewVersionLayout = (RadioGroup) findViewById(R.id.dett_off_new_vers_radiogroup);
         mAllegatoLayout = (LinearLayout) findViewById(R.id.dett_off_alleg_layout);
         mAllegatoLogo = (ImageView) findViewById(R.id.dett_off_alleg_logo);
         mAllegatoNome = (TextView) findViewById(R.id.dett_off_alleg_nome);
@@ -115,6 +117,8 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
             mVuoiModifLayout.setVisibility(View.VISIBLE);
             RadioButton radioButtonYes = (RadioButton) findViewById(R.id.dett_off_yes);
             radioButtonYes.setChecked(true);
+            /* Visualizzazione richiesta nuova versione o meno */
+            mNewVersionLayout.setVisibility(View.VISIBLE);
             /* Bottoni */
             modificaButton.setVisibility(View.VISIBLE);
         } else {

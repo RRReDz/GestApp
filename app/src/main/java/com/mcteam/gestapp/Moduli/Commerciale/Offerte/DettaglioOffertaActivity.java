@@ -162,7 +162,6 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             //    startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
             finish();
         } else if (requestCode == Constants.OFFERTA_EDIT && resultCode == RESULT_OK) {
-
             setupBodyDettOfferte();
         }
     }

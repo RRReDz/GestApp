@@ -339,15 +339,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="500MB"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </LinearLayout>
         </LinearLayout>
 
         <RadioGroup
+            android:id="@+id/dett_off_new_vers_radiogroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <RadioButton
                 android:id="@+id/dett_off_new_vers"
