@@ -44,8 +44,10 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_action_elimina:
-                        Intent eliminaIntent = new Intent(mContext, EliminaOffertaActivity.class);
-                        eliminaIntent.putExtra("OFFERTA_TO_DELETE", mElement);
+                        Intent eliminaIntent = new Intent(mContext, VisualElimOffertaActivity.class);
+                        eliminaIntent.putExtra("OFFERTA", mElement);
+                        eliminaIntent.putExtra("COMMESSA", mCommessa);
+                        eliminaIntent.putExtra(Constants.VISUAL_ELIMINA, "ELIM");
                         mContext.startActivity(eliminaIntent);
                         return true;
                     case R.id.menu_action_modifica:

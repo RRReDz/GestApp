@@ -13,6 +13,7 @@ import com.mcteam.gestapp.Models.Commerciale.Offerta;
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.Moduli.Gestionale.Allegati.AllegatiUtils;
 import com.mcteam.gestapp.R;
+import com.mcteam.gestapp.Utils.Constants;
 
 import java.util.ArrayList;
 
@@ -81,9 +82,10 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(activityContext, VisualOffertaActivity.class);
-                    i.putExtra("COMMESSA_SHOW", commessa);
+                    Intent i = new Intent(activityContext, VisualElimOffertaActivity.class);
+                    i.putExtra("COMMESSA", commessa);
                     i.putExtra("OFFERTA", offerta);
+                    i.putExtra(Constants.VISUAL_ELIMINA, "VISUAL");
                     activityContext.startActivity(i);
                 }
             });

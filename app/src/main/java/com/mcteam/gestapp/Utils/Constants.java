@@ -39,6 +39,4 @@ public class Constants {
 
     public static final int MY_SOCKET_TIMEOUT_MS = 5000;
 
-
-
 }
