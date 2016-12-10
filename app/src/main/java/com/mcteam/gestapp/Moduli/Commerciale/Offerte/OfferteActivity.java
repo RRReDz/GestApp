@@ -1,7 +1,6 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -13,11 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.Models.Rubrica.Nominativo;
@@ -29,7 +26,6 @@ import com.mcteam.gestapp.Utils.GuiUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class OfferteActivity extends AppCompatActivity {
 
@@ -74,7 +70,7 @@ public class OfferteActivity extends AppCompatActivity {
 
                 Intent i = new Intent(getApplicationContext(), DettaglioOffertaActivity.class);
                 i.putExtra("COMMESSA", item);
-                startActivityForResult(i, Constants.SHOW_OFFERTA);
+                startActivityForResult(i, Constants.OFFERTA_SHOW);
             }
         });
         mProgressBar = (ProgressBar) findViewById(R.id.offerte_progress);
@@ -109,7 +105,7 @@ public class OfferteActivity extends AppCompatActivity {
 
     /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == Constants.SHOW_OFFERTA && resultCode == Activity.RESULT_OK)
+        if(requestCode == Constants.OFFERTA_SHOW && resultCode == Activity.RESULT_OK)
             Toast.makeText(this, "Ricevuto aggiornamento da NuovaModifOffertaActivity", Toast.LENGTH_SHORT).show();
     }*/
 

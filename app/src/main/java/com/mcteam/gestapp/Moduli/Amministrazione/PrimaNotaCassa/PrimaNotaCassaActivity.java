@@ -104,7 +104,7 @@ public class PrimaNotaCassaActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(NotaCassa item) {
                         Intent intent = new Intent(getApplicationContext(), VisualElimCassaActivity.class);
-                        intent.putExtra(Constants.VISUAL_ELIMINA, true); //false -> delete
+                        intent.putExtra(Constants.VISUAL_ELIM_STAMPA, true); //false -> delete
                         intent.putExtra(Constants.NOTA_CASSA, item);
                         startActivity(intent);
                     }

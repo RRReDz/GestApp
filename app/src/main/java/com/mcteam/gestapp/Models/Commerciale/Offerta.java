@@ -47,6 +47,8 @@ public class Offerta implements Parcelable{
     @SerializedName("new_version")
     private int newVersion;
 
+    private boolean isLatestOfferta = false;
+
     public Offerta() {
 
     }
@@ -63,6 +65,7 @@ public class Offerta implements Parcelable{
         off3Comm = in.readInt();
         editOfferta = in.readInt();
         newVersion = in.readInt();
+        isLatestOfferta = in.readInt() == 1 ? true : false;
     }
 
     public static final Creator<Offerta> CREATOR = new Creator<Offerta>() {
@@ -95,6 +98,7 @@ public class Offerta implements Parcelable{
         dest.writeInt(off3Comm);
         dest.writeInt(editOfferta);
         dest.writeInt(newVersion);
+        dest.writeInt(isLatestOfferta ? 1 : 0);
     }
 
     public int getOff1Comm() {
@@ -194,6 +198,14 @@ public class Offerta implements Parcelable{
     public Offerta setNuovaVersione(int newVersion) {
         this.newVersion = newVersion;
         return this;
+    }
+
+    public boolean isLatestOfferta() {
+        return isLatestOfferta;
+    }
+
+    public void setLatestOfferta(boolean latestOfferta) {
+        isLatestOfferta = latestOfferta;
     }
 
     @Override

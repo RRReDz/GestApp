@@ -286,8 +286,9 @@ public class VolleyRequests {
                                 e.printStackTrace();
                             }
                         }
-                        if(callback != null)
-                            callback.onListLoaded(newList);
+                        /* L'ultimo elemento della lista viene sempre etichettato come "ultima offerta" */
+                        if(!newList.isEmpty()) newList.get(newList.size() - 1).setLatestOfferta(true);
+                        if(callback != null) callback.onListLoaded(newList);
                     }
                 },
                 new Response.ErrorListener() {
@@ -333,7 +334,7 @@ public class VolleyRequests {
                     } else {
                         /* Se è stata definita la callback, viene eseguita */
                         if(callback != null)
-                            callback.onElementAdded();
+                            callback.onTaskExecuted();
                         showError(false);
                     }
 
@@ -795,7 +796,7 @@ public class VolleyRequests {
 
                                     notaBanca.setDescrizione(response.getString("descrizione"));
 
-                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.isNull("nr_protocollo"))
+                                    if (response.get("nr_protocollo").equals("") || response.get("nr_protocollo").equals(" ") || response.isNull("nr_protocollo") || !(response.get("nr_protocollo") instanceof Integer))
                                         notaBanca.setNumeroProtocollo(0); //Non presente
                                     else
                                         notaBanca.setNumeroProtocollo(response.getInt("nr_protocollo"));

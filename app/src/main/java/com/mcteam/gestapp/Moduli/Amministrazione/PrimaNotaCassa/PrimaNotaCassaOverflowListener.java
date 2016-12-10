@@ -45,7 +45,7 @@ public class PrimaNotaCassaOverflowListener implements View.OnClickListener {
                             "com.mcteam.gestapp.Moduli.Amministrazione.PrimaNotaCassa.NuovoModifCassaActivity",
                             null)
                     .setConstForIntent(Constants.NOTA_CASSA)
-                    .setExtraParamIntent(Constants.VISUAL_ELIMINA, false)
+                    .setExtraParamIntent(Constants.VISUAL_ELIM_STAMPA, false)
                     .setConstActivityResult(Constants.NOTA_DELETE, Constants.NOTA_EDIT, null);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class PrimaNotaCassaOverflowListener implements View.OnClickListener {
                     case R.id.menu_action_elimina:
                         Intent eliminaIntent = new Intent(mContext, VisualElimCassaActivity.class);
                         eliminaIntent.putExtra(Constants.NOTA_CASSA, mElement);
-                        eliminaIntent.putExtra(Constants.VISUAL_ELIMINA, false);
+                        eliminaIntent.putExtra(Constants.VISUAL_ELIM_STAMPA, false);
                         //eliminaIntent.putExtra("actualUser", mUser);
                         ((Activity)mContext).startActivityForResult(eliminaIntent, Constants.NOTA_DELETE);
                         return true;

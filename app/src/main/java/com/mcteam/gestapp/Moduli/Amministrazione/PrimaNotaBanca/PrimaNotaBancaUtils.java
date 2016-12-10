@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.mcteam.gestapp.BuildConfig;
 import com.mcteam.gestapp.Models.PrimaNota.NotaBanca;
 import com.mcteam.gestapp.R;
 import com.mcteam.gestapp.Utils.HeaderFooterPageEvent;
@@ -47,8 +49,10 @@ public class PrimaNotaBancaUtils {
 
     public static void printAll(ArrayList<NotaBanca> notaBancaList, Context context, String month, String year) throws Exception {
         File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_banca/pdf");
-        Log.d("PATH DI STAMPA", context.getFilesDir() + "/GestApp/nota_banca/pdf");
+
+        Log.d("PATH DI STAMPA", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/GestApp/nota_banca/pdf");
         File pdf = new File(dir, month + "-" + year + ".pdf");
+        //pdf.createNewFile();
 
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
@@ -227,7 +231,15 @@ public class PrimaNotaBancaUtils {
         pdfToPrint.add(table2);
 
         //Write the workbook in file system
+        /* OLD SOLUTION - API 23 AND LOWER */
         readPdfFile(Uri.fromFile(pdf), context, "pdf");
+
+        /* NEW SOLUTION */
+        /*Uri fileURI = FileProvider.getUriForFile(
+                context,
+                context.getApplicationContext().getPackageName() + ".provider",
+                pdf);
+        readPdfFile(fileURI, context, "pdf");*/
 
         pdfToPrint.close();
     }

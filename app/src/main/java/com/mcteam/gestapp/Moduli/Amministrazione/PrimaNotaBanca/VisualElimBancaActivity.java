@@ -59,7 +59,7 @@ public class VisualElimBancaActivity extends AppCompatActivity {
         LinearLayout layoutVisual = (LinearLayout) findViewById(R.id.banca_layout_visual);
         LinearLayout layoutElim = (LinearLayout) findViewById(R.id.banca_layout_elim);
 
-        boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIMINA, true);
+        boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIM_STAMPA, true);
         notaBanca = getIntent().getParcelableExtra(Constants.NOTA_BANCA);
 
         String[] bancaArray = getResources().getStringArray(R.array.gruppo);

@@ -22,6 +22,20 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan"
         tools:node="replace">
+        <!-- Serve per risolvere il problema del crash per la creazione di stampe ed export ad excel
+             Problema da API 24 in su
+             https://inthecheesefactory.com/blog/how-to-share-access-to-file-with-fileprovider-on-android-nougat/en
+         -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <activity
             android:name="com.mcteam.gestapp.Moduli.Login.LoginActivity"
             android:configChanges="orientation"
@@ -270,17 +284,8 @@
             android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.NuovaModifOffertaActivity"
             android:label="@string/title_activity_nuova_offerta" />
         <activity
-            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.VisualElimOffertaActivity"
+            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.VisElimPrintOffertaActivity"
             android:label="@string/title_activity_visual_offerta" />
-        <activity
-            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.EliminaOffertaActivity"
-            android:label="@string/title_activity_elimina_offerta" />
-        <activity
-            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.ModificaOffertaActivity"
-            android:label="@string/title_activity_modifica_offerta" />
-        <activity
-            android:name="com.mcteam.gestapp.Moduli.Commerciale.Offerte.StampaOffertaActivity"
-            android:label="@string/title_activity_stampa_offerta" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

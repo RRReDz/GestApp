@@ -69,7 +69,6 @@ public class VisualizzaNominativoActivity extends AppCompatActivity {
     UserInfo mActualUser = null;
     RequestQueue mRequestQueue;
     AlertDialog.Builder deleteDialogBuilder;
-    AlertDialog mDeleteDialog;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override

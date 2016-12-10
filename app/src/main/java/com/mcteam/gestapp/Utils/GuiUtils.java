@@ -2,11 +2,14 @@ package com.mcteam.gestapp.Utils;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -15,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.google.gson.Gson;
+import com.mcteam.gestapp.Callback.CallbackRequest;
 import com.mcteam.gestapp.R;
 
 /**
@@ -87,5 +90,23 @@ public class GuiUtils {
             // result of the request
         }
 
+    }
+
+    public static void showWarning(Context context, String warningText, @Nullable final CallbackRequest callback) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        dialogBuilder.setTitle("Attenzione");
+        dialogBuilder.setMessage(warningText);
+        dialogBuilder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                if(callback != null)
+                    callback.onTaskExecuted();
+            }
+        });
+
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.show();
     }
 }

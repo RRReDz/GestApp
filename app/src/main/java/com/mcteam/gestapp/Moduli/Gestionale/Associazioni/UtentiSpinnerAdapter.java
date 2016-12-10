@@ -19,7 +19,6 @@ import java.util.ArrayList;
  */
 public class UtentiSpinnerAdapter extends ArrayAdapter<UserInfo> implements SpinnerAdapter {
 
-    private Context mContext;
     private ArrayList<UserInfo> data;
     UserInfo userAttuale = null;
     LayoutInflater inflater;
@@ -27,10 +26,7 @@ public class UtentiSpinnerAdapter extends ArrayAdapter<UserInfo> implements Spin
 
     public UtentiSpinnerAdapter(Context context, int textViewResourceId, ArrayList<UserInfo> objects) {
         super(context, textViewResourceId, objects);
-
-        mContext = context;
         data = objects;
-
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

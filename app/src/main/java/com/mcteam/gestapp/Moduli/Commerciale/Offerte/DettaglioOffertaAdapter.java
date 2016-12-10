@@ -1,5 +1,6 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -48,7 +49,7 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.bind(items.get(position));
+        holder.bind(items.get(position), position);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
             activityContext = itemView.getContext();
         }
 
-        public void bind(final Offerta offerta) {
+        public void bind(final Offerta offerta, final int position) {
             holderVersione.setText(String.valueOf(offerta.getVersione()));
             holderDataOfferta.setText(String.valueOf(offerta.getDataOfferta()));
             holderAccettata.setText(String.valueOf(offerta.getAccettata()));
@@ -82,11 +83,11 @@ public class DettaglioOffertaAdapter extends RecyclerView.Adapter<DettaglioOffer
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(activityContext, VisualElimOffertaActivity.class);
+                    Intent i = new Intent(activityContext, VisElimPrintOffertaActivity.class);
                     i.putExtra("COMMESSA", commessa);
                     i.putExtra("OFFERTA", offerta);
-                    i.putExtra(Constants.VISUAL_ELIMINA, "VISUAL");
-                    activityContext.startActivity(i);
+                    i.putExtra(Constants.VISUAL_ELIM_STAMPA, "VISUAL");
+                    ((Activity) activityContext).startActivityForResult(i, Constants.OFFERTA_EDIT);
                 }
             });
         }

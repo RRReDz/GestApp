@@ -6,7 +6,6 @@ import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,8 +23,6 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.gson.Gson;
-import com.itextpdf.text.pdf.parser.Line;
-import com.mcteam.gestapp.Callback.CallbackRequest;
 import com.mcteam.gestapp.Callback.CallbackSelection;
 import com.mcteam.gestapp.Fragments.DatePickerFragment;
 import com.mcteam.gestapp.Models.Commerciale.Offerta;
@@ -36,6 +33,7 @@ import com.mcteam.gestapp.Moduli.Gestionale.Commesse.NominativoSpinnerAdapter;
 import com.mcteam.gestapp.NetworkReq.VolleyRequests;
 import com.mcteam.gestapp.R;
 import com.mcteam.gestapp.Utils.Functions;
+import com.mcteam.gestapp.Utils.GuiUtils;
 import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.File;
@@ -108,6 +106,13 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
         if (!mIsNew) {
             /* Recupero l'offerta da modificare */
             mOffertaToEdit = getIntent().getParcelableExtra("OFFERTA_TO_EDIT");
+            /* Mostro l'avverimento nel caso non fosse l'offerta più nuova */
+            if(!mOffertaToEdit.isLatestOfferta()) {
+                    GuiUtils.showWarning(
+                            this,
+                            "La versione che si sta modificando NON è la più recente!",
+                            null);
+            }
             /* Carico la data */
             mData.setText(Functions.getFormattedDate(mOffertaToEdit.getDataOfferta()));
             /* Mostro il campo 'presentata' e ne setto il valore */

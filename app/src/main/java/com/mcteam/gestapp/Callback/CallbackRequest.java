@@ -7,5 +7,5 @@ import android.os.Parcelable;
  */
 
 public interface CallbackRequest {
-    void onElementAdded();
+    void onTaskExecuted();
 }

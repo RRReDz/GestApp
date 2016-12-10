@@ -12,7 +12,6 @@ import com.mcteam.gestapp.Models.Commessa;
 import com.mcteam.gestapp.R;
 import com.mcteam.gestapp.Utils.Constants;
 import com.mcteam.gestapp.Utils.OverflowPopupMenu;
-import com.mcteam.gestapp.Utils.PopupListenerBuilder;
 
 /**
  * @author Created by Riccardo Rossi on 15/10/2016.
@@ -44,11 +43,11 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_action_elimina:
-                        Intent eliminaIntent = new Intent(mContext, VisualElimOffertaActivity.class);
+                        Intent eliminaIntent = new Intent(mContext, VisElimPrintOffertaActivity.class);
                         eliminaIntent.putExtra("OFFERTA", mElement);
                         eliminaIntent.putExtra("COMMESSA", mCommessa);
-                        eliminaIntent.putExtra(Constants.VISUAL_ELIMINA, "ELIM");
-                        mContext.startActivity(eliminaIntent);
+                        eliminaIntent.putExtra(Constants.VISUAL_ELIM_STAMPA, "ELIM");
+                        ((Activity) mContext).startActivityForResult(eliminaIntent, Constants.OFFERTA_DEL);
                         return true;
                     case R.id.menu_action_modifica:
                         Intent modificaIntent = new Intent(mContext, NuovaModifOffertaActivity.class);
@@ -58,8 +57,10 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
                         ((Activity) mContext).startActivityForResult(modificaIntent, Constants.OFFERTA_EDIT);
                         return true;
                     case R.id.menu_action_stampa:
-                        Intent stampaIntent = new Intent(mContext, StampaOffertaActivity.class);
-                        stampaIntent.putExtra("OFFERTA_TO_PRINT", mElement);
+                        Intent stampaIntent = new Intent(mContext, VisElimPrintOffertaActivity.class);
+                        stampaIntent.putExtra("OFFERTA", mElement);
+                        stampaIntent.putExtra("COMMESSA", mCommessa);
+                        stampaIntent.putExtra(Constants.VISUAL_ELIM_STAMPA, "STAMPA");
                         mContext.startActivity(stampaIntent);
                         return true;
                     default:
@@ -71,50 +72,5 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
         popupMenu.forceIconToShow();
         //Mostra il Popup
         popupMenu.show();
-
-        /*PopupMenu popupMenu = new PopupMenu(mContext, v) {
-
-            @Override
-            public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_action_elimina:
-                        Intent eliminaIntent = new Intent(mContext, EliminaOffertaActivity.class);
-                        eliminaIntent.putExtra("OFFERTA_TO_DELETE", mElement);
-                        mContext.startActivity(eliminaIntent);
-                        return true;
-                    case R.id.menu_action_modifica:
-                        Intent modificaIntent = new Intent(mContext, NuovaModifOffertaActivity.class);
-                        modificaIntent.putExtra("OFFERTA_TO_MODIFY", mElement);
-                        mContext.startActivity(modificaIntent);
-                        return true;
-                    case R.id.menu_action_stampa:
-                        Intent stampaIntent = new Intent(mContext, StampaOffertaActivity.class);
-                        stampaIntent.putExtra("OFFERTA_TO_PRINT", mElement);
-                        mContext.startActivity(stampaIntent);
-                        return true;
-                    default:
-                        return super.onMenuItemSelected(menu, item);
-                }
-            }
-        };
-        popupMenu.inflate(R.menu.accessi_overflow_menu);
-
-        //Forse icons to show
-        Object menuHelper;
-        Class[] argTypes;
-        try {
-            Field fMenuHelper = PopupMenu.class.getDeclaredField("mPopup");
-            fMenuHelper.setAccessible(true);
-            menuHelper = fMenuHelper.get(popupMenu);
-            argTypes = new Class[]{boolean.class};
-            menuHelper.getClass().getDeclaredMethod("setForceShowIcon", argTypes).invoke(menuHelper, true);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            popupMenu.show();
-            return;
-        }
-        popupMenu.show();*/
     }
-
 }

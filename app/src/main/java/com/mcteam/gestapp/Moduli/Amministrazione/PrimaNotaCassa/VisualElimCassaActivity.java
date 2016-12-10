@@ -60,7 +60,7 @@ public class VisualElimCassaActivity extends AppCompatActivity {
         LinearLayout layoutVisual = (LinearLayout) findViewById(R.id.layout_visual);
         LinearLayout layoutElim = (LinearLayout) findViewById(R.id.layout_elim);
 
-        boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIMINA, true);
+        boolean visualizza = getIntent().getBooleanExtra(Constants.VISUAL_ELIM_STAMPA, true);
         notaCassa = getIntent().getParcelableExtra(Constants.NOTA_CASSA);
 
         String[] cassaArray = getResources().getStringArray(R.array.type);

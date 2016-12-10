@@ -88,7 +88,7 @@ public class PopupListenerBuilder implements PopupMenu.OnMenuItemClickListener {
      * Set di un parametro extra per l'intent elimina
      * con relativo valore booleano
      *
-     * @param extraStr       Constants.VISUAL_ELIMINA (Utlizzato da VisualElimBancaActivity)
+     * @param extraStr       Constants.VISUAL_ELIM_STAMPA (Utlizzato da VisualElimBancaActivity)
      * @param extraBoolValue false
      * @return
      */

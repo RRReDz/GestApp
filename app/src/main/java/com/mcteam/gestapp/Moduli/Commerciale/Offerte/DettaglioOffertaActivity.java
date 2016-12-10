@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,13 +13,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.gson.Gson;
 import com.mcteam.gestapp.Callback.CallbackSelection;
 import com.mcteam.gestapp.Models.Commerciale.Offerta;
@@ -30,12 +26,7 @@ import com.mcteam.gestapp.R;
 import com.mcteam.gestapp.Utils.Constants;
 import com.mcteam.gestapp.Utils.GuiUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class DettaglioOffertaActivity extends AppCompatActivity {
 
@@ -86,6 +77,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     }
 
     private void setupBodyDettOfferte() {
+        GuiUtils.showProgressBar(mOffRecyclerView, mProgressBar, true);
         mVolleyRequests.getDettOfferteList(mCommessa, mCallbackListLoaded);
     }
 
@@ -103,19 +95,15 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
 
     private void emptyMode(boolean enabled) {
         LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_empty);
-        FloatingActionButton fabSearch = (FloatingActionButton) findViewById(R.id.fab_offerta_search);
-        FloatingActionButton fabPrint = (FloatingActionButton) findViewById(R.id.fab_offerta_print);
-        FloatingActionButton fabExcel = (FloatingActionButton) findViewById(R.id.fab_offerta_excel);
+        FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu_offerta);
         FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fab_offerta_add);
         LinearLayout fieldsLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_fields);
 
         if (enabled) {
             fabAdd.setVisibility(View.VISIBLE);
-        } else {
             emptyLayout.setVisibility(View.VISIBLE);
-            fabSearch.setVisibility(View.VISIBLE);
-            fabPrint.setVisibility(View.VISIBLE);
-            fabExcel.setVisibility(View.VISIBLE);
+        } else {
+            fabMenu.setVisibility(View.VISIBLE);
         }
 
     }
@@ -161,7 +149,8 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             //else
             //    startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
             finish();
-        } else if (requestCode == Constants.OFFERTA_EDIT && resultCode == RESULT_OK) {
+        } else if ((requestCode == Constants.OFFERTA_DEL || requestCode == Constants.OFFERTA_EDIT) && resultCode == RESULT_OK) {
+            Toast.makeText(this, "La lista di offerte è stata aggiornata", Toast.LENGTH_SHORT).show();
             setupBodyDettOfferte();
         }
     }

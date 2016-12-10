@@ -36,8 +36,6 @@ public class StampaSocietaActivity extends AppCompatActivity {
     TextView mCitta;
     TextView mCellulare;
 
-    Societa mCurrentSocieta;
-
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +73,6 @@ public class StampaSocietaActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final Societa currentSocieta = intent.getParcelableExtra("societaToPrint");
-        mCurrentSocieta = currentSocieta;
 
         setupView(currentSocieta);
 

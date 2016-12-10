@@ -214,6 +214,61 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_stampa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView143"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Modalità di stampa: " />
+
+            <RadioGroup
+                android:id="@+id/radio_group_stampa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <RadioButton
+                    android:id="@+id/stampa_allegato"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Allegato" />
+
+                <RadioButton
+                    android:id="@+id/stampa_riepilogo"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Riepilogo" />
+
+                <RadioButton
+                    android:id="@+id/stampa_tutto"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Tutto" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/stampa_offerta_stampa"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/main_register_view"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/access_blue"
+                android:text="stampa"
+                android:textColor="@color/blue"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/layout_visual"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -221,6 +276,19 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:visibility="gone">
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:id="@+id/b_visual_print"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="30dp"
+                android:onClick="onClickPrint"
+                app:bootstrapBrand="primary"
+                app:bootstrapSize="lg"
+                app:bootstrapText="{fa-print}"
+                app:buttonMode="regular"
+                app:roundedCorners="true"
+                app:showOutline="true" />
 
             <com.beardedhen.androidbootstrap.BootstrapButton
                 android:id="@+id/b_visual_modifica"

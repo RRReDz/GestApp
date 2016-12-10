@@ -25,7 +25,6 @@ public class StampaAssociazioneActivity extends AppCompatActivity {
     TextView mDataInizioView;
     TextView mDataFineView;
 
-    VolleyRequests mMyRequests;
     Associazione mAssociazioneAttuale;
 
     @Override
@@ -45,8 +44,6 @@ public class StampaAssociazioneActivity extends AppCompatActivity {
             }
             getSupportActionBar().setBackgroundDrawable(actionBarBack);
         }
-
-        mMyRequests = new VolleyRequests(this, this);
 
         mAssociazioneAttuale = getIntent().getParcelableExtra("associazioneToPrint");
 

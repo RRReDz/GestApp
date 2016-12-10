@@ -101,7 +101,7 @@ public class PrimaNotaBancaActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(NotaBanca item) {
                         Intent intent = new Intent(getApplicationContext(), VisualElimBancaActivity.class);
-                        intent.putExtra(Constants.VISUAL_ELIMINA, true); //false -> delete
+                        intent.putExtra(Constants.VISUAL_ELIM_STAMPA, true); //false -> delete
                         intent.putExtra(Constants.NOTA_BANCA, item);
                         startActivity(intent);
                     }

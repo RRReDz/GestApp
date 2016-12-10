@@ -24,7 +24,7 @@ public class Constants {
     public static final String CURRENT_USER = "CurrentUser";
 
     public static final String NOTA_CASSA = "NotaCassa";
-    public static final String VISUAL_ELIMINA = "MostraElimina";
+    public static final String VISUAL_ELIM_STAMPA = "MostraElimina";
     public static final String NOTA_BANCA = "NotaBanca";
     public static final String BANCA = "Banca";
     public static final String OFFERTA = "Offerta";
@@ -33,10 +33,12 @@ public class Constants {
     public static final int NOTA_ADD = 3;
     public static final int NOTA_SHOW = 4;
 
-    public static final int SHOW_OFFERTA = 2000;
+    public static final int OFFERTA_SHOW = 2000;
     public static final int OFFERTA_ADD = 2001;
     public static final int OFFERTA_EDIT = 2002;
+    public static final int OFFERTA_DEL = 2003;
 
     public static final int MY_SOCKET_TIMEOUT_MS = 5000;
+
 
 }
