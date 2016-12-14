@@ -231,7 +231,7 @@ public class PrimaNotaBancaUtils {
         pdfToPrint.add(table2);
 
         //Write the workbook in file system
-        /* OLD SOLUTION - API 23 AND LOWER */
+        /* OLD SOLUTION - API 23 AND LOWER - NON FUNZIONA IN API 23 (NON APRE FILE)*/
         readPdfFile(Uri.fromFile(pdf), context, "pdf");
 
         /* NEW SOLUTION */
