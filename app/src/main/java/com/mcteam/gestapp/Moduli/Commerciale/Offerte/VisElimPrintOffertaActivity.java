@@ -1,8 +1,13 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
@@ -26,10 +31,21 @@ public class VisElimPrintOffertaActivity extends AppCompatActivity {
     private Offerta mOfferta;
     private Commessa mCommessa;
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual_offerta);
+
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
+        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
+            Drawable actionBarBack = getDrawable(R.drawable.commerciale_home_background);
+            getSupportActionBar().setBackgroundDrawable(actionBarBack);
+        }
 
         mCommessa = getIntent().getParcelableExtra("COMMESSA");
         mOfferta = getIntent().getParcelableExtra("OFFERTA");
@@ -68,8 +84,10 @@ public class VisElimPrintOffertaActivity extends AppCompatActivity {
         if(getIntent().getStringExtra(Constants.VISUAL_ELIM_STAMPA).equals("VISUAL")) {
             layoutVisual.setVisibility(View.VISIBLE);
         } else if(getIntent().getStringExtra(Constants.VISUAL_ELIM_STAMPA).equals("ELIM")){
+            setTitle("Elimina Offerta");
             layoutElim.setVisibility(View.VISIBLE);
         } else if(getIntent().getStringExtra(Constants.VISUAL_ELIM_STAMPA).equals("STAMPA")) {
+            setTitle("Stampa Offerta");
             layoutStampa.setVisibility(View.VISIBLE);
         }
 

@@ -1,9 +1,13 @@
 package com.mcteam.gestapp.Moduli.Commerciale.Offerte;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.ParseException;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -73,10 +77,21 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
     private RadioGroup mNewVersionLayout;
     static Gson gson = new Gson();
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_offerta);
+
+        //Permette landscape e portrait solo se è un tablet
+        if (getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+
+        if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
+            Drawable actionBarBack = getDrawable(R.drawable.commerciale_home_background);
+            getSupportActionBar().setBackgroundDrawable(actionBarBack);
+        }
 
         mCommessa = getIntent().getParcelableExtra("COMMESSA");
         mIsNew = getIntent().getBooleanExtra("NUOVO", true);
@@ -104,6 +119,8 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
 
         /* Se l'activity è stata chiamata con lo scopo di modificare l'offerta e non di crearla nuova */
         if (!mIsNew) {
+            /* Imposto il titolo */
+            setTitle("Modifica offerta");
             /* Recupero l'offerta da modificare */
             mOffertaToEdit = getIntent().getParcelableExtra("OFFERTA_TO_EDIT");
             /* Mostro l'avverimento nel caso non fosse l'offerta più nuova */
