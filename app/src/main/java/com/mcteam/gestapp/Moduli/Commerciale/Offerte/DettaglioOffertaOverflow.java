@@ -22,7 +22,6 @@ public class DettaglioOffertaOverflow implements View.OnClickListener {
     private Offerta mElement;
     private Context mContext;
 
-
     public DettaglioOffertaOverflow(Commessa commessa, Offerta element, Context context) {
         mCommessa = commessa;
         mElement = element;
