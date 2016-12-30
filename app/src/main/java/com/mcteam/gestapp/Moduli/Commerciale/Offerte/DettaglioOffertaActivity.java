@@ -97,13 +97,14 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         LinearLayout emptyLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_empty);
         FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu_offerta);
         FloatingActionButton fabAdd = (FloatingActionButton) findViewById(R.id.fab_offerta_add);
-        LinearLayout fieldsLayout = (LinearLayout) findViewById(R.id.dettaglio_offerta_fields);
+        LinearLayout labelItems = (LinearLayout) findViewById(R.id.dett_off_label_items);
 
         if (enabled) {
             fabAdd.setVisibility(View.VISIBLE);
             emptyLayout.setVisibility(View.VISIBLE);
         } else {
             fabMenu.setVisibility(View.VISIBLE);
+            labelItems.setVisibility(View.VISIBLE);
         }
 
     }
