@@ -166,118 +166,151 @@
                 android:id="@+id/codice_commessa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/nome_commessa"
                 android:gravity="center_vertical"
                 android:text="Codice commessa"
                 android:textColor="@color/white"
-                android:textSize="10dp"
-                android:layout_below="@+id/nome_commessa"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/cliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/codice_commessa"
                 android:text="Cliente"
                 android:textColor="@color/white"
-                android:textSize="10dp"
-                android:layout_below="@+id/codice_commessa"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/consulente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/cliente"
                 android:text="Consulente"
                 android:textColor="@color/white"
-                android:textSize="10dp"
-                android:layout_below="@+id/cliente"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/rif_commessa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/consulente"
                 android:text="Rif. commessa"
                 android:textColor="@color/white"
-                android:textSize="10dp"
-                android:layout_below="@+id/consulente"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/dett_off_head_codcomm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/dett_off_head_cliente"
+                android:layout_alignStart="@+id/dett_off_head_cliente"
+                android:layout_below="@+id/dett_off_head_nomecomm"
                 android:text="Codice commessa"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                android:textStyle="bold"
-                android:layout_below="@+id/dett_off_head_nomecomm"
-                android:layout_alignLeft="@+id/dett_off_head_cliente"
-                android:layout_alignStart="@+id/dett_off_head_cliente" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dett_off_head_nomecomm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/dett_off_head_codcomm"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/dett_off_head_codcomm"
                 android:gravity="center_vertical"
                 android:text="Nome Commessa"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                android:textStyle="bold"
-                android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/dett_off_head_codcomm"
-                android:layout_alignStart="@+id/dett_off_head_codcomm" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dett_off_head_consul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/dett_off_head_cliente"
+                android:layout_marginLeft="37dp"
+                android:layout_marginStart="37dp"
+                android:layout_toEndOf="@+id/codice_commessa"
+                android:layout_toRightOf="@+id/codice_commessa"
                 android:gravity="center_vertical"
                 android:text="Consulente"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                android:textStyle="bold"
-                android:layout_below="@+id/dett_off_head_cliente"
-                android:layout_toRightOf="@+id/codice_commessa"
-                android:layout_toEndOf="@+id/codice_commessa"
-                android:layout_marginLeft="37dp"
-                android:layout_marginStart="37dp" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dett_off_head_cliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/dett_off_head_consul"
+                android:layout_alignStart="@+id/dett_off_head_consul"
+                android:layout_below="@+id/dett_off_head_codcomm"
                 android:text="Cliente"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                android:textStyle="bold"
-                android:layout_below="@+id/dett_off_head_codcomm"
-                android:layout_alignLeft="@+id/dett_off_head_consul"
-                android:layout_alignStart="@+id/dett_off_head_consul" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dett_off_head_refcomm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/dett_off_head_consul"
+                android:layout_alignStart="@+id/dett_off_head_consul"
+                android:layout_below="@+id/dett_off_head_consul"
                 android:gravity="center_vertical"
                 android:text="Ref Commessa"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/white"
                 android:textSize="10dp"
-                android:textStyle="bold"
-                android:layout_below="@+id/dett_off_head_consul"
-                android:layout_alignLeft="@+id/dett_off_head_consul"
-                android:layout_alignStart="@+id/dett_off_head_consul" />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/view_borders"
+        android:id="@+id/dett_off_label_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout14">
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="versione" />
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="data" />
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="accettata" />
+
+        <TextView
+            android:id="@+id/textView145"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="allegato" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -285,9 +318,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/dettaglio_offerta_fields"
+        android:layout_below="@+id/dett_off_label_items"
         android:layout_toEndOf="@+id/dettaglio_offerta_fields"
-        android:layout_below="@+id/linearLayout14" />
+        android:layout_toRightOf="@+id/dettaglio_offerta_fields" />
 
 
 </RelativeLayout>
