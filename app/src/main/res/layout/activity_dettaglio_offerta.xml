@@ -179,7 +179,7 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="accettata" />
+                android:text="presentata" />
 
             <TextView
                 android:id="@+id/textView145"

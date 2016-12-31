@@ -68,13 +68,13 @@ public class VisElimPrintOffertaActivity extends AppCompatActivity {
         textOffertaCodComm.setText(mCommessa.getCodice_commessa());
         textOffertaClient.setText(mCommessa.getCliente().getNomeSocietà());
         if(mCommessa.getReferente_offerta1() != null)
-            textOffertaRef1.setText(mCommessa.getReferente_offerta1().getNome() + mCommessa.getReferente_offerta1().getCognome());
+            textOffertaRef1.setText(mCommessa.getReferente_offerta1().getNome() + "\n" +  mCommessa.getReferente_offerta1().getCognome());
 
         if(mCommessa.getReferente_offerta2() != null)
-            textOffertaRef2.setText(mCommessa.getReferente_offerta2().getNome() + mCommessa.getReferente_offerta2().getCognome());
+            textOffertaRef2.setText(mCommessa.getReferente_offerta2().getNome() + "\n" + mCommessa.getReferente_offerta2().getCognome());
 
         if(mCommessa.getReferente_offerta3() != null)
-            textOffertaRef3.setText(mCommessa.getReferente_offerta3().getNome() + mCommessa.getReferente_offerta3().getCognome());
+            textOffertaRef3.setText(mCommessa.getReferente_offerta3().getNome() + "\n" + mCommessa.getReferente_offerta3().getCognome());
 
         textOffertaDataOff.setText(mOfferta.getDataOfferta());
         textOffertaObj.setText(mCommessa.getNome_commessa());
