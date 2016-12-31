@@ -36,6 +36,8 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     private Commessa mCommessa;
     private ProgressBar mProgressBar;
     private VolleyRequests mVolleyRequests;
+    private FloatingActionsMenu mFabMenu;
+    private View mOverlay;
     private CallbackSelection<Offerta> mCallbackListLoaded;
 
 
@@ -57,13 +59,14 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
 
         mCommessa = getIntent().getParcelableExtra("COMMESSA");
 
-        final Gson gson = new Gson();
-        mOffArrayList = new ArrayList<>();
-        mOffAdapter = new DettaglioOffertaAdapter(mOffArrayList, mCommessa);
         mOffRecyclerView = (RecyclerView) findViewById(R.id.offerte_recycler);
         mOffRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mProgressBar = (ProgressBar) findViewById(R.id.dett_offerte_progress);
-        mOffRecyclerView.setAdapter(mOffAdapter);
+        mFabMenu = (FloatingActionsMenu) findViewById(R.id.fabmenu_offerta);
+        mOverlay = findViewById(R.id.dett_off_overlay);
+
+        mOffArrayList = new ArrayList<>();
+        mOffAdapter = new DettaglioOffertaAdapter(mOffArrayList, mCommessa);
         mVolleyRequests = new VolleyRequests(this, this);
         mCallbackListLoaded = new CallbackSelection<Offerta>() {
             @Override
@@ -71,6 +74,30 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
                 updateList(list);
             }
         };
+
+        mOffRecyclerView.setAdapter(mOffAdapter);
+
+        mFabMenu.setOnFloatingActionsMenuUpdateListener(
+                new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+                    @Override
+                    public void onMenuExpanded() {
+                        mOverlay.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onMenuCollapsed() {
+                        mOverlay.setVisibility(View.GONE);
+                    }
+                }
+        );
+
+        mOverlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOverlay.setVisibility(View.GONE);
+                mFabMenu.collapse();
+            }
+        });
 
         setupHeaderCommessa(mCommessa);
         setupBodyDettOfferte();

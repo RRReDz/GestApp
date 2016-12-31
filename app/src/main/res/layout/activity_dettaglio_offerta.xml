@@ -219,6 +219,14 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/dett_off_header" />
 
+    <View
+        android:id="@+id/dett_off_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/dett_off_header"
+        android:background="@color/transparent_white"
+        android:visibility="gone" />
+
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fabmenu_offerta"
         android:layout_width="wrap_content"
