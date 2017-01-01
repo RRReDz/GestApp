@@ -279,6 +279,8 @@ public class VolleyRequests {
                             try {
                                 JSONObject obj = response.getJSONObject(i);
                                 Offerta offerta = gson.fromJson(obj.toString(), Offerta.class);
+                                /* Trasformo la data da sql "aaaa-mm-gg" in normale "gg-mm-aaaa" */
+                                offerta.setDataOfferta(Functions.getFormattedDate(offerta.getDataOfferta()));
                                 System.out.println(offerta);
                                 newList.add(offerta);
                             } catch (JSONException e) {

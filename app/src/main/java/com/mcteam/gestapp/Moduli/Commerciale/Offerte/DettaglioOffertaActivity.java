@@ -261,7 +261,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
 
     private void advancedSearch(String versioneString, String dataOfferta, String presentataString) {
         ArrayList<Offerta> matchingElement = new ArrayList<>();
-        if (!(versioneString.isEmpty() && dataOfferta.isEmpty() && presentataString.equals("Entrambe"))) {
+        //if (!(versioneString.isEmpty() && dataOfferta.isEmpty() && presentataString.equals("Entrambe"))) {
 
             int versione;
             try {
@@ -287,7 +287,6 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             }
 
             updateListForSearch(matchingElement);
-        }
 
     }
 }

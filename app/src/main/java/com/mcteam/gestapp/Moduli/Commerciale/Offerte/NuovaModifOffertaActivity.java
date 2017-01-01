@@ -131,7 +131,7 @@ public class NuovaModifOffertaActivity extends AppCompatActivity {
                             null);
             }
             /* Carico la data */
-            mData.setText(Functions.getFormattedDate(mOffertaToEdit.getDataOfferta()));
+            mData.setText(mOffertaToEdit.getDataOfferta());
             /* Mostro il campo 'presentata' e ne setto il valore */
             mPresentata.setChecked(mOffertaToEdit.getAccettata() == 1);
             mPresentataLayout.setVisibility(View.VISIBLE);
