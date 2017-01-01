@@ -41,4 +41,10 @@
         <item>Dicembre</item>
     </string-array>
 
+    <string-array name="presentata_values">
+        <item>Entrambe</item>
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
 </resources>

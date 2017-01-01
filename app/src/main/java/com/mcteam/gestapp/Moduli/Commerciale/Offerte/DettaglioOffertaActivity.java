@@ -11,12 +11,16 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -214,7 +218,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_search) {
-            new MaterialDialog.Builder(this)
+            MaterialDialog dialog = new MaterialDialog.Builder(this)
                     .title(R.string.title_activity_societa_advance_search)
                     .customView(R.layout.dett_off_advanced_search_dialog, false)
                     .onPositive(
@@ -223,39 +227,41 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
                                 public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
                                     View customView = dialog.getCustomView();
                                     EditText versione = (EditText) customView.findViewById(R.id.versione);
-                                    final TextView dataOfferta = (TextView) customView.findViewById(R.id.data_offerta);
-                                    EditText presentata = (EditText) customView.findViewById(R.id.presentata);
-                                    dataOfferta.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            Toast.makeText(view.getContext(), "DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGG", Toast.LENGTH_SHORT).show();
-                                            onClickSelData(dataOfferta);
-                                        }
-                                    });
+                                    EditText dataOfferta = (EditText) customView.findViewById(R.id.data_offerta);
+                                    Spinner presentata = (Spinner) customView.findViewById(R.id.presentata);
 
                                     advancedSearch(
                                             versione.getText().toString(),
                                             dataOfferta.getText().toString(),
-                                            presentata.getText().toString()
+                                            presentata.getSelectedItem().toString()
                                     );
                                 }
                             })
                     .positiveText("Cerca")
                     .negativeText("Annulla")
                     .show();
+
+            View customView = dialog.getCustomView();
+            TextView dataOfferta = (TextView) customView.findViewById(R.id.data_offerta);
+
+            dataOfferta.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickSelData(view);
+                }
+            });
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void onClickSelData(View view) {
-        Toast.makeText(this, "DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGG", Toast.LENGTH_SHORT).show();
-        //DialogFragment dialogFragment = new DatePickerFragment(dateView);
-        //dialogFragment.show(getFragmentManager(), "datePicker");
+    private void onClickSelData(View dateView) {
+        DialogFragment dialogFragment = new DatePickerFragment((TextView) dateView);
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     private void advancedSearch(String versioneString, String dataOfferta, String presentataString) {
         ArrayList<Offerta> matchingElement = new ArrayList<>();
-        if (!(versioneString.isEmpty() && dataOfferta.isEmpty() && presentataString.isEmpty())) {
+        if (!(versioneString.isEmpty() && dataOfferta.isEmpty() && presentataString.equals("Entrambe"))) {
 
             int versione;
             try {
@@ -265,16 +271,17 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
             }
 
             int presentata;
-            try {
-                presentata = Integer.parseInt(presentataString);
-            } catch (NumberFormatException exc) {
-                presentata = -1;
+            switch (presentataString) {
+                case "Si": presentata = 1; break;
+                case "No": presentata = 0; break;
+                case "Entrambe": presentata = 2; break;
+                default: presentata = -1;
             }
 
             for (Offerta offerta : mOffOriginalList) {
-                if (offerta.getVersione() == versione ||
-                        offerta.getAccettata() == presentata ||
-                        (!dataOfferta.isEmpty() && offerta.getDataOfferta().equals(dataOfferta))) {
+                if ((offerta.getVersione() == versione || versione == -1) &&
+                        (offerta.getAccettata() == presentata || presentata == 2) &&
+                        (dataOfferta.isEmpty() || offerta.getDataOfferta().equals(dataOfferta))) {
                     matchingElement.add(offerta);
                 }
             }
