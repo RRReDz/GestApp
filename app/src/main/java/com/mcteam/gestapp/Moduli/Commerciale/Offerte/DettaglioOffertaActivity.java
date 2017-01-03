@@ -11,12 +11,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -261,32 +258,38 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
 
     private void advancedSearch(String versioneString, String dataOfferta, String presentataString) {
         ArrayList<Offerta> matchingElement = new ArrayList<>();
-        //if (!(versioneString.isEmpty() && dataOfferta.isEmpty() && presentataString.equals("Entrambe"))) {
 
-            int versione;
-            try {
-                versione = Integer.parseInt(versioneString);
-            } catch (NumberFormatException exc) {
-                versione = -1;
+        int versione;
+        try {
+            versione = Integer.parseInt(versioneString);
+        } catch (NumberFormatException exc) {
+            versione = -1;
+        }
+
+        int presentata;
+        switch (presentataString) {
+            case "Si":
+                presentata = 1;
+                break;
+            case "No":
+                presentata = 0;
+                break;
+            case "Entrambe":
+                presentata = 2;
+                break;
+            default:
+                presentata = -1;
+        }
+
+        for (Offerta offerta : mOffOriginalList) {
+            if ((offerta.getVersione() == versione || versione == -1) &&
+                    (offerta.getAccettata() == presentata || presentata == 2) &&
+                    (dataOfferta.isEmpty() || offerta.getDataOfferta().equals(dataOfferta))) {
+                matchingElement.add(offerta);
             }
+        }
 
-            int presentata;
-            switch (presentataString) {
-                case "Si": presentata = 1; break;
-                case "No": presentata = 0; break;
-                case "Entrambe": presentata = 2; break;
-                default: presentata = -1;
-            }
-
-            for (Offerta offerta : mOffOriginalList) {
-                if ((offerta.getVersione() == versione || versione == -1) &&
-                        (offerta.getAccettata() == presentata || presentata == 2) &&
-                        (dataOfferta.isEmpty() || offerta.getDataOfferta().equals(dataOfferta))) {
-                    matchingElement.add(offerta);
-                }
-            }
-
-            updateListForSearch(matchingElement);
+        updateListForSearch(matchingElement);
 
     }
 }
