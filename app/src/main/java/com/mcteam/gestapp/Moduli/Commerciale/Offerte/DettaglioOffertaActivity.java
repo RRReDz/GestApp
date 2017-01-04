@@ -201,55 +201,12 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_dett_off, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_search) {
-            MaterialDialog dialog = new MaterialDialog.Builder(this)
-                    .title(R.string.title_activity_societa_advance_search)
-                    .customView(R.layout.dett_off_advanced_search_dialog, false)
-                    .onPositive(
-                            new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
-                                    View customView = dialog.getCustomView();
-                                    EditText versione = (EditText) customView.findViewById(R.id.versione);
-                                    EditText dataOfferta = (EditText) customView.findViewById(R.id.data_offerta);
-                                    Spinner presentata = (Spinner) customView.findViewById(R.id.presentata);
-
-                                    advancedSearch(
-                                            versione.getText().toString(),
-                                            dataOfferta.getText().toString(),
-                                            presentata.getSelectedItem().toString()
-                                    );
-                                }
-                            })
-                    .positiveText("Cerca")
-                    .negativeText("Annulla")
-                    .show();
-
-            View customView = dialog.getCustomView();
-            TextView dataOfferta = (TextView) customView.findViewById(R.id.data_offerta);
-
-            dataOfferta.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onClickSelData(view);
-                }
-            });
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private void onClickSelData(View dateView) {
         DialogFragment dialogFragment = new DatePickerFragment((TextView) dateView);
@@ -291,5 +248,44 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
 
         updateListForSearch(matchingElement);
 
+    }
+
+    public void onClickRicercaAvanzata(View view) {
+        /* Chiudo il menu fab */
+        mFabMenu.collapse();
+
+        /* Apro il dialog di ricerca avanzata */
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title(R.string.title_activity_societa_advance_search)
+                .customView(R.layout.dett_off_advanced_search_dialog, false)
+                .onPositive(
+                        new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull final MaterialDialog dialog, @NonNull DialogAction which) {
+                                View customView = dialog.getCustomView();
+                                EditText versione = (EditText) customView.findViewById(R.id.versione);
+                                EditText dataOfferta = (EditText) customView.findViewById(R.id.data_offerta);
+                                Spinner presentata = (Spinner) customView.findViewById(R.id.presentata);
+
+                                advancedSearch(
+                                        versione.getText().toString(),
+                                        dataOfferta.getText().toString(),
+                                        presentata.getSelectedItem().toString()
+                                );
+                            }
+                        })
+                .positiveText("Cerca")
+                .negativeText("Annulla")
+                .show();
+
+        View customView = dialog.getCustomView();
+        TextView dataOfferta = (TextView) customView.findViewById(R.id.data_offerta);
+
+        dataOfferta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickSelData(view);
+            }
+        });
     }
 }
