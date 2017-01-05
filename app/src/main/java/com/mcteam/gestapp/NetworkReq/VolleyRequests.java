@@ -302,6 +302,7 @@ public class VolleyRequests {
                 }
         );
 
+        jsonObjectRequest.setShouldCache(false);
         mRequestQueue.add(jsonObjectRequest);
     }
 

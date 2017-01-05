@@ -212,71 +212,84 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/offerte_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/dett_off_header" />
-
-    <View
-        android:id="@+id/dett_off_overlay"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/dett_off_header"
-        android:background="@color/transparent_white"
-        android:visibility="gone" />
-
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fabmenu_offerta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:visibility="visible"
-        app:fab_addButtonColorNormal="@color/commerciale_home_background"
-        app:fab_labelStyle="@style/menu_labels_style"
-        app:fab_labelsPosition="left">
+        android:layout_below="@+id/dett_off_header"
+        android:animateLayoutChanges="true">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_offerta_search"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/offerte_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true" />
+
+        <View
+            android:id="@+id/dett_off_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/dett_off_header"
+            android:background="@color/transparent_white"
+            android:visibility="gone" />
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fabmenu_offerta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_search_white_24dp"
-            android:onClick="onClickRicercaAvanzata"
-            app:fab_size="mini"
-            app:fab_title="Ricerca Avanzata" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|right"
+            android:animateLayoutChanges="true"
+            android:visibility="visible"
+            app:fab_addButtonColorNormal="@color/commerciale_home_background"
+            app:fab_labelStyle="@style/menu_labels_style"
+            app:fab_labelsPosition="left"
+            app:layout_behavior="com.mcteam.gestapp.Utils.ScrollAwareFAMBehavior">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_offerta_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onClickRicercaAvanzata"
+                app:fab_icon="@drawable/ic_search_white_24dp"
+                app:fab_size="mini"
+                app:fab_title="Ricerca Avanzata" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_offerta_print"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_print_white_36dp"
+                app:fab_size="mini"
+                app:fab_title="Stampa tutto" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_offerta_excel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_grid_on_white_24dp"
+                app:fab_size="mini"
+                app:fab_title="Esporta in Excel" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_offerta_print"
+            android:id="@+id/fab_offerta_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_print_white_36dp"
-            app:fab_size="mini"
-            app:fab_title="Stampa tutto" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:onClick="onClickAddOfferta"
+            android:visibility="gone"
+            app:fab_colorNormal="@color/sistemi_home_background"
+            app:fab_icon="@drawable/ic_add_white_24dp"
+            app:fab_size="normal"
+            app:fab_title="Exporta in Excel" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_offerta_excel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_grid_on_white_24dp"
-            app:fab_size="mini"
-            app:fab_title="Esporta in Excel" />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-    <com.getbase.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_offerta_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="onClickAddOfferta"
-        android:visibility="gone"
-        app:fab_colorNormal="@color/sistemi_home_background"
-        app:fab_icon="@drawable/ic_add_white_24dp"
-        app:fab_size="normal"
-        app:fab_title="Exporta in Excel" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <ProgressBar
         android:id="@+id/dett_offerte_progress"

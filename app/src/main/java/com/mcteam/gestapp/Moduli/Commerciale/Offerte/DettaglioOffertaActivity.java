@@ -11,8 +11,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -185,28 +183,12 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         /* Risposta di ok ricevuta */
         if (requestCode == Constants.OFFERTA_ADD && resultCode == RESULT_OK) {
-            /* Debug */
-            //Toast.makeText(this, "Ricevuto messaggio di risposta da volley request", Toast.LENGTH_SHORT).show();
-
-            /* Se il "parent" di questa activity non è null (OfferteActivity), allora setto il risultato per la callback */
-            //if(getParent() != null)
-            //    getParent().setResult(Activity.RESULT_OK);
-            /* Altrimenti rilancio l'activity nuovamente */
-            //else
-            //    startActivity(new Intent(getApplicationContext(), OfferteActivity.class), null);
             finish();
         } else if ((requestCode == Constants.OFFERTA_DEL || requestCode == Constants.OFFERTA_EDIT) && resultCode == RESULT_OK) {
             Toast.makeText(this, "La lista di offerte è stata aggiornata", Toast.LENGTH_SHORT).show();
             setupBodyDettOfferte();
         }
     }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_dett_off, menu);
-        return true;
-    }*/
 
     private void onClickSelData(View dateView) {
         DialogFragment dialogFragment = new DatePickerFragment((TextView) dateView);
@@ -254,7 +236,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         /* Chiudo il menu fab */
         mFabMenu.collapse();
 
-        /* Apro il dialog di ricerca avanzata */
+        /* Creo e mostro il dialog di ricerca avanzata */
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title(R.string.title_activity_societa_advance_search)
                 .customView(R.layout.dett_off_advanced_search_dialog, false)
@@ -281,6 +263,7 @@ public class DettaglioOffertaActivity extends AppCompatActivity {
         View customView = dialog.getCustomView();
         TextView dataOfferta = (TextView) customView.findViewById(R.id.data_offerta);
 
+        /* Listener campo data per apertura calendario */
         dataOfferta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
