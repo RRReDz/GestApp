@@ -94,5 +94,4 @@ public class ScrollAwareFAMBehavior extends CoordinatorLayout.Behavior {
         }
     }
 
-
 }

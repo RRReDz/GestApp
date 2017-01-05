@@ -242,7 +242,6 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_gravity="bottom|right"
-            android:animateLayoutChanges="true"
             android:visibility="visible"
             app:fab_addButtonColorNormal="@color/commerciale_home_background"
             app:fab_labelStyle="@style/menu_labels_style"
@@ -276,20 +275,20 @@
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_offerta_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:onClick="onClickAddOfferta"
-            android:visibility="gone"
-            app:fab_colorNormal="@color/sistemi_home_background"
-            app:fab_icon="@drawable/ic_add_white_24dp"
-            app:fab_size="normal"
-            app:fab_title="Exporta in Excel" />
-
     </android.support.design.widget.CoordinatorLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_offerta_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onClickAddOfferta"
+        android:visibility="gone"
+        app:fab_colorNormal="@color/sistemi_home_background"
+        app:fab_icon="@drawable/ic_add_white_24dp"
+        app:fab_size="normal"
+        app:fab_title="Exporta in Excel" />
 
     <ProgressBar
         android:id="@+id/dett_offerte_progress"
